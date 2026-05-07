@@ -118,6 +118,13 @@
       ],
     },
     {
+      key: "shift", label: "Schedule", multi: true,
+      options: [
+        { value: "Morning", label: "Mornings (8am–3pm)" },
+        { value: "Evening", label: "Evenings (5pm–9pm)" },
+      ],
+    },
+    {
       key: "audience", label: "Team", multi: true,
       options: [
         "Executives & Leadership",
@@ -231,6 +238,7 @@
       if (filters.q && !matchesQuery(p, filters.q)) return false;
       if (filters.topic && filters.topic.length && !filters.topic.includes(p.topic)) return false;
       if (filters.format && filters.format.length && !filters.format.includes(p.format)) return false;
+      if (filters.shift && filters.shift.length && !filters.shift.includes(p.shift)) return false;
       if (filters.audience && filters.audience.length && !filters.audience.some(a => (p.audience || []).includes(a))) return false;
       if (filters.month && filters.month.length) {
         const programMonths = getProgramMonths(p);

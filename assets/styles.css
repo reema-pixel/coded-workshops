@@ -477,15 +477,26 @@ button { font-family: inherit; cursor: pointer; }
   white-space: nowrap;
 }
 .card__price-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
   font-size: 12px;
-  font-weight: 500;
-  color: var(--text-muted);
-  background: transparent;
-  border: 1px solid var(--border-strong);
-  padding: 5px 10px;
+  font-weight: 600;
+  color: #B7E5C2;
+  background: rgba(45, 164, 78, 0.10);
+  border: 1px solid rgba(45, 164, 78, 0.40);
+  padding: 5px 10px 5px 9px;
   border-radius: 999px;
   letter-spacing: -0.005em;
   white-space: nowrap;
+}
+.card__price-tag::before {
+  content: "";
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #6FE5A1;
+  box-shadow: 0 0 0 3px rgba(111, 229, 161, 0.18);
 }
 .card::after {
   content: "";
