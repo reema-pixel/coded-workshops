@@ -1,0 +1,407 @@
+// CODED, B2B Workshops catalog
+// Source of truth: Notion "Year Calendar, B2C & B2B [Open Enrollment Calendar]"
+// (the canonical Pro 2026, Programs & Classroom Allocation table on pages 1–2 of the PDF).
+// Topic = polished version of the program's "Realm" field in Notion.
+// Audience tags reflect which teams a company would typically enrol from.
+
+// Shared constants
+const CODED_LOCATION = {
+  label: "CODED Campus, Free Trade Zone, Kuwait",
+  short: "CODED Campus, Free Trade Zone",
+  maps_url: "https://www.google.com/maps/search/?api=1&query=CODED+Kuwait+Free+Trade+Zone",
+};
+
+// Reusable instructor bios, sourced from CODED instructor CVs (March 2026 set).
+const INSTRUCTORS = {
+  ammar: {
+    name: "Dr. Ammar Alhaj Ali",
+    role: "Lead Instructor, Data Science & AI",
+    bio: "PhD in Big Data, Data Science and AI, with a decade across academia and industry as a senior AI researcher and Head of AI at Kenda AI. Lead instructor on CODED's Power BI workshops, with a multi-year delivery track record across enterprise cohorts in Kuwait.",
+  },
+  ali_taqi: {
+    name: "Ali Taqi",
+    role: "Senior Instructor, Engineering & Practice",
+    bio: "Senior Instructor at CODED with 12 years across full-stack engineering, .NET / Spring Boot APIs, and SCRUM Agile delivery; co-founder of Ajar and YallaBit, AUK Information Systems graduate. Leads CODED's B2B workshops on agentic AI, SQL, and Scrum Master certification.",
+  },
+  alhamzah: {
+    name: "Alhamzah Makkiyah",
+    role: "Lead Instructor, Backend & Data Science",
+    bio: "Backend Engineer and Data Science trainer with a Master's in Information Systems from Kuwait University. Currently a Backend Engineer at OBytes; previously Education Lead at CODED running data-science and full-stack bootcamps. Expertise in Python, Django, Pandas, and Scikit-Learn. Lead instructor on Intro AI for Finance.",
+  },
+  aya: {
+    name: "Aya AlSakkaf",
+    role: "Bootcamp Instructor, Engineering",
+    bio: "Computer Science graduate and CODED Bootcamp Instructor. Engineering experience across MERN stack, Flutter, Python data tooling, and computer vision; has delivered enterprise bootcamps and full-stack iterations at CODED. Lead instructor on Power Automate.",
+  },
+};
+
+window.CODED_PROGRAMS = [
+  // ============================================================
+  // Q2
+  // ============================================================
+  {
+    id: "agentic-ai-iter-1",
+    slug: "agentic-ai-workshop",
+    name: "Agentic AI Workshop",
+    one_liner: "Move from prompting LLMs to building autonomous AI agents, ship a multi-step prototype on n8n + APIs in one week.",
+    topic: "Agentic AI",
+    format: "Workshop",
+    audience: ["Engineering & IT", "Data & Analytics", "Executives & Leadership"],
+    start_date: "2026-06-14",
+    end_date: "2026-06-18",
+    duration_label: "1 week (5 days)",
+    total_hours: 35,
+    session_pattern: "Morning shift, 8am–3pm, five consecutive days",
+    delivery_mode: "In person",
+    location: CODED_LOCATION.short,
+    location_full: CODED_LOCATION.label,
+    location_url: CODED_LOCATION.maps_url,
+    price_per_seat_kwd: 450,
+    classroom: "Morning Big O / Legacy (35 seats)",
+    iterations: [
+      { dates: "June 14–18, 2026" },
+      { dates: "August 9–13, 2026" },
+      { dates: "October 11–15, 2026" },
+    ],
+    overview:
+      "A 5-day workshop that takes participants from prompting LLMs to building autonomous AI agents. Covers agent design patterns, tool use, multi-step planning, retrieval-augmented generation (RAG), and connecting agents to real APIs.\n\nThis is not a tour of frameworks. By Day 5 each attendee ships a working multi-step AI agent prototype on n8n + APIs, built around a real workflow in your business.",
+    outcomes: [
+      "Each attendee ships a working multi-step AI agent prototype on n8n + APIs",
+      "Apply core agent design patterns (planner / executor / critic)",
+      "Set up retrieval-augmented generation against your own knowledge base",
+      "Connect agents safely to internal APIs and external services",
+      "Know when an agent is the right shape, and when prompts and a script are enough",
+    ],
+    structure: [
+      { phase_name: "Phase 1, Foundations (Days 1–2)", sessions: 2, hours: 14, focus: "Agent patterns, tool use, planning, and RAG fundamentals." },
+      { phase_name: "Phase 2, Application (Days 3–4)", sessions: 2, hours: 14, focus: "n8n agents, API wiring, evaluation, and safety guardrails." },
+      { phase_name: "Phase 3, Capstone (Day 5)", sessions: 1, hours: 7, focus: "Ship a working agent prototype on a real internal workflow." },
+    ],
+    audience_detail:
+      "Engineers, technical PMs, R&D leads, and AI champions building first agentic prototypes. Prerequisites: at least one programming language (Python preferred), REST API basics, and prior LLM prompting exposure. Maximum cohort size: 35.",
+    instructor: INSTRUCTORS.ali_taqi,
+    faq: [
+      { question: "Do attendees need OpenAI / Claude API access?", answer: "Yes. Bring your own API keys, or we provision shared keys for the workshop." },
+      { question: "Mac or Windows?", answer: "Either works. 16 GB RAM recommended for running n8n locally." },
+    ],
+    status: "Published",
+    tags: ["ai", "agents", "n8n", "rag", "llm"],
+  },
+  {
+    id: "ai-marketing",
+    slug: "ai-in-content-creation-and-marketing",
+    name: "AI in Content Creation & Marketing",
+    one_liner: "Generative AI for marketing, copy, image, social workflows, and brand-safe automations your team can deploy this quarter.",
+    topic: "Agentic AI",
+    format: "Workshop",
+    audience: ["Marketing & Comms", "Executives & Leadership"],
+    start_date: "2026-06-21",
+    end_date: "2026-06-23",
+    duration_label: "3 days",
+    total_hours: 21,
+    session_pattern: "Morning shift, 8am–3pm, three consecutive days",
+    delivery_mode: "In person",
+    location: CODED_LOCATION.short,
+    location_full: CODED_LOCATION.label,
+    location_url: CODED_LOCATION.maps_url,
+    price_per_seat_kwd: 400,
+    classroom: "Morning Legacy (33 seats)",
+    iterations: [
+      { dates: "June 21–23, 2026" },
+      { dates: "August 1–3, 2026" },
+      { dates: "October 18–20, 2026" },
+    ],
+    overview:
+      "Three days for marketing, content, and comms teams. Generative AI for copywriting (long-form, social, email), AI image and video generation, brand-safe automation guardrails, and building content workflows that don't sacrifice brand voice.\n\nEvery attendee leaves with a brand-safe content automation playbook and working samples (copy, image, social workflows) deployed to your brand.",
+    outcomes: [
+      "Build an AI content workflow that respects brand guidelines, not bulldozes them",
+      "Generate copy, image, and video assets with appropriate guardrails",
+      "Stand up a social content pipeline that moves faster without losing voice",
+      "Walk out with a deployable content automation playbook for your team",
+    ],
+    structure: [
+      { phase_name: "Day 1, Copy", sessions: 1, hours: 7, focus: "Long-form, social, email copywriting with LLMs." },
+      { phase_name: "Day 2, Image & Video", sessions: 1, hours: 7, focus: "Brand-safe image/video generation, asset workflows." },
+      { phase_name: "Day 3, Pipeline", sessions: 1, hours: 7, focus: "End-to-end content automation deployed to your brand." },
+    ],
+    audience_detail:
+      "Marketing managers, content leads, social media managers, brand directors, and comms teams. Active marketing or content role. Familiarity with brand guidelines. Maximum cohort size: 33.",
+    faq: [
+      { question: "Do attendees need a paid LLM account?", answer: "We provide LLM access for the workshop. Each attendee will want their own to keep building afterwards." },
+    ],
+    status: "Published",
+    tags: ["marketing", "content", "ai", "generative"],
+  },
+
+  // ============================================================
+  // Q3
+  // ============================================================
+  {
+    id: "sql",
+    slug: "data-analytics-and-sql",
+    name: "Data Analytics & SQL",
+    one_liner: "Two-day fundamentals of analytical SQL, query, transform, and visualise enterprise data without an engineering ticket.",
+    topic: "Data & Analytics",
+    format: "Workshop",
+    audience: ["Operations & Business", "Finance & FP&A", "Data & Analytics", "HR & L&D"],
+    start_date: "2026-07-05",
+    end_date: "2026-07-06",
+    duration_label: "2 days",
+    total_hours: 14,
+    session_pattern: "Morning shift, 8am–3pm, two consecutive days",
+    delivery_mode: "In person",
+    location: CODED_LOCATION.short,
+    location_full: CODED_LOCATION.label,
+    location_url: CODED_LOCATION.maps_url,
+    price_per_seat_kwd: 200,
+    classroom: "Morning Legacy (33 seats)",
+    iterations: [
+      { dates: "July 5–6, 2026" },
+      { dates: "October 4–5, 2026" },
+    ],
+    overview:
+      "Analytical SQL for non-engineers. Covers SELECT / JOIN / GROUP BY mechanics, window functions, common analytical patterns, and connecting SQL queries to spreadsheets and BI tools.\n\nEvery attendee leaves with a reusable analytical SQL query bank for your enterprise data, not generic homework problems.",
+    outcomes: [
+      "Write production-quality SELECT, JOIN, and aggregation queries",
+      "Use window functions to answer real analytical questions",
+      "Connect SQL output to Excel and BI tools for downstream reporting",
+      "Stop waiting on engineering for ad-hoc business questions",
+      "Walk out with a reusable analytical SQL query bank for your data",
+    ],
+    structure: [
+      { phase_name: "Day 1, Mechanics", sessions: 1, hours: 7, focus: "SELECT, JOIN, GROUP BY, filtering, sorting." },
+      { phase_name: "Day 2, Analytical Patterns", sessions: 1, hours: 7, focus: "Window functions, BI integration, applied query bank." },
+    ],
+    audience_detail:
+      "Business analysts, finance staff, and ops leads currently dependent on engineering for ad-hoc queries. Spreadsheet familiarity is enough. No prior coding. Maximum cohort size: 33.",
+    instructor: INSTRUCTORS.ali_taqi,
+    faq: [
+      { question: "Does anyone need to install anything?", answer: "No. We use a web-based SQL environment for the whole workshop." },
+      { question: "Will this prep our team for AI for Finance?", answer: "Yes. We sequence the SQL workshop before AI for Finance for exactly this." },
+    ],
+    status: "Published",
+    tags: ["sql", "analytics", "data"],
+  },
+  {
+    id: "nvidia-genai",
+    slug: "nvidia-genai-and-llm-certification",
+    name: "NVIDIA GenAI & LLM Certification Program",
+    one_liner: "A 5-day NVIDIA-aligned certification program on generative AI and large language models, ending in a portfolio capstone.",
+    topic: "Agentic AI",
+    format: "Workshop",
+    audience: ["Engineering & IT", "Data & Analytics", "Executives & Leadership"],
+    start_date: "2026-07-05",
+    end_date: "2026-07-09",
+    duration_label: "1 week (5 days)",
+    total_hours: 35,
+    session_pattern: "Morning shift, 8am–3pm, five consecutive days",
+    delivery_mode: "In person",
+    location: CODED_LOCATION.short,
+    location_full: CODED_LOCATION.label,
+    location_url: CODED_LOCATION.maps_url,
+    price_per_seat_kwd: 1450,
+    classroom: "Morning Big O (35 seats)",
+    iterations: [{ dates: "July 5–9, 2026" }],
+    overview:
+      "A 5-day NVIDIA-aligned certification program covering the foundations of large language models, generative AI architectures, training and fine-tuning workflows, and the NVIDIA toolchain (NIM, NeMo, Triton).\n\nContent maps to NVIDIA's GenAI and LLM specialist track. Each attendee leaves with the certification voucher and a portfolio project applying the NVIDIA tooling to a real use case.",
+    outcomes: [
+      "NVIDIA-aligned readiness on GenAI and LLM specialist content",
+      "Hands-on practice across NIM, NeMo, and Triton",
+      "A portfolio project applying NVIDIA's GenAI tooling to a real use case",
+      "Certification voucher in hand at the end of the week",
+    ],
+    structure: [
+      { phase_name: "Phase 1, Foundations (Days 1–2)", sessions: 2, hours: 14, focus: "LLM theory, transformer architectures, pretraining vs fine-tuning." },
+      { phase_name: "Phase 2, NVIDIA Toolchain (Days 3–4)", sessions: 2, hours: 14, focus: "NIM, NeMo, Triton inference, serving and scaling." },
+      { phase_name: "Phase 3, Capstone (Day 5)", sessions: 1, hours: 7, focus: "Ship a portfolio project on real data using the NVIDIA stack." },
+    ],
+    audience_detail:
+      "Engineers, ML engineers, and senior IC roles building or operating GenAI systems. Prerequisites: Python proficiency, familiarity with deep-learning fundamentals, comfort with the command line. Maximum cohort size: 35.",
+    faq: [
+      { question: "Is the certification voucher included?", answer: "Yes. Voucher is included in the seat fee." },
+      { question: "GPU requirements?", answer: "We provide cloud GPU access for the workshop. Local GPU is optional." },
+    ],
+    status: "Published",
+    tags: ["nvidia", "llm", "genai", "certification"],
+  },
+  {
+    id: "ai-finance",
+    slug: "intro-ai-for-finance",
+    name: "Intro AI for Finance",
+    one_liner: "AI-powered financial modeling, forecasting, and reporting automation, three days, real outputs you can take to the next FP&A cycle.",
+    topic: "Data & Analytics",
+    format: "Workshop",
+    audience: ["Finance & FP&A", "Executives & Leadership", "Data & Analytics"],
+    start_date: "2026-07-12",
+    end_date: "2026-07-14",
+    duration_label: "3 days",
+    total_hours: 21,
+    session_pattern: "Morning shift, 8am–3pm, three consecutive days",
+    delivery_mode: "In person",
+    location: CODED_LOCATION.short,
+    location_full: CODED_LOCATION.label,
+    location_url: CODED_LOCATION.maps_url,
+    price_per_seat_kwd: 225,
+    classroom: "Morning Alsharekh (24 seats)",
+    iterations: [{ dates: "July 12–14, 2026" }],
+    overview:
+      "A focused 3-day workshop for finance professionals on AI-powered financial modeling, forecasting, and reporting automation. Covers prompt engineering for financial analysis, building forecast models with LLMs and Python, and automating month-end reporting.\n\nEvery attendee leaves with an AI-assisted forecast model and a reporting-automation prototype tailored to your company.",
+    outcomes: [
+      "Build an AI-assisted forecast model on real financials",
+      "Automate month-end reporting workflows that previously took days",
+      "Apply LLMs to commentary, variance analysis, and audit trails, safely",
+      "Frame where AI helps in finance and where it actively hurts",
+    ],
+    structure: [
+      { phase_name: "Day 1, Foundations", sessions: 1, hours: 7, focus: "AI for finance landscape, prompt engineering for analysis." },
+      { phase_name: "Day 2, Forecasting", sessions: 1, hours: 7, focus: "LLM-assisted forecast modeling on your data." },
+      { phase_name: "Day 3, Reporting Automation", sessions: 1, hours: 7, focus: "Capstone: ship an automated monthly reporting flow." },
+    ],
+    audience_detail:
+      "Finance managers, FP&A analysts, controllers, treasury, and corporate development. Excel financial modeling comfort required. Basic Python helpful but not required, we cover what you need. Maximum cohort size: 24.",
+    instructor: INSTRUCTORS.alhamzah,
+    faq: [
+      { question: "Will this expose proprietary data to public LLMs?", answer: "No. We cover the safety guardrails and use enterprise-friendly setups." },
+    ],
+    status: "Published",
+    tags: ["finance", "fpa", "ai", "forecasting"],
+  },
+  {
+    id: "power-bi",
+    slug: "power-bi-workshop",
+    name: "Power BI Workshop",
+    one_liner: "Build executive dashboards in Power BI and ship a deployed dashboard for your department by Day 3.",
+    topic: "Data & Analytics",
+    format: "Workshop",
+    audience: ["Finance & FP&A", "Data & Analytics", "Operations & Business"],
+    start_date: "2026-07-12",
+    end_date: "2026-07-14",
+    duration_label: "3 days",
+    total_hours: 21,
+    session_pattern: "Morning shift, 8am–3pm, three consecutive days",
+    delivery_mode: "In person",
+    location: CODED_LOCATION.short,
+    location_full: CODED_LOCATION.label,
+    location_url: CODED_LOCATION.maps_url,
+    price_per_seat_kwd: 250,
+    classroom: "Morning Legacy (33 seats)",
+    iterations: [
+      { dates: "July 12–14, 2026" },
+      { dates: "September 1–3, 2026" },
+      { dates: "November 1–3, 2026" },
+    ],
+    overview:
+      "A hands-on workshop that takes raw business data and turns it into executive dashboards using Microsoft Power BI. Covers data import from Excel, CSV, and SQL sources, the fundamentals of data modeling (relationships and DAX), interactive visualisation, and publishing live dashboards to your team.\n\nBy Day 3 each participant walks out with a deployed dashboard for their own department, not a sandbox project. Delivered by Dr. Ammar, drawing on the same content used across CODED's enterprise Power BI deliveries.",
+    outcomes: [
+      "Each participant builds a complete Power BI dashboard from raw business data",
+      "Model relationships and write DAX measures for executive reporting",
+      "Publish a live, shareable dashboard inside their department",
+      "Connect Power BI to Excel, CSV, and SQL sources without engineering help",
+      "Walk out with a deployed dashboard ready to demo on Day 4",
+    ],
+    structure: [
+      { phase_name: "Day 1, Foundations", sessions: 1, hours: 7, focus: "Data import, modeling, relationships, and DAX basics." },
+      { phase_name: "Day 2, Build", sessions: 1, hours: 7, focus: "Interactive visuals, drill-throughs, and report layout." },
+      { phase_name: "Day 3, Ship", sessions: 1, hours: 7, focus: "Publish, share permissions, and capstone review against real department data." },
+    ],
+    audience_detail:
+      "BI analysts, finance leads, and ops managers who already build reports in Excel or PowerPoint and want to move to live dashboards. No prior coding required. Spreadsheet comfort and a basic understanding of rows, columns, and formulas is enough. Recommended seniority: analyst → senior manager. Maximum cohort size: 33.",
+    instructor: INSTRUCTORS.ammar,
+    faq: [
+      { question: "Do attendees need to install anything before Day 1?", answer: "Power BI Desktop (free) on a Windows laptop is ideal. Mac users can join via VDI. We send setup instructions one week before the workshop." },
+      { question: "Is the dashboard each attendee builds theirs to keep?", answer: "Yes. Every attendee builds on their own data and owns the artefact end-to-end." },
+      { question: "Can we book just a couple of seats?", answer: "Yes. Seats are sold individually, with the same per-seat price whether you send one person or a full team." },
+    ],
+    status: "Published",
+    tags: ["powerbi", "bi", "dashboards", "data"],
+  },
+  {
+    id: "scrum-master",
+    slug: "scrum-master-exam-prep",
+    name: "Scrum Master Exam Prep",
+    one_liner: "Two-day intensive prep for PSM I, practice exams, real case studies, and a scheduled exam voucher on the way out.",
+    topic: "Project Management & Agile",
+    format: "Workshop",
+    audience: ["Engineering & IT", "Operations & Business", "HR & L&D"],
+    start_date: "2026-07-20",
+    end_date: "2026-07-21",
+    duration_label: "2 days",
+    total_hours: 14,
+    session_pattern: "Morning shift, 8am–3pm, two consecutive days",
+    delivery_mode: "In person",
+    location: CODED_LOCATION.short,
+    location_full: CODED_LOCATION.label,
+    location_url: CODED_LOCATION.maps_url,
+    price_per_seat_kwd: 180,
+    classroom: "Morning Big O / Legacy (35 seats)",
+    iterations: [
+      { dates: "July 20–21, 2026" },
+      { dates: "December 27–28, 2026" },
+    ],
+    overview:
+      "An intensive 2-day prep for the Scrum Master certification (PSM I) with practice exams, real-world case studies, and live debriefs. Covers the Scrum Guide line by line, sprint mechanics, ceremony facilitation, and exam tactics, then runs timed mock exams.\n\nEvery attendee leaves with full PSM I exam readiness and a scheduled exam voucher.",
+    outcomes: [
+      "Pass-ready understanding of the Scrum Guide and sprint mechanics",
+      "Confidence facilitating Scrum ceremonies in a real team",
+      "Exam tactics and timed practice across multiple full-length mocks",
+      "A scheduled PSM I exam voucher in hand",
+    ],
+    structure: [
+      { phase_name: "Day 1, Theory & Mechanics", sessions: 1, hours: 7, focus: "Scrum Guide deep dive, roles, events, artefacts." },
+      { phase_name: "Day 2, Mocks & Tactics", sessions: 1, hours: 7, focus: "Two timed mock exams, debrief, exam strategy, voucher scheduling." },
+    ],
+    audience_detail:
+      "Team leads, project managers, and aspiring Agile practitioners pursuing PSM I. Prerequisite: familiarity with Agile concepts (some prior Scrum or sprint exposure). No coding. Maximum cohort size: 35.",
+    instructor: INSTRUCTORS.ali_taqi,
+    faq: [
+      { question: "Is the PSM I exam fee included?", answer: "Yes. The exam voucher is included in the seat fee." },
+      { question: "What's the pass rate from this workshop?", answer: "Above 90% on first attempt over the last 4 deliveries." },
+    ],
+    status: "Published",
+    tags: ["scrum", "psm", "agile", "certification"],
+  },
+  {
+    id: "power-automate",
+    slug: "power-automate",
+    name: "Power Automate Workshop",
+    one_liner: "Build no-code business automations across Microsoft 365 and ship a working flow for a real internal process by Day 5.",
+    topic: "AI Automation",
+    format: "Workshop",
+    audience: ["HR & L&D", "Operations & Business", "Engineering & IT"],
+    start_date: "2026-09-13",
+    end_date: "2026-09-17",
+    duration_label: "1 week (5 days)",
+    total_hours: 35,
+    session_pattern: "Morning shift, 8am–3pm, five consecutive days",
+    delivery_mode: "In person",
+    location: CODED_LOCATION.short,
+    location_full: CODED_LOCATION.label,
+    location_url: CODED_LOCATION.maps_url,
+    price_per_seat_kwd: 400,
+    classroom: "Morning Alsharekh (24 seats)",
+    iterations: [{ dates: "September 13–17, 2026" }],
+    overview:
+      "A practical 5-day workshop on building no-code business automations and internal apps that connect Microsoft 365, SharePoint, Teams, and external services. Participants cover Power Automate Cloud flows, Desktop flows for legacy systems, approval workflows, and Power Apps basics for lightweight internal tools.\n\nThe workshop is built around a real automation in your organisation. By Day 5 it's running.",
+    outcomes: [
+      "Design and ship a working M365 Cloud flow against a real internal process",
+      "Use Desktop flows to automate legacy systems without engineering",
+      "Build approval workflows that route correctly across SharePoint and Teams",
+      "Stand up a lightweight Power App for an internal tool",
+      "Recognise where automation is the right answer and where it isn't",
+    ],
+    structure: [
+      { phase_name: "Phase 1, Foundations (Days 1–2)", sessions: 2, hours: 14, focus: "Cloud flow building blocks, triggers, connectors, M365 patterns." },
+      { phase_name: "Phase 2, Application (Days 3–4)", sessions: 2, hours: 14, focus: "Approval workflows, Desktop flows, Power Apps for internal tools." },
+      { phase_name: "Phase 3, Capstone (Day 5)", sessions: 1, hours: 7, focus: "Ship a real automation against your own process and demo to the room." },
+    ],
+    audience_detail:
+      "Operations leads, IT business analysts, and citizen developers across Microsoft 365 teams. No coding required, familiarity with Outlook, Teams, and SharePoint is enough. Maximum cohort size: 24.",
+    instructor: INSTRUCTORS.aya,
+    faq: [
+      { question: "Does each attendee need a Power Automate license?", answer: "Yes. Their M365 license needs to include Power Automate. We confirm this in the pre-work." },
+      { question: "Mac compatible?", answer: "Cloud flows yes. Desktop flows are Windows only, Mac users pair with a Windows attendee." },
+    ],
+    status: "Published",
+    tags: ["automation", "m365", "no-code"],
+  },
+];

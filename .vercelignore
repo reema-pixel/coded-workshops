@@ -1,0 +1,6 @@
+.claude/
+server.py
+README.md
+*.pdf
+*.docx
+.DS_Store

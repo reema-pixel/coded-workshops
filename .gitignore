@@ -1,0 +1,22 @@
+# macOS
+.DS_Store
+**/.DS_Store
+
+# Source data not for the public repo
+*.pdf
+*.docx
+
+# Local-only assets
+.claude/
+
+# Editor / OS
+.vscode/
+.idea/
+*.swp
+
+# Build artefacts (none today, but reserved for the eventual Next.js port)
+.next/
+node_modules/
+.vercel/
+dist/
+build/
