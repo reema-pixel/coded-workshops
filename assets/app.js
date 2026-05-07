@@ -61,21 +61,26 @@
 
   const fmtPrice = (kwd) => kwd ? `KWD ${kwd.toLocaleString("en-GB")} / seat` : "";
 
-  // mailto link for a specific program (or generic if none)
+  // mailto link for a specific program (or generic if none).
+  // Keeps the body short, with five quick-fill fields the buyer can complete
+  // in their own client (Outlook, Apple Mail, Gmail) without leaving home.
   function mailtoFor(p) {
     const subject = p
       ? `Program inquiry: ${p.name}`
       : `B2B program inquiry`;
+    const opening = p
+      ? `We'd like to request seats in ${p.name} (${fmtDate(p.start_date)}${p.duration_label ? `, ${p.duration_label}` : ""}).`
+      : `We'd like to learn more about CODED programs for our team.`;
     const lines = [
       "Hi CODED team,",
       "",
-      p ? `We'd like to request seats in ${p.name} (${fmtDate(p.start_date)}${p.duration_label ? `, ${p.duration_label}` : ""}).` : "We'd like to discuss program seats for our team.",
+      opening,
       "",
-      "About us:",
+      "• Name: ",
+      "• Role: ",
       "• Company: ",
-      "• Your role: ",
       "• Number of participants: ",
-      "• Preferred timing or any notes: ",
+      "• Additional notes: ",
       "",
       "Thanks,",
     ].join("\n");
