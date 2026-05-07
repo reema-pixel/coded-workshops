@@ -426,7 +426,7 @@ window.CODED_PROGRAMS = [
     location_full: CODED_LOCATION.label,
     location_url: CODED_LOCATION.maps_url,
     price_per_seat_kwd: 950,
-    price_note: "950 KWD / seat · groups of 2: 850 KWD · groups of 3+: 800 KWD",
+    group_rates: true,
     classroom: "Evening cohort, CODED Campus",
     iterations: [
       { dates: "May 31 – Jul 2, 2026" },
@@ -480,7 +480,7 @@ window.CODED_PROGRAMS = [
     location_full: CODED_LOCATION.label,
     location_url: CODED_LOCATION.maps_url,
     price_per_seat_kwd: 2200,
-    price_note: "2,200 KWD / seat · groups of 2: 1,980 KWD · groups of 3+: 1,870 KWD (Phase 1: 450 + Phase 2: 1,750; discounts on Phase 2)",
+    group_rates: true,
     classroom: "Evening cohort, CODED Campus",
     iterations: [
       { dates: "Jun 7 – Aug 13, 2026" },
@@ -534,7 +534,7 @@ window.CODED_PROGRAMS = [
     location_full: CODED_LOCATION.label,
     location_url: CODED_LOCATION.maps_url,
     price_per_seat_kwd: 2600,
-    price_note: "2,600 KWD / seat · groups of 2: 2,385 KWD · groups of 3+: 2,280 KWD (Phase 1: 450 + Phase 2: 2,150; discounts on Phase 2)",
+    group_rates: true,
     classroom: "Evening cohort, CODED Campus",
     iterations: [
       { dates: "May 17 – Jul 23, 2026" },

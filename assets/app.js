@@ -614,9 +614,15 @@
       ? `<span class="pill audience">For ${escapeHtml(p.audience[0])}${p.audience.length > 1 ? ` +${p.audience.length - 1}` : ""}</span>`
       : "";
     const aria = `${p.name}, ${p.topic}, starts ${fmtDate(p.start_date)}, ${fmtPrice(p.price_per_seat_kwd)}`;
-    const priceLine = p.price_note
-      ? `<span class="card__price">${escapeHtml(p.price_note)}</span>`
-      : (p.price_per_seat_kwd ? `<span class="card__price">${escapeHtml(fmtPrice(p.price_per_seat_kwd))}</span>` : "");
+    const priceMain = p.price_per_seat_kwd
+      ? `<span class="card__price">${escapeHtml(fmtPrice(p.price_per_seat_kwd))}</span>`
+      : "";
+    const priceTag = p.group_rates
+      ? `<span class="card__price-tag">Group rates available</span>`
+      : "";
+    const priceLine = priceMain || priceTag
+      ? `<div class="card__price-row">${priceMain}${priceTag}</div>`
+      : "";
     return `
       <article class="card" style="--i:${index}">
         <a class="card__hit" href="#/programs/${escapeHtml(p.slug)}" aria-label="${escapeHtml(aria)}"></a>
@@ -654,7 +660,13 @@
     const audiencePills = (p.audience || []).map(a =>
       `<span class="pill audience">${escapeHtml(a)}</span>`
     ).join("");
-    const priceDisplay = p.price_note ? p.price_note : fmtPrice(p.price_per_seat_kwd);
+    const priceDisplay = fmtPrice(p.price_per_seat_kwd);
+    const groupRatesNote = p.group_rates
+      ? `<div class="detail-meta__sub">Group rates available, email us</div>`
+      : "";
+    const groupRatesAside = p.group_rates
+      ? `<small class="key-row__note">Group rates available, email us for the breakdown</small>`
+      : "";
     const mailto = mailtoFor(p);
     const locationHtml = p.location_url
       ? `<a class="meta-link" href="${escapeHtml(p.location_url)}" target="_blank" rel="noopener">${escapeHtml(p.location || "CODED Campus")} ${ICON.extlink}</a>`
@@ -688,7 +700,8 @@
             </div>
             <div>
               <div class="detail-meta__label">Per seat</div>
-              <div class="detail-meta__value">${escapeHtml(priceDisplay || ",")}</div>
+              <div class="detail-meta__value">${escapeHtml(priceDisplay || "On request")}</div>
+              ${groupRatesNote}
             </div>
             <div>
               <div class="detail-meta__label">Format</div>
@@ -807,7 +820,7 @@
             <div class="aside-card">
               <h3>At a glance</h3>
               <div class="key-row"><span>Topic</span><span>${escapeHtml(p.topic)}</span></div>
-              <div class="key-row"><span>Per seat</span><span>${escapeHtml(priceDisplay || ",")}</span></div>
+              <div class="key-row"><span>Per seat</span><span>${escapeHtml(priceDisplay || "On request")}${groupRatesAside}</span></div>
               <div class="key-row"><span>Duration</span><span>${escapeHtml(p.duration_label)}</span></div>
               <div class="key-row"><span>Total hours</span><span>${escapeHtml(String(p.total_hours))} hrs</span></div>
               <div class="key-row"><span>Delivery</span><span>${escapeHtml(p.delivery_mode)}</span></div>
