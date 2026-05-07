@@ -64,12 +64,12 @@
   // mailto link for a specific program (or generic if none)
   function mailtoFor(p) {
     const subject = p
-      ? `Workshop inquiry: ${p.name}`
-      : `B2B workshop inquiry`;
+      ? `Program inquiry: ${p.name}`
+      : `B2B program inquiry`;
     const lines = [
       "Hi CODED team,",
       "",
-      p ? `We'd like to request seats in ${p.name} (${fmtDate(p.start_date)}${p.duration_label ? `, ${p.duration_label}` : ""}).` : "We'd like to discuss workshop seats for our team.",
+      p ? `We'd like to request seats in ${p.name} (${fmtDate(p.start_date)}${p.duration_label ? `, ${p.duration_label}` : ""}).` : "We'd like to discuss program seats for our team.",
       "",
       "About us:",
       "• Company: ",
@@ -101,7 +101,15 @@
         "Agentic AI",
         "Data & Analytics",
         "AI Automation",
+        "Cybersecurity",
         "Project Management & Agile",
+      ],
+    },
+    {
+      key: "format", label: "Format", multi: true,
+      options: [
+        { value: "Workshop", label: "Workshop (1–5 days)" },
+        { value: "Bootcamp", label: "Bootcamp (5–10 weeks)" },
       ],
     },
     {
@@ -136,14 +144,18 @@
       options: [
         { value: "1-2-days", label: "1 – 2 days" },
         { value: "3-day", label: "3 days" },
-        { value: "5-day", label: "5 days" },
+        { value: "5-day", label: "5 days / 1 week" },
+        { value: "5-weeks", label: "5 weeks" },
+        { value: "10-weeks", label: "10 weeks" },
       ],
     },
   ];
 
   function durationBucket(p) {
     const lab = (p.duration_label || "").toLowerCase();
-    if (lab.includes("5 day")) return "5-day";
+    if (lab.includes("10 week")) return "10-weeks";
+    if (lab.includes("5 week")) return "5-weeks";
+    if (lab.includes("week") || lab.includes("5 day")) return "5-day";
     if (lab.includes("3 day")) return "3-day";
     return "1-2-days";
   }
@@ -213,6 +225,7 @@
     return programs.filter(p => {
       if (filters.q && !matchesQuery(p, filters.q)) return false;
       if (filters.topic && filters.topic.length && !filters.topic.includes(p.topic)) return false;
+      if (filters.format && filters.format.length && !filters.format.includes(p.format)) return false;
       if (filters.audience && filters.audience.length && !filters.audience.some(a => (p.audience || []).includes(a))) return false;
       if (filters.month && filters.month.length) {
         const programMonths = getProgramMonths(p);
@@ -241,12 +254,12 @@
     app.innerHTML = `
       <section class="hero">
         <div class="container hero__inner">
-          <div class="eyebrow"><span class="dot"></span><span>2026 Workshop Calendar</span></div>
-          <h1><span class="bracket" aria-hidden="true">[</span> Workshops <span class="bracket" aria-hidden="true">]</span><br/>at CODED.</h1>
-          <p class="lede">Hands-on, instructor-led workshops your team can join, taught at CODED Campus in Kuwait's Free Trade Zone. Same proven methodology behind our enterprise deliveries.</p>
+          <div class="eyebrow"><span class="dot"></span><span>2026 Program Calendar</span></div>
+          <h1><span class="bracket" aria-hidden="true">[</span> Programs <span class="bracket" aria-hidden="true">]</span><br/>at CODED.</h1>
+          <p class="lede">Hands-on workshops and bootcamps your team can join, taught at CODED Campus in Kuwait's Free Trade Zone. Same proven methodology behind our enterprise deliveries.</p>
           <div class="hero__meta">
-            <span><span class="pip" aria-hidden="true"></span>${PROGRAMS.length} workshops on the calendar</span>
-            <span><span class="pip" aria-hidden="true"></span>Book from 1 seat upward</span>
+            <span><span class="pip" aria-hidden="true"></span>${PROGRAMS.length} programs on the calendar</span>
+            <span><span class="pip" aria-hidden="true"></span>Workshops (1–5 days) and bootcamps (5–10 weeks)</span>
             <span><span class="pip" aria-hidden="true"></span>Delivered in Kuwait, in person</span>
           </div>
         </div>
@@ -256,7 +269,7 @@
         <div class="container intro-band__grid">
           <div class="intro-card">
             <h3>Hands-on, not theory</h3>
-            <p>Every workshop is built around a real artefact each attendee walks out with. A deployed dashboard, a working agent, a bank-ready playbook.</p>
+            <p>Every program is built around a real artefact each attendee walks out with. A deployed dashboard, a working AI agent, a shipped product, a bank-ready playbook.</p>
           </div>
           <div class="intro-card">
             <h3>Built for teams</h3>
@@ -264,7 +277,7 @@
           </div>
           <div class="intro-card">
             <h3>One email away</h3>
-            <p>No forms, no chatbot. Pick a workshop, hit "Request Seats &amp; Pricing", and the email opens with everything filled in.</p>
+            <p>No forms, no chatbot. Pick a program, hit "Request Seats &amp; Pricing", and the email opens with everything filled in.</p>
           </div>
         </div>
       </section>
@@ -276,7 +289,7 @@
               <svg class="filter-search__icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                 <circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/>
               </svg>
-              <input id="filterSearch" type="search" autocomplete="off" placeholder="Search by topic, instructor, or keyword (e.g. AI, Power BI, Aya)…" aria-label="Search workshops" />
+              <input id="filterSearch" type="search" autocomplete="off" placeholder="Search by topic, instructor, or keyword (e.g. AI, Power BI, bootcamp)…" aria-label="Search programs" />
               <button type="button" class="filter-search__clear" id="filterSearchClear" aria-label="Clear search" hidden>×</button>
             </label>
           </div>
@@ -311,7 +324,7 @@
     buildFilterBar();
     wireSearch();
     refreshResults();
-    document.title = "Workshops · CODED";
+    document.title = "Programs · CODED";
     window.scrollTo({ top: 0 });
   }
 
@@ -504,7 +517,7 @@
 
     const rc = $("#resultsCount");
     if (rc) {
-      rc.textContent = `${filtered.length} workshop${filtered.length === 1 ? "" : "s"} ${countFilters(filters) === 0 ? "available" : "match your filters"}`;
+      rc.textContent = `${filtered.length} program${filtered.length === 1 ? "" : "s"} ${countFilters(filters) === 0 ? "available" : "match your filters"}`;
     }
 
     const grid = $("#cardGrid");
@@ -516,11 +529,11 @@
         : `<p>Try widening your selection, or get in touch and we'll let you know when something fits.</p>`;
       grid.innerHTML = `
         <div class="empty">
-          <h3>No workshops match those filters yet.</h3>
+          <h3>No programs match those filters yet.</h3>
           ${queryLine}
           <div class="empty__actions">
             <button type="button" class="btn btn-secondary" id="emptyClearBtn">Clear filters</button>
-            <a class="btn btn-primary" href="mailto:${ENTERPRISE_EMAIL}?subject=Workshop%20notify-me">Email us ${ICON.arrow}</a>
+            <a class="btn btn-primary" href="mailto:${ENTERPRISE_EMAIL}?subject=Program%20notify-me">Email us ${ICON.arrow}</a>
           </div>
         </div>
       `;
@@ -613,7 +626,7 @@
           <span>${ICON.clock} ${escapeHtml(p.duration_label)}</span>
           ${audiencePill}
         </div>
-        <span class="card__cta">View workshop ${ICON.arrow}</span>
+        <span class="card__cta">View program ${ICON.arrow}</span>
       </article>
     `;
   }
@@ -625,9 +638,9 @@
     if (!p) {
       $("#app").innerHTML = `
         <section class="hero"><div class="container hero__inner">
-          <div class="breadcrumb"><a href="#/">Home</a><span>/</span><a href="#/">Workshops</a><span>/</span><span>Not found</span></div>
-          <h1>Workshop not found</h1>
-          <p class="lede">That workshop doesn't exist or is no longer published. <a href="#/" style="color: var(--accent); text-decoration: underline;">Browse all workshops →</a></p>
+          <div class="breadcrumb"><a href="#/">Home</a><span>/</span><a href="#/">Programs</a><span>/</span><span>Not found</span></div>
+          <h1>Program not found</h1>
+          <p class="lede">That program doesn't exist or is no longer published. <a href="#/" style="color: var(--accent); text-decoration: underline;">Browse all programs →</a></p>
         </div></section>
       `;
       return;
@@ -642,14 +655,14 @@
       ? `<a class="meta-link" href="${escapeHtml(p.location_url)}" target="_blank" rel="noopener">${escapeHtml(p.location || "CODED Campus")} ${ICON.extlink}</a>`
       : escapeHtml(p.location || "");
 
-    document.title = `${p.name} · CODED Workshops`;
+    document.title = `${p.name} · CODED Programs`;
 
     $("#app").innerHTML = `
       <section class="detail-hero">
         <div class="container detail-hero__inner">
           <div class="breadcrumb">
             <a href="#/">Home</a><span>/</span>
-            <a href="#/">Workshops</a><span>/</span>
+            <a href="#/">Programs</a><span>/</span>
             <span>${escapeHtml(p.name)}</span>
           </div>
           <div class="detail-hero__pills">
@@ -723,7 +736,7 @@
             </section>
 
             <section class="detail-section">
-              <h2>Workshop structure</h2>
+              <h2>Program structure</h2>
               <div class="phases">
                 ${p.structure.map((ph, i) => `
                   <div class="phase">
@@ -740,7 +753,7 @@
               <h2>How we teach it</h2>
               <div class="method-block">
                 <div>
-                  <p style="margin-bottom: 12px;"><strong>70% hands-on, 30% theory.</strong> CODED's signature methodology runs through every workshop: short, focused inputs followed by long, deliberate practice on real artefacts.</p>
+                  <p style="margin-bottom: 12px;"><strong>70% hands-on, 30% theory.</strong> CODED's signature methodology runs through every program: short, focused inputs followed by long, deliberate practice on real artefacts.</p>
                   <p>Your people leave with something they built: a deployed dashboard, a working agent, a defended environment, a published playbook. Not slides they'll never reread.</p>
                 </div>
                 <div class="visual" aria-hidden="true">
@@ -852,10 +865,10 @@
 
   function defaultFaq() {
     return [
-      { question: "Are seats limited?", answer: "Yes, most workshops cap at 20–24 seats to preserve hands-on time." },
+      { question: "Are seats limited?", answer: "Yes. Workshops cap at 20–33 seats; bootcamps cap based on classroom (typically 20–35) to preserve hands-on time." },
       { question: "Can we book just one seat?", answer: "Yes. Seats are sold individually. Same per-seat price whether you send one person or fifteen." },
       { question: "What's the language of instruction?", answer: "English by default, with Kuwaiti Arabic instructor support throughout." },
-      { question: "What's the refund policy?", answer: "Full refund up to 14 days before the workshop start date. Within 14 days, we offer a credit toward the next iteration." },
+      { question: "What's the refund policy?", answer: "Full refund up to 14 days before the program start date. Within 14 days, we offer a credit toward the next iteration." },
     ];
   }
 

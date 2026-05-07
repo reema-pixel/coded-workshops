@@ -5,12 +5,13 @@
 
 :root {
   /* Surface, sampled from official CODED brand book.
-   * Deep navy #021331–#12223C for dark surfaces, royal blue #012891 as the brand signal,
+   * Deep navy for the page base, lighter navy-blue for cards so they
+   * pop clearly against the bg, royal blue #012891 as the brand signal,
    * cool off-white #F3F7FF for light sections. */
   --bg-base: #0A1B33;
-  --bg-surface: #12223C;
-  --bg-elevated: #1A2D4F;
-  --bg-input: #16284A;
+  --bg-surface: #1B2E55;
+  --bg-elevated: #243A66;
+  --bg-input: #1F3358;
   --brand-navy: #1F2940;
   --brand-navy-deep: #021331;
   --brand-royal: #012891;
@@ -1168,7 +1169,7 @@ button { font-family: inherit; cursor: pointer; }
   .site-header__inner { height: 60px; }
 }
 
-/* Card entry animation — runs on first paint and on every filter re-render.
+/* Card entry animation, runs on first paint and on every filter re-render.
  * Stagger via --i custom property set inline by renderCard(). */
 @keyframes card-in {
   from { opacity: 0; transform: translateY(10px); }
