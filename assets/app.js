@@ -269,10 +269,13 @@
     const app = $("#app");
     app.innerHTML = `
       <section class="hero">
-        <img class="hero-bracket hero-bracket--left" src="assets/brand/d4XjMcpeBWOQtvHbaD2OCcQQU.avif" alt="" aria-hidden="true" />
-        <img class="hero-bracket hero-bracket--right" src="assets/brand/AavaFcNfNC6v8x8NbnE08ibVHuA.avif" alt="" aria-hidden="true" />
-        <img class="hero-dot-pattern" src="assets/brand/dot-pattern-navy.svg" alt="" aria-hidden="true" />
-        <img class="hero-lines" src="assets/brand/lines-3-A.svg" alt="" aria-hidden="true" />
+        <img class="hero-circles" src="assets/brand/circles-navy-to-transparent.svg" alt="" aria-hidden="true" />
+        <span class="hero-bracket-wrap hero-bracket-wrap--left">
+          <img class="hero-bracket hero-bracket--left" src="assets/brand/d4XjMcpeBWOQtvHbaD2OCcQQU.avif" alt="" aria-hidden="true" />
+        </span>
+        <span class="hero-bracket-wrap hero-bracket-wrap--right">
+          <img class="hero-bracket hero-bracket--right" src="assets/brand/AavaFcNfNC6v8x8NbnE08ibVHuA.avif" alt="" aria-hidden="true" />
+        </span>
         <div class="container hero__inner">
           <div class="eyebrow"><span class="dot"></span><span>2026 Program Calendar</span></div>
           <h1>Programs<br/>at CODED.</h1>

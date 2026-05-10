@@ -231,91 +231,94 @@ button { font-family: inherit; cursor: pointer; }
 }
 .hero__inner { position: relative; z-index: 1; max-width: 880px; margin: 0 auto; text-align: center; }
 
-/* Floating bracket marks, framing the hero heading like the brand book ([ ]) */
-.hero-bracket {
+/* Echo circle pattern, centered behind hero text */
+.hero-circles {
   position: absolute;
   top: 50%;
-  height: clamp(140px, 22vw, 260px);
-  width: auto;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: clamp(380px, 64vw, 780px);
+  height: auto;
   pointer-events: none;
   user-select: none;
   z-index: 0;
   opacity: 0;
+  animation: heroCirclesFadeIn 2s var(--ease) 0.3s forwards;
 }
-.hero-bracket--left {
-  left: clamp(8px, 18%, 220px);
-  transform: translateY(-50%);
-  animation: heroBracketLeftIn 1.6s cubic-bezier(.2,.7,.2,1) 0.25s forwards;
-}
-.hero-bracket--right {
-  right: clamp(8px, 18%, 220px);
-  transform: translateY(-50%);
-  animation: heroBracketRightIn 1.6s cubic-bezier(.2,.7,.2,1) 0.25s forwards;
-}
-@keyframes heroBracketLeftIn {
-  from { opacity: 0; transform: translate(-12px, -50%); }
-  to   { opacity: 1; transform: translate(0, -50%); }
-}
-@keyframes heroBracketRightIn {
-  from { opacity: 0; transform: translate(12px, -50%); }
-  to   { opacity: 1; transform: translate(0, -50%); }
-}
-@media (max-width: 1024px) {
-  .hero-bracket { height: clamp(120px, 22vw, 200px); }
-  .hero-bracket--left { left: 6%; animation: none; opacity: 0.55; }
-  .hero-bracket--right { right: 6%; animation: none; opacity: 0.55; }
-}
-@media (max-width: 720px) {
-  .hero-bracket { height: 96px; opacity: 0.28; }
-  .hero-bracket--left { left: 2%; }
-  .hero-bracket--right { right: 2%; }
-}
-@media (prefers-reduced-motion: reduce) {
-  .hero-bracket { animation: none !important; opacity: 1; }
-  .hero-dot-pattern, .hero-lines { animation: none !important; opacity: 0.4; }
+@keyframes heroCirclesFadeIn {
+  from { opacity: 0; }
+  to   { opacity: 0.55; }
 }
 
-/* Dot-pattern texture, top-right corner */
-.hero-dot-pattern {
+/* Bracket entrance wrapper: slides in from the side */
+.hero-bracket-wrap {
   position: absolute;
-  top: -60px;
-  right: -24px;
-  width: clamp(260px, 36vw, 480px);
-  height: auto;
+  top: 50%;
   pointer-events: none;
   user-select: none;
-  z-index: 0;
+  z-index: 2;
   opacity: 0;
-  animation: heroBgFadeIn 2s var(--ease) 0.5s forwards;
 }
-/* Lines texture, bottom-left edge */
-.hero-lines {
-  position: absolute;
-  bottom: -24px;
-  left: -24px;
-  width: clamp(240px, 42vw, 520px);
-  height: auto;
-  pointer-events: none;
-  user-select: none;
-  z-index: 0;
-  opacity: 0;
-  animation: heroLinesFadeIn 2s var(--ease) 0.65s forwards;
+.hero-bracket-wrap--left {
+  left: clamp(8px, 14%, 200px);
+  transform: translate(-20px, -50%);
+  animation: heroBracketWrapLeftIn 1.4s cubic-bezier(.2,.7,.2,1) 0.3s forwards;
 }
-@keyframes heroBgFadeIn {
-  from { opacity: 0; }
-  to   { opacity: 0.42; }
+.hero-bracket-wrap--right {
+  right: clamp(8px, 14%, 200px);
+  transform: translate(20px, -50%);
+  animation: heroBracketWrapRightIn 1.4s cubic-bezier(.2,.7,.2,1) 0.3s forwards;
 }
-@keyframes heroLinesFadeIn {
-  from { opacity: 0; }
-  to   { opacity: 0.32; }
+@keyframes heroBracketWrapLeftIn {
+  from { opacity: 0; transform: translate(-20px, -50%); }
+  to   { opacity: 1; transform: translate(0, -50%); }
 }
+@keyframes heroBracketWrapRightIn {
+  from { opacity: 0; transform: translate(20px, -50%); }
+  to   { opacity: 1; transform: translate(0, -50%); }
+}
+
+/* Bracket image: tilted -15deg (brand pose) + continuous float */
+.hero-bracket {
+  height: clamp(140px, 22vw, 260px);
+  width: auto;
+  display: block;
+}
+.hero-bracket--left {
+  transform: rotate(-15deg);
+  animation: heroBracketFloatLeft 3.8s ease-in-out 1.8s infinite;
+}
+.hero-bracket--right {
+  transform: rotate(15deg);
+  animation: heroBracketFloatRight 3.8s ease-in-out 2.1s infinite;
+}
+@keyframes heroBracketFloatLeft {
+  0%, 100% { transform: rotate(-15deg) translateY(0); }
+  50%       { transform: rotate(-15deg) translateY(-14px); }
+}
+@keyframes heroBracketFloatRight {
+  0%, 100% { transform: rotate(15deg) translateY(0); }
+  50%       { transform: rotate(15deg) translateY(-14px); }
+}
+
 @media (max-width: 1024px) {
-  .hero-dot-pattern { width: clamp(180px, 30vw, 320px); opacity: 0.3; animation: none; }
-  .hero-lines { width: clamp(160px, 32vw, 340px); opacity: 0.22; animation: none; }
+  .hero-bracket { height: clamp(110px, 18vw, 200px); }
+  .hero-bracket-wrap--left  { left: 4%; }
+  .hero-bracket-wrap--right { right: 4%; }
+  .hero-circles { opacity: 0.45; animation: none; }
 }
 @media (max-width: 720px) {
-  .hero-dot-pattern { display: none; }
-  .hero-lines { width: 180px; opacity: 0.18; }
+  .hero-bracket { height: 88px; }
+  .hero-bracket-wrap--left  { left: 1%; }
+  .hero-bracket-wrap--right { right: 1%; }
+  .hero-bracket--left  { animation: none; }
+  .hero-bracket--right { animation: none; }
+  .hero-circles { width: 340px; opacity: 0.38; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero-bracket-wrap { animation: none !important; opacity: 1 !important; transform: translateY(-50%) !important; }
+  .hero-bracket--left, .hero-bracket--right { animation: none !important; }
+  .hero-circles { animation: none !important; opacity: 0.5; }
 }
 
 .eyebrow {
@@ -336,7 +339,7 @@ button { font-family: inherit; cursor: pointer; }
   line-height: 1.02;
   letter-spacing: -0.03em;
   font-weight: 600;
-  color: var(--text-primary);
+  color: var(--brand-royal);
   margin: 18px 0 16px;
 }
 .hero h1 .accent { color: var(--accent); }
