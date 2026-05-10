@@ -1,8 +1,46 @@
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&display=swap');
+/* Inter (body) + IBM Plex Sans Arabic (bilingual) via Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=IBM+Plex+Sans+Arabic:wght@400;500;600&display=swap');
+
+/* CODED_TYPE - self-hosted, same source as coded.kw (framerusercontent.com) */
+@font-face {
+  font-family: 'CODED_TYPE';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url('brand/fonts/CODED_TYPE-Light.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'CODED_TYPE';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('brand/fonts/CODED_TYPE-Regular.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'CODED_TYPE';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url('brand/fonts/CODED_TYPE-Medium.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'CODED_TYPE';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url('brand/fonts/CODED_TYPE-SemiBold.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'CODED_TYPE';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('brand/fonts/CODED_TYPE-Bold.woff2') format('woff2');
+}
 
 /* CODED, Open Programs landing page
- * Brand inheritance from coded.kw: light layout with selective navy moments,
- * Outfit display + DM Sans body, bracket framing, generous spacing.
+ * Font stack matches coded.kw exactly: CODED_TYPE display + Inter body.
+ * Outfit removed; CODED_TYPE replaces it at every display usage site.
  * Tokens consolidated here so a future Next.js + Tailwind migration can map 1:1.
  */
 
@@ -58,9 +96,9 @@
   --s-3: 80px;
   --s-4: 120px;
 
-  /* Type, coded.kw pairing: Outfit (display) + DM Sans (body) */
-  --font-sans: "DM Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-  --font-display: "Outfit", "DM Sans", -apple-system, sans-serif;
+  /* Type — exact coded.kw stack: CODED_TYPE display + Inter body */
+  --font-sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-display: "CODED_TYPE", "Inter", -apple-system, sans-serif;
 
   /* Section colors */
   --bg-section-soft: #FCFCFC;
