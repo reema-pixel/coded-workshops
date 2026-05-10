@@ -96,7 +96,12 @@
     coin: '<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M9 9h4a2 2 0 010 4H9m0-4v8m0-4h6"/></svg>',
     arrow: '<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg>',
     extlink: '<svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 4h6v6M20 4l-9 9M20 13v5a2 2 0 01-2 2H6a2 2 0 01-2-2V6a2 2 0 012-2h5"/></svg>',
+    /* Hero-strip icons (24×24 stroke set) */
+    spark: '<svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v4M12 17v4M3 12h4M17 12h4M5.6 5.6l2.8 2.8M15.6 15.6l2.8 2.8M5.6 18.4l2.8-2.8M15.6 8.4l2.8-2.8"/></svg>',
+    team: '<svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="9" r="3.5"/><path d="M2.5 19c.6-3.4 3.3-5 6.5-5s5.9 1.6 6.5 5"/><circle cx="17" cy="8" r="2.6"/><path d="M21.5 16.5c-.4-2.5-2-3.8-4.5-3.8"/></svg>',
   };
+  /* The hero-strip needs its icons sized larger than the meta-row icons ,
+   * the inline width/height attributes already handle that (22×22). */
 
   // ---------------- Filter definitions ----------------
   const FILTER_DEFS = [
@@ -127,13 +132,11 @@
     {
       key: "audience", label: "Team", multi: true,
       options: [
-        "Executives & Leadership",
-        "HR & L&D",
-        "Engineering & IT",
-        "Finance & FP&A",
-        "Marketing & Comms",
-        "Operations & Business",
+        "Technical / IT",
         "Data & Analytics",
+        "Finance & Accounting",
+        "Marketing & Content",
+        "Non-Technical",
       ],
     },
     {
@@ -280,15 +283,15 @@
 
       <section class="intro-band">
         <div class="container intro-band__grid">
-          <div class="intro-card">
+          <div class="intro-card reveal-up">
             <h3>Hands-on, not theory</h3>
             <p>Every program is built around a real artefact each attendee walks out with. A deployed dashboard, a working AI agent, a shipped product, a bank-ready playbook.</p>
           </div>
-          <div class="intro-card">
+          <div class="intro-card reveal-up delay-1">
             <h3>Built for teams</h3>
             <p>Send one person, send a whole team. Same per-seat price either way. We confirm the cohort that fits your timing.</p>
           </div>
-          <div class="intro-card">
+          <div class="intro-card reveal-up delay-2">
             <h3>One email away</h3>
             <p>No forms, no chatbot. Pick a program, hit "Request Seats &amp; Pricing", and the email opens with everything filled in.</p>
           </div>
@@ -323,7 +326,7 @@
 
       <section class="cta-banner">
         <div class="container">
-          <div class="cta-banner__inner">
+          <div class="cta-banner__inner reveal-up">
             <div>
               <h2>Need it scoped to your team instead?</h2>
               <p>For larger groups or company-specific use cases, CODED also runs custom programs end-to-end. Same hands-on methodology, scoped around your business.</p>
@@ -618,8 +621,12 @@
   }
 
   function renderCard(p, index) {
-    const audiencePill = (p.audience && p.audience[0])
-      ? `<span class="pill audience">For ${escapeHtml(p.audience[0])}${p.audience.length > 1 ? ` +${p.audience.length - 1}` : ""}</span>`
+    /* Card audience pill, show a prerequisite/access label rather than a
+     * specific team. We keep team filtering in the filter bar; on the card,
+     * the more inclusive "No coding required" / "For marketing teams" reads
+     * better and avoids implying the workshop is closed to other teams. */
+    const audiencePill = p.prereq_label
+      ? `<span class="pill audience">${escapeHtml(p.prereq_label)}</span>`
       : "";
     const aria = `${p.name}, ${p.topic}, starts ${fmtDate(p.start_date)}, ${fmtPrice(p.price_per_seat_kwd)}`;
     const priceMain = p.price_per_seat_kwd
@@ -728,25 +735,69 @@
         </div>
       </section>
 
+      <!-- 4-up hero strip, coded.kw signature row directly under the hero -->
+      <section class="hero-strip">
+        <div class="container hero-strip__inner">
+          <div class="hero-strip__cell">
+            <span class="hero-strip__icon" aria-hidden="true">${ICON.spark}</span>
+            <h4>Practical Training</h4>
+            <p>70% hands-on, 30% theory. Every session ships a working artefact.</p>
+          </div>
+          <div class="hero-strip__cell">
+            <span class="hero-strip__icon" aria-hidden="true">${ICON.clock}</span>
+            <h4>Flexible Schedule</h4>
+            <p>${escapeHtml(p.session_pattern)}.</p>
+          </div>
+          <div class="hero-strip__cell">
+            <span class="hero-strip__icon" aria-hidden="true">${ICON.pin}</span>
+            <h4>In Kuwait</h4>
+            <p>${escapeHtml(p.location || "CODED Campus")}. Or on-site for whole teams.</p>
+          </div>
+          <div class="hero-strip__cell">
+            <span class="hero-strip__icon" aria-hidden="true">${ICON.team}</span>
+            <h4>Built for Teams</h4>
+            <p>Per-seat pricing. ${p.group_rates ? "Group rates available, email us for the breakdown." : "Same per-seat price for one or fifteen people."}</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Centered Overview marquee, coded.kw style.
+           Three scannable tiles, no long prose paragraph above them. -->
+      <section class="detail-section detail-section--marquee is-soft reveal-up">
+        <div class="container">
+          <span class="eyebrow-tag">[ Overview ]</span>
+          <h2>What you'll walk out with</h2>
+          <ul class="overview-tiles overview-tiles--three">
+            <li><h6>You'll build</h6><p>${escapeHtml(p.outcomes[0] || "")}</p></li>
+            <li><h6>How we teach</h6><p>70 / 30 hands-on. Every session ships a working artefact.</p></li>
+            <li><h6>Walk out with</h6><p>${escapeHtml(p.outcomes[p.outcomes.length - 1] || "")}</p></li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- Detail grid, left rail (compact subsections), right rail (sticky aside) -->
       <div class="container">
-        <div class="detail-grid" style="padding: 56px 0 0;">
+        <div class="detail-grid" style="padding: var(--s-3) 0 0;">
           <div>
-            <section class="detail-section" style="padding-top:0;">
+            <section class="detail-section reveal-up" style="padding-top:0;">
+              <span class="eyebrow-tag">[ Audience ]</span>
               <h2>Who this is for</h2>
               <div class="prose">
                 <p>${escapeHtml(p.audience_detail)}</p>
               </div>
             </section>
 
-            <section class="detail-section">
+            <section class="detail-section reveal-up">
+              <span class="eyebrow-tag">[ Outcomes ]</span>
               <h2>What attendees walk out with</h2>
               <ul class="outcomes">
                 ${p.outcomes.map(o => `<li>${escapeHtml(o)}</li>`).join("")}
               </ul>
             </section>
 
-            <section class="detail-section">
-              <h2>Schedule &amp; iterations</h2>
+            <section class="detail-section reveal-up">
+              <span class="eyebrow-tag">[ Schedule ]</span>
+              <h2>Cohorts &amp; dates</h2>
               <table class="iter-table">
                 <thead><tr><th>Dates</th><th>Status</th></tr></thead>
                 <tbody>
@@ -761,57 +812,41 @@
               <p style="font-size: 13px; color: var(--text-muted); margin-top: 14px;">${escapeHtml(p.session_pattern)}</p>
             </section>
 
-            <section class="detail-section">
-              <h2>Program structure</h2>
-              <div class="phases">
-                ${p.structure.map((ph, i) => `
-                  <div class="phase">
-                    <div class="phase__step">Phase ${i + 1}</div>
-                    <h3>${escapeHtml(ph.phase_name)}</h3>
-                    <div class="phase__meta">${escapeHtml(String(ph.sessions))} session${ph.sessions === 1 ? "" : "s"} · ${escapeHtml(String(ph.hours))} hrs</div>
-                    <p>${escapeHtml(ph.focus)}</p>
-                  </div>
-                `).join("")}
-              </div>
-            </section>
-
-            <section class="detail-section">
+            <section class="detail-section reveal-up">
+              <span class="eyebrow-tag">[ Method ]</span>
               <h2>How we teach it</h2>
               <div class="method-block">
                 <div>
-                  <p style="margin-bottom: 12px;"><strong>70% hands-on, 30% theory.</strong> CODED's signature methodology runs through every program: short, focused inputs followed by long, deliberate practice on real artefacts.</p>
+                  <p><strong>70% hands-on, 30% theory.</strong> CODED's signature methodology runs through every program: short, focused inputs followed by long, deliberate practice on real artefacts.</p>
                   <p>Your people leave with something they built: a deployed dashboard, a working agent, a defended environment, a published playbook. Not slides they'll never reread.</p>
                 </div>
-                <div class="visual" aria-hidden="true">
-                  <div class="visual-split">
-                    <span class="visual-split__bar visual-split__hands">70</span>
-                    <span class="visual-split__bar visual-split__theory">30</span>
-                  </div>
-                  <span class="visual-split__caption">Hands-on / Theory</span>
-                </div>
+                <figure class="ratio" aria-label="70 percent hands-on, 30 percent theory">
+                  <div class="ratio__bar"><span style="--w: 70%"></span></div>
+                  <figcaption class="ratio__caption">
+                    <span><b>70</b>Hands-on</span>
+                    <span><b>30</b>Theory</span>
+                  </figcaption>
+                </figure>
               </div>
             </section>
 
             ${p.instructor && p.instructor.name ? `
-              <section class="detail-section">
+              <section class="detail-section reveal-up">
+                <span class="eyebrow-tag">[ Instructor ]</span>
                 <h2>Lead instructor</h2>
                 <div class="instructor-block">
                   <div class="instructor-avatar" aria-hidden="true">${escapeHtml(p.instructor.name.split(" ").filter(Boolean).slice(0, 2).map(s => s[0]).join("").toUpperCase())}</div>
                   <div>
-                    <h3 style="margin: 0 0 4px;">${escapeHtml(p.instructor.name)}</h3>
-                    <div style="color: var(--text-muted); font-size: 14px; margin-bottom: 10px;">${escapeHtml(p.instructor.role)}</div>
-                    <p style="color: var(--text-secondary); margin: 0;">${escapeHtml(p.instructor.bio || "")}</p>
+                    <h3 style="margin: 0 0 4px; font-size: 18px; font-weight: 600; font-family: var(--font-display);">${escapeHtml(p.instructor.name)}</h3>
+                    <div style="color: var(--text-muted); font-size: 13px; margin-bottom: 12px; letter-spacing: 0.04em;">${escapeHtml(p.instructor.role)}</div>
+                    <p style="color: var(--text-secondary); margin: 0; line-height: 1.6; max-width: 62ch;">${escapeHtml(p.instructor.bio || "")}</p>
                   </div>
                 </div>
               </section>
             ` : ""}
 
-            <section class="detail-section">
-              <h2>Overview</h2>
-              <div class="prose">${p.overview.split("\n\n").map(par => `<p>${escapeHtml(par)}</p>`).join("")}</div>
-            </section>
-
             <section class="detail-section ${p.faq && p.faq.length ? "" : "no-border"}">
+              <span class="eyebrow-tag">[ FAQ ]</span>
               <h2>Frequently asked</h2>
               <div class="faq">
                 ${(p.faq && p.faq.length ? p.faq : defaultFaq()).map(q => `
@@ -828,7 +863,7 @@
             <div class="aside-card">
               <h3>At a glance</h3>
               <div class="key-row"><span>Topic</span><span>${escapeHtml(p.topic)}</span></div>
-              <div class="key-row"><span>Per seat</span><span>${escapeHtml(priceDisplay || "On request")}${groupRatesAside}</span></div>
+              <div class="key-row is-price"><span>Per seat</span><span>${escapeHtml(priceDisplay || "On request")}${groupRatesAside}</span></div>
               <div class="key-row"><span>Duration</span><span>${escapeHtml(p.duration_label)}</span></div>
               <div class="key-row"><span>Total hours</span><span>${escapeHtml(String(p.total_hours))} hrs</span></div>
               <div class="key-row"><span>Delivery</span><span>${escapeHtml(p.delivery_mode)}</span></div>
@@ -840,11 +875,43 @@
         </div>
       </div>
 
+      <!-- Curriculum band, dark navy, the coded.kw signature section -->
+      <section class="curriculum-band reveal-up">
+        <div class="container">
+          <div class="curriculum-band__head">
+            <span class="eyebrow-tag is-light">[ Curriculum ]</span>
+            <h2>${escapeHtml(p.name.replace(/\s+(Workshop|Bootcamp)$/i, "").trim())} Curriculum</h2>
+            <p class="curriculum-band__lede">${escapeHtml(p.session_pattern)}. ${escapeHtml(p.duration_label)} total.</p>
+          </div>
+          <ol class="timeline timeline--dark">
+            ${p.structure.map((ph, i) => {
+              const parts = ph.phase_name.split(",");
+              const head = (parts[0] || "").trim();
+              const tail = parts.slice(1).join(",").trim();
+              const step = tail ? head : `${p.format === "Bootcamp" ? "Module" : "Day"} ${i + 1}`;
+              const title = tail || head;
+              return `
+                <li class="timeline__row">
+                  <div class="timeline__rail" aria-hidden="true">
+                    <span class="timeline__node"></span>
+                    <span class="timeline__step">${escapeHtml(step)}</span>
+                  </div>
+                  <div class="timeline__body">
+                    <h3 class="timeline__title">${escapeHtml(title)}</h3>
+                    <div class="timeline__meta">${escapeHtml(String(ph.hours))} hrs · ${escapeHtml(String(ph.sessions))} session${ph.sessions === 1 ? "" : "s"}</div>
+                    <p class="timeline__focus">${escapeHtml(ph.focus)}</p>
+                  </div>
+                </li>`;
+            }).join("")}
+          </ol>
+        </div>
+      </section>
+
       <section class="detail-close">
         <div class="container">
-          <div class="detail-close__inner">
+          <div class="detail-close__inner reveal-up">
             <h2>Ready to enroll your team?</h2>
-            <p>Send us the headcount and we'll come back to confirm seats, the next available cohort, and the invoice within one working day.</p>
+            <p>Send us the headcount. We'll come back with seat confirmation, the next available cohort, and the invoice.</p>
             <a class="btn btn-primary btn-lg" href="${escapeHtml(mailto)}">Request Seats &amp; Pricing ${ICON.arrow}</a>
           </div>
         </div>
@@ -898,6 +965,42 @@
     ];
   }
 
+  // ---------------- Scroll-triggered reveals ----------------
+  // Uses one shared IntersectionObserver, recreated per route render so we
+  // pick up the freshly-rendered .reveal-up + .timeline__row elements
+  // without leaking observers across renders.
+  let revealObserver = null;
+  function setupReveals() {
+    if (revealObserver) revealObserver.disconnect();
+    const targets = $$(".reveal-up, .timeline__row");
+    if (!targets.length) return;
+    if (!("IntersectionObserver" in window)) {
+      targets.forEach(el => el.classList.add("is-in"));
+      return;
+    }
+    revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("is-in");
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { rootMargin: "0px 0px -8% 0px", threshold: 0.12 });
+    targets.forEach(el => revealObserver.observe(el));
+  }
+
+  // Header gains a subtle shadow once user has scrolled past 8px.
+  function setupHeaderScroll() {
+    const header = document.querySelector(".site-header");
+    if (!header || setupHeaderScroll._wired) return;
+    setupHeaderScroll._wired = true;
+    const onScroll = () => {
+      header.classList.toggle("is-scrolled", window.scrollY > 8);
+    };
+    window.addEventListener("scroll", onScroll, { passive: true });
+    onScroll();
+  }
+
   // ---------------- Router ----------------
   function route() {
     // Reset transient UI on every route change
@@ -913,10 +1016,12 @@
     } else {
       renderLanding();
     }
+    setupReveals();
   }
 
   // ---------------- Init ----------------
   document.addEventListener("DOMContentLoaded", () => {
+    setupHeaderScroll();
     route();
     window.addEventListener("hashchange", route);
   });

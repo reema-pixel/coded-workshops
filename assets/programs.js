@@ -46,8 +46,9 @@ window.CODED_PROGRAMS = [
     one_liner: "Move from prompting LLMs to building autonomous AI agents, ship a multi-step prototype on n8n + APIs in one week.",
     topic: "Agentic AI",
     format: "Workshop",
+    prereq_label: "Programming basics required",
     shift: "Morning",
-    audience: ["Engineering & IT", "Data & Analytics", "Executives & Leadership"],
+    audience: ["Technical / IT", "Data & Analytics"],
     start_date: "2026-06-14",
     end_date: "2026-06-18",
     duration_label: "1 week (5 days)",
@@ -65,7 +66,7 @@ window.CODED_PROGRAMS = [
       { dates: "October 11–15, 2026" },
     ],
     overview:
-      "A 5-day workshop that takes participants from prompting LLMs to building autonomous AI agents. Covers agent design patterns, tool use, multi-step planning, retrieval-augmented generation (RAG), and connecting agents to real APIs.\n\nThis is not a tour of frameworks. By Day 5 each attendee ships a working multi-step AI agent prototype on n8n + APIs, built around a real workflow in your business.",
+      "Five days from prompting LLMs to shipping a multi-step AI agent. Each engineer walks out with a working n8n + APIs prototype built on a real workflow from your business, not demo-ware. Covers agent design patterns, tool use, RAG, and safety guardrails.",
     outcomes: [
       "Each attendee ships a working multi-step AI agent prototype on n8n + APIs",
       "Apply core agent design patterns (planner / executor / critic)",
@@ -95,8 +96,9 @@ window.CODED_PROGRAMS = [
     one_liner: "Generative AI for marketing, copy, image, social workflows, and brand-safe automations your team can deploy this quarter.",
     topic: "Agentic AI",
     format: "Workshop",
+    prereq_label: "For marketing & content teams",
     shift: "Morning",
-    audience: ["Marketing & Comms", "Executives & Leadership"],
+    audience: ["Marketing & Content"],
     start_date: "2026-06-21",
     end_date: "2026-06-23",
     duration_label: "3 days",
@@ -114,7 +116,7 @@ window.CODED_PROGRAMS = [
       { dates: "October 18–20, 2026" },
     ],
     overview:
-      "Three days for marketing, content, and comms teams. Generative AI for copywriting (long-form, social, email), AI image and video generation, brand-safe automation guardrails, and building content workflows that don't sacrifice brand voice.\n\nEvery attendee leaves with a brand-safe content automation playbook and working samples (copy, image, social workflows) deployed to your brand.",
+      "Three days of generative AI for marketing, content, and comms teams. Copywriting, image and video generation, and brand-safe automation workflows. Each attendee leaves with a content automation playbook deployed to your brand voice.",
     outcomes: [
       "Build an AI content workflow that respects brand guidelines, not bulldozes them",
       "Generate copy, image, and video assets with appropriate guardrails",
@@ -145,8 +147,9 @@ window.CODED_PROGRAMS = [
     one_liner: "Two-day fundamentals of analytical SQL, query, transform, and visualise enterprise data without an engineering ticket.",
     topic: "Data & Analytics",
     format: "Workshop",
+    prereq_label: "No coding required",
     shift: "Morning",
-    audience: ["Operations & Business", "Finance & FP&A", "Data & Analytics", "HR & L&D"],
+    audience: ["Data & Analytics", "Finance & Accounting", "Non-Technical"],
     start_date: "2026-07-05",
     end_date: "2026-07-06",
     duration_label: "2 days",
@@ -163,7 +166,7 @@ window.CODED_PROGRAMS = [
       { dates: "October 4–5, 2026" },
     ],
     overview:
-      "Analytical SQL for non-engineers. Covers SELECT / JOIN / GROUP BY mechanics, window functions, common analytical patterns, and connecting SQL queries to spreadsheets and BI tools.\n\nEvery attendee leaves with a reusable analytical SQL query bank for your enterprise data, not generic homework problems.",
+      "Two days of analytical SQL for non-engineers. SELECT / JOIN / GROUP BY mechanics, window functions, and connecting SQL to spreadsheets and BI tools. Each attendee walks out with a reusable query bank for your enterprise data.",
     outcomes: [
       "Write production-quality SELECT, JOIN, and aggregation queries",
       "Use window functions to answer real analytical questions",
@@ -192,8 +195,9 @@ window.CODED_PROGRAMS = [
     one_liner: "A 5-day NVIDIA-aligned certification program on generative AI and large language models, ending in a portfolio capstone.",
     topic: "Agentic AI",
     format: "Workshop",
+    prereq_label: "Python proficiency required",
     shift: "Morning",
-    audience: ["Engineering & IT", "Data & Analytics", "Executives & Leadership"],
+    audience: ["Technical / IT", "Data & Analytics"],
     start_date: "2026-07-05",
     end_date: "2026-07-09",
     duration_label: "1 week (5 days)",
@@ -207,7 +211,7 @@ window.CODED_PROGRAMS = [
     classroom: "Morning Big O (35 seats)",
     iterations: [{ dates: "July 5–9, 2026" }],
     overview:
-      "A 5-day NVIDIA-aligned certification program covering the foundations of large language models, generative AI architectures, training and fine-tuning workflows, and the NVIDIA toolchain (NIM, NeMo, Triton).\n\nContent maps to NVIDIA's GenAI and LLM specialist track. Each attendee leaves with the certification voucher and a portfolio project applying the NVIDIA tooling to a real use case.",
+      "Five days of NVIDIA-aligned certification on large language models and generative AI. Hands-on with NIM, NeMo, and Triton across the full LLM lifecycle. Each attendee leaves with a portfolio project on real data plus the certification voucher.",
     outcomes: [
       "NVIDIA-aligned readiness on GenAI and LLM specialist content",
       "Hands-on practice across NIM, NeMo, and Triton",
@@ -235,8 +239,9 @@ window.CODED_PROGRAMS = [
     one_liner: "AI-powered financial modeling, forecasting, and reporting automation, three days, real outputs you can take to the next FP&A cycle.",
     topic: "Data & Analytics",
     format: "Workshop",
+    prereq_label: "Excel comfort, no coding needed",
     shift: "Morning",
-    audience: ["Finance & FP&A", "Executives & Leadership", "Data & Analytics"],
+    audience: ["Data & Analytics", "Finance & Accounting"],
     start_date: "2026-07-12",
     end_date: "2026-07-14",
     duration_label: "3 days",
@@ -250,7 +255,7 @@ window.CODED_PROGRAMS = [
     classroom: "Morning Alsharekh (24 seats)",
     iterations: [{ dates: "July 12–14, 2026" }],
     overview:
-      "A focused 3-day workshop for finance professionals on AI-powered financial modeling, forecasting, and reporting automation. Covers prompt engineering for financial analysis, building forecast models with LLMs and Python, and automating month-end reporting.\n\nEvery attendee leaves with an AI-assisted forecast model and a reporting-automation prototype tailored to your company.",
+      "Three days for finance teams on AI-powered modeling, forecasting, and reporting automation. Prompt engineering for financial analysis, LLM-assisted forecast models, automated month-end reporting. Each attendee leaves with a working model and a reporting prototype tailored to your company.",
     outcomes: [
       "Build an AI-assisted forecast model on real financials",
       "Automate month-end reporting workflows that previously took days",
@@ -278,8 +283,9 @@ window.CODED_PROGRAMS = [
     one_liner: "Build executive dashboards in Power BI and ship a deployed dashboard for your department by Day 3.",
     topic: "Data & Analytics",
     format: "Workshop",
+    prereq_label: "No coding required",
     shift: "Morning",
-    audience: ["Finance & FP&A", "Data & Analytics", "Operations & Business"],
+    audience: ["Data & Analytics", "Finance & Accounting", "Non-Technical"],
     start_date: "2026-07-12",
     end_date: "2026-07-14",
     duration_label: "3 days",
@@ -297,7 +303,7 @@ window.CODED_PROGRAMS = [
       { dates: "November 1–3, 2026" },
     ],
     overview:
-      "A hands-on workshop that takes raw business data and turns it into executive dashboards using Microsoft Power BI. Covers data import from Excel, CSV, and SQL sources, the fundamentals of data modeling (relationships and DAX), interactive visualisation, and publishing live dashboards to your team.\n\nBy Day 3 each participant walks out with a deployed dashboard for their own department, not a sandbox project. Delivered by Dr. Ammar, drawing on the same content used across CODED's enterprise Power BI deliveries.",
+      "Three hands-on days turning raw business data into a live executive dashboard. Each participant ships a deployed Power BI dashboard for their own department by Day 3, on real data, ready to demo to leadership on Day 4. Delivered by Dr. Ammar.",
     outcomes: [
       "Each participant builds a complete Power BI dashboard from raw business data",
       "Model relationships and write DAX measures for executive reporting",
@@ -328,8 +334,9 @@ window.CODED_PROGRAMS = [
     one_liner: "Two-day intensive prep for PSM I, practice exams, real case studies, and a scheduled exam voucher on the way out.",
     topic: "Project Management & Agile",
     format: "Workshop",
+    prereq_label: "Open to all, basic Agile helps",
     shift: "Morning",
-    audience: ["Engineering & IT", "Operations & Business", "HR & L&D"],
+    audience: ["Technical / IT", "Non-Technical"],
     start_date: "2026-07-20",
     end_date: "2026-07-21",
     duration_label: "2 days",
@@ -346,7 +353,7 @@ window.CODED_PROGRAMS = [
       { dates: "December 27–28, 2026" },
     ],
     overview:
-      "An intensive 2-day prep for the Scrum Master certification (PSM I) with practice exams, real-world case studies, and live debriefs. Covers the Scrum Guide line by line, sprint mechanics, ceremony facilitation, and exam tactics, then runs timed mock exams.\n\nEvery attendee leaves with full PSM I exam readiness and a scheduled exam voucher.",
+      "Two days of intensive PSM I exam prep with practice exams, real case studies, and live debriefs. Every attendee walks out exam-ready with a scheduled voucher in hand. 90%+ first-attempt pass rate over the last four cohorts.",
     outcomes: [
       "Pass-ready understanding of the Scrum Guide and sprint mechanics",
       "Confidence facilitating Scrum ceremonies in a real team",
@@ -374,8 +381,9 @@ window.CODED_PROGRAMS = [
     one_liner: "Build no-code business automations across Microsoft 365 and ship a working flow for a real internal process by Day 5.",
     topic: "AI Automation",
     format: "Workshop",
+    prereq_label: "No coding required",
     shift: "Morning",
-    audience: ["HR & L&D", "Operations & Business", "Engineering & IT"],
+    audience: ["Technical / IT", "Non-Technical"],
     start_date: "2026-09-13",
     end_date: "2026-09-17",
     duration_label: "1 week (5 days)",
@@ -389,7 +397,7 @@ window.CODED_PROGRAMS = [
     classroom: "Morning Alsharekh (24 seats)",
     iterations: [{ dates: "September 13–17, 2026" }],
     overview:
-      "A practical 5-day workshop on building no-code business automations and internal apps that connect Microsoft 365, SharePoint, Teams, and external services. Participants cover Power Automate Cloud flows, Desktop flows for legacy systems, approval workflows, and Power Apps basics for lightweight internal tools.\n\nThe workshop is built around a real automation in your organisation. By Day 5 it's running.",
+      "Five days building no-code business automations across Microsoft 365. Each attendee ships a working Cloud flow against a real internal process by Day 5, plus a lightweight Power App they can extend on their own.",
     outcomes: [
       "Design and ship a working M365 Cloud flow against a real internal process",
       "Use Desktop flows to automate legacy systems without engineering",
@@ -423,8 +431,9 @@ window.CODED_PROGRAMS = [
     one_liner: "Five weeks of evenings to take a non-technical professional from idea to a deployed, production-ready AI app.",
     topic: "Agentic AI",
     format: "Bootcamp",
+    prereq_label: "No coding required",
     shift: "Evening",
-    audience: ["Operations & Business", "Marketing & Comms", "HR & L&D", "Executives & Leadership"],
+    audience: ["Marketing & Content", "Non-Technical"],
     start_date: "2026-05-31",
     end_date: "2026-07-02",
     duration_label: "5 weeks",
@@ -445,7 +454,7 @@ window.CODED_PROGRAMS = [
       { dates: "Nov 15 – Dec 17, 2026" },
     ],
     overview:
-      "An intensive 5-week, project-driven bootcamp that turns non-technical professionals into AI-era builders. Each cohort takes a real product idea from concept to live, deployed application, without writing code manually.\n\nFive modules: UI Architect, API Connector, Data Architect, Security Architect, Launch Architect. Each builds on the last; by the end of the program your people have shipped a production-ready MVP on a custom domain.",
+      "Five weeks of evenings turning non-technical professionals into AI app builders. Each attendee ships a deployed product on a custom domain, built with AI tools (Lovable, Replit, Supabase). Five modules: UI, API, Data, Security, Launch.",
     outcomes: [
       "Each attendee ships a deployed AI-powered app on a live custom domain",
       "Systems thinking: structure data flows and direct AI tools with technical clarity",
@@ -478,8 +487,9 @@ window.CODED_PROGRAMS = [
     one_liner: "Ten weeks, two phases, full data-science lifecycle, Python, ML, deep learning, LLMs, ending in a deployed AI application.",
     topic: "Data & Analytics",
     format: "Bootcamp",
+    prereq_label: "Some Python helpful, foundations covered",
     shift: "Evening",
-    audience: ["Engineering & IT", "Data & Analytics", "Finance & FP&A", "Executives & Leadership"],
+    audience: ["Technical / IT", "Data & Analytics"],
     start_date: "2026-06-07",
     end_date: "2026-08-13",
     duration_label: "10 weeks",
@@ -499,7 +509,7 @@ window.CODED_PROGRAMS = [
       { dates: "Nov 8, 2026 – Jan 14, 2027" },
     ],
     overview:
-      "An immersive 10-week bootcamp covering the full AI and data-science lifecycle. Phase 1 (2 weeks) is a foundations sprint; Phase 2 (8 weeks) is the professional track, a graded path through machine learning, deep learning, generative AI, and a deployed capstone.\n\nEight modules from Python fundamentals to multi-agent AI systems. Trainees deliver a graded model with a tuned result score in week 6 and a live, deployed AI product as the capstone.",
+      "Ten weeks of the full AI and data-science lifecycle, evenings only. Phase 1 (2 weeks) is a Python and analytics foundations sprint; Phase 2 (8 weeks) takes the cohort through ML, deep learning, generative AI, and a deployed capstone product.",
     outcomes: [
       "Programming fluency in Python with Pandas, NumPy, and the scientific stack",
       "End-to-end ML lifecycle: framing, training, validating, deploying",
@@ -533,8 +543,9 @@ window.CODED_PROGRAMS = [
     one_liner: "Ten weeks producing real cyber operators, Red Team, Blue Team, incident response, with AI-augmented workflows throughout.",
     topic: "Cybersecurity",
     format: "Bootcamp",
+    prereq_label: "Some scripting / networking helpful",
     shift: "Evening",
-    audience: ["Engineering & IT", "Executives & Leadership"],
+    audience: ["Technical / IT"],
     start_date: "2026-05-17",
     end_date: "2026-07-23",
     duration_label: "10 weeks",
@@ -554,7 +565,7 @@ window.CODED_PROGRAMS = [
       { dates: "Oct 11 – Dec 17, 2026" },
     ],
     overview:
-      "A 10-week intensive that produces real-world cyber operators: professionals who can break systems methodically, detect intrusions before damage escalates, investigate incidents with clarity, and move fluidly between Red and Blue team operations, with AI-augmented reconnaissance, threat hunting, and reporting throughout.\n\nPhase 1 (2 weeks) is a validated technical baseline ending in a Mini CTF. Phase 2 (8 weeks) splits across Offensive (5 weeks) and Defensive (3 weeks) operations, ending in a hybrid enterprise simulation with a professional pentest and incident-response report as deliverables.",
+      "Ten weeks of evenings producing real cyber operators. Phase 1 covers Cybersecurity Foundations to a Mini CTF gate; Phase 2 splits Offensive (5 weeks) and Defensive (3 weeks), ending in a hybrid Red/Blue Team simulation with a professional pentest report and incident-response report as deliverables.",
     outcomes: [
       "Conduct structured penetration tests across web, OS, Active Directory, and hybrid cloud",
       "Operate within SOC workflows: triage, log analysis, SIEM detection (Splunk, Wazuh, ELK)",
