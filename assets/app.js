@@ -787,6 +787,7 @@
 
     $("#app").innerHTML = `
       <section class="detail-hero">
+        <img class="detail-dot-pattern" src="assets/brand/dot-pattern-navy.svg" alt="" aria-hidden="true" />
         <div class="container detail-hero__inner">
           <div class="breadcrumb">
             <a href="#/">Home</a><span>/</span>
