@@ -61,6 +61,17 @@
 
   const fmtPrice = (kwd) => kwd ? `KWD ${kwd.toLocaleString("en-GB")} / seat` : "";
 
+  // Extract just the clock time from a session_pattern string.
+  // "Morning shift, 8am–3pm, five consecutive days" -> "8:00 AM – 3:00 PM"
+  // "Sundays, Tuesdays · 5:00–8:45 PM · 3 sessions/week" -> "5:00 – 8:45 PM"
+  function fmtTimingShort(pattern) {
+    const m1 = pattern.match(/\b(\d{1,2})(am|pm)[–\-](\d{1,2})(am|pm)\b/i);
+    if (m1) return `${m1[1]}:00 ${m1[2].toUpperCase()} – ${m1[3]}:00 ${m1[4].toUpperCase()}`;
+    const m2 = pattern.match(/(\d{1,2}:\d{2})[–\-](\d{1,2}:\d{2})\s*(AM|PM)/i);
+    if (m2) return `${m2[1]} – ${m2[2]} ${m2[3].toUpperCase()}`;
+    return pattern;
+  }
+
   // mailto link for a specific program (or generic if none).
   // Keeps the body short, with five quick-fill fields the buyer can complete
   // in their own client (Outlook, Apple Mail, Gmail) without leaving home.
@@ -957,7 +968,7 @@
               <div class="key-row is-price"><span>Per seat</span><span>${escapeHtml(priceDisplay || "On request")}${groupRatesAside}</span></div>
               <div class="key-row"><span>Duration</span><span>${escapeHtml(p.duration_label)}</span></div>
               <div class="key-row"><span>Total hours</span><span>${escapeHtml(String(p.total_hours))} hrs</span></div>
-              <div class="key-row"><span>Timing</span><span>${escapeHtml(p.session_pattern)}</span></div>
+              <div class="key-row"><span>Timing</span><span>${escapeHtml(fmtTimingShort(p.session_pattern))}</span></div>
               <div class="key-row"><span>Delivery</span><span>${escapeHtml(p.delivery_mode)}</span></div>
               <div class="key-row"><span>Location</span><span>${locationHtml}</span></div>
               <div class="key-row"><span>Next cohort</span><span>${escapeHtml(fmtDate(p.start_date))}</span></div>
