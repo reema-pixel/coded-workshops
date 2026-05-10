@@ -234,6 +234,50 @@ button { font-family: inherit; cursor: pointer; }
 }
 @media (prefers-reduced-motion: reduce) {
   .hero-bracket { animation: none !important; opacity: 1; }
+  .hero-dot-pattern, .hero-lines { animation: none !important; opacity: 0.4; }
+}
+
+/* Dot-pattern texture, top-right corner */
+.hero-dot-pattern {
+  position: absolute;
+  top: -60px;
+  right: -24px;
+  width: clamp(260px, 36vw, 480px);
+  height: auto;
+  pointer-events: none;
+  user-select: none;
+  z-index: 0;
+  opacity: 0;
+  animation: heroBgFadeIn 2s var(--ease) 0.5s forwards;
+}
+/* Lines texture, bottom-left edge */
+.hero-lines {
+  position: absolute;
+  bottom: -24px;
+  left: -24px;
+  width: clamp(240px, 42vw, 520px);
+  height: auto;
+  pointer-events: none;
+  user-select: none;
+  z-index: 0;
+  opacity: 0;
+  animation: heroLinesFadeIn 2s var(--ease) 0.65s forwards;
+}
+@keyframes heroBgFadeIn {
+  from { opacity: 0; }
+  to   { opacity: 0.42; }
+}
+@keyframes heroLinesFadeIn {
+  from { opacity: 0; }
+  to   { opacity: 0.32; }
+}
+@media (max-width: 1024px) {
+  .hero-dot-pattern { width: clamp(180px, 30vw, 320px); opacity: 0.3; animation: none; }
+  .hero-lines { width: clamp(160px, 32vw, 340px); opacity: 0.22; animation: none; }
+}
+@media (max-width: 720px) {
+  .hero-dot-pattern { display: none; }
+  .hero-lines { width: 180px; opacity: 0.18; }
 }
 
 .eyebrow {
@@ -277,11 +321,28 @@ button { font-family: inherit; cursor: pointer; }
 
 /* ------------ Intro band ------------ */
 .intro-band {
+  position: relative;
   border-bottom: 1px solid var(--border);
   background: var(--bg-soft);
   padding: var(--s-3) 0;
+  overflow: hidden;
+}
+/* Solid brand brackets as a faint watermark behind the 3 intro cards */
+.intro-band__bracket-bg {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: clamp(100px, 18vw, 200px);
+  width: auto;
+  pointer-events: none;
+  user-select: none;
+  opacity: 0.07;
+  z-index: 0;
 }
 .intro-band__grid {
+  position: relative;
+  z-index: 1;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 40px;
@@ -700,6 +761,8 @@ button { font-family: inherit; cursor: pointer; }
 /* ------------ Final CTA banner ------------ */
 .cta-banner { padding: var(--s-3) 0 var(--s-4); }
 .cta-banner__inner {
+  position: relative;
+  overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -709,6 +772,38 @@ button { font-family: inherit; cursor: pointer; }
   color: #FFFFFF;
   border-radius: var(--radius-lg);
   flex-wrap: wrap;
+}
+/* Brand texture overlays inside the CTA banner (dark bg = white variants) */
+.cta-dot {
+  position: absolute;
+  top: -20px;
+  right: -16px;
+  width: clamp(200px, 35vw, 420px);
+  height: auto;
+  pointer-events: none;
+  user-select: none;
+  opacity: 0.15;
+  z-index: 0;
+}
+.cta-lines {
+  position: absolute;
+  bottom: -16px;
+  left: -16px;
+  width: clamp(180px, 28vw, 340px);
+  height: auto;
+  pointer-events: none;
+  user-select: none;
+  opacity: 0.22;
+  z-index: 0;
+}
+/* Ensure text + button render above the decorative layers */
+.cta-banner__content {
+  position: relative;
+  z-index: 1;
+}
+.cta-banner__inner > .btn {
+  position: relative;
+  z-index: 1;
 }
 .cta-banner h2 {
   margin: 0;

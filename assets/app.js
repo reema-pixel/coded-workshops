@@ -271,6 +271,8 @@
       <section class="hero">
         <img class="hero-bracket hero-bracket--left" src="assets/brand/d4XjMcpeBWOQtvHbaD2OCcQQU.avif" alt="" aria-hidden="true" />
         <img class="hero-bracket hero-bracket--right" src="assets/brand/AavaFcNfNC6v8x8NbnE08ibVHuA.avif" alt="" aria-hidden="true" />
+        <img class="hero-dot-pattern" src="assets/brand/dot-pattern-navy.svg" alt="" aria-hidden="true" />
+        <img class="hero-lines" src="assets/brand/lines-3-A.svg" alt="" aria-hidden="true" />
         <div class="container hero__inner">
           <div class="eyebrow"><span class="dot"></span><span>2026 Program Calendar</span></div>
           <h1>Programs<br/>at CODED.</h1>
@@ -284,6 +286,7 @@
       </section>
 
       <section class="intro-band">
+        <img class="intro-band__bracket-bg" src="assets/brand/brackets-solid.svg" alt="" aria-hidden="true" />
         <div class="container intro-band__grid">
           <div class="intro-card reveal-up">
             <h3>Hands-on, not theory</h3>
@@ -337,7 +340,9 @@
       <section class="cta-banner">
         <div class="container">
           <div class="cta-banner__inner reveal-up">
-            <div>
+            <img class="cta-dot" src="assets/brand/dot-pattern-white.svg" alt="" aria-hidden="true" />
+            <img class="cta-lines" src="assets/brand/lines-2-A.svg" alt="" aria-hidden="true" />
+            <div class="cta-banner__content">
               <h2>Need it scoped to your team instead?</h2>
               <p>For larger groups or company-specific use cases, CODED also runs custom programs end-to-end. Same hands-on methodology, scoped around your business.</p>
             </div>
