@@ -247,7 +247,7 @@ button { font-family: inherit; cursor: pointer; }
 }
 @keyframes heroCirclesFadeIn {
   from { opacity: 0; }
-  to   { opacity: 0.55; }
+  to   { opacity: 0.18; }
 }
 
 /* Bracket entrance wrapper: slides in from the side */
@@ -305,7 +305,7 @@ button { font-family: inherit; cursor: pointer; }
   .hero-bracket { height: clamp(110px, 18vw, 200px); }
   .hero-bracket-wrap--left  { left: 4%; }
   .hero-bracket-wrap--right { right: 4%; }
-  .hero-circles { opacity: 0.45; animation: none; }
+  .hero-circles { opacity: 0.15; animation: none; }
 }
 @media (max-width: 720px) {
   .hero-bracket { height: 88px; }
@@ -313,12 +313,12 @@ button { font-family: inherit; cursor: pointer; }
   .hero-bracket-wrap--right { right: 1%; }
   .hero-bracket--left  { animation: none; }
   .hero-bracket--right { animation: none; }
-  .hero-circles { width: 340px; opacity: 0.38; }
+  .hero-circles { width: 340px; opacity: 0.14; }
 }
 @media (prefers-reduced-motion: reduce) {
   .hero-bracket-wrap { animation: none !important; opacity: 1 !important; transform: translateY(-50%) !important; }
   .hero-bracket--left, .hero-bracket--right { animation: none !important; }
-  .hero-circles { animation: none !important; opacity: 0.5; }
+  .hero-circles { animation: none !important; opacity: 0.18; }
 }
 
 .eyebrow {
