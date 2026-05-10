@@ -269,9 +269,11 @@
     const app = $("#app");
     app.innerHTML = `
       <section class="hero">
+        <img class="hero-bracket hero-bracket--left" src="assets/brand/d4XjMcpeBWOQtvHbaD2OCcQQU.avif" alt="" aria-hidden="true" />
+        <img class="hero-bracket hero-bracket--right" src="assets/brand/AavaFcNfNC6v8x8NbnE08ibVHuA.avif" alt="" aria-hidden="true" />
         <div class="container hero__inner">
           <div class="eyebrow"><span class="dot"></span><span>2026 Program Calendar</span></div>
-          <h1><span class="bracket" aria-hidden="true">[</span> Programs <span class="bracket" aria-hidden="true">]</span><br/>at CODED.</h1>
+          <h1>Programs<br/>at CODED.</h1>
           <p class="lede">Hands-on workshops and bootcamps your team can join, taught at CODED Campus in Kuwait's Free Trade Zone. Same proven methodology behind our enterprise deliveries.</p>
           <div class="hero__meta">
             <span><span class="pip" aria-hidden="true"></span>${PROGRAMS.length} programs on the calendar</span>
@@ -308,8 +310,16 @@
               <input id="filterSearch" type="search" autocomplete="off" placeholder="Search by topic, instructor, or keyword (e.g. AI, Power BI, bootcamp)…" aria-label="Search programs" />
               <button type="button" class="filter-search__clear" id="filterSearchClear" aria-label="Clear search" hidden>×</button>
             </label>
+            <button type="button" class="filters-toggle" id="filtersToggle" aria-expanded="false" aria-controls="filtersBar">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M4 6h16M7 12h10M10 18h4"/>
+              </svg>
+              <span>Filters</span>
+              <span class="filters-toggle__count count" hidden>0</span>
+            </button>
           </div>
           <div class="filters__inner" id="filtersBar"></div>
+          <div class="filters__backdrop" id="filtersBackdrop" hidden></div>
           <div id="activeChips" class="active-chips" style="display:none;"></div>
         </div>
       </section>
@@ -339,9 +349,44 @@
 
     buildFilterBar();
     wireSearch();
+    setupFiltersDrawer();
     refreshResults();
     document.title = "Programs · CODED";
     window.scrollTo({ top: 0 });
+  }
+
+  // ---------------- Mobile filters drawer ----------------
+  function setupFiltersDrawer() {
+    const toggle = $("#filtersToggle");
+    const closeBtn = $("#filtersDrawerClose");
+    const applyBtn = $("#filtersDrawerApply");
+    const backdrop = $("#filtersBackdrop");
+    if (!toggle) return;
+
+    const open = () => {
+      document.body.classList.add("filters-open");
+      toggle.setAttribute("aria-expanded", "true");
+      if (backdrop) backdrop.hidden = false;
+    };
+    const close = () => {
+      document.body.classList.remove("filters-open");
+      toggle.setAttribute("aria-expanded", "false");
+      if (backdrop) backdrop.hidden = true;
+    };
+
+    toggle.addEventListener("click", open);
+    closeBtn?.addEventListener("click", close);
+    applyBtn?.addEventListener("click", close);
+    backdrop?.addEventListener("click", close);
+
+    if (!setupFiltersDrawer._escHooked) {
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape" && document.body.classList.contains("filters-open")) {
+          close();
+        }
+      });
+      setupFiltersDrawer._escHooked = true;
+    }
   }
 
   // ---------------- Search input ----------------
@@ -384,7 +429,14 @@
   function buildFilterBar() {
     const bar = $("#filtersBar");
     if (!bar) return;
-    bar.innerHTML = "";
+    /* Drawer header, only visible on mobile via CSS, but always in the DOM
+       so close-from-inside works without re-rendering. */
+    bar.innerHTML = `
+      <header class="filters-drawer-head">
+        <span class="filters-drawer-head__title">Filters</span>
+        <button type="button" class="filters-drawer-head__close" id="filtersDrawerClose" aria-label="Close filters">×</button>
+      </header>
+    `;
 
     FILTER_DEFS.forEach(def => {
       const opts = typeof def.options === "function" ? def.options() : def.options;
@@ -421,6 +473,15 @@
     clearBtn.style.display = "none";
     clearBtn.addEventListener("click", clearAllFilters);
     bar.appendChild(clearBtn);
+
+    /* Drawer footer, only visible on mobile via CSS. The Apply button just
+       closes the drawer; results already update live as users tick options. */
+    const drawerFoot = document.createElement("footer");
+    drawerFoot.className = "filters-drawer-foot";
+    drawerFoot.innerHTML = `
+      <button type="button" class="btn btn-primary filters-drawer-apply" id="filtersDrawerApply">Show results</button>
+    `;
+    bar.appendChild(drawerFoot);
 
     $$(".filter-group", bar).forEach(group => {
       const btn = $(".filter-button", group);
@@ -526,14 +587,30 @@
       });
     });
 
+    const totalActive = countFilters(filters);
     const clearBtn = $("#clearAllFilters");
-    if (clearBtn) clearBtn.style.display = countFilters(filters) > 0 ? "" : "none";
+    if (clearBtn) clearBtn.style.display = totalActive > 0 ? "" : "none";
+
+    /* Mobile drawer toggle: total-active badge + Apply button label */
+    const toggleCount = $(".filters-toggle__count");
+    if (toggleCount) {
+      if (totalActive > 0) {
+        toggleCount.textContent = totalActive;
+        toggleCount.hidden = false;
+      } else {
+        toggleCount.hidden = true;
+      }
+    }
+    const applyBtn = $("#filtersDrawerApply");
+    if (applyBtn) {
+      applyBtn.textContent = `Show ${filtered.length} program${filtered.length === 1 ? "" : "s"}`;
+    }
 
     renderActiveChips(filters);
 
     const rc = $("#resultsCount");
     if (rc) {
-      rc.textContent = `${filtered.length} program${filtered.length === 1 ? "" : "s"} ${countFilters(filters) === 0 ? "available" : "match your filters"}`;
+      rc.textContent = `${filtered.length} program${filtered.length === 1 ? "" : "s"} ${totalActive === 0 ? "available" : "match your filters"}`;
     }
 
     const grid = $("#cardGrid");
@@ -738,22 +815,22 @@
       <!-- 4-up hero strip, coded.kw signature row directly under the hero -->
       <section class="hero-strip">
         <div class="container hero-strip__inner">
-          <div class="hero-strip__cell">
+          <div class="hero-strip__cell stagger-child">
             <span class="hero-strip__icon" aria-hidden="true">${ICON.spark}</span>
             <h4>Practical Training</h4>
             <p>70% hands-on, 30% theory. Every session ships a working artefact.</p>
           </div>
-          <div class="hero-strip__cell">
+          <div class="hero-strip__cell stagger-child">
             <span class="hero-strip__icon" aria-hidden="true">${ICON.clock}</span>
             <h4>Flexible Schedule</h4>
             <p>${escapeHtml(p.session_pattern)}.</p>
           </div>
-          <div class="hero-strip__cell">
+          <div class="hero-strip__cell stagger-child">
             <span class="hero-strip__icon" aria-hidden="true">${ICON.pin}</span>
             <h4>In Kuwait</h4>
             <p>${escapeHtml(p.location || "CODED Campus")}. Or on-site for whole teams.</p>
           </div>
-          <div class="hero-strip__cell">
+          <div class="hero-strip__cell stagger-child">
             <span class="hero-strip__icon" aria-hidden="true">${ICON.team}</span>
             <h4>Built for Teams</h4>
             <p>Per-seat pricing. ${p.group_rates ? "Group rates available, email us for the breakdown." : "Same per-seat price for one or fifteen people."}</p>
@@ -768,9 +845,9 @@
           <span class="eyebrow-tag">[ Overview ]</span>
           <h2>What you'll walk out with</h2>
           <ul class="overview-tiles overview-tiles--three">
-            <li><h6>You'll build</h6><p>${escapeHtml(p.outcomes[0] || "")}</p></li>
-            <li><h6>How we teach</h6><p>70 / 30 hands-on. Every session ships a working artefact.</p></li>
-            <li><h6>Walk out with</h6><p>${escapeHtml(p.outcomes[p.outcomes.length - 1] || "")}</p></li>
+            <li class="stagger-child"><h6>You'll build</h6><p>${escapeHtml(p.outcomes[0] || "")}</p></li>
+            <li class="stagger-child"><h6>How we teach</h6><p>70 / 30 hands-on. Every session ships a working artefact.</p></li>
+            <li class="stagger-child"><h6>Walk out with</h6><p>${escapeHtml(p.outcomes[p.outcomes.length - 1] || "")}</p></li>
           </ul>
         </div>
       </section>
@@ -791,7 +868,7 @@
               <span class="eyebrow-tag">[ Outcomes ]</span>
               <h2>What attendees walk out with</h2>
               <ul class="outcomes">
-                ${p.outcomes.map(o => `<li>${escapeHtml(o)}</li>`).join("")}
+                ${p.outcomes.map(o => `<li class="stagger-child">${escapeHtml(o)}</li>`).join("")}
               </ul>
             </section>
 
@@ -802,7 +879,7 @@
                 <thead><tr><th>Dates</th><th>Status</th></tr></thead>
                 <tbody>
                   ${(p.iterations || []).map((it, i) => `
-                    <tr>
+                    <tr class="stagger-child">
                       <td>${escapeHtml(it.dates)}</td>
                       <td>${i === 0 ? '<span style="color: var(--accent); font-weight: 600;">Next cohort</span>' : '<span style="color: var(--text-muted);">Open</span>'}</td>
                     </tr>
@@ -850,7 +927,7 @@
               <h2>Frequently asked</h2>
               <div class="faq">
                 ${(p.faq && p.faq.length ? p.faq : defaultFaq()).map(q => `
-                  <details>
+                  <details class="stagger-child">
                     <summary>${escapeHtml(q.question)}</summary>
                     <p>${escapeHtml(q.answer)}</p>
                   </details>
@@ -972,7 +1049,7 @@
   let revealObserver = null;
   function setupReveals() {
     if (revealObserver) revealObserver.disconnect();
-    const targets = $$(".reveal-up, .timeline__row");
+    const targets = $$(".reveal-up, .timeline__row, .stagger-child");
     if (!targets.length) return;
     if (!("IntersectionObserver" in window)) {
       targets.forEach(el => el.classList.add("is-in"));

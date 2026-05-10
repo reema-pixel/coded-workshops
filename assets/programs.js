@@ -75,9 +75,11 @@ window.CODED_PROGRAMS = [
       "Know when an agent is the right shape, and when prompts and a script are enough",
     ],
     structure: [
-      { phase_name: "Phase 1, Foundations (Days 1–2)", sessions: 2, hours: 14, focus: "Agent patterns, tool use, planning, and RAG fundamentals." },
-      { phase_name: "Phase 2, Application (Days 3–4)", sessions: 2, hours: 14, focus: "n8n agents, API wiring, evaluation, and safety guardrails." },
-      { phase_name: "Phase 3, Capstone (Day 5)", sessions: 1, hours: 7, focus: "Ship a working agent prototype on a real internal workflow." },
+      { phase_name: "Day 1, From LLMs to Agents", sessions: 1, hours: 7, focus: "LLM fundamentals refresh, what makes AI agentic, agent design patterns (planner / executor / supervisor), n8n setup, first single-agent flow." },
+      { phase_name: "Day 2, Tool Use & Integrations", sessions: 1, hours: 7, focus: "API basics for non-engineers, connecting agents to APIs in n8n, structured outputs (JSON schemas), memory and context, multi-tool agent build." },
+      { phase_name: "Day 3, Multi-Step Planning & RAG", sessions: 1, hours: 7, focus: "Multi-step reasoning patterns, RAG fundamentals, vector databases and embeddings, build a Q&A agent on internal docs." },
+      { phase_name: "Day 4, Production Patterns", sessions: 1, hours: 7, focus: "Error handling and guardrails, cost and rate-limit management, observability and logging, API key security, production-grade agent build." },
+      { phase_name: "Day 5, Capstone", sessions: 1, hours: 7, focus: "Use-case scoping, capstone build, presentations, and a deployment plan for a real internal workflow." },
     ],
     audience_detail:
       "Engineers, technical PMs, R&D leads, and AI champions building first agentic prototypes. Prerequisites: at least one programming language (Python preferred), REST API basics, and prior LLM prompting exposure. Maximum cohort size: 35.",
@@ -124,9 +126,9 @@ window.CODED_PROGRAMS = [
       "Walk out with a deployable content automation playbook for your team",
     ],
     structure: [
-      { phase_name: "Day 1, Copy", sessions: 1, hours: 7, focus: "Long-form, social, email copywriting with LLMs." },
-      { phase_name: "Day 2, Image & Video", sessions: 1, hours: 7, focus: "Brand-safe image/video generation, asset workflows." },
-      { phase_name: "Day 3, Pipeline", sessions: 1, hours: 7, focus: "End-to-end content automation deployed to your brand." },
+      { phase_name: "Day 1, AI for Copy & Brand Voice", sessions: 1, hours: 7, focus: "AI in marketing landscape, brand voice and prompt design, long-form (blog, whitepaper) and short-form (social, ads, email) copy, generate one week of brand-aligned content." },
+      { phase_name: "Day 2, AI for Visuals & Multimedia", sessions: 1, hours: 7, focus: "Image generation tool comparison, brand-safe visual workflows, AI video (Runway, Pika), Canva AI, build a campaign visual asset bundle." },
+      { phase_name: "Day 3, Marketing Operations & Capstone", sessions: 1, hours: 7, focus: "Content calendar automation, AI for marketing analytics and reporting, capstone brand-safe content automation playbook, presentations." },
     ],
     audience_detail:
       "Marketing managers, content leads, social media managers, brand directors, and comms teams. Active marketing or content role. Familiarity with brand guidelines. Maximum cohort size: 33.",
@@ -175,8 +177,8 @@ window.CODED_PROGRAMS = [
       "Walk out with a reusable analytical SQL query bank for your data",
     ],
     structure: [
-      { phase_name: "Day 1, Mechanics", sessions: 1, hours: 7, focus: "SELECT, JOIN, GROUP BY, filtering, sorting." },
-      { phase_name: "Day 2, Analytical Patterns", sessions: 1, hours: 7, focus: "Window functions, BI integration, applied query bank." },
+      { phase_name: "Day 1, SQL Foundations", sessions: 1, hours: 7, focus: "SQL landscape for analysts, SELECT, WHERE, ORDER BY, LIMIT, JOINs (INNER / LEFT / RIGHT / FULL), GROUP BY, HAVING and aggregates; ten hands-on analytical queries on a real business dataset." },
+      { phase_name: "Day 2, Analytical SQL", sessions: 1, hours: 7, focus: "Subqueries and CTEs, window functions, date/time handling, connecting SQL to Excel and Power BI, capstone query bank for the participant's own company." },
     ],
     audience_detail:
       "Business analysts, finance staff, and ops leads currently dependent on engineering for ad-hoc queries. Spreadsheet familiarity is enough. No prior coding. Maximum cohort size: 33.",
@@ -219,9 +221,11 @@ window.CODED_PROGRAMS = [
       "Certification voucher in hand at the end of the week",
     ],
     structure: [
-      { phase_name: "Phase 1, Foundations (Days 1–2)", sessions: 2, hours: 14, focus: "LLM theory, transformer architectures, pretraining vs fine-tuning." },
-      { phase_name: "Phase 2, NVIDIA Toolchain (Days 3–4)", sessions: 2, hours: 14, focus: "NIM, NeMo, Triton inference, serving and scaling." },
-      { phase_name: "Phase 3, Capstone (Day 5)", sessions: 1, hours: 7, focus: "Ship a portfolio project on real data using the NVIDIA stack." },
+      { phase_name: "Day 1, Fundamentals of Deep Learning", sessions: 1, hours: 7, focus: "Mechanics of deep learning, training a first computer-vision model, CNNs for image recognition, data augmentation and transfer learning with PyTorch." },
+      { phase_name: "Day 2, Accelerated Data Science", sessions: 1, hours: 7, focus: "GPU-accelerated data manipulation (cuDF, pandas, Polars, Dask), ML with cuML, XGBoost on GPUs, graph analytics with cuGraph, population-scale data analysis." },
+      { phase_name: "Day 3, Transformer-Based NLP Applications", sessions: 1, hours: 7, focus: "Transformers as the foundation of modern LLMs, pre-trained LLMs for classification, NER, QA, summarisation, author attribution and chatbot building." },
+      { phase_name: "Day 4, LLM Apps with Prompt Engineering", sessions: 1, hours: 7, focus: "Prompt engineering principles for production, designing reliable LLM prompts, hands-on LLM application patterns." },
+      { phase_name: "Day 5, Rapid LLM Application Development", sessions: 1, hours: 7, focus: "End-to-end LLM application development, deployment patterns and integration, capstone build, and certification exam prep." },
     ],
     audience_detail:
       "Engineers, ML engineers, and senior IC roles building or operating GenAI systems. Prerequisites: Python proficiency, familiarity with deep-learning fundamentals, comfort with the command line. Maximum cohort size: 35.",
@@ -263,9 +267,9 @@ window.CODED_PROGRAMS = [
       "Frame where AI helps in finance and where it actively hurts",
     ],
     structure: [
-      { phase_name: "Day 1, Foundations", sessions: 1, hours: 7, focus: "AI for finance landscape, prompt engineering for analysis." },
-      { phase_name: "Day 2, Forecasting", sessions: 1, hours: 7, focus: "LLM-assisted forecast modeling on your data." },
-      { phase_name: "Day 3, Reporting Automation", sessions: 1, hours: 7, focus: "Capstone: ship an automated monthly reporting flow." },
+      { phase_name: "Day 1, AI for Finance Foundations", sessions: 1, hours: 7, focus: "AI landscape for finance teams, prompt engineering for financial analysis, AI-assisted Excel modeling, document analysis on contracts/statements/filings, AI-augmented variance analysis." },
+      { phase_name: "Day 2, Forecasting & Reporting", sessions: 1, hours: 7, focus: "AI-assisted forecasting techniques, building forecast models with Python + LLMs, automating board-ready reports and management commentary." },
+      { phase_name: "Day 3, Audit, Risk & Capstone", sessions: 1, hours: 7, focus: "AI for audit and compliance workflows, the risk and ethics frame, capstone forecast + reporting automation tied to the participant's own company data." },
     ],
     audience_detail:
       "Finance managers, FP&A analysts, controllers, treasury, and corporate development. Excel financial modeling comfort required. Basic Python helpful but not required, we cover what you need. Maximum cohort size: 24.",
@@ -312,9 +316,9 @@ window.CODED_PROGRAMS = [
       "Walk out with a deployed dashboard ready to demo on Day 4",
     ],
     structure: [
-      { phase_name: "Day 1, Foundations", sessions: 1, hours: 7, focus: "Data import, modeling, relationships, and DAX basics." },
-      { phase_name: "Day 2, Build", sessions: 1, hours: 7, focus: "Interactive visuals, drill-throughs, and report layout." },
-      { phase_name: "Day 3, Ship", sessions: 1, hours: 7, focus: "Publish, share permissions, and capstone review against real department data." },
+      { phase_name: "Day 1, Foundations & Data Modeling", sessions: 1, hours: 7, focus: "Power BI Desktop setup, Power Query transformations on Excel/CSV/SQL sources, star-schema modeling and relationships, first DAX measures, and basic visuals." },
+      { phase_name: "Day 2, Visualizations & Dashboards", sessions: 1, hours: 7, focus: "Visual best practices, end-to-end sales dashboard build, slicers, drill-through, bookmarks, publish to Power BI Service, BYOD clinic on real data." },
+      { phase_name: "Day 3, Advanced & Capstone", sessions: 1, hours: 7, focus: "Advanced DAX (CALCULATE, FILTER, time intelligence, RANKX), performance tuning, capstone dashboard deployed for the participant's own department." },
     ],
     audience_detail:
       "BI analysts, finance leads, and ops managers who already build reports in Excel or PowerPoint and want to move to live dashboards. No prior coding required. Spreadsheet comfort and a basic understanding of rows, columns, and formulas is enough. Recommended seniority: analyst → senior manager. Maximum cohort size: 33.",
@@ -361,8 +365,8 @@ window.CODED_PROGRAMS = [
       "A scheduled PSM I exam voucher in hand",
     ],
     structure: [
-      { phase_name: "Day 1, Theory & Mechanics", sessions: 1, hours: 7, focus: "Scrum Guide deep dive, roles, events, artefacts." },
-      { phase_name: "Day 2, Mocks & Tactics", sessions: 1, hours: 7, focus: "Two timed mock exams, debrief, exam strategy, voucher scheduling." },
+      { phase_name: "Day 1, Scrum Framework Deep Dive", sessions: 1, hours: 7, focus: "Why Agile, why Scrum; pillars, values, the three roles, all five events, artefacts and Definition of Done; first practice exam and debrief." },
+      { phase_name: "Day 2, Exam Mastery & Simulation", sessions: 1, hours: 7, focus: "User stories, backlog management and estimation, tricky scaling and cross-functional topics, two more practice exams, live Scrum simulation, voucher distribution." },
     ],
     audience_detail:
       "Team leads, project managers, and aspiring Agile practitioners pursuing PSM I. Prerequisite: familiarity with Agile concepts (some prior Scrum or sprint exposure). No coding. Maximum cohort size: 35.",
@@ -406,9 +410,11 @@ window.CODED_PROGRAMS = [
       "Recognise where automation is the right answer and where it isn't",
     ],
     structure: [
-      { phase_name: "Phase 1, Foundations (Days 1–2)", sessions: 2, hours: 14, focus: "Cloud flow building blocks, triggers, connectors, M365 patterns." },
-      { phase_name: "Phase 2, Application (Days 3–4)", sessions: 2, hours: 14, focus: "Approval workflows, Desktop flows, Power Apps for internal tools." },
-      { phase_name: "Phase 3, Capstone (Day 5)", sessions: 1, hours: 7, focus: "Ship a real automation against your own process and demo to the room." },
+      { phase_name: "Day 1, Automation Foundations", sessions: 1, hours: 7, focus: "Manual vs automated workflows, Power Automate platform tour (Cloud vs Desktop), triggers, actions, conditions, expressions, first Outlook to SharePoint file-routing flow." },
+      { phase_name: "Day 2, Working with M365 Services", sessions: 1, hours: 7, focus: "SharePoint integration patterns, Teams notifications and adaptive cards, Excel + OneDrive automation, multi-step approval flows." },
+      { phase_name: "Day 3, Power Automate Desktop & Legacy Systems", sessions: 1, hours: 7, focus: "When to use Desktop vs Cloud, UI element capture, recorder, browser automation, working with legacy desktop apps, combining Cloud + Desktop flows." },
+      { phase_name: "Day 4, Advanced Patterns", sessions: 1, hours: 7, focus: "Error handling, retries, scopes, variables and loops, external APIs via HTTP requests, AI Builder integration, enterprise-grade workflow build." },
+      { phase_name: "Day 5, Capstone & Deployment", sessions: 1, hours: 7, focus: "Real-use-case scoping, capstone build, testing, monitoring, governance, presentations and rollout planning for IT sign-off." },
     ],
     audience_detail:
       "Operations leads, IT business analysts, and citizen developers across Microsoft 365 teams. No coding required, familiarity with Outlook, Teams, and SharePoint is enough. Maximum cohort size: 24.",
