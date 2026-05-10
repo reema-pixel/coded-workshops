@@ -820,32 +820,6 @@
         </div>
       </section>
 
-      <!-- 4-up hero strip, coded.kw signature row directly under the hero -->
-      <section class="hero-strip">
-        <div class="container hero-strip__inner">
-          <div class="hero-strip__cell stagger-child">
-            <span class="hero-strip__icon" aria-hidden="true">${ICON.spark}</span>
-            <h4>Practical Training</h4>
-            <p>70% hands-on, 30% theory. Every session ships a working artefact.</p>
-          </div>
-          <div class="hero-strip__cell stagger-child">
-            <span class="hero-strip__icon" aria-hidden="true">${ICON.clock}</span>
-            <h4>Flexible Schedule</h4>
-            <p>${escapeHtml(p.session_pattern)}.</p>
-          </div>
-          <div class="hero-strip__cell stagger-child">
-            <span class="hero-strip__icon" aria-hidden="true">${ICON.pin}</span>
-            <h4>In Kuwait</h4>
-            <p>${escapeHtml(p.location || "CODED Campus")}. Or on-site for whole teams.</p>
-          </div>
-          <div class="hero-strip__cell stagger-child">
-            <span class="hero-strip__icon" aria-hidden="true">${ICON.team}</span>
-            <h4>Built for Teams</h4>
-            <p>Per-seat pricing. ${p.group_rates ? "Group rates available, email us for the breakdown." : "Same per-seat price for one or fifteen people."}</p>
-          </div>
-        </div>
-      </section>
-
       <!-- Centered Overview marquee, coded.kw style.
            Three scannable tiles, no long prose paragraph above them. -->
       <section class="detail-section detail-section--marquee is-soft reveal-up">
@@ -857,6 +831,38 @@
             <li class="stagger-child"><h6>How we teach</h6><p>70 / 30 hands-on. Every session ships a working artefact.</p></li>
             <li class="stagger-child"><h6>Walk out with</h6><p>${escapeHtml(p.outcomes[p.outcomes.length - 1] || "")}</p></li>
           </ul>
+        </div>
+      </section>
+
+      <!-- Curriculum band moved up: most important content, visible without deep scroll -->
+      <section class="curriculum-band reveal-up">
+        <div class="container">
+          <div class="curriculum-band__head">
+            <span class="eyebrow-tag is-light">[ Curriculum ]</span>
+            <h2>${escapeHtml(p.name.replace(/\s+(Workshop|Bootcamp)$/i, "").trim())} Curriculum</h2>
+            <p class="curriculum-band__lede">${escapeHtml(p.session_pattern)}. ${escapeHtml(p.duration_label)} total.</p>
+          </div>
+          <ol class="timeline timeline--dark">
+            ${p.structure.map((ph, i) => {
+              const parts = ph.phase_name.split(",");
+              const head = (parts[0] || "").trim();
+              const tail = parts.slice(1).join(",").trim();
+              const step = tail ? head : `${p.format === "Bootcamp" ? "Module" : "Day"} ${i + 1}`;
+              const title = tail || head;
+              return `
+                <li class="timeline__row">
+                  <div class="timeline__rail" aria-hidden="true">
+                    <span class="timeline__node"></span>
+                    <span class="timeline__step">${escapeHtml(step)}</span>
+                  </div>
+                  <div class="timeline__body">
+                    <h3 class="timeline__title">${escapeHtml(title)}</h3>
+                    <div class="timeline__meta">${escapeHtml(String(ph.hours))} hrs · ${escapeHtml(String(ph.sessions))} session${ph.sessions === 1 ? "" : "s"}</div>
+                    <p class="timeline__focus">${escapeHtml(ph.focus)}</p>
+                  </div>
+                </li>`;
+            }).join("")}
+          </ol>
         </div>
       </section>
 
@@ -951,6 +957,7 @@
               <div class="key-row is-price"><span>Per seat</span><span>${escapeHtml(priceDisplay || "On request")}${groupRatesAside}</span></div>
               <div class="key-row"><span>Duration</span><span>${escapeHtml(p.duration_label)}</span></div>
               <div class="key-row"><span>Total hours</span><span>${escapeHtml(String(p.total_hours))} hrs</span></div>
+              <div class="key-row"><span>Timing</span><span>${escapeHtml(p.session_pattern)}</span></div>
               <div class="key-row"><span>Delivery</span><span>${escapeHtml(p.delivery_mode)}</span></div>
               <div class="key-row"><span>Location</span><span>${locationHtml}</span></div>
               <div class="key-row"><span>Next cohort</span><span>${escapeHtml(fmtDate(p.start_date))}</span></div>
@@ -959,38 +966,6 @@
           </aside>
         </div>
       </div>
-
-      <!-- Curriculum band, dark navy, the coded.kw signature section -->
-      <section class="curriculum-band reveal-up">
-        <div class="container">
-          <div class="curriculum-band__head">
-            <span class="eyebrow-tag is-light">[ Curriculum ]</span>
-            <h2>${escapeHtml(p.name.replace(/\s+(Workshop|Bootcamp)$/i, "").trim())} Curriculum</h2>
-            <p class="curriculum-band__lede">${escapeHtml(p.session_pattern)}. ${escapeHtml(p.duration_label)} total.</p>
-          </div>
-          <ol class="timeline timeline--dark">
-            ${p.structure.map((ph, i) => {
-              const parts = ph.phase_name.split(",");
-              const head = (parts[0] || "").trim();
-              const tail = parts.slice(1).join(",").trim();
-              const step = tail ? head : `${p.format === "Bootcamp" ? "Module" : "Day"} ${i + 1}`;
-              const title = tail || head;
-              return `
-                <li class="timeline__row">
-                  <div class="timeline__rail" aria-hidden="true">
-                    <span class="timeline__node"></span>
-                    <span class="timeline__step">${escapeHtml(step)}</span>
-                  </div>
-                  <div class="timeline__body">
-                    <h3 class="timeline__title">${escapeHtml(title)}</h3>
-                    <div class="timeline__meta">${escapeHtml(String(ph.hours))} hrs · ${escapeHtml(String(ph.sessions))} session${ph.sessions === 1 ? "" : "s"}</div>
-                    <p class="timeline__focus">${escapeHtml(ph.focus)}</p>
-                  </div>
-                </li>`;
-            }).join("")}
-          </ol>
-        </div>
-      </section>
 
       <section class="detail-close">
         <div class="container">
