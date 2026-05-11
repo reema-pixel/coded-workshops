@@ -309,11 +309,14 @@ button { font-family: inherit; cursor: pointer; }
 }
 @media (max-width: 720px) {
   .hero-bracket { height: 88px; }
+  /* Shift brackets up from 50% to ~33% so they align with the h1,
+     not the lede paragraph below it */
+  .hero-bracket-wrap       { top: 33%; }
   .hero-bracket-wrap--left  { left: 1%; }
   .hero-bracket-wrap--right { right: 1%; }
   .hero-bracket--left  { animation: none; }
   .hero-bracket--right { animation: none; }
-  .hero-circles { width: 340px; opacity: 0.07; }
+  .hero-circles { width: 340px; opacity: 0.14; }
 }
 @media (prefers-reduced-motion: reduce) {
   .hero-bracket-wrap { animation: none !important; opacity: 1 !important; transform: translateY(-50%) !important; }
