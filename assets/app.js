@@ -300,7 +300,6 @@
       </section>
 
       <section class="intro-band">
-        <img class="intro-band__bracket-bg" src="assets/brand/brackets-solid.svg" alt="" aria-hidden="true" />
         <div class="container intro-band__grid">
           <div class="intro-card reveal-up">
             <h3>Hands-on, not theory</h3>
