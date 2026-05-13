@@ -43,7 +43,7 @@ window.CODED_PROGRAMS = [
     id: "agentic-ai-iter-1",
     slug: "agentic-ai-workshop",
     name: "Agentic AI Workshop",
-    one_liner: "Move from prompting LLMs to building autonomous AI agents, ship a multi-step prototype on n8n + APIs in one week.",
+    one_liner: "Build AI agents and ship a working multi-step prototype on n8n + APIs in one week.",
     topic: "Agentic AI",
     format: "Workshop",
     prereq_label: "Programming basics required",
