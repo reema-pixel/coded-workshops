@@ -194,7 +194,7 @@ window.CODED_PROGRAMS = [
     id: "nvidia-genai",
     slug: "nvidia-genai-and-llm-certification",
     name: "NVIDIA GenAI & LLM Certification Program",
-    one_liner: "A 5-day NVIDIA-aligned certification program on generative AI and large language models, ending in a portfolio capstone.",
+    one_liner: "Official 5-day NVIDIA certification program on generative AI and large language models, ending in a portfolio capstone.",
     topic: "Agentic AI",
     format: "Workshop",
     prereq_label: "Python proficiency required",
