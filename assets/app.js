@@ -289,8 +289,8 @@
         </span>
         <div class="container hero__inner">
           <div class="eyebrow"><span class="dot"></span><span>2026 Program Calendar</span></div>
-          <h1>Programs<br/>at CODED.</h1>
-          <p class="lede">Hands-on workshops and bootcamps your team can join, taught at CODED Campus in Kuwait's Free Trade Zone. Same proven methodology behind our enterprise deliveries.</p>
+          <h1>Enterprise Programs<br/>at CODED.</h1>
+          <p class="lede">From half-day workshops to 10-week bootcamps — every program your team can join is built around something they ship by the last session. Open enrollment, in person, at CODED Campus in Kuwait's Free Trade Zone.</p>
           <div class="hero__meta">
             <span><span class="pip" aria-hidden="true"></span>${PROGRAMS.length} programs on the calendar</span>
             <span><span class="pip" aria-hidden="true"></span>Workshops (1–5 days) and bootcamps (5–10 weeks)</span>
@@ -836,7 +836,7 @@
       <section class="detail-section detail-section--marquee is-soft reveal-up">
         <div class="container">
           <span class="eyebrow-tag">[ Overview ]</span>
-          <h2>What you'll walk out with</h2>
+          <h2>What You'll Walk Out With</h2>
           <ul class="overview-tiles overview-tiles--three">
             <li class="stagger-child"><h6>You'll build</h6><p>${escapeHtml(p.outcomes[0] || "")}</p></li>
             <li class="stagger-child"><h6>How we teach</h6><p>70 / 30 hands-on. Every session ships a working artefact.</p></li>
@@ -883,7 +883,7 @@
           <div>
             <section class="detail-section reveal-up" style="padding-top:0;">
               <span class="eyebrow-tag">[ Audience ]</span>
-              <h2>Who this is for</h2>
+              <h2>Who This Is For</h2>
               <div class="prose">
                 <p>${escapeHtml(p.audience_detail)}</p>
               </div>
@@ -891,7 +891,7 @@
 
             <section class="detail-section reveal-up">
               <span class="eyebrow-tag">[ Outcomes ]</span>
-              <h2>What attendees walk out with</h2>
+              <h2>What Attendees Walk Out With</h2>
               <ul class="outcomes">
                 ${p.outcomes.map(o => `<li class="stagger-child">${escapeHtml(o)}</li>`).join("")}
               </ul>
@@ -899,7 +899,7 @@
 
             <section class="detail-section reveal-up">
               <span class="eyebrow-tag">[ Schedule ]</span>
-              <h2>Cohorts &amp; dates</h2>
+              <h2>Cohorts &amp; Dates</h2>
               <table class="iter-table">
                 <thead><tr><th>Dates</th><th>Status</th></tr></thead>
                 <tbody>
@@ -916,7 +916,7 @@
 
             <section class="detail-section reveal-up">
               <span class="eyebrow-tag">[ Method ]</span>
-              <h2>How we teach it</h2>
+              <h2>How We Teach It</h2>
               <div class="method-block">
                 <div>
                   <p><strong>70% hands-on, 30% theory.</strong> CODED's signature methodology runs through every program: short, focused inputs followed by long, deliberate practice on real artefacts.</p>
@@ -932,24 +932,9 @@
               </div>
             </section>
 
-            ${p.instructor && p.instructor.name ? `
-              <section class="detail-section reveal-up">
-                <span class="eyebrow-tag">[ Instructor ]</span>
-                <h2>Lead instructor</h2>
-                <div class="instructor-block">
-                  <div class="instructor-avatar" aria-hidden="true">${escapeHtml(p.instructor.name.split(" ").filter(Boolean).slice(0, 2).map(s => s[0]).join("").toUpperCase())}</div>
-                  <div>
-                    <h3 style="margin: 0 0 4px; font-size: 18px; font-weight: 600; font-family: var(--font-display);">${escapeHtml(p.instructor.name)}</h3>
-                    <div style="color: var(--text-muted); font-size: 13px; margin-bottom: 12px; letter-spacing: 0.04em;">${escapeHtml(p.instructor.role)}</div>
-                    <p style="color: var(--text-secondary); margin: 0; line-height: 1.6; max-width: 62ch;">${escapeHtml(p.instructor.bio || "")}</p>
-                  </div>
-                </div>
-              </section>
-            ` : ""}
-
             <section class="detail-section ${p.faq && p.faq.length ? "" : "no-border"}">
               <span class="eyebrow-tag">[ FAQ ]</span>
-              <h2>Frequently asked</h2>
+              <h2>Frequently Asked</h2>
               <div class="faq">
                 ${(p.faq && p.faq.length ? p.faq : defaultFaq()).map(q => `
                   <details class="stagger-child">

@@ -33,12 +33,64 @@ const INSTRUCTORS = {
     role: "Bootcamp Instructor, Engineering",
     bio: "Computer Science graduate and CODED Bootcamp Instructor. Engineering experience across MERN stack, Flutter, Python data tooling, and computer vision; has delivered enterprise bootcamps and full-stack iterations at CODED. Lead instructor on Power Automate.",
   },
+  omar: {
+    name: "Omar Alibrahim",
+    role: "Instructor, Data & AI",
+    bio: "Data and AI instructor at CODED focused on practical AI tools for non-technical professionals. Helps business teams apply Claude, ChatGPT, and AI analytics tools to real workflows in marketing, finance, and operations.",
+  },
 };
 
 window.CODED_PROGRAMS = [
   // ============================================================
   // Q2
   // ============================================================
+  {
+    id: "chat-with-data",
+    slug: "chat-with-your-data-workshop",
+    name: "Chat with your Data Workshop",
+    one_liner: "Extract insights, generate charts, and turn your data into polished outputs by chatting with Claude — no code, no SQL, no installs required.",
+    topic: "Data & Analytics",
+    format: "Workshop",
+    prereq_label: "No coding or SQL required",
+    shift: "Morning",
+    audience: ["Non-Technical", "Finance & Accounting", "Marketing & Content"],
+    start_date: "2026-06-01",
+    end_date: "2026-06-01",
+    duration_label: "1 day (4 hours)",
+    total_hours: 4,
+    session_pattern: "Morning, 9am–1pm, single session",
+    delivery_mode: "In person",
+    location: CODED_LOCATION.short,
+    location_full: CODED_LOCATION.label,
+    location_url: CODED_LOCATION.maps_url,
+    price_per_seat_kwd: 120,
+    classroom: "Morning Legacy (33 seats)",
+    iterations: [{ dates: "June 1, 2026" }],
+    overview:
+      "A 4-hour hands-on workshop on using Claude (web) to extract insights from your data, generate charts and summary tables, and turn analysis into slides and short articles. No SQL, no Python, no installs required — just a browser and a real dataset. Built for team leads and knowledge workers who spend too many hours copy-pasting numbers into decks.",
+    outcomes: [
+      "Extract insights from datasets by chatting with Claude",
+      "Generate visuals, charts, and summary tables on demand",
+      "Turn analysis into presentation slides and short articles",
+      "A 'chat with data' routine adapted to your role and real datasets",
+    ],
+    structure: [
+      { phase_name: "Part 1, Data + AI Mindset", sessions: 1, hours: 1, focus: "How AI reads and reasons over data, what Claude can and can't do with your files, setting up a productive analytical conversation." },
+      { phase_name: "Part 2, Chatting with Your Data", sessions: 1, hours: 1, focus: "Live demo + hands-on: upload a real dataset, ask analytical questions in plain English, iterate on outputs, validate results." },
+      { phase_name: "Part 3, Visuals + Insights", sessions: 1, hours: 1, focus: "Generating charts, summary tables, and trend highlights on demand; formatting outputs for leadership-ready reporting." },
+      { phase_name: "Part 4, Apply to Your Use Case", sessions: 1, hours: 1, focus: "Participants apply the workflow to their own data and role; produce at least one output (slide, table, or short article) to take back to work." },
+    ],
+    audience_detail:
+      "Team leads, knowledge workers in marketing, finance, ops, and HR who currently copy-paste data into slides or assemble reports manually. Spreadsheet fluency is enough — no coding, SQL, or prior AI experience required. Maximum cohort size: 33.",
+    instructor: INSTRUCTORS.omar,
+    faq: [
+      { question: "Do attendees need to install anything?", answer: "No. The entire workshop runs in a browser using Claude (web). Nothing to install before or during." },
+      { question: "What data should attendees bring?", answer: "Any spreadsheet or CSV they work with regularly. Sales data, finance reports, ops logs — anything with rows and columns works well." },
+      { question: "Is this suitable for someone who has never used AI tools before?", answer: "Yes. The workshop is designed for people with zero AI or coding background. Part 1 covers everything they need to get started." },
+    ],
+    status: "Published",
+    tags: ["data", "ai", "claude", "analytics", "no-code"],
+  },
   {
     id: "agentic-ai-iter-1",
     slug: "agentic-ai-workshop",
@@ -200,8 +252,8 @@ window.CODED_PROGRAMS = [
     prereq_label: "Python proficiency required",
     shift: "Morning",
     audience: ["Technical / IT", "Data & Analytics"],
-    start_date: "2026-07-05",
-    end_date: "2026-07-09",
+    start_date: "2026-09-06",
+    end_date: "2026-09-10",
     duration_label: "1 week (5 days)",
     total_hours: 35,
     session_pattern: "Morning shift, 8am–3pm, five consecutive days",
@@ -211,7 +263,7 @@ window.CODED_PROGRAMS = [
     location_url: CODED_LOCATION.maps_url,
     price_per_seat_kwd: 1450,
     classroom: "Morning Big O (35 seats)",
-    iterations: [{ dates: "July 5–9, 2026" }],
+    iterations: [{ dates: "September 6–10, 2026" }],
     overview:
       "Five days of NVIDIA-aligned certification on large language models and generative AI. Hands-on with NIM, NeMo, and Triton across the full LLM lifecycle. Each attendee leaves with a portfolio project on real data plus the certification voucher.",
     outcomes: [
@@ -341,8 +393,8 @@ window.CODED_PROGRAMS = [
     prereq_label: "Open to all, basic Agile helps",
     shift: "Morning",
     audience: ["Technical / IT", "Non-Technical"],
-    start_date: "2026-07-20",
-    end_date: "2026-07-21",
+    start_date: "2026-08-04",
+    end_date: "2026-08-05",
     duration_label: "2 days",
     total_hours: 14,
     session_pattern: "Morning shift, 8am–3pm, two consecutive days",
@@ -353,7 +405,7 @@ window.CODED_PROGRAMS = [
     price_per_seat_kwd: 180,
     classroom: "Morning Big O / Legacy (35 seats)",
     iterations: [
-      { dates: "July 20–21, 2026" },
+      { dates: "August 4–5, 2026" },
       { dates: "December 27–28, 2026" },
     ],
     overview:
