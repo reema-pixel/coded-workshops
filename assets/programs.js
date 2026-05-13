@@ -146,7 +146,7 @@ window.CODED_PROGRAMS = [
     id: "sql",
     slug: "data-analytics-and-sql",
     name: "Data Analytics & SQL",
-    one_liner: "Two-day fundamentals of analytical SQL, query, transform, and visualise enterprise data without an engineering ticket.",
+    one_liner: "Two-day fundamentals of SQL. Query, transform, and visualise enterprise data seamlessly.",
     topic: "Data & Analytics",
     format: "Workshop",
     prereq_label: "No coding required",
