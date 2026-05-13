@@ -966,7 +966,7 @@
               <div class="key-row is-price"><span>Per seat</span><span>${escapeHtml(priceDisplay || "On request")}${groupRatesAside}</span></div>
               <div class="key-row"><span>Duration</span><span>${escapeHtml(p.duration_label)}</span></div>
               <div class="key-row"><span>Total hours</span><span>${escapeHtml(String(p.total_hours))} hrs</span></div>
-              <div class="key-row"><span>Timing</span><span>${escapeHtml(fmtTimingShort(p.session_pattern))}</span></div>
+              <div class="key-row"><span>Timing</span><span>${escapeHtml(fmtTimingShort(p.session_pattern))}${fmtDayRange(p) ? ` · ${escapeHtml(fmtDayRange(p))}` : ""}</span></div>
               <div class="key-row"><span>Delivery</span><span>${escapeHtml(p.delivery_mode)}</span></div>
               <div class="key-row"><span>Location</span><span>${locationHtml}</span></div>
               <div class="key-row"><span>Next cohort</span><span>${escapeHtml(fmtDate(p.start_date))}</span></div>
