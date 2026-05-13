@@ -240,7 +240,7 @@ window.CODED_PROGRAMS = [
     id: "ai-finance",
     slug: "intro-ai-for-finance",
     name: "Intro AI for Finance",
-    one_liner: "AI-powered financial modeling, forecasting, and reporting automation, three days, real outputs you can take to the next FP&A cycle.",
+    one_liner: "AI-powered financial modeling, forecasting, and reporting automation in three days.",
     topic: "Data & Analytics",
     format: "Workshop",
     prereq_label: "Excel comfort, no coding needed",
