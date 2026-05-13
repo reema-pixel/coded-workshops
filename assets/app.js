@@ -289,13 +289,8 @@
         </span>
         <div class="container hero__inner">
           <div class="eyebrow"><span class="dot"></span><span>2026 Program Calendar</span></div>
-          <h1>Enterprise Programs<br/>at CODED.</h1>
-          <p class="lede">From half-day workshops to 10-week bootcamps — every program your team can join is built around something they ship by the last session. Open enrollment, in person, at CODED Campus in Kuwait's Free Trade Zone.</p>
-          <div class="hero__meta">
-            <span><span class="pip" aria-hidden="true"></span>${PROGRAMS.length} programs on the calendar</span>
-            <span><span class="pip" aria-hidden="true"></span>Workshops (1–5 days) and bootcamps (5–10 weeks)</span>
-            <span><span class="pip" aria-hidden="true"></span>Delivered in Kuwait, in person</span>
-          </div>
+          <h1>Enterprise Programs<br/>at CODED</h1>
+          <p class="lede">In-person tech workshops and long-form bootcamps across AI, software, data, cybersecurity, product, and emerging technologies — with flexible seat-based enrollment for enterprises at CODED Campus</p>
         </div>
       </section>
 
