@@ -72,6 +72,33 @@
     return pattern;
   }
 
+  // Derive the day-of-week range from start/end dates, or parse from session_pattern for bootcamps.
+  // Returns e.g. "Sun – Thu", "Sun – Tue", "Sun · Tue · Thu"
+  const DAY_SHORT = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+  function fmtDayRange(p) {
+    if (p.format === "Bootcamp") {
+      const sp = p.session_pattern || "";
+      // "Sundays to Thursdays ..." → "Sun – Thu"
+      const toMatch = sp.match(/(\w+day)s\s+to\s+(\w+day)s/i);
+      if (toMatch) {
+        const a = toMatch[1].slice(0, 3);
+        const b = toMatch[2].slice(0, 3);
+        return `${a} – ${b}`;
+      }
+      // "Sundays, Tuesdays, Thursdays ..." → "Sun · Tue · Thu"
+      const listPart = sp.split("·")[0];
+      const listed = listPart.match(/(\w+day)s/gi);
+      if (listed) return listed.map(d => d.slice(0, 3)).join(" · ");
+    }
+    if (p.start_date && p.end_date) {
+      const s = new Date(p.start_date + "T12:00:00");
+      const e = new Date(p.end_date + "T12:00:00");
+      if (s.toDateString() === e.toDateString()) return DAY_SHORT[s.getDay()];
+      return `${DAY_SHORT[s.getDay()]} – ${DAY_SHORT[e.getDay()]}`;
+    }
+    return "";
+  }
+
   // mailto link for a specific program (or generic if none).
   // Keeps the body short, with five quick-fill fields the buyer can complete
   // in their own client (Outlook, Apple Mail, Gmail) without leaving home.
@@ -814,14 +841,15 @@
               <div class="detail-meta__value">${escapeHtml(p.delivery_mode)}</div>
             </div>
             <div>
-              <div class="detail-meta__label">Location</div>
-              <div class="detail-meta__value">${locationHtml}</div>
+              <div class="detail-meta__label">Timing</div>
+              <div class="detail-meta__value">${escapeHtml(fmtTimingShort(p.session_pattern))}</div>
+              <div class="detail-meta__sub">${escapeHtml(fmtDayRange(p))}</div>
             </div>
           </div>
 
           <div class="detail-hero__cta">
             <a class="btn btn-primary btn-lg" href="${escapeHtml(mailto)}">Request Seats &amp; Pricing ${ICON.arrow}</a>
-            <a class="btn btn-secondary btn-lg" href="${escapeHtml(p.location_url || "#")}" target="_blank" rel="noopener">View campus on Google Maps ${ICON.extlink}</a>
+            <a class="btn btn-secondary btn-lg" href="${escapeHtml(p.location_url || "#")}" target="_blank" rel="noopener">Location ${ICON.extlink}</a>
           </div>
         </div>
       </section>
