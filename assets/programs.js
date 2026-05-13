@@ -434,7 +434,7 @@ window.CODED_PROGRAMS = [
     id: "aid-bootcamp",
     slug: "ai-app-developer-bootcamp",
     name: "AI App Developer Bootcamp",
-    one_liner: "Five weeks of evenings to take a non-technical professional from idea to a deployed, production-ready AI app.",
+    one_liner: "Five weeks taking non-technical trainees through AI app development, prototyping, and deployment, ending in a production-ready application.",
     topic: "Agentic AI",
     format: "Bootcamp",
     prereq_label: "No coding required",
