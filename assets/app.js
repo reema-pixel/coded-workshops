@@ -307,7 +307,7 @@
         <div class="container hero__inner">
           <div class="eyebrow"><span class="dot"></span><span>2026 Program Calendar</span></div>
           <h1>Enterprise Programs<br/>at CODED</h1>
-          <p class="lede">In-person workshops and long-form bootcamps across AI, software, data, cybersecurity, product, and emerging technologies — with flexible seat-based enrollment for enterprises at CODED Campus</p>
+          <p class="lede">In-person workshops and long-form bootcamps across AI, software, data, cybersecurity, product, and emerging technologies. Flexible seat-based enrollment for enterprises at CODED Campus.</p>
         </div>
       </section>
 
