@@ -728,12 +728,9 @@
   }
 
   function renderCard(p, index) {
-    /* Card audience pill, show a prerequisite/access label rather than a
-     * specific team. We keep team filtering in the filter bar; on the card,
-     * the more inclusive "No coding required" / "For marketing teams" reads
-     * better and avoids implying the workshop is closed to other teams. */
-    const audiencePill = p.prereq_label
-      ? `<span class="pill audience">${escapeHtml(p.prereq_label)}</span>`
+    const timingStr = [fmtTimingShort(p.session_pattern), fmtDayRange(p)].filter(Boolean).join(" · ");
+    const timingPill = timingStr
+      ? `<span class="pill audience">${escapeHtml(timingStr)}</span>`
       : "";
     const aria = `${p.name}, ${p.topic}, starts ${fmtDate(p.start_date)}, ${fmtPrice(p.price_per_seat_kwd)}`;
     const priceMain = p.price_per_seat_kwd
@@ -757,7 +754,7 @@
         <div class="card__meta">
           <span>${ICON.cal} ${escapeHtml("Starts " + fmtDate(p.start_date))}</span>
           <span>${ICON.clock} ${escapeHtml(p.duration_label)}</span>
-          ${audiencePill}
+          ${timingPill}
         </div>
         <span class="card__cta">View program ${ICON.arrow}</span>
       </article>
