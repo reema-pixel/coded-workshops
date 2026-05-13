@@ -318,7 +318,7 @@
               <svg class="filter-search__icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                 <circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/>
               </svg>
-              <input id="filterSearch" type="search" autocomplete="off" placeholder="Search by topic, instructor, or keyword (e.g. AI, Power BI, bootcamp)…" aria-label="Search programs" />
+              <input id="filterSearch" type="search" autocomplete="off" placeholder="Search by topic or keyword (e.g. AI, Power BI, bootcamp)…" aria-label="Search programs" />
               <button type="button" class="filter-search__clear" id="filterSearchClear" aria-label="Clear search" hidden>×</button>
             </label>
             <button type="button" class="filters-toggle" id="filtersToggle" aria-expanded="false" aria-controls="filtersBar">
