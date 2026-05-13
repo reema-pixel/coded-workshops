@@ -1167,16 +1167,21 @@ button { font-family: inherit; cursor: pointer; }
 .overview-tiles--three {
   grid-template-columns: repeat(3, 1fr);
   max-width: 1080px;
+  /* Parent bg = border colour; 1px column gap exposes it as a full-height divider */
+  background: var(--border);
+  gap: 0 1px;
 }
 .overview-tiles--three li {
-  border-right: 1px solid var(--border);
+  background: #FFFFFF;
+  border-right: 0;
   border-bottom: 0;
 }
-.overview-tiles--three li:last-child { border-right: 0; }
 @media (max-width: 720px) {
-  .overview-tiles--three { grid-template-columns: 1fr; }
-  .overview-tiles--three li { border-right: 0; border-bottom: 1px solid var(--border); }
-  .overview-tiles--three li:last-child { border-bottom: 0; }
+  .overview-tiles--three {
+    grid-template-columns: 1fr;
+    gap: 1px 0;
+  }
+  .overview-tiles--three li { border-bottom: 0; }
 }
 .overview-tiles h6 {
   margin: 0 0 8px;
