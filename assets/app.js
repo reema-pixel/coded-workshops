@@ -351,7 +351,7 @@
             <img class="cta-dot" src="assets/brand/dot-pattern-white.svg" alt="" aria-hidden="true" />
             <img class="cta-lines" src="assets/brand/lines-2-A.svg" alt="" aria-hidden="true" />
             <div class="cta-banner__content">
-              <h2>Need it scoped to your team instead?</h2>
+              <h2>Need it tailored to your team instead?</h2>
               <p>For larger groups or company-specific use cases, CODED also runs custom programs end-to-end. Same hands-on methodology, scoped around your business.</p>
             </div>
             <a class="btn btn-primary btn-lg" href="mailto:${ENTERPRISE_EMAIL}?subject=Custom%20program%20inquiry">Email enterprise ${ICON.arrow}</a>
