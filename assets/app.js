@@ -836,7 +836,7 @@
 
           <div class="detail-hero__cta">
             <a class="btn btn-primary btn-lg" href="${escapeHtml(mailto)}">Request Seats &amp; Pricing ${ICON.arrow}</a>
-            <a class="btn btn-secondary btn-lg" href="${escapeHtml(p.location_url || "#")}" target="_blank" rel="noopener">Location ${ICON.extlink}</a>
+            <a class="btn btn-secondary btn-lg" href="${escapeHtml(p.location_url || "#")}" target="_blank" rel="noopener">Location (CODED Campus) ${ICON.extlink}</a>
           </div>
         </div>
       </section>
