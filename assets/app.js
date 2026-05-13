@@ -154,7 +154,7 @@
       ],
     },
     {
-      key: "format", label: "Format", multi: true,
+      key: "format", label: "Duration", multi: true,
       options: [
         { value: "Workshop", label: "Workshop (1–5 days)" },
         { value: "Bootcamp", label: "Bootcamp (5–10 weeks)" },
@@ -191,16 +191,6 @@
           return { value: m, label: d.toLocaleDateString("en-GB", { month: "long", year: "numeric" }) };
         });
       },
-    },
-    {
-      key: "duration", label: "Duration", multi: true,
-      options: [
-        { value: "1-2-days", label: "1 – 2 days" },
-        { value: "3-day", label: "3 days" },
-        { value: "5-day", label: "5 days / 1 week" },
-        { value: "5-weeks", label: "5 weeks" },
-        { value: "10-weeks", label: "10 weeks" },
-      ],
     },
   ];
 
