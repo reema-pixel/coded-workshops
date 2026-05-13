@@ -290,23 +290,23 @@
         <div class="container hero__inner">
           <div class="eyebrow"><span class="dot"></span><span>2026 Program Calendar</span></div>
           <h1>Enterprise Programs<br/>at CODED</h1>
-          <p class="lede">In-person tech workshops and long-form bootcamps across AI, software, data, cybersecurity, product, and emerging technologies — with flexible seat-based enrollment for enterprises at CODED Campus</p>
+          <p class="lede">In-person workshops and long-form bootcamps across AI, software, data, cybersecurity, product, and emerging technologies — with flexible seat-based enrollment for enterprises at CODED Campus</p>
         </div>
       </section>
 
       <section class="intro-band">
         <div class="container intro-band__grid">
           <div class="intro-card reveal-up">
-            <h3>Hands-on, not theory</h3>
-            <p>Every program is built around a real artefact each attendee walks out with. A deployed dashboard, a working AI agent, a shipped product, a bank-ready playbook.</p>
+            <h3>Hands-On, Not Theory</h3>
+            <p>Participants don't just learn concepts, they apply them through practical exercises and real-world projects.</p>
           </div>
           <div class="intro-card reveal-up delay-1">
-            <h3>Built for teams</h3>
-            <p>Send one person, send a whole team. Same per-seat price either way. We confirm the cohort that fits your timing.</p>
+            <h3>Flexible Enrollment</h3>
+            <p>Enterprises can enroll one or multiple participants across a wide range of in-person programs.</p>
           </div>
           <div class="intro-card reveal-up delay-2">
-            <h3>One email away</h3>
-            <p>No forms, no chatbot. Pick a program, hit "Request Seats &amp; Pricing", and the email opens with everything filled in.</p>
+            <h3>Built to Support L&amp;D Teams</h3>
+            <p>We manage the full training experience, including attendee communication, onboarding, attendance, feedback collection, and post-program reporting.</p>
           </div>
         </div>
       </section>
