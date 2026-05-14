@@ -335,7 +335,7 @@ window.CODED_PROGRAMS = [
     id: "scrum-master",
     slug: "scrum-master-exam-prep",
     name: "Scrum Master Exam Prep",
-    one_liner: "Two-day intensive prep for PSM I, practice exams, real case studies, and a scheduled exam voucher on the way out.",
+    one_liner: "Two-day intensive prep for PSM I, practice exams, and real case studies.",
     topic: "Project Management & Agile",
     format: "Workshop",
     prereq_label: "Open to all, basic Agile helps",
@@ -357,22 +357,21 @@ window.CODED_PROGRAMS = [
       { dates: "December 27–28, 2026" },
     ],
     overview:
-      "Two days of intensive PSM I exam prep with practice exams, real case studies, and live debriefs. Every attendee walks out exam-ready with a scheduled voucher in hand. 90%+ first-attempt pass rate over the last four cohorts.",
+      "Two days of intensive PSM I exam prep with practice exams, real case studies, and live debriefs. Every attendee walks out exam-ready. 90%+ first-attempt pass rate over the last four cohorts.",
     outcomes: [
       "Pass-ready understanding of the Scrum Guide and sprint mechanics",
       "Confidence facilitating Scrum ceremonies in a real team",
       "Exam tactics and timed practice across multiple full-length mocks",
-      "A scheduled PSM I exam voucher in hand",
     ],
     structure: [
       { phase_name: "Day 1, Scrum Framework Deep Dive", sessions: 1, hours: 7, focus: "Why Agile, why Scrum; pillars, values, the three roles, all five events, artefacts and Definition of Done; first practice exam and debrief." },
-      { phase_name: "Day 2, Exam Mastery & Simulation", sessions: 1, hours: 7, focus: "User stories, backlog management and estimation, tricky scaling and cross-functional topics, two more practice exams, live Scrum simulation, voucher distribution." },
+      { phase_name: "Day 2, Exam Mastery & Simulation", sessions: 1, hours: 7, focus: "User stories, backlog management and estimation, tricky scaling and cross-functional topics, two more practice exams, live Scrum simulation." },
     ],
     audience_detail:
       "Team leads, project managers, and aspiring Agile practitioners pursuing PSM I. Prerequisite: familiarity with Agile concepts (some prior Scrum or sprint exposure). No coding. Maximum cohort size: 35.",
     instructor: INSTRUCTORS.ali_taqi,
     faq: [
-      { question: "Is the PSM I exam fee included?", answer: "Yes. The exam voucher is included in the seat fee." },
+      { question: "Is the PSM I exam fee included?", answer: "No. The exam is taken independently after the workshop." },
       { question: "What's the pass rate from this workshop?", answer: "Above 90% on first attempt over the last 4 deliveries." },
     ],
     status: "Published",
