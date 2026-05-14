@@ -101,8 +101,8 @@ window.CODED_PROGRAMS = [
     prereq_label: "For marketing & content teams",
     shift: "Morning",
     audience: ["Marketing & Content"],
-    start_date: "2026-06-21",
-    end_date: "2026-06-23",
+    start_date: "2026-06-23",
+    end_date: "2026-06-25",
     duration_label: "3 days",
     total_hours: 21,
     session_pattern: "Morning shift, 8am–3pm, three consecutive days",
@@ -113,8 +113,8 @@ window.CODED_PROGRAMS = [
     price_per_seat_kwd: 400,
     classroom: "Morning Legacy (33 seats)",
     iterations: [
-      { dates: "June 21–23, 2026" },
-      { dates: "August 1–3, 2026" },
+      { dates: "June 23–25, 2026" },
+      { dates: "August 25–27, 2026" },
       { dates: "October 18–20, 2026" },
     ],
     overview:
@@ -152,8 +152,8 @@ window.CODED_PROGRAMS = [
     prereq_label: "No coding required",
     shift: "Morning",
     audience: ["Data & Analytics", "Finance & Accounting", "Non-Technical"],
-    start_date: "2026-07-05",
-    end_date: "2026-07-06",
+    start_date: "2026-08-04",
+    end_date: "2026-08-05",
     duration_label: "2 days",
     total_hours: 14,
     session_pattern: "Morning shift, 8am–3pm, two consecutive days",
@@ -164,7 +164,7 @@ window.CODED_PROGRAMS = [
     price_per_seat_kwd: 200,
     classroom: "Morning Legacy (33 seats)",
     iterations: [
-      { dates: "July 5–6, 2026" },
+      { dates: "August 4–5, 2026" },
       { dates: "October 4–5, 2026" },
     ],
     overview:
@@ -246,8 +246,8 @@ window.CODED_PROGRAMS = [
     prereq_label: "Excel comfort, no coding needed",
     shift: "Morning",
     audience: ["Data & Analytics", "Finance & Accounting"],
-    start_date: "2026-07-12",
-    end_date: "2026-07-14",
+    start_date: "2026-07-19",
+    end_date: "2026-07-21",
     duration_label: "3 days",
     total_hours: 21,
     session_pattern: "Morning shift, 8am–3pm, three consecutive days",
@@ -257,7 +257,7 @@ window.CODED_PROGRAMS = [
     location_url: CODED_LOCATION.maps_url,
     price_per_seat_kwd: 225,
     classroom: "Morning Alsharekh (24 seats)",
-    iterations: [{ dates: "July 12–14, 2026" }],
+    iterations: [{ dates: "July 19–21, 2026" }],
     overview:
       "Three days for finance teams on AI-powered modeling, forecasting, and reporting automation. Prompt engineering for financial analysis, LLM-assisted forecast models, automated month-end reporting. Each attendee leaves with a working model and a reporting prototype tailored to your company.",
     outcomes: [
@@ -341,8 +341,8 @@ window.CODED_PROGRAMS = [
     prereq_label: "Open to all, basic Agile helps",
     shift: "Morning",
     audience: ["Technical / IT", "Non-Technical"],
-    start_date: "2026-08-04",
-    end_date: "2026-08-05",
+    start_date: "2026-07-05",
+    end_date: "2026-07-06",
     duration_label: "2 days",
     total_hours: 14,
     session_pattern: "Morning shift, 8am–3pm, two consecutive days",
@@ -353,7 +353,7 @@ window.CODED_PROGRAMS = [
     price_per_seat_kwd: 180,
     classroom: "Morning Big O / Legacy (35 seats)",
     iterations: [
-      { dates: "August 4–5, 2026" },
+      { dates: "July 5–6, 2026" },
       { dates: "December 27–28, 2026" },
     ],
     overview:
