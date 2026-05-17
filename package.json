@@ -1,0 +1,22 @@
+{
+  "name": "coded-workshops",
+  "private": true,
+  "version": "1.0.0",
+  "description": "CODED Training For Companies — static landing page + /api/inquiry serverless function (Vercel). Catalog content sourced from Airtable.",
+  "engines": {
+    "node": "20.x"
+  },
+  "scripts": {
+    "dev": "python3 server.py",
+    "airtable:setup": "node scripts/airtable-setup.js",
+    "airtable:seed":  "node scripts/airtable-seed.js",
+    "airtable:sync":  "node scripts/airtable-sync.js",
+    "icons:bootstrap": "node scripts/icons-bootstrap.js",
+    "icons:autolink":  "node scripts/auto-link-icons.js",
+    "pdfs":            "node scripts/generate-catalog-pdfs.js",
+    "build":           "npm run airtable:sync && npm run pdfs"
+  },
+  "devDependencies": {
+    "puppeteer": "^23.0.0"
+  }
+}

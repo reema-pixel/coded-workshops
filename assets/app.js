@@ -1077,7 +1077,12 @@
 
     const hash = location.hash || "#/";
     const path = hash.split("?")[0];
-    if (path.startsWith("#/programs/")) {
+    // Catalog route owns its own body class; strip it before every re-route.
+    if (typeof window.teardownCatalog === "function") window.teardownCatalog();
+    if (path.startsWith("#/catalog/")) {
+      const slug = path.replace("#/catalog/", "").replace(/^\/+/, "").replace(/\/+$/, "").toLowerCase();
+      if (typeof window.renderCatalog === "function") window.renderCatalog(slug);
+    } else if (path.startsWith("#/programs/")) {
       const slug = path.replace("#/programs/", "").replace(/^\/+/, "").replace(/\/+$/, "").toLowerCase();
       renderDetail(slug);
     } else {

@@ -1,0 +1,389 @@
+{
+  "generated_at": "2026-05-17T21:42:10.213Z",
+  "icons": [
+    {
+      "id": "rec03lJNRqMrxoKbK",
+      "name": "Lovable",
+      "slug": "lovable",
+      "category": "Tool",
+      "path": "assets/icons/lovable.svg",
+      "source_url": "https://lucide.dev/icons/heart-handshake"
+    },
+    {
+      "id": "rec0bP5rBNDVaaYa6",
+      "name": "Data Modeling",
+      "slug": "data-modeling",
+      "category": "Field",
+      "path": "assets/icons/data-modeling.svg",
+      "source_url": "https://lucide.dev/icons/database-zap"
+    },
+    {
+      "id": "rec1VSzSmDaxWvS2e",
+      "name": "PyTorch",
+      "slug": "pytorch",
+      "category": "Tool",
+      "path": "assets/icons/pytorch.svg",
+      "source_url": "https://simpleicons.org/?q=pytorch"
+    },
+    {
+      "id": "rec3HjqIO2jS1gf7r",
+      "name": "Megaphone (3D)",
+      "slug": "illustration-megaphone",
+      "category": "Illustration",
+      "path": "assets/icons/illustration-megaphone.svg",
+      "source_url": "https://lucide.dev/icons/megaphone"
+    },
+    {
+      "id": "rec41IIJYHgYmwN1y",
+      "name": "DAX",
+      "slug": "dax",
+      "category": "Foundation",
+      "path": "assets/icons/dax.svg",
+      "source_url": "https://lucide.dev/icons/function-square"
+    },
+    {
+      "id": "rec84ch56tnxGHdZr",
+      "name": "Agentic AI",
+      "slug": "agentic-ai",
+      "category": "Field",
+      "path": "assets/icons/agentic-ai.svg",
+      "source_url": "https://lucide.dev/icons/bot"
+    },
+    {
+      "id": "recBZEg3Sazs2xQJi",
+      "name": "Metasploit",
+      "slug": "metasploit",
+      "category": "Tool",
+      "path": "assets/icons/metasploit.svg",
+      "source_url": "https://simpleicons.org/?q=metasploit"
+    },
+    {
+      "id": "recBcCuH3TpSXGI4w",
+      "name": "Microsoft Teams",
+      "slug": "ms-teams",
+      "category": "Tool",
+      "path": "assets/icons/ms-teams.svg",
+      "source_url": "https://lucide.dev/icons/users"
+    },
+    {
+      "id": "recDrZwRlIRgPbheQ",
+      "name": "Tableau",
+      "slug": "tableau",
+      "category": "Tool",
+      "path": "assets/icons/tableau.svg",
+      "source_url": "https://lucide.dev/icons/pie-chart"
+    },
+    {
+      "id": "recEEgwOwkh0gEpMk",
+      "name": "Network Security",
+      "slug": "network-security",
+      "category": "Field",
+      "path": "assets/icons/network-security.svg",
+      "source_url": "https://lucide.dev/icons/network"
+    },
+    {
+      "id": "recFFGia4kID6nXBM",
+      "name": "SQL",
+      "slug": "sql",
+      "category": "Foundation",
+      "path": "assets/icons/sql.svg",
+      "source_url": "https://lucide.dev/icons/database"
+    },
+    {
+      "id": "recFmXUdWEVvlFl0u",
+      "name": "Gear (3D)",
+      "slug": "illustration-gear",
+      "category": "Illustration",
+      "path": "assets/icons/illustration-gear.svg",
+      "source_url": "https://lucide.dev/icons/settings-2"
+    },
+    {
+      "id": "recGyK86kqfSEwB77",
+      "name": "Scrum",
+      "slug": "scrum",
+      "category": "Field",
+      "path": "assets/icons/scrum.svg",
+      "source_url": "https://simpleicons.org/?q=scrumalliance"
+    },
+    {
+      "id": "recHNfcRWCp9tOMJl",
+      "name": "Pandas",
+      "slug": "pandas",
+      "category": "Tool",
+      "path": "assets/icons/pandas.svg",
+      "source_url": "https://simpleicons.org/?q=pandas"
+    },
+    {
+      "id": "recI0FYVQKb1wIX8m",
+      "name": "NumPy",
+      "slug": "numpy",
+      "category": "Tool",
+      "path": "assets/icons/numpy.svg",
+      "source_url": "https://simpleicons.org/?q=numpy"
+    },
+    {
+      "id": "recJ3jLKHFo5Y16R6",
+      "name": "Supabase",
+      "slug": "supabase",
+      "category": "Tool",
+      "path": "assets/icons/supabase.svg",
+      "source_url": "https://simpleicons.org/?q=supabase"
+    },
+    {
+      "id": "recPXg3rjWTwRh6cZ",
+      "name": "SharePoint",
+      "slug": "sharepoint",
+      "category": "Tool",
+      "path": "assets/icons/sharepoint.svg",
+      "source_url": "https://lucide.dev/icons/folder-cog"
+    },
+    {
+      "id": "recQ2oxIOCiyeIL1E",
+      "name": "Machine Learning",
+      "slug": "machine-learning",
+      "category": "Field",
+      "path": "assets/icons/machine-learning.svg",
+      "source_url": "https://lucide.dev/icons/brain"
+    },
+    {
+      "id": "recQXsRhy88MltoVF",
+      "name": "Deep Learning",
+      "slug": "deep-learning",
+      "category": "Field",
+      "path": "assets/icons/deep-learning.svg",
+      "source_url": "https://lucide.dev/icons/cpu"
+    },
+    {
+      "id": "recQlXEODFvBOKXX9",
+      "name": "Postman",
+      "slug": "postman",
+      "category": "Tool",
+      "path": "assets/icons/postman.svg",
+      "source_url": "https://simpleicons.org/?q=postman"
+    },
+    {
+      "id": "recUMCuQ4zVXqYeI7",
+      "name": "Replit",
+      "slug": "replit",
+      "category": "Tool",
+      "path": "assets/icons/replit.svg",
+      "source_url": "https://simpleicons.org/?q=replit"
+    },
+    {
+      "id": "recUkT4F3bFRgS9jO",
+      "name": "LLMs",
+      "slug": "llms",
+      "category": "Field",
+      "path": "assets/icons/llms.svg",
+      "source_url": "https://lucide.dev/icons/message-square-code"
+    },
+    {
+      "id": "recVRTnS67DdWvHlr",
+      "name": "Splunk",
+      "slug": "splunk",
+      "category": "Tool",
+      "path": "assets/icons/splunk.svg",
+      "source_url": "https://simpleicons.org/?q=splunk"
+    },
+    {
+      "id": "recWblBV3mXBjkqtU",
+      "name": "PowerShell",
+      "slug": "powershell",
+      "category": "Foundation",
+      "path": "assets/icons/powershell.svg",
+      "source_url": "https://lucide.dev/icons/terminal"
+    },
+    {
+      "id": "recXsLkZu1LdQEAbq",
+      "name": "scikit-learn",
+      "slug": "scikit-learn",
+      "category": "Tool",
+      "path": "assets/icons/scikit-learn.svg",
+      "source_url": "https://simpleicons.org/?q=scikitlearn"
+    },
+    {
+      "id": "recYL3LmtoRZGrskJ",
+      "name": "Wireshark",
+      "slug": "wireshark",
+      "category": "Tool",
+      "path": "assets/icons/wireshark.svg",
+      "source_url": "https://simpleicons.org/?q=wireshark"
+    },
+    {
+      "id": "recYb0lKSjeujgxbn",
+      "name": "n8n",
+      "slug": "n8n",
+      "category": "Tool",
+      "path": "assets/icons/n8n.svg",
+      "source_url": "https://simpleicons.org/?q=n8n"
+    },
+    {
+      "id": "recafidd2mTV3Djx5",
+      "name": "Brain (3D)",
+      "slug": "illustration-brain",
+      "category": "Illustration",
+      "path": "assets/icons/illustration-brain.svg",
+      "source_url": "https://lucide.dev/icons/brain-circuit"
+    },
+    {
+      "id": "recahrOrK8YG2ZWO7",
+      "name": "OSINT",
+      "slug": "osint",
+      "category": "Field",
+      "path": "assets/icons/osint.svg",
+      "source_url": "https://lucide.dev/icons/search"
+    },
+    {
+      "id": "recaoy2rFdZ538cRu",
+      "name": "OpenAI",
+      "slug": "openai",
+      "category": "Tool",
+      "path": "assets/icons/openai.svg",
+      "source_url": "https://lucide.dev/icons/sparkles"
+    },
+    {
+      "id": "recayXmZVZVcNLvOS",
+      "name": "RAG",
+      "slug": "rag",
+      "category": "Field",
+      "path": "assets/icons/rag.svg",
+      "source_url": "https://lucide.dev/icons/layers"
+    },
+    {
+      "id": "recbGlnGqpUK3XnDX",
+      "name": "Defensive Security",
+      "slug": "defensive-security",
+      "category": "Field",
+      "path": "assets/icons/defensive-security.svg",
+      "source_url": "https://lucide.dev/icons/shield-check"
+    },
+    {
+      "id": "recfAoDcMc8Vdx44D",
+      "name": "Chart (3D)",
+      "slug": "illustration-chart",
+      "category": "Illustration",
+      "path": "assets/icons/illustration-chart.svg",
+      "source_url": "https://lucide.dev/icons/chart-no-axes-combined"
+    },
+    {
+      "id": "rechmoDI6Eg9L1J9I",
+      "name": "Nmap",
+      "slug": "nmap",
+      "category": "Tool",
+      "path": "assets/icons/nmap.svg",
+      "source_url": "https://lucide.dev/icons/radar"
+    },
+    {
+      "id": "reclgCa8zDJrG3eqs",
+      "name": "Offensive Security",
+      "slug": "offensive-security",
+      "category": "Field",
+      "path": "assets/icons/offensive-security.svg",
+      "source_url": "https://lucide.dev/icons/swords"
+    },
+    {
+      "id": "recoQQmiPHmedEgGV",
+      "name": "Forecasting",
+      "slug": "forecasting",
+      "category": "Field",
+      "path": "assets/icons/forecasting.svg",
+      "source_url": "https://lucide.dev/icons/trending-up"
+    },
+    {
+      "id": "recooh9qxs0HM3K9H",
+      "name": "Shield (3D)",
+      "slug": "illustration-shield",
+      "category": "Illustration",
+      "path": "assets/icons/illustration-shield.svg",
+      "source_url": "https://lucide.dev/icons/shield-check"
+    },
+    {
+      "id": "recpxiszmWhNTvcas",
+      "name": "MISP",
+      "slug": "misp",
+      "category": "Tool",
+      "path": "assets/icons/misp.svg",
+      "source_url": "https://lucide.dev/icons/shield-alert"
+    },
+    {
+      "id": "recqaDSA5oiSd37tB",
+      "name": "NVIDIA",
+      "slug": "nvidia",
+      "category": "Tool",
+      "path": "assets/icons/nvidia.svg",
+      "source_url": "https://simpleicons.org/?q=nvidia"
+    },
+    {
+      "id": "recqupi5GVgNMiVXv",
+      "name": "Power BI",
+      "slug": "power-bi",
+      "category": "Tool",
+      "path": "assets/icons/power-bi.svg",
+      "source_url": "https://lucide.dev/icons/bar-chart-3"
+    },
+    {
+      "id": "recrhRvYEjQpGQF5S",
+      "name": "Anthropic",
+      "slug": "anthropic",
+      "category": "Tool",
+      "path": "assets/icons/anthropic.svg",
+      "source_url": "https://simpleicons.org/?q=anthropic"
+    },
+    {
+      "id": "recsBcSRdh3uQYjwq",
+      "name": "Power Automate",
+      "slug": "power-automate",
+      "category": "Tool",
+      "path": "assets/icons/power-automate.svg",
+      "source_url": "https://lucide.dev/icons/workflow"
+    },
+    {
+      "id": "rectMuFMtamUFwekt",
+      "name": "Bash",
+      "slug": "bash",
+      "category": "Foundation",
+      "path": "assets/icons/bash.svg",
+      "source_url": "https://simpleicons.org/?q=gnubash"
+    },
+    {
+      "id": "rectiCACyAKv1DYNe",
+      "name": "JavaScript",
+      "slug": "javascript",
+      "category": "Foundation",
+      "path": "assets/icons/javascript.svg",
+      "source_url": "https://simpleicons.org/?q=javascript"
+    },
+    {
+      "id": "recvDIFGNAq4ja25i",
+      "name": "TypeScript",
+      "slug": "typescript",
+      "category": "Foundation",
+      "path": "assets/icons/typescript.svg",
+      "source_url": "https://simpleicons.org/?q=typescript"
+    },
+    {
+      "id": "recwTcqS8PMUfvt02",
+      "name": "Python",
+      "slug": "python",
+      "category": "Foundation",
+      "path": "assets/icons/python.svg",
+      "source_url": "https://simpleicons.org/?q=python"
+    },
+    {
+      "id": "recwo9ULc6Y9aMfB8",
+      "name": "Burp Suite",
+      "slug": "burp-suite",
+      "category": "Tool",
+      "path": "assets/icons/burp-suite.svg",
+      "source_url": "https://simpleicons.org/?q=burpsuite"
+    },
+    {
+      "id": "recxKNsYxQX2Ee5ju",
+      "name": "Hugging Face",
+      "slug": "huggingface",
+      "category": "Tool",
+      "path": "assets/icons/huggingface.svg",
+      "source_url": "https://simpleicons.org/?q=huggingface"
+    }
+  ]
+}

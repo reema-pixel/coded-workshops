@@ -60,6 +60,75 @@ Open `assets/programs.js`. Each program is one object matching the PRD §11 sche
 
 Set `status: "Published"` to make a program visible. `Draft / Sold Out / Archived` are filtered out client-side. Saving + refreshing the page is enough.
 
+> Once the Airtable catalog is live (below), `assets/programs.js` becomes a **generated** file. Edit programs in Airtable instead; the file is overwritten by `npm run airtable:sync`.
+
+## Course Catalog — Airtable-driven (B2B Workshops / Cohorts / Curriculum / Icons)
+
+The catalog feature gives every workshop a unified designed page at `#/catalog/<slug>` and a downloadable A4 PDF generated from the same HTML template. Content lives in Airtable so marketing/ops can edit copy, dates, and icons without touching code.
+
+**The tables live in the existing `📦 CODED Programs DB` base (`app63RTo79M4FJzvd`)**, alongside Products, Programs (ops), Phases, Instructors, etc. We add four new tables — all prefixed `B2B …` so they're easy to find:
+
+| Table | Purpose |
+|---|---|
+| `B2B Workshops` | Editorial catalog content (one row per bookable workshop). Linked to existing **Products**. |
+| `B2B Cohorts` | Set-date instances of each workshop (replaces the old inline `iterations[]`). |
+| `B2B Curriculum` | Curriculum modules / phases (replaces the old inline `structure[]`). |
+| `Icons` | Reusable icon library (logos + illustrations). |
+
+This stays cleanly separated from the operational Programs table (51 fields about classrooms, calendar invites, budgets, etc.) which marketing doesn't need to touch.
+
+### One-time setup
+
+1. Open the Airtable PAT used by this org (`omar@joincoded.com`, currently in `~/development/private_keys/airtable.env`). Go to https://airtable.com/create/tokens, edit it, and ensure it has:
+   - **Scopes**: `schema.bases:read`, `schema.bases:write`, `data.records:read`, `data.records:write`
+   - **Access**: `📦 CODED Programs DB`
+2. Export env vars (also add them on Vercel **Project Settings → Environment Variables**):
+   ```sh
+   export CATALOG_AIRTABLE_PAT=$(grep ^AIRTABLE_PAT ~/development/private_keys/airtable.env | cut -d= -f2)
+   # BASE_ID defaults to app63RTo79M4FJzvd; override only if you point at a different base.
+   ```
+3. Install deps + scaffold the tables + seed:
+   ```sh
+   npm install
+   npm run airtable:setup        # creates the 4 new tables alongside existing ones
+   npm run airtable:seed         # pushes current programs.js into B2B Workshops + children
+   npm run icons:bootstrap       # seeds the Icons table with SimpleIcons logos
+   ```
+4. In Airtable, open each B2B Workshop row and link its **Foundations / Fields / Tools / Illustration** fields to rows in the Icons table. Upload custom artwork for any Icon row with an empty Image (the abstract Field icons + the 3D hero illustrations).
+
+### Editing content (your marketing team's workflow)
+
+1. Open the **CODED Programs Catalog** Airtable base.
+2. Edit a Program row, add a Cohort, swap an Icon — whatever's needed.
+3. From the project root, run:
+   ```sh
+   npm run build      # = airtable:sync + pdfs
+   git add assets/ && git commit -m "Catalog refresh" && git push
+   ```
+   Vercel redeploys. Within ~1 min the live site + PDFs reflect the change.
+
+### Available scripts
+
+| Command | What it does |
+|---|---|
+| `npm run airtable:setup` | Idempotent: creates/extends the base, tables, and fields per `scripts/schema.js`. |
+| `npm run airtable:seed`  | Pushes `assets/programs.js` into Airtable. Idempotent on `Slug`. |
+| `npm run airtable:sync`  | Pulls Airtable → regenerates `assets/programs.js`, `assets/data/programs.json`, `assets/data/icons.json`, and downloads icons to `assets/icons/`. |
+| `npm run icons:bootstrap`| Seeds the Icons table with SimpleIcons-sourced logos (idempotent). |
+| `npm run pdfs`           | Renders every Published program's `#/catalog/<slug>` to `assets/pdfs/<slug>.pdf` via Puppeteer. Pass a slug to render one: `npm run pdfs -- cybersecurity-bootcamp`. |
+| `npm run build`          | `airtable:sync && pdfs`. Run before each deploy. |
+
+### Catalog routes & files
+
+- **Web preview**: `http://127.0.0.1:7333/#/catalog/cybersecurity-bootcamp` (any published program slug).
+- **PDF output**: `assets/pdfs/<slug>.pdf` — committed to the repo, served from `/assets/pdfs/<slug>.pdf`.
+- **Template**: `assets/catalog.js` (renderer) + `assets/catalog.css` (styles, including `@media print` for PDF).
+- **Data source**: `assets/programs.js` (generated). The catalog renderer reads `window.CODED_PROGRAMS` — same data source as the rest of the site.
+
+### Why Airtable (not Supabase, for now)
+
+For ~11 programs that marketing edits visually, Airtable's UI wins. Supabase becomes attractive when you need a public API, hundreds of records, or a custom admin — none of which apply yet. The sync script is the seam: when you outgrow Airtable, swap the source without touching the catalog template or PDF generator.
+
 ## Brand tokens
 
 All colors and typographic scale live in the `:root` block of `assets/styles.css`. The palette is sampled directly from the official Brand Book:
