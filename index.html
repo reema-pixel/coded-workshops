@@ -37,7 +37,7 @@
     <div class="container site-footer-min__inner">
       <div>
         <p class="site-footer-min__lead">Got a team to enrol, or a program you don't see here?</p>
-        <a class="site-footer-min__email" href="mailto:enterprise@joincoded.com?subject=B2B%20program%20inquiry">enterprise@joincoded.com</a>
+        <a class="site-footer-min__email" href="#/enterprise">Brief us on your team →</a>
       </div>
       <div class="site-footer-min__legal">
         <span>© 2026 CODED Kuwait</span>
@@ -45,9 +45,65 @@
     </div>
   </footer>
 
-  <!-- Mobile sticky CTA on detail page (real link, no modal) -->
+  <!-- Mobile sticky CTA on detail page -->
   <div class="sticky-cta-mobile" id="stickyCtaMobile" style="display:none;">
-    <a class="btn btn-primary" id="stickyCtaLink" href="mailto:enterprise@joincoded.com">Request Seats &amp; Pricing</a>
+    <button type="button" class="btn btn-primary" id="stickyCtaLink">Request Seats &amp; Pricing</button>
+  </div>
+
+  <!-- Inquiry modal — opened from a program card or the detail-page CTA. -->
+  <div class="inquiry-modal" id="inquiryModal" hidden aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="inquiryModalTitle">
+    <div class="inquiry-modal__backdrop" data-modal-close></div>
+    <div class="inquiry-modal__panel" role="document">
+      <header class="inquiry-modal__head">
+        <div>
+          <span class="inquiry-modal__eyebrow" id="inquiryModalEyebrow">B2B inquiry</span>
+          <h2 id="inquiryModalTitle">Request seats &amp; pricing</h2>
+          <p class="inquiry-modal__sub" id="inquiryModalSub">Tell us about your team — we'll reply within one business day with availability and group pricing.</p>
+        </div>
+        <button type="button" class="inquiry-modal__close" aria-label="Close" data-modal-close>
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+        </button>
+      </header>
+      <form class="inquiry-form" id="inquiryForm" autocomplete="on" novalidate>
+        <div class="inquiry-form__grid">
+          <label class="inquiry-form__field">
+            <span>Your name *</span>
+            <input type="text" name="name" required autocomplete="name" />
+          </label>
+          <label class="inquiry-form__field">
+            <span>Work email *</span>
+            <input type="email" name="email" required autocomplete="email" />
+          </label>
+          <label class="inquiry-form__field">
+            <span>Company *</span>
+            <input type="text" name="company" required autocomplete="organization" />
+          </label>
+          <label class="inquiry-form__field">
+            <span>Phone (optional)</span>
+            <input type="tel" name="phone" autocomplete="tel" />
+          </label>
+          <label class="inquiry-form__field inquiry-form__field--full">
+            <span>Program of interest</span>
+            <select name="program" id="inquiryProgramSelect"></select>
+          </label>
+          <label class="inquiry-form__field inquiry-form__field--full">
+            <span>How many people, and when do you want to run it?</span>
+            <textarea name="teamAndTiming" rows="2" placeholder="e.g. ~12 people, ideally March–April 2026"></textarea>
+          </label>
+          <label class="inquiry-form__field inquiry-form__field--full">
+            <span>Anything else we should know? (optional)</span>
+            <textarea name="notes" rows="3" placeholder="Existing skill level, specific outcomes, scheduling constraints…"></textarea>
+          </label>
+        </div>
+        <div class="inquiry-form__foot">
+          <span class="inquiry-form__status" id="inquiryFormStatus" aria-live="polite"></span>
+          <div class="inquiry-form__actions">
+            <button type="button" class="btn btn-secondary" data-modal-close>Cancel</button>
+            <button type="submit" class="btn btn-primary" id="inquiryFormSubmit">Send inquiry</button>
+          </div>
+        </div>
+      </form>
+    </div>
   </div>
 
   <script src="assets/programs.js"></script>

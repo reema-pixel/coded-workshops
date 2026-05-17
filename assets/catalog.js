@@ -1,10 +1,15 @@
 /* CODED Course Catalog renderer.
  *
- * Mounts at #/catalog/<slug>. Reads from window.CODED_PROGRAMS (same data
- * source as the rest of the site). Designed to render identically on the
- * web and when Puppeteer captures it to PDF.
+ * Mounts at #/catalog/<slug>. Reads from window.CODED_PROGRAMS.
+ * Renders a multi-page editorial brochure that doubles as the source for
+ * the Puppeteer-generated PDF (assets/pdfs/<slug>.pdf).
  *
- * Exposes window.renderCatalog(slug) so app.js can route to it.
+ * Page 1 — Hero, Overview, At-a-glance stats, Stack chips, Outcomes
+ * Page 2 — Curriculum modules, Cohort dates
+ * Page 3 — Logistics keyvals, Audience, Instructor, FAQ, CTA
+ *
+ * Pages 2/3 are emitted only when there's enough content; short workshops
+ * will produce a 2-page brochure rather than a sparse 3-pager.
  */
 
 (function () {
@@ -15,8 +20,22 @@
       "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;",
     }[c]));
 
-  // Same time-format helper as app.js — duplicated here so this file is
-  // standalone and Puppeteer can hit the page without app.js side-effects.
+  function topicSlug(topic) {
+    return String(topic || "")
+      .toLowerCase()
+      .replace(/&/g, "")
+      .replace(/[^a-z0-9]+/g, "-")
+      .replace(/^-+|-+$/g, "");
+  }
+
+  function titleSizeClass(name) {
+    const len = (name || "").length;
+    if (len < 22) return "";
+    if (len < 30) return "cat-hero__title--medium";
+    return "cat-hero__title--small";
+  }
+
+  // "5:00 – 8:45 PM", "8:00 AM – 3:00 PM", etc.
   function fmtTimingShort(pattern) {
     if (!pattern) return "";
     const m1 = pattern.match(/\b(\d{1,2})(am|pm)[–\-](\d{1,2})(am|pm)\b/i);
@@ -26,116 +45,275 @@
     return pattern;
   }
 
-  function titleSizeClass(name) {
-    const len = (name || "").length;
-    if (len < 22) return "";
-    if (len < 32) return "catalog__title--medium";
-    return "catalog__title--small";
+  function fmtDayRange(p) {
+    const sp = p.session_pattern || "";
+    const toMatch = sp.match(/(\w+day)s\s+to\s+(\w+day)s/i);
+    if (toMatch) return `${toMatch[1].slice(0,3)}–${toMatch[2].slice(0,3)}`;
+    const listed = (sp.split("·")[0]).match(/(\w+day)s/gi);
+    if (listed && listed.length > 1) return listed.map(d => d.slice(0, 3)).join("·");
+    return "";
   }
 
-  // Render a single chip (foundation / field / tool).
-  function chip(label) {
-    return `<span class="chip">${escapeHtml(label)}</span>`;
-  }
-
-  // Round icon-tile. If we have a local path use the image; otherwise a ghost tile.
-  function iconTile(icon) {
-    if (icon && icon.path) {
-      return `<span class="icon-tile" title="${escapeHtml(icon.name || "")}"><img src="${escapeHtml(icon.path)}" alt="${escapeHtml(icon.name || "")}"/></span>`;
+  function fmtPrice(p) {
+    if (p.price_per_seat_kwd) {
+      const base = `KWD ${Number(p.price_per_seat_kwd).toLocaleString("en-GB")}`;
+      return { value: base, sub: p.group_rates ? "per seat · group rates" : "per seat" };
     }
-    return `<span class="icon-tile icon-tile--ghost" title="${escapeHtml(icon?.name || "")}"></span>`;
+    return { value: "On request", sub: "" };
   }
 
-  function renderSpecRow(label, items, opts = {}) {
-    if (!items || !items.length) return "";
-    const chips = items.map((it) => chip(typeof it === "string" ? it : it.name)).join("");
+  function fmtDurationCompact(p) {
+    return {
+      value: p.duration_label || "",
+      sub: p.total_hours ? `${p.total_hours} hrs total` : "",
+    };
+  }
+
+  function fmtFormatCompact(p) {
+    return {
+      value: p.format || "Workshop",
+      sub: p.delivery_mode || "",
+    };
+  }
+
+  function fmtTimingCompact(p) {
+    const time = fmtTimingShort(p.session_pattern);
+    const days = fmtDayRange(p);
+    return { value: time, sub: days };
+  }
+
+  function statCell(label, val) {
     return `
-      <div class="spec-row">
-        <span class="spec-row__label">${escapeHtml(label)}</span>
-        <div class="chip-stack">${chips}</div>
+      <div class="cat-stats__cell">
+        <span class="cat-stats__label">${escapeHtml(label)}</span>
+        <span class="cat-stats__value">${escapeHtml(val.value || "—")}</span>
+        ${val.sub ? `<span class="cat-stats__value-sub">${escapeHtml(val.sub)}</span>` : ""}
       </div>`;
   }
 
-  function pickYear(p) {
-    const iso = p.start_date || "";
-    return iso.slice(0, 4) || "2026";
-  }
-
-  function getLogoPath() {
-    return "assets/brand/logo-navy.png";
-  }
-
-  // Programs from Airtable have richer `foundations`, `fields`, `tools`,
-  // `illustration` linked-icon arrays. Programs from the legacy hand-written
-  // programs.js don't. Fall back to topic/tags-derived defaults so the page
-  // still renders something sensible during the transition.
-  function inferIconList(p, kind) {
-    const fromAirtable = p[kind];
-    if (Array.isArray(fromAirtable) && fromAirtable.length) return fromAirtable;
-    // Fallbacks driven by tags so brand-new catalogs are non-empty before
-    // marketing has linked icons in Airtable.
-    if (kind === "foundations") {
-      const out = [];
-      const t = (p.tags || []).join(" ");
-      if (/\bpython\b/i.test(t)) out.push({ name: "Python" });
-      if (/\bsql\b/i.test(t))    out.push({ name: "SQL" });
-      return out;
-    }
-    if (kind === "fields") {
-      const out = [];
-      if (p.topic) out.push({ name: p.topic });
-      return out;
-    }
-    if (kind === "tools") {
-      return (p.tags || [])
-        .filter((t) => !["ai", "agents", "data", "bootcamp"].includes(t))
-        .slice(0, 4)
-        .map((t) => ({ name: t.replace(/\b\w/g, (c) => c.toUpperCase()) }));
-    }
-    return [];
-  }
-
-  function pickIllustration(p) {
-    if (p.illustration && p.illustration.path) return p.illustration;
-    // Topic-driven fallback path. These will resolve only when icons-bootstrap
-    // has been run and matching artwork uploaded.
-    const slugByTopic = {
-      "Cybersecurity":              "assets/icons/illustration-shield.svg",
-      "Agentic AI":                 "assets/icons/illustration-brain.svg",
-      "Data & Analytics":           "assets/icons/illustration-chart.svg",
-      "AI Automation":              "assets/icons/illustration-gear.svg",
-      "Project Management & Agile": "assets/icons/illustration-gear.svg",
-    };
-    const path = slugByTopic[p.topic];
-    return path ? { name: p.topic, path } : null;
-  }
-
-  function renderHero(p) {
-    const ill = pickIllustration(p);
-    if (ill && ill.path) {
-      return `
-        <div class="catalog__hero-image">
-          <img src="${escapeHtml(ill.path)}" alt="${escapeHtml(ill.name || "")}" onerror="this.parentElement.classList.add('catalog__hero-image--empty'); this.remove();"/>
-        </div>`;
-    }
-    return `<div class="catalog__hero-image catalog__hero-image--empty">Illustration</div>`;
-  }
-
-  function renderCohorts(p) {
-    const items = (p.iterations || []).map((it, i) => `
-      <li class="${i === 0 ? "is-next" : ""}">
-        <span class="cohort-list__label">${i === 0 ? "Next cohort" : `Cohort ${i + 1}`}</span>
-        <span class="cohort-list__dates">${escapeHtml(it.dates || "")}</span>
-      </li>
-    `).join("");
-    if (!items) return "";
+  function chipsRow(label, items) {
+    if (!items || !items.length) return "";
+    const chips = items.map((it) => {
+      const name = typeof it === "string" ? it : it.name;
+      const path = (typeof it === "object" && it.path) ? it.path : null;
+      const inner = path
+        ? `<img src="${escapeHtml(path)}" alt=""/><span>${escapeHtml(name)}</span>`
+        : `<span>${escapeHtml(name)}</span>`;
+      return `<span class="cat-chip">${inner}</span>`;
+    }).join("");
     return `
-      <section class="catalog__cohorts">
-        <div class="catalog__cohorts-head">
-          <h2>Dates for ${escapeHtml(pickYear(p))}</h2>
-          <p class="catalog__cohorts-note">*Dates may change. Check coded.kw for the latest.</p>
+      <div class="cat-stack__label">${escapeHtml(label)}</div>
+      <div class="cat-stack__chips">${chips}</div>`;
+  }
+
+  function runHead(p, pageNum, totalPages) {
+    return `
+      <div class="cat-runhead">
+        <img src="assets/brand/logo-navy.png" alt="CODED"/>
+        <div class="cat-runhead__right">
+          <span class="cat-runhead__program">${escapeHtml(p.name)}</span>
+          <span class="cat-runhead__sep">·</span>
+          <span>${escapeHtml(p.topic || "Catalog")}</span>
         </div>
-        <ol class="cohort-list">${items}</ol>
+      </div>`;
+  }
+
+  function runFoot(p, pageNum, totalPages) {
+    return `
+      <div class="cat-runfoot">
+        <span class="cat-runfoot__email">enterprise@joincoded.com · coded.kw</span>
+        <span class="cat-runfoot__pageno">${pageNum} / ${totalPages}</span>
+      </div>`;
+  }
+
+  // Decide page count up-front so the page numbers in the footer are correct.
+  function decidePageCount(p) {
+    const hasCurriculum = (p.modules && p.modules.length) || (p.structure && p.structure.length);
+    const hasCohorts = (p.cohorts && p.cohorts.length) || (p.iterations && p.iterations.length);
+    const hasDetails = p.audience_detail || p.instructor || (p.faq && p.faq.length);
+    if (hasCurriculum && hasDetails) return 3;
+    if (hasCurriculum || hasCohorts || hasDetails) return 2;
+    return 1;
+  }
+
+  // ── Page 1 ────────────────────────────────────────────────────────────────
+  function renderPage1(p, totalPages) {
+    const stack = [
+      chipsRow("Foundations", (p.foundations || []).map((i) => i)),
+      chipsRow("Fields",      (p.fields      || []).map((i) => i)),
+      chipsRow("Tools",       (p.tools       || []).map((i) => i)),
+    ].filter(Boolean).join("");
+
+    const outcomes = (p.outcomes || []).slice(0, 5);
+    const lede = p.overview || p.one_liner || "";
+
+    return `
+      <section class="catalog__page" aria-label="Overview">
+        ${runHead(p, 1, totalPages)}
+
+        <span class="cat-topic">${escapeHtml(p.topic || "Catalog")}</span>
+
+        <div class="cat-hero" style="margin-top: 16px;">
+          <h1 class="cat-hero__title ${titleSizeClass(p.name)}">${escapeHtml(p.name)}</h1>
+          ${lede ? `<p class="cat-hero__lede">${escapeHtml(lede)}</p>` : ""}
+        </div>
+
+        <div class="cat-stats">
+          ${statCell("Duration", fmtDurationCompact(p))}
+          ${statCell("Format",   fmtFormatCompact(p))}
+          ${statCell("Timing",   fmtTimingCompact(p))}
+          ${statCell("Per seat", fmtPrice(p))}
+        </div>
+
+        ${stack ? `<div class="cat-stack">${stack}</div>` : ""}
+
+        ${outcomes.length ? `
+          <div class="cat-section" style="margin-top: 32px;">
+            <h2 class="cat-section__title">What you'll walk out with</h2>
+            <ul class="cat-outcomes">
+              ${outcomes.map((o) => `<li>${escapeHtml(o)}</li>`).join("")}
+            </ul>
+          </div>
+        ` : ""}
+
+        ${runFoot(p, 1, totalPages)}
+      </section>`;
+  }
+
+  // ── Page 2 ────────────────────────────────────────────────────────────────
+  function renderPage2(p, totalPages) {
+    const modules = (p.modules && p.modules.length)
+      ? p.modules
+      : (p.structure || []).map((s, i) => ({
+          title: s.phase_name,
+          focus: s.focus,
+          hours: s.hours,
+          sessions: s.sessions,
+          order: i + 1,
+        }));
+
+    const cohorts = (p.cohorts && p.cohorts.length)
+      ? p.cohorts
+      : (p.iterations || []).map((it, i) => ({
+          label: `Cohort ${i + 1}`,
+          dates: it.dates,
+          status: i === 0 ? "Open" : "Filling",
+        }));
+
+    const year = (p.start_date || "").slice(0, 4) || "2026";
+
+    return `
+      <section class="catalog__page" aria-label="Curriculum">
+        ${runHead(p, 2, totalPages)}
+
+        ${modules.length ? `
+          <span class="cat-eyebrow">Curriculum</span>
+          <h2 class="cat-section__title" style="margin-bottom: 18px;">
+            ${modules.length} module${modules.length === 1 ? "" : "s"} across ${escapeHtml(p.duration_label || "the program")}
+          </h2>
+          <div class="cat-modules">
+            ${modules.map((m, i) => `
+              <article class="cat-module">
+                <div class="cat-module__num">${String(i + 1).padStart(2, "0")}</div>
+                <div class="cat-module__body">
+                  <div class="cat-module__meta">
+                    ${m.hours ? `<span><b>${m.hours}</b> HRS</span>` : ""}
+                    ${m.sessions ? `<span><b>${m.sessions}</b> SESSIONS</span>` : ""}
+                  </div>
+                  <h3 class="cat-module__title">${escapeHtml(m.title || m.phase_name || `Module ${i + 1}`)}</h3>
+                  ${m.focus ? `<p class="cat-module__focus">${escapeHtml(m.focus)}</p>` : ""}
+                </div>
+              </article>
+            `).join("")}
+          </div>
+        ` : ""}
+
+        ${cohorts.length ? `
+          <span class="cat-eyebrow" style="margin-top: 12px;">Cohorts ${escapeHtml(year)}</span>
+          <h2 class="cat-section__title" style="margin-bottom: 6px;">${cohorts.length} open${cohorts.length === 1 ? "" : ""} ${cohorts.length === 1 ? "cohort" : "cohorts"}</h2>
+          <div class="cat-cohorts">
+            ${cohorts.map((c, i) => `
+              <div class="cat-cohort ${i === 0 ? "is-next" : ""}">
+                <span class="cat-cohort__no">${i === 0 ? "Next" : `Cohort ${i + 1}`}</span>
+                <span class="cat-cohort__dates">${escapeHtml(c.dates || "")}</span>
+                <span class="cat-cohort__tag">${i === 0 ? "Open" : escapeHtml(c.status || "Filling")}</span>
+              </div>
+            `).join("")}
+          </div>
+        ` : ""}
+
+        ${runFoot(p, 2, totalPages)}
+      </section>`;
+  }
+
+  // ── Page 3 ────────────────────────────────────────────────────────────────
+  function renderPage3(p, totalPages) {
+    const keyvals = [
+      ["Duration",      p.duration_label + (p.total_hours ? ` (${p.total_hours} hours)` : "")],
+      ["Format",        [p.format, p.delivery_mode].filter(Boolean).join(" · ")],
+      ["Schedule",      p.session_pattern || ""],
+      ["Location",      p.location_url
+                          ? `<a href="${escapeHtml(p.location_url)}">${escapeHtml(p.location_full || p.location || "")}</a>`
+                          : escapeHtml(p.location_full || p.location || "")],
+      ["Per seat",      (p.price_per_seat_kwd ? `KWD ${Number(p.price_per_seat_kwd).toLocaleString("en-GB")}` : "On request") + (p.group_rates ? " · group rates available" : "")],
+      p.prereq_label ? ["Prerequisites", p.prereq_label] : null,
+      p.classroom ? ["Classroom", p.classroom] : null,
+    ].filter(Boolean);
+
+    return `
+      <section class="catalog__page" aria-label="Details">
+        ${runHead(p, 3, totalPages)}
+
+        <span class="cat-eyebrow">At a glance</span>
+        <h2 class="cat-section__title">Logistics & enrollment</h2>
+        <dl class="cat-keyvals">
+          ${keyvals.map(([k, v]) => `
+            <dt>${escapeHtml(k)}</dt>
+            <dd>${v}</dd>
+          `).join("")}
+        </dl>
+
+        ${p.audience_detail ? `
+          <div class="cat-section">
+            <h2 class="cat-section__title">Who this is for</h2>
+            <p class="cat-text">${escapeHtml(p.audience_detail)}</p>
+          </div>
+        ` : ""}
+
+        ${p.instructor && p.instructor.name ? `
+          <div class="cat-section">
+            <span class="cat-eyebrow">Your instructor</span>
+            <div class="cat-instructor">
+              <p class="cat-instructor__role">${escapeHtml(p.instructor.role || "")}</p>
+              <p class="cat-instructor__name">${escapeHtml(p.instructor.name)}</p>
+              ${p.instructor.bio ? `<p class="cat-instructor__bio">${escapeHtml(p.instructor.bio)}</p>` : ""}
+            </div>
+          </div>
+        ` : ""}
+
+        ${(p.faq && p.faq.length) ? `
+          <div class="cat-section">
+            <h2 class="cat-section__title">Frequently asked</h2>
+            <div class="cat-faq">
+              ${p.faq.slice(0, 3).map((q) => `
+                <div class="cat-faq__item">
+                  <p class="cat-faq__q">${escapeHtml(q.question)}</p>
+                  <p class="cat-faq__a">${escapeHtml(q.answer)}</p>
+                </div>
+              `).join("")}
+            </div>
+          </div>
+        ` : ""}
+
+        <div class="cat-cta">
+          <div>
+            <p class="cat-cta__title">Ready to enrol your team?</p>
+            <p class="cat-cta__sub">We'll come back with seat confirmation, the next available cohort, and the invoice.</p>
+          </div>
+          <a class="cat-cta__email" href="mailto:enterprise@joincoded.com?subject=${encodeURIComponent(`Enrollment inquiry: ${p.name}`)}">enterprise@joincoded.com</a>
+        </div>
+
+        ${runFoot(p, 3, totalPages)}
       </section>`;
   }
 
@@ -151,75 +329,40 @@
     if (!p) {
       app.innerHTML = `
         <div class="catalog-shell">
-          <article class="catalog" style="padding: 80px;">
-            <h1 class="catalog__title catalog__title--small">Catalog not found</h1>
-            <p class="catalog__lede">No program matches "${escapeHtml(slug)}". <a href="#/">Browse all programs →</a></p>
+          <article class="catalog__page">
+            <h1 class="cat-hero__title cat-hero__title--small">Catalog not found</h1>
+            <p class="cat-hero__lede">No program matches "${escapeHtml(slug)}". <a href="#/">Browse all programs →</a></p>
           </article>
         </div>`;
       document.body.removeAttribute("data-catalog-ready");
       return;
     }
 
-    const foundations = inferIconList(p, "foundations");
-    const fields      = inferIconList(p, "fields");
-    const tools       = inferIconList(p, "tools");
-    const iconStrip   = [...foundations, ...tools].filter((i) => i && (i.path || i.name));
-
-    const titleSize = titleSizeClass(p.name);
-    const fmtLine   = [p.format, p.delivery_mode].filter(Boolean).join(" · ");
+    const totalPages = decidePageCount(p);
+    const topicCls = topicSlug(p.topic);
 
     app.innerHTML = `
       <div class="catalog-shell">
-        <article class="catalog catalog--${escapeHtml((p.topic || "").toLowerCase().replace(/\W+/g, "-"))}">
-          <header class="catalog__head">
-            <div class="catalog__brandbar">
-              <img src="${getLogoPath()}" alt="CODED"/>
-              <span class="catalog__brand-label">CODED Course Catalog</span>
-            </div>
-            <h1 class="catalog__title ${titleSize}">${escapeHtml(p.name)}</h1>
-            <p class="catalog__lede">${escapeHtml(p.overview || p.one_liner || "")}</p>
-            <span class="catalog__url-pill">coded.kw</span>
-          </header>
-
-          <section class="catalog__card">
-            <div class="catalog__card-grid">
-              <div class="catalog__specs">
-                ${renderSpecRow("Duration", [p.duration_label].filter(Boolean))}
-                ${renderSpecRow("Foundations", foundations.map((i) => i.name))}
-                ${renderSpecRow("Fields", fields.map((i) => i.name))}
-                ${renderSpecRow("Tools", tools.map((i) => i.name))}
-                ${iconStrip.length ? `<div class="icon-tiles">${iconStrip.map(iconTile).join("")}</div>` : ""}
-              </div>
-              <aside class="catalog__hero">
-                ${renderHero(p)}
-                <dl class="catalog__meta">
-                  ${fmtLine ? `<div><dt>Format:</dt><dd>${escapeHtml(fmtLine)}</dd></div>` : ""}
-                  ${p.duration_label ? `<div><dt>Duration:</dt><dd>${escapeHtml(p.duration_label)}</dd></div>` : ""}
-                  ${p.session_pattern ? `<div><dt>Timing:</dt><dd>${escapeHtml(fmtTimingShort(p.session_pattern))}</dd></div>` : ""}
-                </dl>
-              </aside>
-            </div>
-          </section>
-
-          ${renderCohorts(p)}
-
-          <footer class="catalog__foot">
-            <a href="mailto:enterprise@joincoded.com">enterprise@joincoded.com</a>
-            <span>© ${escapeHtml(pickYear(p))} CODED · Kuwait</span>
-          </footer>
-        </article>
+        <div class="catalog catalog--${escapeHtml(topicCls)}">
+          ${renderPage1(p, totalPages)}
+          ${totalPages >= 2 ? renderPage2(p, totalPages) : ""}
+          ${totalPages >= 3 ? renderPage3(p, totalPages) : ""}
+        </div>
 
         <div class="catalog-actions">
-          <a class="btn btn-secondary" href="#/programs/${escapeHtml(p.slug)}">← Full program page</a>
+          <a class="btn btn-secondary" href="#/programs/${escapeHtml(p.slug)}">← Program page</a>
           <a class="btn btn-primary" href="assets/pdfs/${escapeHtml(p.slug)}.pdf" download>Download PDF</a>
         </div>
       </div>
     `;
 
-    // Sentinel for Puppeteer: wait for body[data-catalog-ready="true"] before
-    // capturing the PDF. Set after layout settles (next frame).
+    // Sentinel for Puppeteer: wait for body[data-catalog-ready="true"]
+    // before capturing the PDF. Set after the next animation frame so the
+    // browser has fully laid out + decoded fonts.
     requestAnimationFrame(() => {
-      document.body.setAttribute("data-catalog-ready", "true");
+      requestAnimationFrame(() => {
+        document.body.setAttribute("data-catalog-ready", "true");
+      });
     });
 
     window.scrollTo({ top: 0 });
@@ -230,6 +373,9 @@
     document.body.removeAttribute("data-catalog-ready");
     document.title = "Programs · CODED";
   }
+
+  // Topic class — apply to .catalog so the CSS rules can pick it up.
+  // Surfaced on .catalog wrapper inside each render.
 
   window.renderCatalog = renderCatalog;
   window.teardownCatalog = teardown;
