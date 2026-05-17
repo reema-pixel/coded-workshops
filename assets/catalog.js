@@ -106,23 +106,41 @@
       <div class="cat-stack__chips">${chips}</div>`;
   }
 
-  function runHead(p, pageNum, totalPages) {
+  // Big navy band at the top of page 1 — full CODED brand presence.
+  function heroHead(p) {
+    const year = (p.start_date || "").slice(0, 4) || "2026";
     return `
-      <div class="cat-runhead">
-        <img src="assets/brand/logo-navy.png" alt="CODED"/>
-        <div class="cat-runhead__right">
-          <span class="cat-runhead__program">${escapeHtml(p.name)}</span>
-          <span class="cat-runhead__sep">·</span>
+      <div class="cat-head cat-head--hero">
+        <img class="cat-head__logo" src="assets/brand/logo-white.png" alt="CODED"/>
+        <div class="cat-head__right">
+          <span class="cat-head__caption">CODED Course Catalog · <b>${escapeHtml(year)}</b></span>
+          <span class="cat-head__caption">enterprise@joincoded.com</span>
+        </div>
+      </div>`;
+  }
+
+  // Slim navy band at the top of subsequent pages (still has the logo).
+  function slimHead(p) {
+    return `
+      <div class="cat-head cat-head--slim">
+        <img class="cat-head__logo" src="assets/brand/logo-white.png" alt="CODED"/>
+        <div class="cat-head__right">
+          <span class="cat-head__program">${escapeHtml(p.name)}</span>
+          <span class="cat-head__sep">·</span>
           <span>${escapeHtml(p.topic || "Catalog")}</span>
         </div>
       </div>`;
   }
 
-  function runFoot(p, pageNum, totalPages) {
+  function navyFoot(p, pageNum, totalPages) {
     return `
-      <div class="cat-runfoot">
-        <span class="cat-runfoot__email">enterprise@joincoded.com · coded.kw</span>
-        <span class="cat-runfoot__pageno">${pageNum} / ${totalPages}</span>
+      <div class="cat-foot">
+        <span class="cat-foot__left">
+          <span class="cat-foot__email">enterprise@joincoded.com</span>
+          <span>·</span>
+          <span>coded.kw</span>
+        </span>
+        <span class="cat-foot__pageno">${pageNum} / ${totalPages}</span>
       </div>`;
   }
 
@@ -149,34 +167,34 @@
 
     return `
       <section class="catalog__page" aria-label="Overview">
-        ${runHead(p, 1, totalPages)}
+        ${heroHead(p)}
+        <div class="cat-body">
+          <span class="cat-topic">${escapeHtml(p.topic || "Catalog")}</span>
 
-        <span class="cat-topic">${escapeHtml(p.topic || "Catalog")}</span>
-
-        <div class="cat-hero" style="margin-top: 16px;">
-          <h1 class="cat-hero__title ${titleSizeClass(p.name)}">${escapeHtml(p.name)}</h1>
-          ${lede ? `<p class="cat-hero__lede">${escapeHtml(lede)}</p>` : ""}
-        </div>
-
-        <div class="cat-stats">
-          ${statCell("Duration", fmtDurationCompact(p))}
-          ${statCell("Format",   fmtFormatCompact(p))}
-          ${statCell("Timing",   fmtTimingCompact(p))}
-          ${statCell("Per seat", fmtPrice(p))}
-        </div>
-
-        ${stack ? `<div class="cat-stack">${stack}</div>` : ""}
-
-        ${outcomes.length ? `
-          <div class="cat-section" style="margin-top: 32px;">
-            <h2 class="cat-section__title">What you'll walk out with</h2>
-            <ul class="cat-outcomes">
-              ${outcomes.map((o) => `<li>${escapeHtml(o)}</li>`).join("")}
-            </ul>
+          <div class="cat-hero">
+            <h1 class="cat-hero__title ${titleSizeClass(p.name)}">${escapeHtml(p.name)}</h1>
+            ${lede ? `<p class="cat-hero__lede">${escapeHtml(lede)}</p>` : ""}
           </div>
-        ` : ""}
 
-        ${runFoot(p, 1, totalPages)}
+          <div class="cat-stats">
+            ${statCell("Duration", fmtDurationCompact(p))}
+            ${statCell("Format",   fmtFormatCompact(p))}
+            ${statCell("Timing",   fmtTimingCompact(p))}
+            ${statCell("Per seat", fmtPrice(p))}
+          </div>
+
+          ${stack ? `<div class="cat-stack">${stack}</div>` : ""}
+
+          ${outcomes.length ? `
+            <div class="cat-section">
+              <h2 class="cat-section__title">What you'll walk out with</h2>
+              <ul class="cat-outcomes">
+                ${outcomes.map((o) => `<li>${escapeHtml(o)}</li>`).join("")}
+              </ul>
+            </div>
+          ` : ""}
+        </div>
+        ${navyFoot(p, 1, totalPages)}
       </section>`;
   }
 
@@ -204,45 +222,45 @@
 
     return `
       <section class="catalog__page" aria-label="Curriculum">
-        ${runHead(p, 2, totalPages)}
-
-        ${modules.length ? `
-          <span class="cat-eyebrow">Curriculum</span>
-          <h2 class="cat-section__title" style="margin-bottom: 18px;">
-            ${modules.length} module${modules.length === 1 ? "" : "s"} across ${escapeHtml(p.duration_label || "the program")}
-          </h2>
-          <div class="cat-modules">
-            ${modules.map((m, i) => `
-              <article class="cat-module">
-                <div class="cat-module__num">${String(i + 1).padStart(2, "0")}</div>
-                <div class="cat-module__body">
-                  <div class="cat-module__meta">
-                    ${m.hours ? `<span><b>${m.hours}</b> HRS</span>` : ""}
-                    ${m.sessions ? `<span><b>${m.sessions}</b> SESSIONS</span>` : ""}
+        ${slimHead(p)}
+        <div class="cat-body">
+          ${modules.length ? `
+            <span class="cat-eyebrow">Curriculum</span>
+            <h2 class="cat-section__title" style="margin-bottom: 16px;">
+              ${modules.length} module${modules.length === 1 ? "" : "s"} across ${escapeHtml(p.duration_label || "the program")}
+            </h2>
+            <div class="cat-modules">
+              ${modules.map((m, i) => `
+                <article class="cat-module">
+                  <div class="cat-module__num">${String(i + 1).padStart(2, "0")}</div>
+                  <div class="cat-module__body">
+                    <div class="cat-module__meta">
+                      ${m.hours ? `<span><b>${m.hours}</b> HRS</span>` : ""}
+                      ${m.sessions ? `<span><b>${m.sessions}</b> SESSIONS</span>` : ""}
+                    </div>
+                    <h3 class="cat-module__title">${escapeHtml(m.title || m.phase_name || `Module ${i + 1}`)}</h3>
+                    ${m.focus ? `<p class="cat-module__focus">${escapeHtml(m.focus)}</p>` : ""}
                   </div>
-                  <h3 class="cat-module__title">${escapeHtml(m.title || m.phase_name || `Module ${i + 1}`)}</h3>
-                  ${m.focus ? `<p class="cat-module__focus">${escapeHtml(m.focus)}</p>` : ""}
+                </article>
+              `).join("")}
+            </div>
+          ` : ""}
+
+          ${cohorts.length ? `
+            <span class="cat-eyebrow" style="margin-top: 8px;">Cohorts ${escapeHtml(year)}</span>
+            <h2 class="cat-section__title" style="margin-bottom: 6px;">${cohorts.length} ${cohorts.length === 1 ? "cohort" : "cohorts"} scheduled</h2>
+            <div class="cat-cohorts">
+              ${cohorts.map((c, i) => `
+                <div class="cat-cohort ${i === 0 ? "is-next" : ""}">
+                  <span class="cat-cohort__no">${i === 0 ? "Next" : `Cohort ${i + 1}`}</span>
+                  <span class="cat-cohort__dates">${escapeHtml(c.dates || "")}</span>
+                  <span class="cat-cohort__tag">${i === 0 ? "Open" : escapeHtml(c.status || "Filling")}</span>
                 </div>
-              </article>
-            `).join("")}
-          </div>
-        ` : ""}
-
-        ${cohorts.length ? `
-          <span class="cat-eyebrow" style="margin-top: 12px;">Cohorts ${escapeHtml(year)}</span>
-          <h2 class="cat-section__title" style="margin-bottom: 6px;">${cohorts.length} open${cohorts.length === 1 ? "" : ""} ${cohorts.length === 1 ? "cohort" : "cohorts"}</h2>
-          <div class="cat-cohorts">
-            ${cohorts.map((c, i) => `
-              <div class="cat-cohort ${i === 0 ? "is-next" : ""}">
-                <span class="cat-cohort__no">${i === 0 ? "Next" : `Cohort ${i + 1}`}</span>
-                <span class="cat-cohort__dates">${escapeHtml(c.dates || "")}</span>
-                <span class="cat-cohort__tag">${i === 0 ? "Open" : escapeHtml(c.status || "Filling")}</span>
-              </div>
-            `).join("")}
-          </div>
-        ` : ""}
-
-        ${runFoot(p, 2, totalPages)}
+              `).join("")}
+            </div>
+          ` : ""}
+        </div>
+        ${navyFoot(p, 2, totalPages)}
       </section>`;
   }
 
@@ -262,58 +280,58 @@
 
     return `
       <section class="catalog__page" aria-label="Details">
-        ${runHead(p, 3, totalPages)}
+        ${slimHead(p)}
+        <div class="cat-body">
+          <span class="cat-eyebrow">At a glance</span>
+          <h2 class="cat-section__title">Logistics & enrollment</h2>
+          <dl class="cat-keyvals">
+            ${keyvals.map(([k, v]) => `
+              <dt>${escapeHtml(k)}</dt>
+              <dd>${v}</dd>
+            `).join("")}
+          </dl>
 
-        <span class="cat-eyebrow">At a glance</span>
-        <h2 class="cat-section__title">Logistics & enrollment</h2>
-        <dl class="cat-keyvals">
-          ${keyvals.map(([k, v]) => `
-            <dt>${escapeHtml(k)}</dt>
-            <dd>${v}</dd>
-          `).join("")}
-        </dl>
-
-        ${p.audience_detail ? `
-          <div class="cat-section">
-            <h2 class="cat-section__title">Who this is for</h2>
-            <p class="cat-text">${escapeHtml(p.audience_detail)}</p>
-          </div>
-        ` : ""}
-
-        ${p.instructor && p.instructor.name ? `
-          <div class="cat-section">
-            <span class="cat-eyebrow">Your instructor</span>
-            <div class="cat-instructor">
-              <p class="cat-instructor__role">${escapeHtml(p.instructor.role || "")}</p>
-              <p class="cat-instructor__name">${escapeHtml(p.instructor.name)}</p>
-              ${p.instructor.bio ? `<p class="cat-instructor__bio">${escapeHtml(p.instructor.bio)}</p>` : ""}
+          ${p.audience_detail ? `
+            <div class="cat-section">
+              <h2 class="cat-section__title">Who this is for</h2>
+              <p class="cat-text">${escapeHtml(p.audience_detail)}</p>
             </div>
-          </div>
-        ` : ""}
+          ` : ""}
 
-        ${(p.faq && p.faq.length) ? `
-          <div class="cat-section">
-            <h2 class="cat-section__title">Frequently asked</h2>
-            <div class="cat-faq">
-              ${p.faq.slice(0, 3).map((q) => `
-                <div class="cat-faq__item">
-                  <p class="cat-faq__q">${escapeHtml(q.question)}</p>
-                  <p class="cat-faq__a">${escapeHtml(q.answer)}</p>
-                </div>
-              `).join("")}
+          ${p.instructor && p.instructor.name ? `
+            <div class="cat-section">
+              <span class="cat-eyebrow">Your instructor</span>
+              <div class="cat-instructor">
+                <p class="cat-instructor__role">${escapeHtml(p.instructor.role || "")}</p>
+                <p class="cat-instructor__name">${escapeHtml(p.instructor.name)}</p>
+                ${p.instructor.bio ? `<p class="cat-instructor__bio">${escapeHtml(p.instructor.bio)}</p>` : ""}
+              </div>
             </div>
-          </div>
-        ` : ""}
+          ` : ""}
 
-        <div class="cat-cta">
-          <div>
-            <p class="cat-cta__title">Ready to enrol your team?</p>
-            <p class="cat-cta__sub">We'll come back with seat confirmation, the next available cohort, and the invoice.</p>
+          ${(p.faq && p.faq.length) ? `
+            <div class="cat-section">
+              <h2 class="cat-section__title">Frequently asked</h2>
+              <div class="cat-faq">
+                ${p.faq.slice(0, 3).map((q) => `
+                  <div class="cat-faq__item">
+                    <p class="cat-faq__q">${escapeHtml(q.question)}</p>
+                    <p class="cat-faq__a">${escapeHtml(q.answer)}</p>
+                  </div>
+                `).join("")}
+              </div>
+            </div>
+          ` : ""}
+
+          <div class="cat-cta">
+            <div>
+              <p class="cat-cta__title">Ready to enrol your team?</p>
+              <p class="cat-cta__sub">We'll come back with seat confirmation, the next available cohort, and the invoice.</p>
+            </div>
+            <a class="cat-cta__email" href="mailto:enterprise@joincoded.com?subject=${encodeURIComponent(`Enrollment inquiry: ${p.name}`)}">enterprise@joincoded.com</a>
           </div>
-          <a class="cat-cta__email" href="mailto:enterprise@joincoded.com?subject=${encodeURIComponent(`Enrollment inquiry: ${p.name}`)}">enterprise@joincoded.com</a>
         </div>
-
-        ${runFoot(p, 3, totalPages)}
+        ${navyFoot(p, 3, totalPages)}
       </section>`;
   }
 
