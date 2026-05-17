@@ -134,6 +134,7 @@
     coin: '<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M9 9h4a2 2 0 010 4H9m0-4v8m0-4h6"/></svg>',
     arrow: '<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg>',
     extlink: '<svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 4h6v6M20 4l-9 9M20 13v5a2 2 0 01-2 2H6a2 2 0 01-2-2V6a2 2 0 012-2h5"/></svg>',
+    download: '<svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v13M7 11l5 5 5-5"/><path d="M4 20h16"/></svg>',
     /* Hero-strip icons (24×24 stroke set) */
     spark: '<svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v4M12 17v4M3 12h4M17 12h4M5.6 5.6l2.8 2.8M15.6 15.6l2.8 2.8M5.6 18.4l2.8-2.8M15.6 8.4l2.8-2.8"/></svg>',
     team: '<svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="9" r="3.5"/><path d="M2.5 19c.6-3.4 3.3-5 6.5-5s5.9 1.6 6.5 5"/><circle cx="17" cy="8" r="2.6"/><path d="M21.5 16.5c-.4-2.5-2-3.8-4.5-3.8"/></svg>',
@@ -837,6 +838,7 @@
           <div class="detail-hero__cta">
             <a class="btn btn-primary btn-lg" href="${escapeHtml(mailto)}">Request Seats &amp; Pricing ${ICON.arrow}</a>
             <a class="btn btn-secondary btn-lg" href="${escapeHtml(p.location_url || "#")}" target="_blank" rel="noopener">Location (CODED Campus) ${ICON.extlink}</a>
+            <a class="btn btn-ghost btn-lg" href="assets/pdfs/${escapeHtml(p.slug)}.pdf" download="${escapeHtml(p.slug)}.pdf">Download Brochure ${ICON.download}</a>
           </div>
         </div>
       </section>

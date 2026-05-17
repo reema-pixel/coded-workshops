@@ -3,8 +3,15 @@
 **/.DS_Store
 
 # Source data not for the public repo
-*.pdf
 *.docx
+CODED_Font.zip
+CODED-Brand-Elements-Kit/
+
+# Root-level source PDFs (briefs, offers, etc.)
+/*.pdf
+
+# Generated brochure PDFs are intentionally tracked
+# assets/pdfs/*.pdf  ← committed to repo
 
 # Local-only assets
 .claude/

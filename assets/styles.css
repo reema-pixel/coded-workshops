@@ -898,8 +898,13 @@ button { font-family: inherit; cursor: pointer; }
 .btn-ghost {
   background: transparent;
   color: var(--text-secondary);
+  border-color: var(--border);
 }
-.btn-ghost:hover { color: var(--text-primary); }
+.btn-ghost:hover {
+  color: var(--text-primary);
+  border-color: var(--text-secondary);
+  transform: translateY(-1px);
+}
 .btn-block { width: 100%; justify-content: center; }
 .btn-lg { padding: 16px 28px; font-size: 15px; }
 
