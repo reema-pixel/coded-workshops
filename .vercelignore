@@ -1,6 +1,8 @@
 .claude/
 server.py
 README.md
-*.pdf
 *.docx
 .DS_Store
+# Root-level source PDFs (briefs, offers, etc.)
+/*.pdf
+# assets/pdfs/ brochures are intentionally deployed
