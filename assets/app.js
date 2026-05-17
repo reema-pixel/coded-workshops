@@ -163,8 +163,8 @@
     {
       key: "shift", label: "Schedule", multi: true,
       options: [
-        { value: "Morning", label: "Mornings (8am–3pm)" },
-        { value: "Evening", label: "Evenings (5pm–9pm)" },
+        { value: "Morning", label: "Morning" },
+        { value: "Evening", label: "Evening" },
       ],
     },
     {
