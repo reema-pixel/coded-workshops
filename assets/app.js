@@ -138,7 +138,97 @@
     /* Hero-strip icons (24×24 stroke set) */
     spark: '<svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v4M12 17v4M3 12h4M17 12h4M5.6 5.6l2.8 2.8M15.6 15.6l2.8 2.8M5.6 18.4l2.8-2.8M15.6 8.4l2.8-2.8"/></svg>',
     team: '<svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="9" r="3.5"/><path d="M2.5 19c.6-3.4 3.3-5 6.5-5s5.9 1.6 6.5 5"/><circle cx="17" cy="8" r="2.6"/><path d="M21.5 16.5c-.4-2.5-2-3.8-4.5-3.8"/></svg>',
+    /* View-toggle icons (16×16) */
+    viewGrid: '<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1.2"/><rect x="14" y="3" width="7" height="7" rx="1.2"/><rect x="3" y="14" width="7" height="7" rx="1.2"/><rect x="14" y="14" width="7" height="7" rx="1.2"/></svg>',
+    viewList: '<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 6h13M8 12h13M8 18h13"/><circle cx="4" cy="6" r="1" fill="currentColor"/><circle cx="4" cy="12" r="1" fill="currentColor"/><circle cx="4" cy="18" r="1" fill="currentColor"/></svg>',
+    viewCal: '<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M16 3v4M8 3v4M3 10h18M8 14h2M14 14h2M8 18h2M14 18h2"/></svg>',
   };
+
+  /* ── Per-program glyphs ─────────────────────────────────────────────────
+   * Each program gets a topic-themed glyph (line icon) OR a real brand
+   * mark in the brand's actual colors (Power BI yellow, Power Automate blue,
+   * NVIDIA green, n8n red). The container tile picks up the topic color
+   * via CSS for the non-branded ones (data-brand="false").
+   */
+  const ICONS_PROGRAM = {
+    "cybersecurity-bootcamp": {
+      brand: false,
+      svg: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l8 3v6c0 4.5-3.5 8.5-8 9.5-4.5-1-8-5-8-9.5V6l8-3z"/><path d="M9 12l2 2 4-4"/></svg>',
+    },
+    "ai-app-developer-bootcamp": {
+      brand: false,
+      svg: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18"/><circle cx="6.5" cy="6.5" r="0.6" fill="currentColor"/><circle cx="9" cy="6.5" r="0.6" fill="currentColor"/><path d="M12 13l.8 1.7 1.7.8-1.7.8-.8 1.7-.8-1.7-1.7-.8 1.7-.8z"/></svg>',
+    },
+    "ai-and-data-science-bootcamp": {
+      brand: false,
+      svg: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20V8M4 20h16"/><path d="M8 20v-5M12 20v-8M16 20v-4"/><path d="M19 3l.7 1.8 1.8.7-1.8.7L19 8l-.7-1.8L16.5 5.5l1.8-.7z"/></svg>',
+    },
+    "agentic-ai-workshop": {
+      brand: false,
+      svg: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="5" cy="7" r="2.4"/><circle cx="19" cy="7" r="2.4"/><circle cx="12" cy="17.5" r="2.4"/><path d="M7 8.4l4 7M17 8.4l-4 7"/></svg>',
+    },
+    "ai-in-content-creation-and-marketing": {
+      brand: false,
+      svg: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 14V10c0-.6.4-1 1-1h2.5l8.5-4.5v15L6.5 15H4c-.6 0-1-.4-1-1z"/><path d="M19 8.5l.6 1.4 1.4.6-1.4.6L19 12.5l-.6-1.4L17 10.5l1.4-.6z"/></svg>',
+    },
+    "scrum-master-exam-prep": {
+      brand: false,
+      svg: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a9 9 0 11-3.5-7.1"/><path d="M21 4v5h-5"/><path d="M9 12l2.2 2.2L15 10.5"/></svg>',
+    },
+    "power-bi-workshop": {
+      brand: true,
+      svg: '<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="13" width="4.5" height="8" rx="0.6" fill="#F2C811"/><rect x="9.75" y="8" width="4.5" height="13" rx="0.6" fill="#F2C811"/><rect x="16.5" y="3" width="4.5" height="18" rx="0.6" fill="#F2C811"/></svg>',
+    },
+    "intro-ai-for-finance": {
+      brand: false,
+      svg: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M14.5 9.5C14 8.2 12.7 7.8 11.5 7.8c-1.4 0-2.7.6-2.7 1.9s1.1 1.7 2.7 1.9c1.6.2 2.8.7 2.8 2s-1.3 2-2.8 2c-1.3 0-2.6-.5-3.1-1.9"/><path d="M11.5 6v1.8M11.5 16.2V18"/></svg>',
+    },
+    "data-analytics-and-sql": {
+      brand: false,
+      svg: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><ellipse cx="12" cy="5.5" rx="7.5" ry="2.2"/><path d="M4.5 5.5v6c0 1.2 3.4 2.2 7.5 2.2s7.5-1 7.5-2.2v-6"/><path d="M4.5 11.5v6c0 1.2 3.4 2.2 7.5 2.2s7.5-1 7.5-2.2v-6"/></svg>',
+    },
+    "power-automate": {
+      brand: true,
+      svg: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13.5 2L5 12.5h5.5l-1 9.5L18 11h-5.5z" fill="#0066FF"/></svg>',
+    },
+    "nvidia-genai-and-llm-certification": {
+      brand: true,
+      svg: '<svg viewBox="0 0 24 24" fill="none" stroke="#76B900" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12c0-3.3 2.5-6 6-6 2.5 0 4 1 5 2.5"/><path d="M19 12c0 3.3-2.5 6-6 6-2.5 0-4-1-5-2.5"/><circle cx="12" cy="12" r="2.2" fill="#76B900" stroke="none"/></svg>',
+    },
+  };
+
+  function programIconHtml(p) {
+    const def = ICONS_PROGRAM[p.slug];
+    if (!def) {
+      // Fallback: generic sparkle in topic color
+      return '<span class="prog-icon" data-brand="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4l1.5 4 4 1.5-4 1.5L12 15l-1.5-4-4-1.5 4-1.5z"/></svg></span>';
+    }
+    return `<span class="prog-icon" data-brand="${def.brand ? "true" : "false"}">${def.svg}</span>`;
+  }
+
+  // Days-until-start, for FOMO badge. Returns {days, label, urgency}
+  function daysUntil(iso) {
+    if (!iso) return null;
+    const start = new Date(iso + "T00:00:00");
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+    const ms = start.getTime() - today.getTime();
+    const days = Math.round(ms / 86400000);
+    if (days < 0)  return { days, label: "In progress",       urgency: "past" };
+    if (days === 0) return { days, label: "Starts today",     urgency: "now" };
+    if (days === 1) return { days, label: "Starts tomorrow",  urgency: "now" };
+    if (days <= 7)  return { days, label: `${days} days left`, urgency: "soon" };
+    if (days <= 21) return { days, label: `${days} days left`, urgency: "warm" };
+    return                  { days, label: `${days} days left`, urgency: "calm" };
+  }
+
+  const MONTH_LONG = ["January", "February", "March", "April", "May", "June",
+                      "July", "August", "September", "October", "November", "December"];
+  function monthLabel(ym) {
+    if (!ym) return "";
+    const [y, m] = ym.split("-");
+    return `${MONTH_LONG[parseInt(m, 10) - 1]} ${y}`;
+  }
   /* The hero-strip needs its icons sized larger than the meta-row icons ,
    * the inline width/height attributes already handle that (22×22). */
 
@@ -148,7 +238,7 @@
       key: "topic", label: "Topic", multi: true,
       options: [
         "Agentic AI",
-        "Data & Analytics",
+        "Data Science & Analysis",
         "AI Automation",
         "Cybersecurity",
         "Project Management & Agile",
@@ -288,6 +378,8 @@
     // sync DOM
     const search = document.getElementById("filterSearch");
     if (search) search.value = "";
+    const clearBtn = document.getElementById("filterSearchClear");
+    if (clearBtn) clearBtn.hidden = true;
     document.querySelectorAll("#filtersBar input").forEach(i => { i.checked = false; });
     refreshResults();
   }
@@ -297,65 +389,148 @@
   function renderLanding() {
     const app = $("#app");
     app.innerHTML = `
-      <section class="hero">
-        <img class="hero-circles" src="assets/brand/circles-navy-to-transparent.svg" alt="" aria-hidden="true" />
+      <section class="hero hero--dark">
+        <div class="hero-bg" aria-hidden="true">
+          <div class="hero-bg__noise"></div>
+          <div class="hero-bg__lights"></div>
+          <div class="hero-bg__grid"></div>
+          <div class="hero-bg__orb hero-bg__orb--a"></div>
+          <div class="hero-bg__orb hero-bg__orb--b"></div>
+          <div class="hero-bg__orb hero-bg__orb--c"></div>
+        </div>
+        <img class="hero-circles" src="assets/brand/circles-white-to-faded.svg" alt="" aria-hidden="true" />
         <span class="hero-bracket-wrap hero-bracket-wrap--left">
-          <img class="hero-bracket hero-bracket--left" src="assets/brand/d4XjMcpeBWOQtvHbaD2OCcQQU.avif" alt="" aria-hidden="true" />
+          <img class="hero-bracket hero-bracket--left" src="assets/brand/bracket-onyx.png" alt="" aria-hidden="true" />
         </span>
         <span class="hero-bracket-wrap hero-bracket-wrap--right">
-          <img class="hero-bracket hero-bracket--right" src="assets/brand/AavaFcNfNC6v8x8NbnE08ibVHuA.avif" alt="" aria-hidden="true" />
+          <img class="hero-bracket hero-bracket--right" src="assets/brand/bracket-onyx.png" alt="" aria-hidden="true" />
         </span>
         <div class="container hero__inner">
-          <div class="eyebrow"><span class="dot"></span><span>2026 Program Calendar</span></div>
-          <h1>Enterprise Programs<br/>at CODED</h1>
-          <p class="lede">In-person workshops and long-form bootcamps across AI, software, data, cybersecurity, product, and emerging technologies. Flexible seat-based enrollment for enterprises at CODED Campus.</p>
+          <div class="eyebrow eyebrow--light"><span>CODED For Companies · 2026</span></div>
+          <h1>CODED Training<br/>For <span class="accent-soft hero-cycle" id="heroCycleWord">Companies</span><span class="hero-cycle-caret" aria-hidden="true"></span></h1>
+          <p class="lede lede--light">Hands-on bootcamps and workshops for enterprise teams.</p>
+          <form class="hero-prompt" id="heroPrompt" autocomplete="off" novalidate aria-label="Quick concierge">
+            <span class="hero-prompt__label" id="heroPromptLabel" aria-live="polite">What does your company do?</span>
+            <input class="hero-prompt__input" id="heroPromptInput" type="text" required />
+            <button type="submit" class="hero-prompt__send" aria-label="Continue">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </button>
+            <span class="hero-prompt__steps" id="heroPromptSteps" aria-hidden="true">
+              <span class="dot is-active"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span>
+            </span>
+          </form>
+          <a class="hero-scroll" href="#filtersSection" aria-label="Scroll to programs">
+            <span class="hero-scroll__label">Or browse the catalog</span>
+            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+          </a>
+        </div>
+      </section>
+
+      <!-- Trusted-by strip hidden until real client logos are dropped into
+           assets/brand/clients/ (see README there). To re-enable, restore the
+           <section class="trusted-strip"> block. -->
+
+      <!-- Top courses marquee: gradient-themed chips of the highest-demand programs. -->
+      <section class="top-courses" aria-label="Top performing courses">
+        <div class="container">
+          <div class="top-courses__head">
+            <span class="top-courses__eyebrow"><span class="top-courses__pulse" aria-hidden="true"></span>Most enrolled · 2026</span>
+            <a class="top-courses__cta" href="#filtersSection">View catalog
+              <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </a>
+          </div>
+          <div class="top-courses__marquee" id="topCoursesMarquee" data-paused="false"></div>
         </div>
       </section>
 
       <section class="intro-band">
-        <div class="container intro-band__grid">
-          <div class="intro-card reveal-up">
-            <h3>Hands-On, Not Theory</h3>
-            <p>Participants don't just learn concepts, they apply them through practical exercises and real-world projects.</p>
+        <div class="container intro-band__inner">
+          <div class="intro-band__head">
+            <span class="eyebrow"><span>Why partner with CODED</span></span>
+            <h2>Practical training, built around <em>real business needs</em>.</h2>
+            <p>Teams trust CODED because our training is hands-on, structured, and led by practitioners who understand both global standards and the local context. We help your people build skills that make a measurable difference, week one.</p>
           </div>
-          <div class="intro-card reveal-up delay-1">
-            <h3>Flexible Enrollment</h3>
-            <p>Enterprises can enroll one or multiple participants across a wide range of in-person programs.</p>
-          </div>
-          <div class="intro-card reveal-up delay-2">
-            <h3>Built to Support L&amp;D Teams</h3>
-            <p>We manage the full training experience, including attendee communication, onboarding, attendance, feedback collection, and post-program reporting.</p>
+          <div class="intro-band__grid">
+            <div class="intro-card reveal-up">
+              <span class="intro-card__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7h12M3 12h18M3 17h12"/><circle cx="20" cy="7" r="1.6" fill="currentColor"/><circle cx="20" cy="17" r="1.6" fill="currentColor"/></svg>
+              </span>
+              <h3>Hands-On, Not Theory</h3>
+              <p>Participants don't just learn concepts, they apply them through practical exercises and real-world projects.</p>
+            </div>
+            <div class="intro-card reveal-up delay-1">
+              <span class="intro-card__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7l8-4 8 4-8 4-8-4z"/><path d="M4 12l8 4 8-4"/><path d="M4 17l8 4 8-4"/></svg>
+              </span>
+              <h3>Flexible Enrollment</h3>
+              <p>Enterprises can enroll one or multiple participants across a wide range of in-person programs.</p>
+            </div>
+            <div class="intro-card reveal-up delay-2">
+              <span class="intro-card__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l2.6 5.5 6 .7-4.5 4.1 1.2 5.9L12 16.8 6.7 19.2l1.2-5.9-4.5-4.1 6-.7z"/></svg>
+              </span>
+              <h3>Built to Support L&amp;D Teams</h3>
+              <p>We manage the full training experience, including attendee communication, onboarding, attendance, feedback collection, and post-program reporting.</p>
+            </div>
           </div>
         </div>
       </section>
 
-      <section class="filters" id="filtersSection">
+      <section class="impact-band" aria-label="Impact in numbers">
+        <img class="impact-band__dots" src="assets/brand/dot-pattern-white.svg" alt="" aria-hidden="true" />
+        <img class="impact-band__lines" src="assets/brand/lines-3-A.svg" alt="" aria-hidden="true" />
+        <div class="container impact-band__inner">
+          <div class="impact-band__head">
+            <span class="eyebrow eyebrow--light"><span>Partnerships built around real impact</span></span>
+            <h2>Numbers our partners <em>come back for</em>.</h2>
+            <p>CODED collaborates with enterprises, banks, and institutions to close skill gaps, inspire innovation, and grow local tech talent. Every proposal is built on the same foundation, measurable outcomes and hands-on learning.</p>
+          </div>
+          <div class="impact-band__stats">
+            <div class="impact-stat reveal-up">
+              <span class="impact-stat__num" data-count="8500" data-suffix="+">8,500<i class="impact-stat__plus">+</i></span>
+              <span class="impact-stat__label">Professionals trained</span>
+              <span class="impact-stat__hint">Across 50+ partner organizations</span>
+            </div>
+            <div class="impact-stat reveal-up delay-1">
+              <span class="impact-stat__num" data-count="220" data-suffix="+">220<i class="impact-stat__plus">+</i></span>
+              <span class="impact-stat__label">Programs delivered</span>
+              <span class="impact-stat__hint">From half-day workshops to multi-month academies</span>
+            </div>
+            <div class="impact-stat reveal-up delay-2">
+              <span class="impact-stat__num" data-count="95" data-suffix="%">95<i class="impact-stat__plus">%</i></span>
+              <span class="impact-stat__label">Satisfaction rate</span>
+              <span class="impact-stat__hint">Average post-program NPS, 2021–2025</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="catalog-header" aria-label="2026 calendar">
+        <div class="container catalog-header__inner">
+          <h2>2026 Calendar</h2>
+          <p>Register now and book seats for your team. Every program runs at CODED Campus in Kuwait's Free Trade Zone, with live instructors, real projects, and post-program reporting included.</p>
+        </div>
+      </section>
+
+      <section class="filters filters--simple filters--centered" id="filtersSection">
         <div class="container">
           <div class="filter-search-row">
             <label class="filter-search" for="filterSearch">
               <svg class="filter-search__icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                 <circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/>
               </svg>
-              <input id="filterSearch" type="search" autocomplete="off" placeholder="Search by topic or keyword (e.g. AI, Power BI, bootcamp)…" aria-label="Search programs" />
+              <input id="filterSearch" type="search" autocomplete="off" placeholder="Search programs (e.g. AI, Power BI, cybersecurity)…" aria-label="Search programs" />
               <button type="button" class="filter-search__clear" id="filterSearchClear" aria-label="Clear search" hidden>×</button>
             </label>
-            <button type="button" class="filters-toggle" id="filtersToggle" aria-expanded="false" aria-controls="filtersBar">
-              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <path d="M4 6h16M7 12h10M10 18h4"/>
-              </svg>
-              <span>Filters</span>
-              <span class="filters-toggle__count count" hidden>0</span>
-            </button>
           </div>
-          <div class="filters__inner" id="filtersBar"></div>
-          <div class="filters__backdrop" id="filtersBackdrop" hidden></div>
+          <div class="quick-filters" id="quickFilters" role="toolbar" aria-label="Quick filters"></div>
           <div id="activeChips" class="active-chips" style="display:none;"></div>
         </div>
       </section>
 
-      <section class="grid-section">
+      <section class="grid-section" id="gridSection">
         <div class="container">
-          <div id="resultsHeader" style="display:flex;justify-content:space-between;align-items:center;margin-bottom:18px;flex-wrap:wrap;gap:12px;">
+          <div id="resultsHeader" class="results-header results-header--simple">
             <span class="filter-results" id="resultsCount"></span>
             <span class="filter-results" id="sortLabel">Sorted by start date · soonest first</span>
           </div>
@@ -363,28 +538,953 @@
         </div>
       </section>
 
-      <section class="cta-banner">
+      <!-- Floating duplicate of the view toggle. Appears while #gridSection is in view. -->
+      <div class="view-toggle-floating" id="viewToggleFloating" aria-hidden="true">
+        <div class="view-toggle view-toggle--lg" role="tablist" aria-label="View mode (floating)" data-view-toggle="floating">
+          <button type="button" class="view-toggle__btn is-active" data-view="grid" role="tab" aria-selected="true">
+            ${ICON.viewGrid} <span>Grid</span>
+          </button>
+          <button type="button" class="view-toggle__btn" data-view="schedule" role="tab" aria-selected="false">
+            ${ICON.viewList} <span>Schedule</span>
+          </button>
+          <button type="button" class="view-toggle__btn" data-view="calendar" role="tab" aria-selected="false">
+            ${ICON.viewCal} <span>Calendar</span>
+          </button>
+        </div>
+      </div>
+
+      <section class="offerings" aria-label="Enterprise offerings">
+        <div class="container">
+          <div class="offerings__head">
+            <span class="eyebrow"><span>Our enterprise offerings</span></span>
+            <h2>Four ways teams partner with us.</h2>
+            <p>From a single workshop to a multi-month academy, every engagement is scoped end-to-end around your team, your stack, and your timeline.</p>
+          </div>
+          <div class="offerings__grid">
+            <article class="offering-card offering-card--a reveal-up">
+              <span class="offering-card__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7h18v12H3z"/><path d="M3 11h18"/><path d="M8 7V4h8v3"/></svg>
+              </span>
+              <h3>Enterprise Workshops</h3>
+              <p>Short, hands-on sessions tailored to your teams and tech stack — from one-day intensives to week-long deep-dives.</p>
+              <ul class="offering-card__list">
+                <li>1–5 day formats</li>
+                <li>On-site, on-campus, or hybrid</li>
+                <li>Cohorts of 8–25</li>
+              </ul>
+              <a class="offering-card__link" href="#/enterprise">Brief us on your team <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+            </article>
+            <article class="offering-card offering-card--b reveal-up delay-1">
+              <span class="offering-card__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-4.6-7-10a5 5 0 019-3 5 5 0 019 3c0 5.4-7 10-7 10z"/><path d="M12 11v0"/></svg>
+              </span>
+              <h3>CSR &amp; Sponsorships</h3>
+              <p>Support youth and women in tech through flagship programs like Kuwait Codes and Academy X — measurable community impact.</p>
+              <ul class="offering-card__list">
+                <li>Branded cohort sponsorships</li>
+                <li>Scholarship funding tracks</li>
+                <li>Quarterly impact reporting</li>
+              </ul>
+              <a class="offering-card__link" href="#/enterprise">Explore CSR options <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+            </article>
+            <article class="offering-card offering-card--c reveal-up delay-2">
+              <span class="offering-card__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 9l10-5 10 5-10 5z"/><path d="M6 11v5c0 1.7 2.7 3 6 3s6-1.3 6-3v-5"/><path d="M22 9v6"/></svg>
+              </span>
+              <h3>Tech Academies</h3>
+              <p>Multi-month training programs for new hires or graduate intakes — built to deliver job-ready engineers in 12–16 weeks.</p>
+              <ul class="offering-card__list">
+                <li>Software, data, AI, cyber tracks</li>
+                <li>Project-based, capstone-driven</li>
+                <li>Industry mentors &amp; assessment</li>
+              </ul>
+              <a class="offering-card__link" href="#/enterprise">Plan an academy <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+            </article>
+            <article class="offering-card offering-card--d reveal-up delay-3">
+              <span class="offering-card__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.2"/><circle cx="17" cy="9" r="2.4"/><path d="M3 20c0-3 2.7-5 6-5s6 2 6 5"/><path d="M15 19c.4-2.6 2.5-4 4.5-4s2.5 1 2.5 1"/></svg>
+              </span>
+              <h3>Employee Family Programs</h3>
+              <p>Offer CODED Juniors or youth camps as employee benefits — a perk that lasts longer than a gift card.</p>
+              <ul class="offering-card__list">
+                <li>Ages 9–17, school holidays</li>
+                <li>Optional family discount tiers</li>
+                <li>Wellbeing &amp; retention boost</li>
+              </ul>
+              <a class="offering-card__link" href="#/enterprise">Add it to your benefits <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="faq-section" aria-label="Frequently asked questions">
+        <div class="container faq-section__inner">
+          <aside class="faq-section__aside">
+            <span class="eyebrow"><span>Answers for HR &amp; L&amp;D teams</span></span>
+            <h2>Questions we hear from procurement, L&amp;D, and CHROs.</h2>
+            <p>Clear answers to the questions HR and L&amp;D teams ask most when evaluating CODED as a training partner. Don't see yours?</p>
+            <a class="btn btn-secondary" href="#/enterprise">Ask us directly
+              <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </a>
+          </aside>
+          <div class="faq faq--landing">
+            <details open>
+              <summary>Who are CODED's corporate programs designed for?</summary>
+              <p>Our programs are designed for organizations looking to upskill employees, onboard fresh talent, or build long-term technical capability — across technical and non-technical roles.</p>
+            </details>
+            <details>
+              <summary>Are the programs customized to our organization's needs?</summary>
+              <p>Yes. Every corporate program is tailored based on your objectives, team skill levels, time constraints, and industry context. We do not offer generic, one-size-fits-all training.</p>
+            </details>
+            <details>
+              <summary>What areas and skills does CODED cover?</summary>
+              <p>We deliver training across software development, data and AI, cybersecurity, cloud, and digital transformation — including programs for both technical and non-technical teams.</p>
+            </details>
+            <details>
+              <summary>How is training delivered and who teaches it?</summary>
+              <p>Programs can be delivered on-site, at CODED Campus in Kuwait's Free Trade Zone, or in hybrid formats. All sessions are led by experienced practitioners trained to teach in professional, corporate environments.</p>
+            </details>
+            <details>
+              <summary>How do you measure success and report outcomes?</summary>
+              <p>We focus on practical, project-based learning with clear objectives, and provide structured feedback and outcome summaries to support internal reporting and evaluation.</p>
+            </details>
+          </div>
+        </div>
+      </section>
+
+      <section class="cta-banner cta-banner--final">
         <div class="container">
           <div class="cta-banner__inner reveal-up">
             <img class="cta-dot" src="assets/brand/dot-pattern-white.svg" alt="" aria-hidden="true" />
             <img class="cta-lines" src="assets/brand/lines-2-A.svg" alt="" aria-hidden="true" />
             <div class="cta-banner__content">
-              <h2>Need it tailored to your team instead?</h2>
-              <p>For larger groups or company-specific use cases, CODED also runs custom programs end-to-end. Same hands-on methodology, scoped around your business.</p>
+              <span class="eyebrow eyebrow--light"><span>Build Kuwait's next digital success story</span></span>
+              <h2>Let's design a program your team will actually remember.</h2>
+              <p>Whether you're training teams, hiring talent, or launching a CSR program, CODED scopes solutions end-to-end so you don't have to. One business day to a written proposal.</p>
             </div>
-            <a class="btn btn-primary btn-lg" href="mailto:${ENTERPRISE_EMAIL}?subject=Custom%20program%20inquiry">Email enterprise ${ICON.arrow}</a>
+            <a class="btn btn-primary btn-lg" href="#/enterprise">Request a proposal ${ICON.arrow}</a>
           </div>
         </div>
       </section>
     `;
 
-    buildFilterBar();
+    buildQuickFilters();
     wireSearch();
-    setupFiltersDrawer();
+    setupHeroPrompt();
+    setupHeroCycle();
+    renderTrustedLogos();
+    renderTopCourses();
+    setupViewToggle();
+    setupHelperChat();
     refreshResults();
     document.title = "Programs · CODED";
     window.scrollTo({ top: 0 });
   }
+
+  // Logo wall of partner companies. Each tile resolves to assets/brand/clients/<slug>.svg
+  // (drop the SVG/PNG files in that folder). If the image is missing, a styled
+  // wordmark fallback renders so the strip never looks broken.
+  const TRUSTED_LOGOS = [
+    { slug: "kfh",            name: "Kuwait Finance House" },
+    { slug: "nbk",            name: "National Bank of Kuwait" },
+    { slug: "zain",           name: "Zain" },
+    { slug: "boursa-kuwait",  name: "Boursa Kuwait" },
+    { slug: "kipco",          name: "KIPCO" },
+    { slug: "kfas",           name: "KFAS" },
+    { slug: "agility",        name: "Agility" },
+    { slug: "stc",            name: "stc" },
+    { slug: "burgan-bank",    name: "Burgan Bank" },
+    { slug: "gulf-bank",      name: "Gulf Bank" },
+    { slug: "boubyan-bank",   name: "Boubyan Bank" },
+    { slug: "pwc",            name: "PwC" },
+  ];
+  function renderTrustedLogos() {
+    const track = document.getElementById("trustedTrack");
+    if (!track) return;
+    const tile = (logo, dup = false) => `
+      <span class="trusted-logo"${dup ? ' aria-hidden="true"' : ""}>
+        <img src="assets/brand/clients/${escapeHtml(logo.slug)}.svg"
+             alt="${escapeHtml(logo.name)}"
+             loading="lazy"
+             onerror="this.parentNode.classList.add('trusted-logo--fallback');this.remove();"/>
+        <span class="trusted-logo__fallback">${escapeHtml(logo.name)}</span>
+      </span>
+    `;
+    track.innerHTML =
+      TRUSTED_LOGOS.map(l => tile(l)).join("") +
+      TRUSTED_LOGOS.map(l => tile(l, true)).join("");
+  }
+
+  // ---------------- Quick-filter chips ----------------
+  // Single-tap filter shortcuts that map to the existing filter state.
+  // Toggleable: clicking a chip already-active clears it.
+  const QUICK_FILTERS = [
+    {
+      id: "ai",
+      label: "AI training",
+      icon: '<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4l1.4 3.6L17 9l-3.6 1.4L12 14l-1.4-3.6L7 9l3.6-1.4z"/><circle cx="18.5" cy="17.5" r="1.6"/><circle cx="5.5" cy="17.5" r="1.6"/></svg>',
+      apply: { topic: ["Agentic AI", "AI Automation", "AI Productivity"] },
+    },
+    {
+      id: "bootcamps",
+      label: "Bootcamps",
+      icon: '<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2l9 4-9 4-9-4 9-4z"/><path d="M21 6v6c0 1.7-4 3-9 3s-9-1.3-9-3V6"/></svg>',
+      apply: { format: ["Bootcamp"] },
+    },
+    {
+      id: "quick",
+      label: "Quick (≤1 week)",
+      icon: '<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 2L4 14h7l-1 8 10-13h-7l1-7z"/></svg>',
+      apply: { format: ["Workshop"] },
+    },
+    {
+      id: "soon",
+      label: "Starting soon",
+      icon: '<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l3 2"/><path d="M9 2h6"/></svg>',
+      // Computed at apply-time — next 2 calendar months including current
+      apply: () => {
+        const now = new Date();
+        const ms = [];
+        for (let i = 0; i < 2; i++) {
+          const d = new Date(now.getFullYear(), now.getMonth() + i, 1);
+          ms.push(`${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}`);
+        }
+        return { month: ms };
+      },
+    },
+  ];
+
+  function quickFilterIsActive(qf, filters) {
+    const apply = typeof qf.apply === "function" ? qf.apply() : qf.apply;
+    return Object.entries(apply).every(([k, v]) => {
+      const cur = filters[k];
+      if (!Array.isArray(v)) return cur === v;
+      if (!Array.isArray(cur) || !cur.length) return false;
+      return v.every(x => cur.includes(x));
+    });
+  }
+
+  function buildQuickFilters() {
+    const host = $("#quickFilters");
+    if (!host) return;
+    const filters = readFilters();
+    host.innerHTML = QUICK_FILTERS.map(qf => {
+      const active = quickFilterIsActive(qf, filters);
+      return `
+        <button type="button" class="quick-chip${active ? " is-active" : ""}" data-quick-id="${qf.id}" aria-pressed="${active}">
+          ${qf.icon}<span>${escapeHtml(qf.label)}</span>
+        </button>
+      `;
+    }).join("") + `
+      <button type="button" class="quick-chip quick-chip--reset" id="quickFilterReset" hidden>
+        <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12a9 9 0 0114-7L20 8M20 3v5h-5"/></svg>
+        <span>Show all</span>
+      </button>
+    `;
+    host.querySelectorAll(".quick-chip[data-quick-id]").forEach(btn => {
+      btn.addEventListener("click", () => {
+        const qf = QUICK_FILTERS.find(x => x.id === btn.dataset.quickId);
+        if (!qf) return;
+        const f = readFilters();
+        const apply = typeof qf.apply === "function" ? qf.apply() : qf.apply;
+        const active = quickFilterIsActive(qf, f);
+        if (active) {
+          // Toggle off — clear only the keys this chip set
+          Object.keys(apply).forEach(k => { f[k] = []; });
+        } else {
+          // Apply — but in a chip-exclusive way, replace conflicting keys
+          Object.entries(apply).forEach(([k, v]) => { f[k] = Array.isArray(v) ? v.slice() : v; });
+        }
+        writeFilters(f);
+        refreshResults();
+      });
+    });
+    const resetBtn = $("#quickFilterReset");
+    if (resetBtn) resetBtn.addEventListener("click", clearAllFilters);
+  }
+
+  function refreshQuickFiltersState() {
+    const filters = readFilters();
+    const anyActive =
+      (filters.q && filters.q.trim()) ||
+      FILTER_DEFS.some(d => {
+        const v = filters[d.key];
+        return Array.isArray(v) ? v.length > 0 : !!v;
+      });
+    $$(".quick-chip[data-quick-id]").forEach(btn => {
+      const qf = QUICK_FILTERS.find(x => x.id === btn.dataset.quickId);
+      if (!qf) return;
+      const active = quickFilterIsActive(qf, filters);
+      btn.classList.toggle("is-active", active);
+      btn.setAttribute("aria-pressed", active ? "true" : "false");
+    });
+    const reset = $("#quickFilterReset");
+    if (reset) reset.hidden = !anyActive;
+  }
+
+  // ---------------- Helper chat (program finder) ----------------
+  // A small chat-style assistant in the bottom-right corner. Three short
+  // conversational steps map to the existing filter state, then we apply
+  // and close. The conversation is also the entry point for "I don't know
+  // what to choose, help me."
+  const CHAT_STEPS = [
+    {
+      key: "team",
+      prompt: "Who's the training for?",
+      options: [
+        { label: "Developers / Tech team",  patch: { audience: ["Technical / IT"] } },
+        { label: "Data & Analytics",        patch: { audience: ["Data & Analytics"] } },
+        { label: "Marketing / Content",     patch: { audience: ["Marketing & Content"] } },
+        { label: "Finance team",            patch: { audience: ["Finance & Accounting"] } },
+        { label: "Security team",           patch: { topic: ["Cybersecurity"] } },
+        { label: "Project / Agile leads",   patch: { topic: ["Project Management & Agile"] } },
+        { label: "Open to anything",        patch: {} },
+      ],
+    },
+    {
+      key: "time",
+      prompt: "How much time can they commit?",
+      options: [
+        { label: "A few days",            patch: { format: ["Workshop"] } },
+        { label: "Several weeks",         patch: { format: ["Bootcamp"] } },
+        { label: "Either works",          patch: {} },
+      ],
+    },
+    {
+      key: "when",
+      prompt: "When does it need to happen?",
+      options: [
+        { label: "ASAP (this month)",     patch: { __whenMonths: 1 } },
+        { label: "Soon (next 1–3 months)", patch: { __whenMonths: 3 } },
+        { label: "Later this year",       patch: { __whenMonths: 12 } },
+        { label: "Flexible",              patch: {} },
+      ],
+    },
+  ];
+
+  function nextMonths(n) {
+    const out = [];
+    const now = new Date();
+    for (let i = 0; i < n; i++) {
+      const d = new Date(now.getFullYear(), now.getMonth() + i, 1);
+      out.push(`${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}`);
+    }
+    return out;
+  }
+
+  function setupHelperChat() {
+    const chat = $("#helperChat");
+    if (!chat) return;
+    const launcher = $("#helperChatLauncher");
+    const closer = $("#helperChatClose");
+    const body = $("#helperChatBody");
+    const foot = $("#helperChatFoot");
+
+    // State machine
+    let stepIndex = 0;
+    const answers = {};      // chosen options keyed by step.key
+    const pendingPatch = {}; // accumulated filter patch
+
+    function openChat() {
+      chat.dataset.open = "true";
+      chat.setAttribute("aria-hidden", "false");
+      stepIndex = 0;
+      Object.keys(answers).forEach(k => delete answers[k]);
+      Object.keys(pendingPatch).forEach(k => delete pendingPatch[k]);
+      renderConversation();
+      // Focus the first option for keyboard nav
+      setTimeout(() => {
+        const first = body.querySelector(".helper-chat__option");
+        if (first) first.focus();
+      }, 60);
+    }
+    function closeChat() {
+      chat.dataset.open = "false";
+      chat.setAttribute("aria-hidden", "true");
+    }
+
+    function renderConversation() {
+      // Intro bubble + each step rendered as bot question + user answer (if chosen)
+      const parts = [
+        `<div class="chat-msg chat-msg--bot">
+           <p>Hi! Let me help you find the right program for your team. Just a few quick questions.</p>
+         </div>`,
+      ];
+      CHAT_STEPS.forEach((step, i) => {
+        if (i > stepIndex) return;
+        parts.push(`<div class="chat-msg chat-msg--bot"><p>${escapeHtml(step.prompt)}</p></div>`);
+        const chosen = answers[step.key];
+        if (chosen) {
+          parts.push(`<div class="chat-msg chat-msg--user"><p>${escapeHtml(chosen)}</p></div>`);
+        } else if (i === stepIndex) {
+          parts.push(`<div class="chat-options" role="group" aria-label="${escapeHtml(step.prompt)}">
+            ${step.options.map((opt, j) =>
+              `<button type="button" class="helper-chat__option" data-step="${i}" data-opt="${j}">${escapeHtml(opt.label)}</button>`
+            ).join("")}
+          </div>`);
+        }
+      });
+      // Done state — at the end, show summary + apply
+      if (stepIndex >= CHAT_STEPS.length) {
+        // Compute matching count using current state + pendingPatch (preview)
+        const preview = previewFilters();
+        const count = applyFilters(PROGRAMS, preview).length;
+        parts.push(`<div class="chat-msg chat-msg--bot">
+          <p>Found <strong>${count}</strong> program${count === 1 ? "" : "s"} that match. Want to see them?</p>
+        </div>`);
+      }
+      body.innerHTML = parts.join("");
+      body.scrollTop = body.scrollHeight;
+
+      // Wire options
+      body.querySelectorAll(".helper-chat__option").forEach(btn => {
+        btn.addEventListener("click", () => {
+          const step = CHAT_STEPS[+btn.dataset.step];
+          const opt = step.options[+btn.dataset.opt];
+          answers[step.key] = opt.label;
+          // Merge patch into pendingPatch
+          Object.entries(opt.patch || {}).forEach(([k, v]) => {
+            pendingPatch[k] = v;
+          });
+          stepIndex += 1;
+          renderConversation();
+          renderFoot();
+          // Focus next chip group
+          setTimeout(() => {
+            const nextOpt = body.querySelector(".helper-chat__option");
+            if (nextOpt) nextOpt.focus();
+          }, 60);
+        });
+      });
+    }
+
+    function previewFilters() {
+      // Start from CLEAN filter state — chat is an alternative to manual filtering
+      const cleared = { q: "" };
+      FILTER_DEFS.forEach(d => cleared[d.key] = d.multi ? [] : null);
+      Object.entries(pendingPatch).forEach(([k, v]) => {
+        if (k === "__whenMonths") {
+          cleared.month = nextMonths(v);
+        } else {
+          cleared[k] = v;
+        }
+      });
+      return cleared;
+    }
+
+    function renderFoot() {
+      if (stepIndex >= CHAT_STEPS.length) {
+        foot.hidden = false;
+        foot.innerHTML = `
+          <button type="button" class="helper-chat__btn helper-chat__btn--ghost" id="helperChatRestart">Start over</button>
+          <button type="button" class="helper-chat__btn helper-chat__btn--primary" id="helperChatApply">Show programs ${ICON.arrow}</button>
+        `;
+        $("#helperChatRestart").addEventListener("click", () => {
+          stepIndex = 0;
+          Object.keys(answers).forEach(k => delete answers[k]);
+          Object.keys(pendingPatch).forEach(k => delete pendingPatch[k]);
+          foot.hidden = true;
+          foot.innerHTML = "";
+          renderConversation();
+        });
+        $("#helperChatApply").addEventListener("click", () => {
+          const f = previewFilters();
+          writeFilters(f);
+          const search = $("#filterSearch");
+          if (search) search.value = "";
+          refreshResults();
+          closeChat();
+          // Scroll grid into view smoothly
+          const grid = $("#cardGrid");
+          if (grid) grid.scrollIntoView({ behavior: "smooth", block: "start" });
+        });
+      } else {
+        foot.hidden = true;
+        foot.innerHTML = "";
+      }
+    }
+
+    launcher.addEventListener("click", () => {
+      const isOpen = chat.dataset.open === "true";
+      isOpen ? closeChat() : openChat();
+    });
+    closer.addEventListener("click", closeChat);
+
+    // Activate (make the launcher visible) only after a brief delay so it
+    // doesn't compete with the hero on first paint.
+    setTimeout(() => { chat.dataset.active = "true"; }, 800);
+
+    // Close on Escape when focus is in the chat panel
+    chat.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") closeChat();
+    });
+  }
+
+  // View mode: 'grid' or 'calendar'. Persists per-tab so a refresh keeps it.
+  const VIEW_MODE_KEY = "coded.b2b.viewMode";
+  function getViewMode() {
+    try { return sessionStorage.getItem(VIEW_MODE_KEY) || "grid"; }
+    catch { return "grid"; }
+  }
+  function setViewMode(mode) {
+    try { sessionStorage.setItem(VIEW_MODE_KEY, mode); } catch {}
+  }
+  function setupViewToggle() {
+    // $$ matches both the inline (.view-toggle) and the floating
+    // (.view-toggle-floating .view-toggle) copies, so a click on either
+    // updates both groups via the same forEach below.
+    const btns = $$(".view-toggle__btn");
+    const current = getViewMode();
+    btns.forEach(b => {
+      const active = b.dataset.view === current;
+      b.classList.toggle("is-active", active);
+      b.setAttribute("aria-selected", active ? "true" : "false");
+      b.addEventListener("click", () => {
+        const mode = b.dataset.view;
+        if (mode === getViewMode()) return;
+        setViewMode(mode);
+        btns.forEach(x => {
+          const a = x.dataset.view === mode;
+          x.classList.toggle("is-active", a);
+          x.setAttribute("aria-selected", a ? "true" : "false");
+        });
+        refreshResults();
+      });
+    });
+    setupFloatingViewToggle();
+  }
+
+  // The floating view-toggle fades in while the programs grid is in view.
+  // Two-sentinel IntersectionObserver: a "top" sentinel just below the hero
+  // (when it leaves the viewport, the user has entered the grid) and a
+  // "bottom" sentinel just after the grid (when it leaves, they're past).
+  // Pure IO — no scroll listener — so it's reliable across browsers and
+  // unaffected by CSS `scroll-behavior: smooth`.
+  function setupFloatingViewToggle() {
+    const floater = document.getElementById("viewToggleFloating");
+    const grid    = document.getElementById("gridSection");
+    if (!floater || !grid) return;
+
+    if (setupFloatingViewToggle._observer) setupFloatingViewToggle._observer.disconnect();
+
+    const reveal = () => {
+      floater.classList.add("is-visible");
+      floater.setAttribute("aria-hidden", "false");
+    };
+    const hide = () => {
+      floater.classList.remove("is-visible");
+      floater.setAttribute("aria-hidden", "true");
+    };
+
+    if (!("IntersectionObserver" in window)) { reveal(); return; }
+
+    // The grid section is "in viewing" when any part of it intersects the
+    // middle 70% of the viewport. rootMargin trims 15% top + 15% bottom so
+    // the floater appears as the section enters the meaningful read zone and
+    // disappears once the user is reading past it.
+    const io = new IntersectionObserver((entries) => {
+      for (const entry of entries) {
+        if (entry.isIntersecting) reveal(); else hide();
+      }
+    }, {
+      threshold: 0,
+      rootMargin: "-15% 0px -15% 0px",
+    });
+    io.observe(grid);
+    setupFloatingViewToggle._observer = io;
+  }
+
+  // ---------------- Hero prompt (minimal single-pill concierge) ----------------
+  // A single input pill that walks the user through 4 quick questions.
+  // The label above the input cross-fades between questions on each submit.
+  // Per-keystroke save to sessionStorage so a tab close keeps the draft.
+  const HERO_PROMPT_KEY = "coded.b2b.heroPrompt.v2";
+  const HERO_PROMPT_STEPS = [
+    { key: "company",       label: "What does your company do?",         placeholder: "Kuwait Finance House — retail banking" },
+    { key: "needs",         label: "What skills should the team build?", placeholder: "AI app development, Power BI, cybersecurity…" },
+    { key: "teamAndTiming", label: "Roughly how many people, and when?", placeholder: "~12 people, March–April 2026" },
+    { key: "contact",       label: "Your name and work email?",          placeholder: "Sara Al-Ali · sara@company.com" },
+  ];
+  const HERO_PROMPT_DONE = { label: "Thanks — we'll be in touch within 1 business day.", placeholder: "" };
+
+  function loadPromptDraft() {
+    try { return JSON.parse(sessionStorage.getItem(HERO_PROMPT_KEY) || "{}"); }
+    catch { return {}; }
+  }
+  function savePromptDraft(d) {
+    try { sessionStorage.setItem(HERO_PROMPT_KEY, JSON.stringify(d)); } catch {}
+  }
+
+  // ── Hero cycle word ────────────────────────────────────────────────
+  // Types & erases a sequence of words inside the H1's platinum span.
+  // Pure setTimeout chain — survives route changes by aborting via the
+  // stale-element check inside tick().
+  const HERO_CYCLE_WORDS = ["Companies", "Enterprises", "Banks", "Telecoms"];
+  function setupHeroCycle() {
+    const el = document.getElementById("heroCycleWord");
+    if (!el) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      el.textContent = HERO_CYCLE_WORDS[0];
+      return;
+    }
+    // Start fully showing the first word, then loop: pause → erase → type next.
+    let idx = 0;
+    let chars = HERO_CYCLE_WORDS[0].length;
+    let phase = "pause-show";
+    el.textContent = HERO_CYCLE_WORDS[0];
+
+    function tick() {
+      // Abort if the element has been detached by a route change.
+      if (!el.isConnected || document.getElementById("heroCycleWord") !== el) return;
+      const word = HERO_CYCLE_WORDS[idx];
+      if (phase === "pause-show") {
+        setTimeout(() => { phase = "erasing"; tick(); }, 1900);
+      } else if (phase === "erasing") {
+        chars--;
+        el.textContent = word.slice(0, chars);
+        if (chars <= 0) {
+          idx = (idx + 1) % HERO_CYCLE_WORDS.length;
+          phase = "pause-erased";
+          setTimeout(tick, 220);
+        } else {
+          setTimeout(tick, 38);
+        }
+      } else if (phase === "pause-erased") {
+        phase = "typing";
+        tick();
+      } else if (phase === "typing") {
+        chars++;
+        el.textContent = HERO_CYCLE_WORDS[idx].slice(0, chars);
+        if (chars >= HERO_CYCLE_WORDS[idx].length) {
+          phase = "pause-show";
+          tick();
+        } else {
+          setTimeout(tick, 72);
+        }
+      }
+    }
+    // Kick off after a short initial delay so the headline settles first.
+    setTimeout(tick, 1200);
+  }
+
+  // ── Top courses marquee ────────────────────────────────────────────
+  // Curated list of the most-enrolled programs. Each card adopts the
+  // program's topic accent via inline CSS variables (gradient backgrounds
+  // are driven from --topic in the stylesheet). The track is duplicated
+  // so the CSS marquee animation loops seamlessly.
+  const TOP_COURSE_SLUGS = [
+    "cybersecurity-bootcamp",
+    "ai-and-data-science-bootcamp",
+    "ai-app-developer-bootcamp",
+    "agentic-ai-workshop",
+    "power-bi-workshop",
+    "nvidia-genai-and-llm-certification",
+    "data-analytics-and-sql",
+  ];
+  const TOPIC_GRADIENTS = {
+    "Cybersecurity":              { from: "#7F1D1D", to: "#0B0B0F" },
+    "Agentic AI":                 { from: "#1A1F4A", to: "#0B0B0F" },
+    "Data & Analytics":           { from: "#064E3B", to: "#0B0B0F" },
+    "AI Automation":              { from: "#4C1D95", to: "#0B0B0F" },
+    "Project Management & Agile": { from: "#7C2D12", to: "#0B0B0F" },
+    "Business Intelligence":      { from: "#1E3A8A", to: "#0B0B0F" },
+  };
+
+  function renderTopCourses() {
+    const track = document.getElementById("topCoursesMarquee");
+    if (!track) return;
+    const programs = window.CODED_PROGRAMS || [];
+    const picked = TOP_COURSE_SLUGS
+      .map(slug => programs.find(p => p.slug === slug && p.status === "Published"))
+      .filter(Boolean);
+    if (!picked.length) { track.style.display = "none"; return; }
+
+    const card = (p, i, set) => {
+      const grad = TOPIC_GRADIENTS[p.topic] || { from: "#1F2937", to: "#0B0B0F" };
+      const rank = String(i + 1).padStart(2, "0");
+      const priceStr = p.price_per_seat_kwd
+        ? `From KWD ${Number(p.price_per_seat_kwd).toLocaleString("en-GB")} / seat`
+        : "On request";
+      return `
+        <a class="top-course-card" href="#/programs/${escapeHtml(p.slug)}"
+           style="--c-from:${grad.from};--c-to:${grad.to};"
+           ${set === 2 ? 'aria-hidden="true" tabindex="-1"' : ""}>
+          <span class="top-course-card__rank">${rank}</span>
+          <span class="top-course-card__topic">${escapeHtml(p.topic)}</span>
+          <span class="top-course-card__name">${escapeHtml(p.name)}</span>
+          <span class="top-course-card__meta">${escapeHtml(p.duration_label || "")} · ${escapeHtml(priceStr)}</span>
+          <span class="top-course-card__arrow" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </span>
+        </a>`;
+    };
+
+    // Duplicate the set so the marquee animation can wrap seamlessly.
+    track.innerHTML = `
+      <div class="top-courses__set">${picked.map((p, i) => card(p, i, 1)).join("")}</div>
+      <div class="top-courses__set" aria-hidden="true">${picked.map((p, i) => card(p, i, 2)).join("")}</div>
+    `;
+
+    // Pause animation on hover so users can read; resume on leave.
+    track.addEventListener("mouseenter", () => track.dataset.paused = "true");
+    track.addEventListener("mouseleave", () => track.dataset.paused = "false");
+  }
+
+  function setupHeroPrompt() {
+    const form    = document.getElementById("heroPrompt");
+    const labelEl = document.getElementById("heroPromptLabel");
+    const input   = document.getElementById("heroPromptInput");
+    const stepsEl = document.getElementById("heroPromptSteps");
+    if (!form || !labelEl || !input) return;
+
+    let draft = loadPromptDraft();
+    if (typeof draft !== "object" || !draft) draft = {};
+    if (typeof draft.step !== "number") draft.step = 0;
+    if (typeof draft.answers !== "object" || !draft.answers) draft.answers = {};
+    if (draft.submitted) draft = { step: 0, answers: {} };
+
+    function setLabel(text, placeholder) {
+      labelEl.classList.add("is-fading");
+      setTimeout(() => {
+        labelEl.textContent = text;
+        if (placeholder !== undefined) input.placeholder = placeholder;
+        labelEl.classList.remove("is-fading");
+      }, 160);
+    }
+    function setSteps() {
+      if (!stepsEl) return;
+      const dots = stepsEl.querySelectorAll(".dot");
+      dots.forEach((d, i) => d.classList.toggle("is-active", i < draft.step + 1 && draft.step < HERO_PROMPT_STEPS.length));
+      stepsEl.classList.toggle("is-hidden", draft.step >= HERO_PROMPT_STEPS.length);
+    }
+    function render() {
+      if (draft.step >= HERO_PROMPT_STEPS.length) {
+        setLabel(HERO_PROMPT_DONE.label, "");
+        form.classList.add("hero-prompt--done");
+        input.disabled = true;
+      } else {
+        const cur = HERO_PROMPT_STEPS[draft.step];
+        setLabel(cur.label, cur.placeholder);
+        form.classList.remove("hero-prompt--done");
+        input.disabled = false;
+        input.value = draft.pending && draft.pending.step === draft.step ? draft.pending.text : "";
+      }
+      setSteps();
+    }
+
+    input.addEventListener("input", () => {
+      draft.pending = { step: draft.step, text: input.value };
+      savePromptDraft(draft);
+    });
+
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      if (draft.step >= HERO_PROMPT_STEPS.length) return;
+      const text = (input.value || "").trim();
+      if (!text) return;
+      const cur = HERO_PROMPT_STEPS[draft.step];
+      draft.answers[cur.key] = text;
+      delete draft.pending;
+      input.value = "";
+
+      if (cur.key === "contact") {
+        const parsed = parseContactLine(text);
+        if (!parsed.email) { flashError(labelEl, "Need an email so we can follow up."); return; }
+        if (!parsed.name)  { flashError(labelEl, "Got the email — what should we call you?"); return; }
+        draft.contact = parsed;
+        draft.step += 1;
+        savePromptDraft(draft);
+        render();
+        submitHeroPrompt(draft);
+        return;
+      }
+      draft.step += 1;
+      savePromptDraft(draft);
+      render();
+    });
+
+    render();
+  }
+
+  function flashError(el, msg) {
+    const prev = el.textContent;
+    el.classList.add("is-error");
+    el.textContent = msg;
+    setTimeout(() => {
+      el.classList.remove("is-error");
+      el.textContent = prev;
+    }, 2600);
+  }
+
+  function parseContactLine(text) {
+    const out = { name: "", email: "", phone: "" };
+    const emailMatch = text.match(/[^\s,;]+@[^\s,;]+\.[^\s,;]+/);
+    if (emailMatch) out.email = emailMatch[0];
+    const phoneMatch = text.match(/(\+?\d[\d\s\-()]{6,})/);
+    if (phoneMatch) out.phone = phoneMatch[0].trim();
+    let rest = text;
+    if (out.email) rest = rest.replace(out.email, "");
+    if (out.phone) rest = rest.replace(out.phone, "");
+    rest = rest.replace(/[·•|,;]/g, " ").replace(/\s+/g, " ").trim();
+    out.name = rest;
+    return out;
+  }
+
+  async function submitHeroPrompt(draft) {
+    const payload = {
+      source:  "Hero Chatbot",
+      contact: draft.contact || {},
+      company: { name: extractCompanyName(draft.answers.company), description: draft.answers.company },
+      answers: { needs: draft.answers.needs, teamAndTiming: draft.answers.teamAndTiming },
+      programs: [],
+      pageUrl: location.href,
+    };
+    try {
+      const r = await fetch("/api/inquiry", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+      if (!r.ok) throw new Error(`HTTP ${r.status}`);
+      draft.submitted = true;
+      savePromptDraft(draft);
+    } catch (err) {
+      const labelEl = document.getElementById("heroPromptLabel");
+      if (labelEl) flashError(labelEl, "Couldn't reach the server — please email enterprise@joincoded.com");
+    }
+  }
+
+  // Best-effort: pull the first capitalised noun phrase out of the company answer
+  function extractCompanyName(s) {
+    if (!s) return "";
+    // If user wrote "Company — description", split on em dash / hyphen / colon
+    const m = s.split(/[—–\-:|]/)[0];
+    return (m || s).trim().slice(0, 120);
+  }
+
+  // ---------------- Inquiry modal ----------------
+  // Opened from per-card "Inquire about seats" or the detail-page CTA.
+  function openInquiryModal({ programSlug } = {}) {
+    const modal = document.getElementById("inquiryModal");
+    if (!modal) return;
+    const select = document.getElementById("inquiryProgramSelect");
+    const form   = document.getElementById("inquiryForm");
+    const status = document.getElementById("inquiryFormStatus");
+    const eyebrow = document.getElementById("inquiryModalEyebrow");
+    if (!form || !select) return;
+
+    // Populate program select
+    select.innerHTML = `<option value="">Open to any program / not sure yet</option>` +
+      PROGRAMS.map(p => `<option value="${escapeHtml(p.slug)}">${escapeHtml(p.name)}</option>`).join("") +
+      `<option value="custom">Other / Custom program</option>`;
+    if (programSlug) {
+      select.value = programSlug;
+      const p = slugToProgram(programSlug);
+      if (p) eyebrow.textContent = `Inquiry · ${p.name}`;
+    } else {
+      eyebrow.textContent = "B2B inquiry";
+    }
+
+    // Reset state
+    form.reset();
+    if (programSlug) select.value = programSlug;
+    status.textContent = "";
+    status.removeAttribute("data-tone");
+    form.querySelector("button[type='submit']").disabled = false;
+
+    // Show
+    modal.hidden = false;
+    modal.setAttribute("aria-hidden", "false");
+    document.body.classList.add("modal-open");
+    setTimeout(() => modal.classList.add("inquiry-modal--in"), 10);
+    const firstInput = form.querySelector("input[name='name']");
+    if (firstInput) setTimeout(() => firstInput.focus(), 100);
+  }
+
+  function closeInquiryModal() {
+    const modal = document.getElementById("inquiryModal");
+    if (!modal) return;
+    modal.classList.remove("inquiry-modal--in");
+    setTimeout(() => {
+      modal.hidden = true;
+      modal.setAttribute("aria-hidden", "true");
+      document.body.classList.remove("modal-open");
+    }, 220);
+  }
+
+  function setupInquiryModal() {
+    const modal = document.getElementById("inquiryModal");
+    const form  = document.getElementById("inquiryForm");
+    if (!modal || !form || setupInquiryModal._wired) return;
+    setupInquiryModal._wired = true;
+
+    modal.addEventListener("click", (e) => {
+      if (e.target.matches("[data-modal-close]")) closeInquiryModal();
+    });
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && !modal.hidden) closeInquiryModal();
+    });
+
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const status = document.getElementById("inquiryFormStatus");
+      const submitBtn = document.getElementById("inquiryFormSubmit");
+      const data = new FormData(form);
+      const programSlug = data.get("program");
+      let programs = [];
+      if (programSlug && programSlug !== "custom") {
+        const p = slugToProgram(programSlug);
+        if (p) programs = [p.name];
+      } else if (programSlug === "custom") {
+        programs = ["Other / Custom"];
+      }
+      const payload = {
+        source: "Program Inquiry Form",
+        contact: {
+          name: (data.get("name") || "").toString().trim(),
+          email: (data.get("email") || "").toString().trim(),
+          phone: (data.get("phone") || "").toString().trim(),
+        },
+        company: {
+          name: (data.get("company") || "").toString().trim(),
+        },
+        answers: {
+          teamAndTiming: (data.get("teamAndTiming") || "").toString().trim(),
+        },
+        programs,
+        notes: (data.get("notes") || "").toString().trim(),
+        pageUrl: location.href,
+      };
+
+      if (!payload.contact.name || !payload.contact.email || !payload.company.name) {
+        status.textContent = "Name, email, and company are required.";
+        status.setAttribute("data-tone", "error");
+        return;
+      }
+
+      submitBtn.disabled = true;
+      status.removeAttribute("data-tone");
+      status.textContent = "Sending…";
+      try {
+        const r = await fetch("/api/inquiry", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(payload),
+        });
+        if (!r.ok) throw new Error(`HTTP ${r.status}`);
+        status.textContent = "Thanks — we got it. You'll hear from us within one business day.";
+        status.setAttribute("data-tone", "ok");
+        setTimeout(closeInquiryModal, 1800);
+      } catch (err) {
+        status.textContent = "Couldn't reach the server. Email enterprise@joincoded.com and we'll pick it up.";
+        status.setAttribute("data-tone", "error");
+        submitBtn.disabled = false;
+      }
+    });
+  }
+  // Expose for the detail-page sticky CTA
+  window.openInquiryModal  = openInquiryModal;
+  window.closeInquiryModal = closeInquiryModal;
 
   // ---------------- Mobile filters drawer ----------------
   function setupFiltersDrawer() {
@@ -638,6 +1738,7 @@
     }
 
     renderActiveChips(filters);
+    refreshQuickFiltersState();
 
     const rc = $("#resultsCount");
     if (rc) {
@@ -647,7 +1748,7 @@
     const grid = $("#cardGrid");
     if (!grid) return;
     if (!filtered.length) {
-      grid.classList.remove("grid");
+      grid.classList.remove("grid", "calendar-view");
       const queryLine = filters.q
         ? `<p>Nothing matches "<strong>${escapeHtml(filters.q)}</strong>" with the current filters.</p>`
         : `<p>Try widening your selection, or get in touch and we'll let you know when something fits.</p>`;
@@ -657,7 +1758,7 @@
           ${queryLine}
           <div class="empty__actions">
             <button type="button" class="btn btn-secondary" id="emptyClearBtn">Clear filters</button>
-            <a class="btn btn-primary" href="mailto:${ENTERPRISE_EMAIL}?subject=Program%20notify-me">Email us ${ICON.arrow}</a>
+            <a class="btn btn-primary" href="#/enterprise">Brief us on your team ${ICON.arrow}</a>
           </div>
         </div>
       `;
@@ -665,8 +1766,44 @@
       if (ec) ec.addEventListener("click", clearAllFilters);
       return;
     }
-    grid.classList.add("grid");
-    grid.innerHTML = filtered.map((p, i) => renderCard(p, i)).join("");
+
+    const mode = getViewMode();
+    const sortLabel = $("#sortLabel");
+    if (sortLabel) {
+      sortLabel.textContent =
+        mode === "calendar" ? "Month view · navigate to see scheduled programs" :
+        mode === "schedule" ? "Grouped by month · soonest first" :
+                              "Sorted by start date · soonest first";
+    }
+
+    grid.classList.remove("grid", "schedule-view", "month-cal-view");
+
+    if (mode === "calendar") {
+      grid.classList.add("month-cal-view");
+      grid.innerHTML = renderMonthCalendar(filtered);
+      wireMonthCalendar(filtered);
+    } else if (mode === "schedule") {
+      grid.classList.add("schedule-view");
+      grid.innerHTML = renderCalendar(filtered);
+      grid.querySelectorAll(".cal-row__inquire").forEach(btn => {
+        btn.addEventListener("click", (e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          openInquiryModal({ programSlug: btn.dataset.programSlug });
+        });
+      });
+    } else {
+      grid.classList.add("grid");
+      grid.innerHTML = filtered.map((p, i) => renderCard(p, i)).join("");
+      // Wire the per-card "Inquire" buttons after the markup is mounted
+      grid.querySelectorAll(".card__inquire").forEach(btn => {
+        btn.addEventListener("click", (e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          openInquiryModal({ programSlug: btn.dataset.programSlug });
+        });
+      });
+    }
   }
 
   function renderActiveChips(filters) {
@@ -729,37 +1866,338 @@
   }
 
   function renderCard(p, index) {
-    const timingStr = [fmtTimingShort(p.session_pattern), fmtDayRange(p)].filter(Boolean).join(" · ");
-    const timingPill = timingStr
-      ? `<span class="pill audience">${escapeHtml(timingStr)}</span>`
+    const aria = `${p.name}, ${p.topic}, ${p.format || ""}, starts ${fmtDate(p.start_date)}`;
+    const formatBadge = p.format
+      ? `<span class="card__format">${escapeHtml(p.format)}</span>`
       : "";
-    const aria = `${p.name}, ${p.topic}, starts ${fmtDate(p.start_date)}, ${fmtPrice(p.price_per_seat_kwd)}`;
-    const priceMain = p.price_per_seat_kwd
-      ? `<span class="card__price">${escapeHtml(fmtPrice(p.price_per_seat_kwd))}</span>`
-      : "";
-    const priceTag = p.group_rates
-      ? `<span class="card__price-tag">Group rates available</span>`
-      : "";
-    const priceLine = priceMain || priceTag
-      ? `<div class="card__price-row">${priceMain}${priceTag}</div>`
+    const oneLiner = p.one_liner
+      ? `<p class="card__lede">${escapeHtml(p.one_liner)}</p>`
       : "";
     return `
-      <article class="card" style="--i:${index}">
+      <article class="card card--program" data-topic="${escapeHtml(p.topic)}" style="--i:${index}">
         <a class="card__hit" href="#/programs/${escapeHtml(p.slug)}" aria-label="${escapeHtml(aria)}"></a>
-        <div class="card__top">
-          <span class="pill" data-topic="${escapeHtml(p.topic)}">${escapeHtml(p.topic)}</span>
+        <div class="card__head">
+          ${programIconHtml(p)}
+          ${formatBadge}
         </div>
+        <span class="card__topic" data-topic="${escapeHtml(p.topic)}">
+          <span class="card__topic-dot" aria-hidden="true"></span>
+          ${escapeHtml(p.topic)}
+        </span>
         <h3 class="card__title">${escapeHtml(p.name)}</h3>
-        <p class="card__one-liner">${escapeHtml(p.one_liner)}</p>
-        ${priceLine}
-        <div class="card__meta">
-          <span>${ICON.cal} ${escapeHtml("Starts " + fmtDate(p.start_date))}</span>
-          <span>${ICON.clock} ${escapeHtml(p.duration_label)}</span>
-          ${timingPill}
+        ${oneLiner}
+        <dl class="card__stats">
+          <div class="card__stat">
+            <dt>Starts</dt>
+            <dd>${ICON.cal}<span>${escapeHtml(fmtDate(p.start_date))}</span></dd>
+          </div>
+          <div class="card__stat">
+            <dt>Duration</dt>
+            <dd>${ICON.clock}<span>${escapeHtml(p.duration_label || "")}</span></dd>
+          </div>
+        </dl>
+        <div class="card__actions">
+          <button type="button" class="card__inquire" data-program-slug="${escapeHtml(p.slug)}">Inquire about seats</button>
+          <span class="card__cta">Details <span class="card__cta-arrow">${ICON.arrow}</span></span>
         </div>
-        <span class="card__cta">View program ${ICON.arrow}</span>
       </article>
     `;
+  }
+
+  // ---------------- Calendar (month-grouped agenda) view ----------------
+  // Each row: icon · name · meta · days-left badge · inquire. Grouped by
+  // start month. Sorted by start date within each month.
+  function renderCalendarRow(p) {
+    const aria = `${p.name}, ${p.topic}, ${p.format || ""}, starts ${fmtDate(p.start_date)}`;
+    const d = new Date(p.start_date + "T00:00:00");
+    const dayNum = d.getDate();
+    const dayName = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"][d.getDay()];
+    const until = daysUntil(p.start_date);
+    const fomoChip = until
+      ? `<span class="cal-row__fomo" data-urgency="${until.urgency}">
+           <span class="cal-row__fomo-pulse" aria-hidden="true"></span>
+           ${escapeHtml(until.label)}
+         </span>`
+      : "";
+    return `
+      <li class="cal-row" data-topic="${escapeHtml(p.topic)}">
+        <a class="cal-row__hit" href="#/programs/${escapeHtml(p.slug)}" aria-label="${escapeHtml(aria)}"></a>
+        <div class="cal-row__date">
+          <span class="cal-row__day">${dayNum}</span>
+          <span class="cal-row__dow">${dayName}</span>
+        </div>
+        ${programIconHtml(p)}
+        <div class="cal-row__body">
+          <div class="cal-row__title-row">
+            <h3 class="cal-row__title">${escapeHtml(p.name)}</h3>
+            ${fomoChip}
+          </div>
+          <div class="cal-row__meta">
+            <span class="cal-row__topic" data-topic="${escapeHtml(p.topic)}">
+              <span class="cal-row__topic-dot" aria-hidden="true"></span>
+              ${escapeHtml(p.topic)}
+            </span>
+            <span class="cal-row__sep" aria-hidden="true">·</span>
+            <span>${escapeHtml(p.format || "")}</span>
+            <span class="cal-row__sep" aria-hidden="true">·</span>
+            <span>${escapeHtml(p.duration_label || "")}</span>
+          </div>
+        </div>
+        <div class="cal-row__actions">
+          <button type="button" class="cal-row__inquire" data-program-slug="${escapeHtml(p.slug)}">Inquire <span class="cal-row__arrow">${ICON.arrow}</span></button>
+        </div>
+      </li>
+    `;
+  }
+
+  function renderCalendar(filtered) {
+    if (!filtered.length) return ""; // empty state is handled separately
+    // Group by year-month of start_date
+    const groups = new Map();
+    filtered.forEach(p => {
+      const key = (p.start_date || "").slice(0, 7);
+      if (!groups.has(key)) groups.set(key, []);
+      groups.get(key).push(p);
+    });
+    const sortedKeys = Array.from(groups.keys()).sort();
+    return sortedKeys.map(key => {
+      const programs = groups.get(key).slice().sort((a, b) =>
+        (a.start_date || "").localeCompare(b.start_date || "")
+      );
+      const count = programs.length;
+      return `
+        <section class="cal-month">
+          <header class="cal-month__head">
+            <h2 class="cal-month__title">${escapeHtml(monthLabel(key))}</h2>
+            <span class="cal-month__count">${count} program${count === 1 ? "" : "s"}</span>
+          </header>
+          <ul class="cal-list">
+            ${programs.map(renderCalendarRow).join("")}
+          </ul>
+        </section>
+      `;
+    }).join("");
+  }
+
+  // ---------------- Month Calendar (actual calendar grid) ----------------
+  // 6×7 month grid with programs drawn as Google-Calendar-style spanning
+  // bars from start_date to end_date. Each program is assigned a vertical
+  // "lane" so overlapping programs stack without colliding. Bars segment
+  // across week boundaries (continuesLeft / continuesRight indicators).
+
+  const MCAL_KEY = "coded.b2b.calMonth";
+  const WEEKDAY_LABELS = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+
+  function getCalMonth(filtered) {
+    try {
+      const saved = sessionStorage.getItem(MCAL_KEY);
+      if (saved && /^\d{4}-\d{2}$/.test(saved)) return saved;
+    } catch {}
+    // Default: the earliest start month present in the filtered set, or
+    // today's month if nothing matches.
+    const today = new Date();
+    const todayKey = `${today.getFullYear()}-${String(today.getMonth() + 1).padStart(2, "0")}`;
+    const months = filtered.map(p => (p.start_date || "").slice(0, 7)).filter(Boolean).sort();
+    return months[0] || todayKey;
+  }
+  function setCalMonth(ym) {
+    try { sessionStorage.setItem(MCAL_KEY, ym); } catch {}
+  }
+  function ymAdd(ym, delta) {
+    const [y, m] = ym.split("-").map(Number);
+    const d = new Date(y, m - 1 + delta, 1);
+    return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}`;
+  }
+  function dateAdd(iso, days) {
+    const d = new Date(iso + "T00:00:00");
+    d.setDate(d.getDate() + days);
+    return d.toISOString().slice(0, 10);
+  }
+
+  function buildMonthGrid(ym) {
+    // 42-day grid (6 weeks × 7 days), starting on Sunday of the week
+    // that contains the 1st of the month.
+    const [y, m] = ym.split("-").map(Number);
+    const firstOfMonth = new Date(y, m - 1, 1);
+    const offset = firstOfMonth.getDay(); // 0 = Sunday
+    const start = new Date(y, m - 1, 1 - offset);
+    const days = [];
+    for (let i = 0; i < 42; i++) {
+      const d = new Date(start);
+      d.setDate(start.getDate() + i);
+      days.push({
+        iso: d.toISOString().slice(0, 10),
+        day: d.getDate(),
+        inMonth: d.getMonth() + 1 === m,
+        weekday: d.getDay(),
+      });
+    }
+    return days;
+  }
+
+  function assignLanes(programs) {
+    // Greedy interval scheduling: sort by start, then longer first as
+    // tiebreak. Assign each program to the lowest lane index whose
+    // last-end-date is strictly before this program's start_date.
+    const sorted = programs.slice().sort((a, b) => {
+      const c = (a.start_date || "").localeCompare(b.start_date || "");
+      if (c !== 0) return c;
+      const ae = a.end_date || a.start_date || "";
+      const be = b.end_date || b.start_date || "";
+      return be.localeCompare(ae); // longer first
+    });
+    const lanes = []; // lanes[i] = last end_date in this lane
+    const laneOf = new Map();
+    sorted.forEach(p => {
+      const s = p.start_date;
+      const e = p.end_date || p.start_date;
+      if (!s) return;
+      let lane = lanes.findIndex(l => l < s);
+      if (lane < 0) { lane = lanes.length; lanes.push(e); }
+      else { lanes[lane] = e; }
+      laneOf.set(p.slug, lane);
+    });
+    return laneOf;
+  }
+
+  function renderMonthCalendar(filtered) {
+    const ym = getCalMonth(filtered);
+    const days = buildMonthGrid(ym);
+    const windowStart = days[0].iso;
+    const windowEnd = days[41].iso;
+    const today = new Date().toISOString().slice(0, 10);
+
+    // Programs that intersect the visible 6-week window
+    const inWindow = filtered.filter(p => {
+      const s = p.start_date;
+      const e = p.end_date || p.start_date;
+      return s && e && e >= windowStart && s <= windowEnd;
+    });
+    const laneOf = assignLanes(filtered); // assign across ALL filtered (stable across nav)
+    const maxLane = inWindow.reduce((m, p) => Math.max(m, laneOf.get(p.slug) ?? 0), 0);
+
+    // Build weeks
+    const weeks = [];
+    for (let w = 0; w < 6; w++) {
+      const wd = days.slice(w * 7, (w + 1) * 7);
+      const weekStart = wd[0].iso;
+      const weekEnd = wd[6].iso;
+      const bars = [];
+      inWindow.forEach(p => {
+        const s = p.start_date;
+        const e = p.end_date || p.start_date;
+        if (e < weekStart || s > weekEnd) return;
+        const barStartIso = s < weekStart ? weekStart : s;
+        const barEndIso = e > weekEnd ? weekEnd : e;
+        const startCol = wd.findIndex(d => d.iso === barStartIso) + 1;
+        const endCol = wd.findIndex(d => d.iso === barEndIso) + 1;
+        bars.push({
+          program: p,
+          startCol,
+          span: endCol - startCol + 1,
+          lane: laneOf.get(p.slug) ?? 0,
+          continuesLeft: s < weekStart,
+          continuesRight: e > weekEnd,
+          isStart: s >= weekStart && s <= weekEnd,
+        });
+      });
+      // Sort bars by lane then startCol so DOM order is stable
+      bars.sort((a, b) => (a.lane - b.lane) || (a.startCol - b.startCol));
+      weeks.push({ days: wd, bars });
+    }
+
+    // Header: prev / month label / next / today
+    const monthName = monthLabel(ym);
+    const todayMonth = today.slice(0, 7);
+    const isToday = ym === todayMonth;
+
+    const weeksHtml = weeks.map(week => {
+      const dayCells = week.days.map(d => {
+        const cls = [
+          "mcal-day",
+          d.inMonth ? "mcal-day--in" : "mcal-day--out",
+          d.iso === today ? "mcal-day--today" : "",
+          d.iso < today ? "mcal-day--past" : "",
+        ].filter(Boolean).join(" ");
+        return `<div class="${cls}"><span class="mcal-day__num">${d.day}</span></div>`;
+      }).join("");
+      const barEls = week.bars.map(b => {
+        const cls = [
+          "mcal-bar",
+          b.continuesLeft  ? "mcal-bar--cont-left"  : "",
+          b.continuesRight ? "mcal-bar--cont-right" : "",
+          b.isStart        ? "mcal-bar--start"      : "",
+        ].filter(Boolean).join(" ");
+        const label = b.isStart ? b.program.name : `${b.program.name} (continued)`;
+        return `
+          <a class="${cls}" data-topic="${escapeHtml(b.program.topic)}"
+             style="--col-start:${b.startCol}; --col-span:${b.span}; --lane:${b.lane};"
+             href="#/programs/${escapeHtml(b.program.slug)}"
+             title="${escapeHtml(b.program.name)} · ${escapeHtml(fmtDate(b.program.start_date))} → ${escapeHtml(fmtDate(b.program.end_date || b.program.start_date))}">
+            ${escapeHtml(label)}
+          </a>
+        `;
+      }).join("");
+      const weekLanes = Math.max(0, ...week.bars.map(b => b.lane + 1));
+      return `
+        <div class="mcal-week" style="--lanes:${weekLanes}">
+          ${dayCells}
+          ${barEls}
+        </div>
+      `;
+    }).join("");
+
+    return `
+      <section class="month-cal" data-month="${escapeHtml(ym)}">
+        <header class="month-cal__head">
+          <div class="month-cal__nav">
+            <button type="button" class="month-cal__navbtn" id="mcalPrev" aria-label="Previous month">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg>
+            </button>
+            <button type="button" class="month-cal__navbtn" id="mcalNext" aria-label="Next month">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>
+            </button>
+            <h2 class="month-cal__title">${escapeHtml(monthName)}</h2>
+          </div>
+          <div class="month-cal__actions">
+            ${isToday ? "" : `<button type="button" class="month-cal__today" id="mcalToday">Jump to today</button>`}
+            <span class="month-cal__count">${inWindow.length} program${inWindow.length === 1 ? "" : "s"} in view</span>
+          </div>
+        </header>
+        <div class="month-cal__weekdays">
+          ${WEEKDAY_LABELS.map(d => `<span>${d}</span>`).join("")}
+        </div>
+        <div class="month-cal__weeks">
+          ${weeksHtml}
+        </div>
+        ${inWindow.length === 0 ? `
+          <div class="month-cal__empty">
+            <p>No programs scheduled in ${escapeHtml(monthName)}${
+              filtered.length ? " (with your current filters)" : ""
+            }.</p>
+          </div>
+        ` : ""}
+      </section>
+    `;
+  }
+
+  function wireMonthCalendar(filtered) {
+    const prev = $("#mcalPrev");
+    const next = $("#mcalNext");
+    const today = $("#mcalToday");
+    if (prev) prev.addEventListener("click", () => {
+      setCalMonth(ymAdd(getCalMonth(filtered), -1));
+      refreshResults();
+    });
+    if (next) next.addEventListener("click", () => {
+      setCalMonth(ymAdd(getCalMonth(filtered), +1));
+      refreshResults();
+    });
+    if (today) today.addEventListener("click", () => {
+      const t = new Date();
+      setCalMonth(`${t.getFullYear()}-${String(t.getMonth() + 1).padStart(2, "0")}`);
+      refreshResults();
+    });
   }
 
   // ---------------- Detail page ----------------
@@ -794,30 +2232,58 @@
 
     document.title = `${p.name} · CODED Programs`;
 
+    // Countdown to the next upcoming cohort. Falls back to start_date if no future cohort is parsed.
+    const daysUntil = (() => {
+      const today = new Date(); today.setHours(0, 0, 0, 0);
+      const candidates = [];
+      if (p.start_date) candidates.push(new Date(p.start_date + "T00:00:00"));
+      (p.cohorts || []).forEach(c => { if (c.start_date) candidates.push(new Date(c.start_date + "T00:00:00")); });
+      const future = candidates.filter(d => d >= today).sort((a, b) => a - b)[0];
+      if (!future) return null;
+      return Math.round((future - today) / (1000 * 60 * 60 * 24));
+    })();
+    const countdownChip = daysUntil != null
+      ? `<span class="countdown-chip" title="Days until the next cohort starts">
+           <span class="countdown-chip__pulse" aria-hidden="true"></span>
+           <span class="countdown-chip__num">${daysUntil === 0 ? "Starts today" : daysUntil === 1 ? "Starts tomorrow" : `Starts in ${daysUntil} days`}</span>
+         </span>`
+      : "";
+
     $("#app").innerHTML = `
-      <section class="detail-hero">
-        <img class="detail-dot-pattern" src="assets/brand/dot-pattern-navy.svg" alt="" aria-hidden="true" />
+      <section class="detail-hero detail-hero--onyx" data-parallax-root>
+        <div class="detail-hero__bg" aria-hidden="true">
+          <div class="detail-hero__grid"></div>
+          <div class="detail-hero__orb detail-hero__orb--a"></div>
+          <div class="detail-hero__orb detail-hero__orb--b"></div>
+          <img class="detail-dot-pattern" src="assets/brand/dot-pattern-white.svg" alt="" data-parallax="0.25" />
+        </div>
         <div class="container detail-hero__inner">
-          <div class="breadcrumb">
+          <div class="breadcrumb breadcrumb--light">
             <a href="#/">Home</a><span>/</span>
             <a href="#/">Programs</a><span>/</span>
             <span>${escapeHtml(p.name)}</span>
           </div>
           <div class="detail-hero__pills">
-            <span class="pill" data-topic="${escapeHtml(p.topic)}">${escapeHtml(p.topic)}</span>
+            <span class="pill pill--platinum" data-topic="${escapeHtml(p.topic)}">${escapeHtml(p.topic)}</span>
             ${audiencePills}
+            ${countdownChip}
           </div>
-          <h1>${escapeHtml(p.name)}</h1>
-          <p class="lede">${escapeHtml(p.one_liner)}</p>
+          <h1 data-parallax="-0.12">${escapeHtml(p.name)}</h1>
+          <p class="lede lede--platinum">${escapeHtml(p.one_liner)}</p>
 
-          <div class="detail-meta-row">
+          <div class="detail-meta-row detail-meta-row--onyx">
             <div>
-              <div class="detail-meta__label">Start date</div>
+              <div class="detail-meta__label">Starts</div>
               <div class="detail-meta__value">${escapeHtml(fmtDate(p.start_date))}</div>
+            </div>
+            <div>
+              <div class="detail-meta__label">Ends</div>
+              <div class="detail-meta__value">${escapeHtml(fmtDate(p.end_date) || "—")}</div>
             </div>
             <div>
               <div class="detail-meta__label">Duration</div>
               <div class="detail-meta__value">${escapeHtml(p.duration_label)}</div>
+              ${p.total_hours ? `<div class="detail-meta__sub">${escapeHtml(String(p.total_hours))} hrs total</div>` : ""}
             </div>
             <div>
               <div class="detail-meta__label">Per seat</div>
@@ -836,8 +2302,8 @@
           </div>
 
           <div class="detail-hero__cta">
-            <a class="btn btn-primary btn-lg" href="${escapeHtml(mailto)}">Request Seats &amp; Pricing ${ICON.arrow}</a>
-            <a class="btn btn-secondary btn-lg" href="${escapeHtml(p.location_url || "#")}" target="_blank" rel="noopener">Location (CODED Campus) ${ICON.extlink}</a>
+            <a class="btn btn-primary btn-lg btn--platinum" href="${escapeHtml(mailto)}">Request Seats &amp; Pricing ${ICON.arrow}</a>
+            <a class="btn btn-secondary btn-lg btn--ghost-light" href="${escapeHtml(p.location_url || "#")}" target="_blank" rel="noopener">Location (CODED Campus) ${ICON.extlink}</a>
           </div>
         </div>
       </section>
@@ -969,6 +2435,7 @@
               <div class="key-row"><span>Location</span><span>${locationHtml}</span></div>
               <div class="key-row"><span>Next cohort</span><span>${escapeHtml(fmtDate(p.start_date))}</span></div>
               <a class="btn btn-primary btn-block" style="margin-top:18px;" href="${escapeHtml(mailto)}">Request Seats &amp; Pricing ${ICON.arrow}</a>
+              <a class="btn btn-ghost btn-block" style="margin-top:8px;" href="assets/pdfs/${escapeHtml(p.slug)}.pdf" download="${escapeHtml(p.slug)}.pdf">Download brochure (PDF) ${ICON.download}</a>
             </div>
           </aside>
         </div>
@@ -985,13 +2452,22 @@
       </section>
     `;
 
-    // Sticky mobile CTA
+    // Sticky mobile CTA — opens the inquiry modal pre-filled with this program
     const stickyMobile = $("#stickyCtaMobile");
     if (stickyMobile) {
       stickyMobile.style.display = "";
-      const link = $("#stickyCtaLink");
-      if (link) link.href = mailto;
+      const btn = $("#stickyCtaLink");
+      if (btn) {
+        btn.onclick = (e) => { e.preventDefault(); openInquiryModal({ programSlug: p.slug }); };
+      }
     }
+    // Replace the two big "Request Seats & Pricing" mailto anchors on the detail page
+    document.querySelectorAll(`a.btn-primary[href="${mailto}"]`).forEach(a => {
+      a.removeAttribute("href");
+      a.setAttribute("role", "button");
+      a.style.cursor = "pointer";
+      a.addEventListener("click", (e) => { e.preventDefault(); openInquiryModal({ programSlug: p.slug }); });
+    });
 
     // Course schema.org JSON-LD
     document.getElementById("courseLD")?.remove();
@@ -1032,6 +2508,475 @@
     ];
   }
 
+  // ---------------- Enterprise inquiry page ----------------
+  // A dedicated page (not a modal, not a mailto) where companies brief us on the
+  // training they want. Mirrors the public-friendly slice of CODED's internal BD
+  // intake: who you are, what your team needs, how many seats, when, in what shape.
+
+  const ENT_INDUSTRIES = [
+    "Banking & Finance", "Government & Public Sector", "Telecom",
+    "Energy & Industrials", "Healthcare", "Retail & E-commerce",
+    "Education", "Technology / Software", "Consulting & Professional Services",
+    "Other",
+  ];
+  const ENT_REGIONS = ["Kuwait", "Qatar", "UAE", "Saudi Arabia", "Bahrain", "Oman", "Other"];
+  const ENT_SIZES = [
+    { value: "1–5",   label: "1–5 people" },
+    { value: "6–15",  label: "6–15 people" },
+    { value: "16–30", label: "16–30 people" },
+    { value: "31–60", label: "31–60 people" },
+    { value: "60+",   label: "60+ people" },
+  ];
+  const ENT_DELIVERY = [
+    { value: "CODED Campus",   label: "At CODED Campus",     hint: "Kuwait Free Trade Zone" },
+    { value: "On-site",        label: "At our offices",      hint: "We bring the program to you" },
+    { value: "Virtual",        label: "Virtual",             hint: "Live online sessions" },
+    { value: "Hybrid",         label: "Hybrid",              hint: "Mix of on-site and virtual" },
+    { value: "Open / Flexible",label: "Open to suggestions", hint: "Recommend what fits best" },
+  ];
+  const ENT_SCHEDULE = [
+    { value: "Morning",  label: "Morning" },
+    { value: "Evening",  label: "Evening" },
+    { value: "Weekend",  label: "Weekend" },
+    { value: "Flexible", label: "Flexible" },
+  ];
+  const ENT_LANGUAGE = [
+    { value: "English",   label: "English" },
+    { value: "Arabic",    label: "Arabic" },
+    { value: "Bilingual", label: "Bilingual" },
+  ];
+
+  function enterpriseUrlFor(p) {
+    return p && p.slug ? `#/enterprise?program=${encodeURIComponent(p.slug)}` : `#/enterprise`;
+  }
+
+  function renderEnterpriseForm({ programSlug } = {}) {
+    const app = $("#app");
+    const preselected = (() => {
+      if (!programSlug) return new Set();
+      const p = slugToProgram(programSlug);
+      return p ? new Set([p.slug]) : new Set();
+    })();
+    const eyebrowProgram = programSlug ? slugToProgram(programSlug) : null;
+
+    document.title = "Enterprise Inquiry · CODED";
+
+    const programCard = (p) => {
+      const checked = preselected.has(p.slug) ? "checked" : "";
+      const dur = p.duration_label || "";
+      return `
+        <label class="ent-prog" data-slug="${escapeHtml(p.slug)}">
+          <input type="checkbox" name="programs" value="${escapeHtml(p.slug)}" ${checked} />
+          <span class="ent-prog__check" aria-hidden="true">
+            <svg viewBox="0 0 16 16" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.5l3.2 3.2L13 5"/></svg>
+          </span>
+          <span class="ent-prog__body">
+            <span class="ent-prog__topic" data-topic="${escapeHtml(p.topic)}">${escapeHtml(p.topic)}</span>
+            <span class="ent-prog__name">${escapeHtml(p.name)}</span>
+            <span class="ent-prog__meta">${escapeHtml(p.format)} · ${escapeHtml(dur)}</span>
+          </span>
+        </label>`;
+    };
+
+    app.innerHTML = `
+      <section class="ent-hero">
+        <div class="ent-hero__bg" aria-hidden="true">
+          <div class="ent-hero__grid"></div>
+          <div class="ent-hero__orb ent-hero__orb--a"></div>
+          <div class="ent-hero__orb ent-hero__orb--b"></div>
+        </div>
+        <div class="container ent-hero__inner">
+          <div class="breadcrumb breadcrumb--light">
+            <a href="#/">Home</a><span>/</span>
+            <span>Enterprise Inquiry</span>
+          </div>
+          <div class="eyebrow eyebrow--light"><span>${eyebrowProgram ? `Enterprise inquiry · ${escapeHtml(eyebrowProgram.name)}` : "Enterprise inquiry · Custom programs"}</span></div>
+          <h1>Tell us what your team<br/><span class="accent-soft">needs to build.</span></h1>
+          <p class="lede lede--light">A few short questions about your company, the skills you want to develop, and how you'd like the program shaped. We'll come back within one business day with a tailored plan, group pricing, and the next available cohort.</p>
+        </div>
+      </section>
+
+      <section class="ent-form-wrap">
+        <div class="container ent-form-wrap__inner">
+
+          <form class="ent-form" id="entForm" autocomplete="on" novalidate>
+
+            <!-- Section 1 -->
+            <fieldset class="ent-section reveal-up">
+              <div class="ent-section__head">
+                <span class="eyebrow-tag">[ 01 · About you ]</span>
+                <h2>Who should we follow up with?</h2>
+              </div>
+              <div class="ent-grid ent-grid--2">
+                <label class="ent-field">
+                  <span>Your name <em>*</em></span>
+                  <input type="text" name="name" required autocomplete="name" placeholder="Full name" />
+                </label>
+                <label class="ent-field">
+                  <span>Your role</span>
+                  <input type="text" name="role" autocomplete="organization-title" placeholder="e.g. Head of L&amp;D, CTO, HR Director" />
+                </label>
+                <label class="ent-field">
+                  <span>Work email <em>*</em></span>
+                  <input type="email" name="email" required autocomplete="email" placeholder="you@company.com" />
+                </label>
+                <label class="ent-field">
+                  <span>Phone (optional)</span>
+                  <input type="tel" name="phone" autocomplete="tel" placeholder="+965 …" />
+                </label>
+              </div>
+            </fieldset>
+
+            <!-- Section 2 -->
+            <fieldset class="ent-section reveal-up">
+              <div class="ent-section__head">
+                <span class="eyebrow-tag">[ 02 · Your company ]</span>
+                <h2>Where is the team based?</h2>
+              </div>
+              <div class="ent-grid ent-grid--2">
+                <label class="ent-field">
+                  <span>Company name <em>*</em></span>
+                  <input type="text" name="company" required autocomplete="organization" placeholder="Legal or commercial name" />
+                </label>
+                <label class="ent-field">
+                  <span>Industry</span>
+                  <select name="industry">
+                    <option value="">Select industry…</option>
+                    ${ENT_INDUSTRIES.map(i => `<option value="${escapeHtml(i)}">${escapeHtml(i)}</option>`).join("")}
+                  </select>
+                </label>
+                <label class="ent-field">
+                  <span>Country / Region <em>*</em></span>
+                  <select name="region" required>
+                    <option value="">Select region…</option>
+                    ${ENT_REGIONS.map(r => `<option value="${escapeHtml(r)}">${escapeHtml(r)}</option>`).join("")}
+                  </select>
+                </label>
+                <label class="ent-field">
+                  <span>Company website (optional)</span>
+                  <input type="url" name="website" autocomplete="url" placeholder="https://…" />
+                </label>
+              </div>
+            </fieldset>
+
+            <!-- Section 3 -->
+            <fieldset class="ent-section reveal-up">
+              <div class="ent-section__head">
+                <span class="eyebrow-tag">[ 03 · Programs of interest ]</span>
+                <h2>Pick the programs you'd like for your team.</h2>
+                <p class="ent-section__sub">Select as many as apply — we'll confirm fit on the call. Not sure? Tick the last option and we'll recommend based on your goals.</p>
+              </div>
+              <div class="ent-prog-grid" role="group" aria-label="Programs of interest">
+                ${PROGRAMS.map(programCard).join("")}
+                <label class="ent-prog ent-prog--special" data-slug="__recommend">
+                  <input type="checkbox" name="programs" value="__recommend" />
+                  <span class="ent-prog__check" aria-hidden="true">
+                    <svg viewBox="0 0 16 16" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.5l3.2 3.2L13 5"/></svg>
+                  </span>
+                  <span class="ent-prog__body">
+                    <span class="ent-prog__topic ent-prog__topic--ghost">Recommend</span>
+                    <span class="ent-prog__name">Not sure yet — recommend based on goals</span>
+                    <span class="ent-prog__meta">We'll suggest the closest fit after a short call</span>
+                  </span>
+                </label>
+                <label class="ent-prog ent-prog--special" data-slug="__custom">
+                  <input type="checkbox" name="programs" value="__custom" />
+                  <span class="ent-prog__check" aria-hidden="true">
+                    <svg viewBox="0 0 16 16" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.5l3.2 3.2L13 5"/></svg>
+                  </span>
+                  <span class="ent-prog__body">
+                    <span class="ent-prog__topic ent-prog__topic--ghost">Custom</span>
+                    <span class="ent-prog__name">Custom / hybrid program</span>
+                    <span class="ent-prog__meta">Design something tailored end-to-end</span>
+                  </span>
+                </label>
+              </div>
+            </fieldset>
+
+            <!-- Section 4 -->
+            <fieldset class="ent-section reveal-up">
+              <div class="ent-section__head">
+                <span class="eyebrow-tag">[ 04 · Team size &amp; timing ]</span>
+                <h2>How many people, and when?</h2>
+              </div>
+              <div class="ent-field ent-field--full">
+                <span>Number of participants <em>*</em></span>
+                <div class="ent-chips" role="radiogroup" aria-label="Number of participants">
+                  ${ENT_SIZES.map((s, i) => `
+                    <label class="ent-chip">
+                      <input type="radio" name="size" value="${escapeHtml(s.value)}" ${i === 1 ? "" : ""} required />
+                      <span>${escapeHtml(s.label)}</span>
+                    </label>`).join("")}
+                </div>
+              </div>
+              <div class="ent-grid ent-grid--2" style="margin-top: 18px;">
+                <label class="ent-field">
+                  <span>Preferred timing window</span>
+                  <input type="text" name="timing" placeholder="e.g. March–April 2026, before Ramadan, Q3" />
+                </label>
+                <label class="ent-field">
+                  <span>How urgent is this?</span>
+                  <select name="urgency">
+                    <option value="">Select…</option>
+                    <option value="Within 2 weeks">Within 2 weeks</option>
+                    <option value="Within a month">Within a month</option>
+                    <option value="Next quarter">Next quarter</option>
+                    <option value="Just exploring">Just exploring options</option>
+                  </select>
+                </label>
+              </div>
+            </fieldset>
+
+            <!-- Section 5 -->
+            <fieldset class="ent-section reveal-up">
+              <div class="ent-section__head">
+                <span class="eyebrow-tag">[ 05 · How should we shape it? ]</span>
+                <h2>Customization preferences.</h2>
+                <p class="ent-section__sub">Optional — we're flexible on all of these. Pick what matters; leave the rest open.</p>
+              </div>
+
+              <div class="ent-field ent-field--full">
+                <span>Delivery format</span>
+                <div class="ent-chips ent-chips--stacked" role="radiogroup" aria-label="Delivery format">
+                  ${ENT_DELIVERY.map(d => `
+                    <label class="ent-chip ent-chip--lg">
+                      <input type="radio" name="delivery" value="${escapeHtml(d.value)}" />
+                      <span class="ent-chip__main">${escapeHtml(d.label)}</span>
+                      <span class="ent-chip__hint">${escapeHtml(d.hint)}</span>
+                    </label>`).join("")}
+                </div>
+              </div>
+
+              <div class="ent-grid ent-grid--2" style="margin-top: 22px;">
+                <div class="ent-field">
+                  <span>Schedule preference</span>
+                  <div class="ent-chips" role="radiogroup" aria-label="Schedule preference">
+                    ${ENT_SCHEDULE.map(s => `
+                      <label class="ent-chip">
+                        <input type="radio" name="schedule" value="${escapeHtml(s.value)}" />
+                        <span>${escapeHtml(s.label)}</span>
+                      </label>`).join("")}
+                  </div>
+                </div>
+                <div class="ent-field">
+                  <span>Language of instruction</span>
+                  <div class="ent-chips" role="radiogroup" aria-label="Language of instruction">
+                    ${ENT_LANGUAGE.map(l => `
+                      <label class="ent-chip">
+                        <input type="radio" name="language" value="${escapeHtml(l.value)}" />
+                        <span>${escapeHtml(l.label)}</span>
+                      </label>`).join("")}
+                  </div>
+                </div>
+              </div>
+
+              <label class="ent-field ent-field--full" style="margin-top: 22px;">
+                <span>Goals &amp; success metrics (optional)</span>
+                <textarea name="goals" rows="3" placeholder="e.g. Build 10 internal AI champions · Pass a cybersecurity audit · Ship a working dashboard per team"></textarea>
+              </label>
+            </fieldset>
+
+            <!-- Section 6 -->
+            <fieldset class="ent-section reveal-up">
+              <div class="ent-section__head">
+                <span class="eyebrow-tag">[ 06 · Anything else? ]</span>
+                <h2>Other context we should know.</h2>
+              </div>
+              <label class="ent-field ent-field--full">
+                <span>Notes (optional)</span>
+                <textarea name="notes" rows="4" placeholder="Existing skill level, scheduling constraints, prior training, procurement requirements…"></textarea>
+              </label>
+            </fieldset>
+
+            <div class="ent-submit reveal-up">
+              <p class="ent-submit__note">Submitting this form sends your inquiry directly to the CODED enterprise team. We reply within one business day. We never share your details with third parties.</p>
+              <div class="ent-submit__row">
+                <span class="ent-form__status" id="entFormStatus" aria-live="polite"></span>
+                <button type="submit" class="btn btn-primary btn-lg" id="entFormSubmit">Send inquiry ${ICON.arrow}</button>
+              </div>
+            </div>
+          </form>
+
+          <!-- Success state, shown after a successful submit -->
+          <div class="ent-success" id="entSuccess" hidden>
+            <div class="ent-success__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="32" height="32" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 12.5l2.8 2.8L16 9.5"/></svg>
+            </div>
+            <h2>Thanks <span id="entSuccessName"></span> — we've got it.</h2>
+            <p class="ent-success__sub" id="entSuccessSummary"></p>
+            <ol class="ent-success__steps">
+              <li><strong>Within 1 business day</strong> — a CODED enterprise lead reviews your brief and replies by email.</li>
+              <li><strong>Short discovery call</strong> — 20 minutes to confirm scope, audience level, and timing.</li>
+              <li><strong>Tailored proposal</strong> — outline, group pricing, and the next available cohort.</li>
+            </ol>
+            <div class="ent-success__actions">
+              <a class="btn btn-secondary" href="#/">Browse the catalog</a>
+              <a class="btn btn-primary" href="#/enterprise" id="entSuccessRestart">Send another inquiry ${ICON.arrow}</a>
+            </div>
+          </div>
+
+        </div>
+      </section>
+    `;
+
+    setupEnterpriseForm();
+    window.scrollTo({ top: 0 });
+  }
+
+  function setupEnterpriseForm() {
+    const form    = document.getElementById("entForm");
+    const success = document.getElementById("entSuccess");
+    const status  = document.getElementById("entFormStatus");
+    const submit  = document.getElementById("entFormSubmit");
+    if (!form || !success || !status || !submit) return;
+
+    // Mutual exclusion: ticking "Recommend" or "Custom" doesn't preclude real
+    // programs, but ticking a real program clears the recommend/custom marker
+    // if it would otherwise look contradictory. Kept loose — the BD team can
+    // sort intent on the call.
+    form.querySelectorAll('input[name="programs"]').forEach(cb => {
+      cb.addEventListener("change", () => {
+        const card = cb.closest(".ent-prog");
+        if (card) card.classList.toggle("is-on", cb.checked);
+      });
+      // Initial state for pre-selected program
+      const card = cb.closest(".ent-prog");
+      if (card && cb.checked) card.classList.add("is-on");
+    });
+
+    // Chip radios: paint the chip when its hidden radio is selected.
+    form.querySelectorAll('.ent-chip input[type="radio"]').forEach(r => {
+      r.addEventListener("change", () => {
+        const group = form.querySelectorAll(`.ent-chip input[name="${r.name}"]`);
+        group.forEach(other => {
+          const chip = other.closest(".ent-chip");
+          if (chip) chip.classList.toggle("is-on", other.checked);
+        });
+      });
+    });
+
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      status.textContent = "";
+      status.removeAttribute("data-tone");
+
+      const data = new FormData(form);
+      const name    = (data.get("name") || "").toString().trim();
+      const email   = (data.get("email") || "").toString().trim();
+      const company = (data.get("company") || "").toString().trim();
+      const region  = (data.get("region") || "").toString().trim();
+      const size    = (data.get("size") || "").toString().trim();
+      const programSlugs = data.getAll("programs").map(v => v.toString());
+
+      // Client-side validation (matches the API)
+      const missing = [];
+      if (!name) missing.push("name");
+      if (!email) missing.push("email");
+      if (!company) missing.push("company");
+      if (!region) missing.push("region");
+      if (!size) missing.push("number of participants");
+      if (missing.length) {
+        status.textContent = `Please fill in: ${missing.join(", ")}.`;
+        status.setAttribute("data-tone", "error");
+        const first = form.querySelector(`[name="${missing[0] === "number of participants" ? "size" : missing[0]}"]`);
+        if (first && first.focus) first.focus();
+        return;
+      }
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)) {
+        status.textContent = "That email address doesn't look quite right.";
+        status.setAttribute("data-tone", "error");
+        form.querySelector('[name="email"]').focus();
+        return;
+      }
+
+      // Resolve program slugs to display names
+      const programs = [];
+      let wantsRecommend = false, wantsCustom = false;
+      programSlugs.forEach(slug => {
+        if (slug === "__recommend") { wantsRecommend = true; return; }
+        if (slug === "__custom")    { wantsCustom = true; return; }
+        const p = slugToProgram(slug);
+        if (p) programs.push(p.name);
+      });
+      if (wantsRecommend) programs.push("Recommend based on goals");
+      if (wantsCustom)    programs.push("Custom / hybrid program");
+
+      const role     = (data.get("role") || "").toString().trim();
+      const industry = (data.get("industry") || "").toString().trim();
+      const website  = (data.get("website") || "").toString().trim();
+      const timing   = (data.get("timing") || "").toString().trim();
+      const urgency  = (data.get("urgency") || "").toString().trim();
+      const delivery = (data.get("delivery") || "").toString().trim();
+      const schedule = (data.get("schedule") || "").toString().trim();
+      const language = (data.get("language") || "").toString().trim();
+      const goals    = (data.get("goals") || "").toString().trim();
+      const notes    = (data.get("notes") || "").toString().trim();
+
+      // The /api/inquiry shape is fixed — we pack the rich enterprise fields
+      // into the existing free-text fields so BD reads everything in one place.
+      const descParts = [];
+      if (industry) descParts.push(`Industry: ${industry}`);
+      if (region)   descParts.push(`Region: ${region}`);
+      if (role)     descParts.push(`POC role: ${role}`);
+      if (website)  descParts.push(`Website: ${website}`);
+
+      const needsParts = [];
+      if (programs.length) needsParts.push(`Programs of interest: ${programs.join(", ")}`);
+      if (delivery) needsParts.push(`Delivery: ${delivery}`);
+      if (schedule) needsParts.push(`Schedule: ${schedule}`);
+      if (language) needsParts.push(`Language: ${language}`);
+      if (goals)    needsParts.push(`Goals: ${goals}`);
+
+      const timingParts = [];
+      if (size)    timingParts.push(`Participants: ${size}`);
+      if (timing)  timingParts.push(`Preferred window: ${timing}`);
+      if (urgency) timingParts.push(`Urgency: ${urgency}`);
+
+      const payload = {
+        source:  "Enterprise Form",
+        contact: { name, email, phone: (data.get("phone") || "").toString().trim() },
+        company: { name: company, description: descParts.join(" · ") },
+        answers: {
+          needs:         needsParts.join(" · "),
+          teamAndTiming: timingParts.join(" · "),
+        },
+        programs,
+        notes,
+        pageUrl: location.href,
+      };
+
+      submit.disabled = true;
+      status.textContent = "Sending…";
+
+      try {
+        const r = await fetch("/api/inquiry", {
+          method:  "POST",
+          headers: { "Content-Type": "application/json" },
+          body:    JSON.stringify(payload),
+        });
+        if (!r.ok) throw new Error(`HTTP ${r.status}`);
+
+        // Success — swap the form for the confirmation card.
+        document.getElementById("entSuccessName").textContent = name.split(/\s+/)[0] || "";
+        const summaryBits = [];
+        if (programs.length) summaryBits.push(`${programs.length} program${programs.length === 1 ? "" : "s"}`);
+        if (size)            summaryBits.push(`${size} people`);
+        if (region)          summaryBits.push(region);
+        document.getElementById("entSuccessSummary").textContent =
+          summaryBits.length ? `Summary: ${summaryBits.join(" · ")}` : "We'll be in touch shortly.";
+        form.hidden = true;
+        success.hidden = false;
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      } catch (err) {
+        status.textContent = "Couldn't reach the server. Email enterprise@joincoded.com and we'll pick it up.";
+        status.setAttribute("data-tone", "error");
+        submit.disabled = false;
+      }
+    });
+  }
+  // Expose for any external link that wants to deep-link to the form
+  window.renderEnterpriseForm = renderEnterpriseForm;
+
   // ---------------- Scroll-triggered reveals ----------------
   // Uses one shared IntersectionObserver, recreated per route render so we
   // pick up the freshly-rendered .reveal-up + .timeline__row elements
@@ -1056,16 +3001,60 @@
     targets.forEach(el => revealObserver.observe(el));
   }
 
-  // Header gains a subtle shadow once user has scrolled past 8px.
-  function setupHeaderScroll() {
+  // Subtle parallax for the detail hero: any [data-parallax="<factor>"]
+  // element inside [data-parallax-root] translates Y by scroll × factor.
+  // factor < 0 moves with scroll (text rises slower), > 0 moves opposite.
+  // Single rAF-throttled listener; cleaned up between renders implicitly
+  // because the elements vanish when the route changes.
+  function setupHeroParallax() {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    const root = document.querySelector("[data-parallax-root]");
+    if (!root) return;
+    const targets = Array.from(root.querySelectorAll("[data-parallax]")).map(el => ({
+      el,
+      factor: parseFloat(el.getAttribute("data-parallax")) || 0,
+    }));
+    if (!targets.length) return;
+
+    let ticking = false;
+    function update() {
+      const y = window.scrollY;
+      const rect = root.getBoundingClientRect();
+      // Only animate while the hero is roughly in view; outside that, skip work.
+      if (rect.bottom < -200 || rect.top > window.innerHeight + 200) { ticking = false; return; }
+      for (const t of targets) {
+        t.el.style.transform = `translate3d(0, ${y * t.factor}px, 0)`;
+      }
+      ticking = false;
+    }
+    function onScroll() {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(update);
+    }
+    if (!setupHeroParallax._wired) {
+      window.addEventListener("scroll", onScroll, { passive: true });
+      window.addEventListener("resize", onScroll, { passive: true });
+      setupHeroParallax._wired = true;
+    }
+    setupHeroParallax._onScroll = onScroll;
+    update();
+  }
+
+  // Header gains a subtle shadow once user has scrolled past the hero (or 8px on light pages).
+  function evalHeaderScroll() {
     const header = document.querySelector(".site-header");
-    if (!header || setupHeaderScroll._wired) return;
+    if (!header) return;
+    const darkHero = document.querySelector(".hero--dark");
+    const threshold = darkHero ? (darkHero.offsetHeight - header.offsetHeight - 8) : 8;
+    header.classList.toggle("is-scrolled", window.scrollY > threshold);
+  }
+  function setupHeaderScroll() {
+    if (setupHeaderScroll._wired) { evalHeaderScroll(); return; }
     setupHeaderScroll._wired = true;
-    const onScroll = () => {
-      header.classList.toggle("is-scrolled", window.scrollY > 8);
-    };
-    window.addEventListener("scroll", onScroll, { passive: true });
-    onScroll();
+    window.addEventListener("scroll", evalHeaderScroll, { passive: true });
+    window.addEventListener("resize", evalHeaderScroll, { passive: true });
+    evalHeaderScroll();
   }
 
   // ---------------- Router ----------------
@@ -1082,6 +3071,9 @@
     if (path.startsWith("#/catalog/")) {
       const slug = path.replace("#/catalog/", "").replace(/^\/+/, "").replace(/\/+$/, "").toLowerCase();
       if (typeof window.renderCatalog === "function") window.renderCatalog(slug);
+    } else if (path === "#/enterprise" || path.startsWith("#/enterprise/")) {
+      const params = new URLSearchParams(hash.split("?")[1] || "");
+      renderEnterpriseForm({ programSlug: params.get("program") });
     } else if (path.startsWith("#/programs/")) {
       const slug = path.replace("#/programs/", "").replace(/^\/+/, "").replace(/\/+$/, "").toLowerCase();
       renderDetail(slug);
@@ -1089,11 +3081,16 @@
       renderLanding();
     }
     setupReveals();
+    setupHeaderScroll();
+    setupHeroParallax();
   }
 
   // ---------------- Init ----------------
+  // Reload shouldn't restore scroll — we want the user to see the hero each time
+  if ("scrollRestoration" in history) history.scrollRestoration = "manual";
   document.addEventListener("DOMContentLoaded", () => {
     setupHeaderScroll();
+    setupInquiryModal();
     route();
     window.addEventListener("hashchange", route);
   });

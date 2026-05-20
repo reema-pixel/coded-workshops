@@ -23,8 +23,8 @@
   <header class="site-header">
     <div class="container site-header__inner">
       <a href="#/" class="brand" aria-label="CODED home">
-        <img src="assets/brand/logo-white.png" alt="CODED" />
-        <span class="brand-text">CODED</span>
+        <img src="assets/brand/logo-coded-enterprise.svg" alt="CODED Enterprise" />
+        <span class="brand-text">CODED Enterprise</span>
       </a>
     </div>
   </header>
@@ -50,6 +50,34 @@
     <button type="button" class="btn btn-primary" id="stickyCtaLink">Request Seats &amp; Pricing</button>
   </div>
 
+  <!-- Helper chat — pops up from bottom-right on the catalog page. -->
+  <div class="helper-chat" id="helperChat" data-open="false" data-active="false" aria-hidden="true">
+    <button type="button" class="helper-chat__launcher" id="helperChatLauncher" aria-label="Open program finder">
+      <span class="helper-chat__launcher-pulse" aria-hidden="true"></span>
+      <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.4 8.4 0 01-3.9 7l.6 3.5-3.6-1.2a8.5 8.5 0 11-1.6-16.7A8.5 8.5 0 0121 11.5z"/></svg>
+      <span class="helper-chat__launcher-label">
+        <strong>Not sure where to start?</strong>
+        <small>Let us help you choose</small>
+      </span>
+    </button>
+    <div class="helper-chat__panel" id="helperChatPanel" role="dialog" aria-modal="false" aria-labelledby="helperChatTitle">
+      <header class="helper-chat__head">
+        <div class="helper-chat__head-avatar" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.7 4.5L18 9l-4.3 1.5L12 15l-1.7-4.5L6 9l4.3-1.5z"/></svg>
+        </div>
+        <div class="helper-chat__head-text">
+          <h3 id="helperChatTitle">Program finder</h3>
+          <p>Three quick questions</p>
+        </div>
+        <button type="button" class="helper-chat__close" id="helperChatClose" aria-label="Close">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+        </button>
+      </header>
+      <div class="helper-chat__body" id="helperChatBody" aria-live="polite"></div>
+      <footer class="helper-chat__foot" id="helperChatFoot" hidden></footer>
+    </div>
+  </div>
+
   <!-- Inquiry modal — opened from a program card or the detail-page CTA. -->
   <div class="inquiry-modal" id="inquiryModal" hidden aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="inquiryModalTitle">
     <div class="inquiry-modal__backdrop" data-modal-close></div>
@@ -57,8 +85,8 @@
       <header class="inquiry-modal__head">
         <div>
           <span class="inquiry-modal__eyebrow" id="inquiryModalEyebrow">B2B inquiry</span>
-          <h2 id="inquiryModalTitle">Request seats &amp; pricing</h2>
-          <p class="inquiry-modal__sub" id="inquiryModalSub">Tell us about your team — we'll reply within one business day with availability and group pricing.</p>
+          <h2 id="inquiryModalTitle">Let's talk about your team</h2>
+          <p class="inquiry-modal__sub" id="inquiryModalSub">A few details and we'll come back with availability, group pricing, and a confirmation email — within one business day.</p>
         </div>
         <button type="button" class="inquiry-modal__close" aria-label="Close" data-modal-close>
           <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
@@ -67,36 +95,36 @@
       <form class="inquiry-form" id="inquiryForm" autocomplete="on" novalidate>
         <div class="inquiry-form__grid">
           <label class="inquiry-form__field">
-            <span>Your name *</span>
-            <input type="text" name="name" required autocomplete="name" />
+            <input type="text" name="name" required autocomplete="name" placeholder=" " />
+            <span>Your name</span>
           </label>
           <label class="inquiry-form__field">
-            <span>Work email *</span>
-            <input type="email" name="email" required autocomplete="email" />
+            <input type="email" name="email" required autocomplete="email" placeholder=" " />
+            <span>Work email</span>
           </label>
           <label class="inquiry-form__field">
-            <span>Company *</span>
-            <input type="text" name="company" required autocomplete="organization" />
+            <input type="text" name="company" required autocomplete="organization" placeholder=" " />
+            <span>Company</span>
           </label>
           <label class="inquiry-form__field">
-            <span>Phone (optional)</span>
-            <input type="tel" name="phone" autocomplete="tel" />
+            <input type="tel" name="phone" autocomplete="tel" placeholder=" " />
+            <span>Phone <em>· optional</em></span>
           </label>
-          <label class="inquiry-form__field inquiry-form__field--full">
-            <span>Program of interest</span>
+          <label class="inquiry-form__field inquiry-form__field--full inquiry-form__field--select">
             <select name="program" id="inquiryProgramSelect"></select>
+            <span>Program of interest</span>
           </label>
           <label class="inquiry-form__field inquiry-form__field--full">
-            <span>How many people, and when do you want to run it?</span>
-            <textarea name="teamAndTiming" rows="2" placeholder="e.g. ~12 people, ideally March–April 2026"></textarea>
+            <textarea name="teamAndTiming" rows="2" placeholder=" "></textarea>
+            <span>How many people, and when? <em>· e.g. ~12 people, March 2026</em></span>
           </label>
           <label class="inquiry-form__field inquiry-form__field--full">
-            <span>Anything else we should know? (optional)</span>
-            <textarea name="notes" rows="3" placeholder="Existing skill level, specific outcomes, scheduling constraints…"></textarea>
+            <textarea name="notes" rows="3" placeholder=" "></textarea>
+            <span>Anything else we should know? <em>· optional</em></span>
           </label>
         </div>
         <div class="inquiry-form__foot">
-          <span class="inquiry-form__status" id="inquiryFormStatus" aria-live="polite"></span>
+          <span class="inquiry-form__status" id="inquiryFormStatus" aria-live="polite">We'll send a confirmation to your inbox.</span>
           <div class="inquiry-form__actions">
             <button type="button" class="btn btn-secondary" data-modal-close>Cancel</button>
             <button type="submit" class="btn btn-primary" id="inquiryFormSubmit">Send inquiry</button>

@@ -1,0 +1,93 @@
+<!--
+  Confirmation email — branded HTML version.
+
+  Paste the body of this file into the Airtable Automation "Send Gmail" action
+  (body type: HTML). Then, in the editor, REPLACE each {Field Name} token by
+  clicking the blue "+" picker and selecting the corresponding field from the
+  trigger record. The tokens used:
+
+    {Contact Name}           → fld FtZAgk1Jf9OvVu
+    {Company Name}           → fld 7cI9lIeqn8hNoA   (primary)
+    {Programs of Interest}   → fld Co9ES2xZOoF1AP
+    {Team Size & Timing}     → fld GHjNhl4h0eEaep
+    {Internal Notes}         → fld 7iXFuEwicnGzEg
+
+  Don't ship the {…} tokens as literal text — Airtable only substitutes
+  tokens inserted via the "+" picker (they render as colored chips in the
+  editor). Plain typed braces stay as braces.
+
+  The template uses inline styles + table layout so it renders consistently
+  in Gmail, Outlook, Apple Mail, and mobile clients.
+-->
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"></head>
+<body style="margin:0; padding:0; background:#F4F7FB; font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif; color:#14243F;">
+  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#F4F7FB; padding: 32px 16px;">
+    <tr><td align="center">
+      <table role="presentation" width="560" cellpadding="0" cellspacing="0" style="max-width:560px; width:100%;">
+
+        <tr><td style="padding:0 0 22px;">
+          <span style="display:inline-block; padding:6px 14px; border-radius:999px; background:#0A0A0E; color:#FFFFFF; font-size:11px; font-weight:600; letter-spacing:0.18em; text-transform:uppercase;">CODED For Companies</span>
+        </td></tr>
+
+        <tr><td style="background:#FFFFFF; border:1px solid #E4EAF2; border-radius:14px; padding:36px 36px 28px;">
+
+          <h1 style="margin:0 0 14px; font-size:26px; line-height:1.2; letter-spacing:-0.02em; color:#11213D; font-weight:700;">
+            Thanks, {Contact Name} — we've got your inquiry.
+          </h1>
+
+          <p style="margin:0 0 18px; font-size:15px; line-height:1.6; color:#2D3F55;">
+            Someone from the CODED enterprise team will reply within
+            <strong>one business day</strong> with availability, group
+            pricing, and the next steps for <strong>{Programs of Interest}</strong>.
+          </p>
+
+          <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="margin: 18px 0 8px;">
+            <tr>
+              <td style="padding: 14px 0 4px; font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: #8B8F9B; font-weight: 600;">Company</td>
+            </tr>
+            <tr>
+              <td style="padding: 0 0 14px; font-size: 14px; color: #14243F; line-height: 1.5; border-bottom: 1px solid #E4EAF2;">{Company Name}</td>
+            </tr>
+
+            <tr>
+              <td style="padding: 14px 0 4px; font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: #8B8F9B; font-weight: 600;">Programs</td>
+            </tr>
+            <tr>
+              <td style="padding: 0 0 14px; font-size: 14px; color: #14243F; line-height: 1.5; border-bottom: 1px solid #E4EAF2;">{Programs of Interest}</td>
+            </tr>
+
+            <tr>
+              <td style="padding: 14px 0 4px; font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: #8B8F9B; font-weight: 600;">Team size &amp; timing</td>
+            </tr>
+            <tr>
+              <td style="padding: 0 0 14px; font-size: 14px; color: #14243F; line-height: 1.5; border-bottom: 1px solid #E4EAF2;">{Team Size &amp; Timing}</td>
+            </tr>
+
+            <tr>
+              <td style="padding: 14px 0 4px; font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: #8B8F9B; font-weight: 600;">Notes</td>
+            </tr>
+            <tr>
+              <td style="padding: 0 0 14px; font-size: 14px; color: #14243F; line-height: 1.5;">{Internal Notes}</td>
+            </tr>
+          </table>
+
+          <p style="margin:24px 0 0; font-size:13.5px; line-height:1.6; color:#475569;">
+            Need to update anything or add context? Just reply to this email —
+            it goes straight to the enterprise inbox.
+          </p>
+
+        </td></tr>
+
+        <tr><td style="padding:24px 8px 0; font-size:12px; color:#667085; line-height:1.5;">
+          CODED Campus · Free Trade Zone, Kuwait<br/>
+          <a href="https://coded.kw" style="color:#012891; text-decoration:none;">coded.kw</a> ·
+          <a href="mailto:enterprise@joincoded.com" style="color:#012891; text-decoration:none;">enterprise@joincoded.com</a>
+        </td></tr>
+
+      </table>
+    </td></tr>
+  </table>
+</body>
+</html>
