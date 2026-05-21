@@ -149,65 +149,28 @@ Topic pills are color-coded for scannability while staying tonally on-brand.
 
 ## Inquiry capture
 
-The CTA on every program detail page opens an Onyx + Platinum inquiry modal that POSTs to [`/api/inquiry`](api/inquiry.js). The serverless function writes a single row into the **B2B Training Inquiries** table in the Enterprise Deals base (`appciDr5ptR27XXr9`), with `Status = "New"`. Required env on Vercel: `AIRTABLE_PAT`.
+Three surfaces collect inquiries:
 
-The confirmation email is sent by an **Airtable Automation** that watches that table — no extra server code, no extra API key. Marketing owns the template; they can edit it without a deploy.
+1. **Hero chatbot** on the landing page (4-step concierge).
+2. **Per-program inquiry modal** opened from each detail-page CTA.
+3. **Enterprise form** at `/#/enterprise` (the long custom-program form).
 
-### One-time setup of the confirmation email automation
+All three POST the same payload to [`/api/inquiry`](api/inquiry.js). The
+function writes a single row into **B2B Training Inquiries** in the
+**Enterprise Deals** base (`appciDr5ptR27XXr9` / `tblHfbSdiyBrq4ga9`) with
+`Status = "New"`. Required Vercel env var: `AIRTABLE_PAT`.
 
-In the Enterprise Deals base (`appciDr5ptR27XXr9` → **B2B Training Inquiries**):
+Two **Airtable Automations** in that base do the rest:
 
-1. Open the **Automations** tab (top-right of the base).
-2. Click **+ Create automation**. Name it `Confirm new B2B inquiry → email lead`.
-3. **Trigger** → **When a record matches conditions**
-   - Table: `B2B Training Inquiries`
-   - Conditions: `Status` `is` `New`
-   - This fires once per new lead, never on edits.
-4. **Action** → **Send email** (built-in)
-   - **To**: insert the `Contact Email` field via the blue `+` token picker.
-   - **Bcc**: `enterprise@joincoded.com` (so the team gets a copy of every confirmation).
-   - **Reply-to**: `enterprise@joincoded.com`.
-   - **Subject** (toggle the field to dynamic):  `We got your inquiry — ` then insert the `Programs of Interest` field. Falls back to `Programs of Interest` text or "your team" if blank.
-   - **Body**: paste the markdown template below. Switch the body editor's format toggle to **Markdown**. The `+` token picker replaces every `{Field Name}` placeholder for you — wire them through the UI so Airtable knows they're field references, not literal text.
-5. **Test** → run the automation against the most recent test record, confirm the email arrives.
-6. **Turn it on** (toggle in the top-right of the automation editor).
+- **Confirmation email** → goes to the lead.
+- **Internal notification** → goes to `enterprise@joincoded.com`.
 
-#### Email body template (markdown — paste into the Send Email action body)
+Both use Airtable's built-in Send Email (or Send Gmail for branded HTML) —
+no separate ESP, no extra code path. Marketing owns the templates.
 
-```markdown
-**Thanks, {Contact Name} — we've got your inquiry.**
-
-Someone from the CODED enterprise team will reply within **one business day** with availability, group pricing, and the next steps for **{Programs of Interest}**.
-
----
-
-**What you sent:**
-
-- **Company:** {Company Name}
-- **Program(s):** {Programs of Interest}
-- **Team size & timing:** {Team Size & Timing}
-- **Notes:** {Internal Notes}
-
----
-
-Need to update anything or add context? Just reply to this email — it goes straight to the enterprise inbox.
-
-—
-CODED Campus · Free Trade Zone, Kuwait
-[coded.kw](https://coded.kw) · enterprise@joincoded.com
-```
-
-> When you paste field references, use the blue `+` token picker in the Airtable body editor. Don't type `{Contact Name}` as literal text — that won't substitute.
-
-### Want richer HTML branding?
-
-The built-in Send Email action only supports Markdown. If you want the same polished HTML design as the rest of the site, swap the action for **Send Gmail** (Airtable connects to a Google Workspace account):
-
-1. In the same automation, replace the **Send email** action with **Send Gmail**.
-2. Sign in once to connect `enterprise@joincoded.com` (or any Workspace inbox you want as the sender).
-3. Body type: **HTML**. Paste the template from `docs/inquiry-confirmation.html` (added with the catalog feature) and wire each `{{FIELD}}` token to the corresponding Airtable field via the `+` picker.
-
-The Gmail action sends from a real branded address and respects your domain's SPF/DKIM — no separate ESP needed.
+Full step-by-step setup (PAT, env vars, both automations, email templates):
+**[SETUP.md](SETUP.md)**. The branded HTML template is at
+[`docs/inquiry-confirmation.html`](docs/inquiry-confirmation.html).
 
 ## Migrating to Next.js (PRD §12.1)
 

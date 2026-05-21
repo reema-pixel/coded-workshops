@@ -447,30 +447,30 @@
         <div class="container intro-band__inner">
           <div class="intro-band__head">
             <span class="eyebrow"><span>Why partner with CODED</span></span>
-            <h2>Practical training, built around <em>real business needs</em>.</h2>
-            <p>Teams trust CODED because our training is hands-on, structured, and led by practitioners who understand both global standards and the local context. We help your people build skills that make a measurable difference, week one.</p>
+            <h2>Training your team will <em>actually use</em>.</h2>
+            <p>We've been teaching the people who run Kuwait's banks, telcos, ministries, and operators since 2019 — and we still teach every cohort like it's our first.</p>
           </div>
           <div class="intro-band__grid">
             <div class="intro-card reveal-up">
               <span class="intro-card__icon" aria-hidden="true">
                 <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7h12M3 12h18M3 17h12"/><circle cx="20" cy="7" r="1.6" fill="currentColor"/><circle cx="20" cy="17" r="1.6" fill="currentColor"/></svg>
               </span>
-              <h3>Hands-On, Not Theory</h3>
-              <p>Participants don't just learn concepts, they apply them through practical exercises and real-world projects.</p>
+              <h3>70% hands-on</h3>
+              <p>Every session ends with something built — code, a dashboard, a defended environment. Not slides they'll never reopen.</p>
             </div>
             <div class="intro-card reveal-up delay-1">
               <span class="intro-card__icon" aria-hidden="true">
                 <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7l8-4 8 4-8 4-8-4z"/><path d="M4 12l8 4 8-4"/><path d="M4 17l8 4 8-4"/></svg>
               </span>
-              <h3>Flexible Enrollment</h3>
-              <p>Enterprises can enroll one or multiple participants across a wide range of in-person programs.</p>
+              <h3>Send one or thirty</h3>
+              <p>Same program, group pricing kicks in from 6 seats. Mix and match across the catalog if you'd rather split tracks.</p>
             </div>
             <div class="intro-card reveal-up delay-2">
               <span class="intro-card__icon" aria-hidden="true">
                 <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l2.6 5.5 6 .7-4.5 4.1 1.2 5.9L12 16.8 6.7 19.2l1.2-5.9-4.5-4.1 6-.7z"/></svg>
               </span>
-              <h3>Built to Support L&amp;D Teams</h3>
-              <p>We manage the full training experience, including attendee communication, onboarding, attendance, feedback collection, and post-program reporting.</p>
+              <h3>One contact, one report</h3>
+              <p>We handle invites, attendance, feedback, and the wrap-up report. Your L&amp;D team gets one weekly update — not a Slack of vendor questions.</p>
             </div>
           </div>
         </div>
@@ -481,9 +481,9 @@
         <img class="impact-band__lines" src="assets/brand/lines-3-A.svg" alt="" aria-hidden="true" />
         <div class="container impact-band__inner">
           <div class="impact-band__head">
-            <span class="eyebrow eyebrow--light"><span>Partnerships built around real impact</span></span>
-            <h2>Numbers our partners <em>come back for</em>.</h2>
-            <p>CODED collaborates with enterprises, banks, and institutions to close skill gaps, inspire innovation, and grow local tech talent. Every proposal is built on the same foundation, measurable outcomes and hands-on learning.</p>
+            <span class="eyebrow eyebrow--light"><span>Since 2019</span></span>
+            <h2>The numbers our partners <em>come back for</em>.</h2>
+            <p>Cumulative across all partner engagements — banks, telcos, ministries, family offices, and a handful of unicorns. Public clients listed on request.</p>
           </div>
           <div class="impact-band__stats">
             <div class="impact-stat reveal-up">
@@ -508,7 +508,7 @@
       <section class="catalog-header" aria-label="2026 calendar">
         <div class="container catalog-header__inner">
           <h2>2026 Calendar</h2>
-          <p>Register now and book seats for your team. Every program runs at CODED Campus in Kuwait's Free Trade Zone, with live instructors, real projects, and post-program reporting included.</p>
+          <p>Pick a program, request seats — we'll come back within one business day with availability and group pricing. All on-campus, Free Trade Zone, Kuwait.</p>
         </div>
       </section>
 
@@ -558,7 +558,7 @@
           <div class="offerings__head">
             <span class="eyebrow"><span>Our enterprise offerings</span></span>
             <h2>Four ways teams partner with us.</h2>
-            <p>From a single workshop to a multi-month academy, every engagement is scoped end-to-end around your team, your stack, and your timeline.</p>
+            <p>Pick what fits — most clients combine two. Scoping calls are free.</p>
           </div>
           <div class="offerings__grid">
             <article class="offering-card offering-card--a reveal-up">
@@ -621,32 +621,32 @@
         <div class="container faq-section__inner">
           <aside class="faq-section__aside">
             <span class="eyebrow"><span>Answers for HR &amp; L&amp;D teams</span></span>
-            <h2>Questions we hear from procurement, L&amp;D, and CHROs.</h2>
-            <p>Clear answers to the questions HR and L&amp;D teams ask most when evaluating CODED as a training partner. Don't see yours?</p>
+            <h2>Questions we hear from L&amp;D and procurement.</h2>
+            <p>Five questions we get on almost every call. Don't see yours?</p>
             <a class="btn btn-secondary" href="#/enterprise">Ask us directly
               <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
             </a>
           </aside>
           <div class="faq faq--landing">
             <details open>
-              <summary>Who are CODED's corporate programs designed for?</summary>
-              <p>Our programs are designed for organizations looking to upskill employees, onboard fresh talent, or build long-term technical capability — across technical and non-technical roles.</p>
+              <summary>Who are these programs for?</summary>
+              <p>Two main groups: enterprises upskilling existing teams, and orgs onboarding new graduate or junior cohorts. We run both technical and non-technical tracks — finance, marketing, and operations included.</p>
             </details>
             <details>
-              <summary>Are the programs customized to our organization's needs?</summary>
-              <p>Yes. Every corporate program is tailored based on your objectives, team skill levels, time constraints, and industry context. We do not offer generic, one-size-fits-all training.</p>
+              <summary>Can you tailor the program to our team?</summary>
+              <p>Yes — every engagement starts with a scoping call. We adjust the level, the stack, the case studies, and the schedule. No recycled decks.</p>
             </details>
             <details>
-              <summary>What areas and skills does CODED cover?</summary>
-              <p>We deliver training across software development, data and AI, cybersecurity, cloud, and digital transformation — including programs for both technical and non-technical teams.</p>
+              <summary>What topics do you cover?</summary>
+              <p>Software, data &amp; AI, cybersecurity, cloud, project management, and AI for non-technical teams. The catalog above is the public 2026 set — we also build custom programs.</p>
             </details>
             <details>
-              <summary>How is training delivered and who teaches it?</summary>
-              <p>Programs can be delivered on-site, at CODED Campus in Kuwait's Free Trade Zone, or in hybrid formats. All sessions are led by experienced practitioners trained to teach in professional, corporate environments.</p>
+              <summary>Where is it taught, and by whom?</summary>
+              <p>On-site at CODED Campus (Free Trade Zone), at your offices, or hybrid. Every session is led by a working practitioner — not a contractor reading from a deck.</p>
             </details>
             <details>
-              <summary>How do you measure success and report outcomes?</summary>
-              <p>We focus on practical, project-based learning with clear objectives, and provide structured feedback and outcome summaries to support internal reporting and evaluation.</p>
+              <summary>How do you report outcomes back to L&amp;D?</summary>
+              <p>Every program ends with a deliverable (a deployed app, a defended environment, a working dashboard) plus an outcomes report — attendance, assessment scores, and the learner artefacts. Hand it straight to L&amp;D.</p>
             </details>
           </div>
         </div>
@@ -658,9 +658,9 @@
             <img class="cta-dot" src="assets/brand/dot-pattern-white.svg" alt="" aria-hidden="true" />
             <img class="cta-lines" src="assets/brand/lines-2-A.svg" alt="" aria-hidden="true" />
             <div class="cta-banner__content">
-              <span class="eyebrow eyebrow--light"><span>Build Kuwait's next digital success story</span></span>
+              <span class="eyebrow eyebrow--light"><span>One business day to a proposal</span></span>
               <h2>Let's design a program your team will actually remember.</h2>
-              <p>Whether you're training teams, hiring talent, or launching a CSR program, CODED scopes solutions end-to-end so you don't have to. One business day to a written proposal.</p>
+              <p>Tell us about the team, the timing, and the outcome you want. We'll come back within one business day with a written proposal — pricing, dates, and the curriculum we'd run.</p>
             </div>
             <a class="btn btn-primary btn-lg" href="#/enterprise">Request a proposal ${ICON.arrow}</a>
           </div>
@@ -854,10 +854,13 @@
       key: "when",
       prompt: "When does it need to happen?",
       options: [
-        { label: "ASAP (this month)",     patch: { __whenMonths: 1 } },
-        { label: "Soon (next 1–3 months)", patch: { __whenMonths: 3 } },
-        { label: "Later this year",       patch: { __whenMonths: 12 } },
-        { label: "Flexible",              patch: {} },
+        // __whenMonths is inclusive of the current month, so 2 ≈ "next ~60 days"
+        // and 3 ≈ "next ~90 days". The semantics matter because the catalog
+        // is sparse some months — a too-narrow "ASAP" returns zero matches.
+        { label: "Within ~60 days",        patch: { __whenMonths: 2 } },
+        { label: "Within 3 months",        patch: { __whenMonths: 3 } },
+        { label: "Later this year",        patch: { __whenMonths: 12 } },
+        { label: "Flexible",               patch: {} },
       ],
     },
   ];
@@ -926,12 +929,23 @@
       });
       // Done state — at the end, show summary + apply
       if (stepIndex >= CHAT_STEPS.length) {
-        // Compute matching count using current state + pendingPatch (preview)
+        // Compute matching count using current state + pendingPatch (preview).
+        // If zero match all three filters, relax the timing filter and try
+        // again — the user's audience + format choices are stronger signal
+        // than the calendar window, and "Found 0 programs" is a dead end.
         const preview = previewFilters();
-        const count = applyFilters(PROGRAMS, preview).length;
-        parts.push(`<div class="chat-msg chat-msg--bot">
-          <p>Found <strong>${count}</strong> program${count === 1 ? "" : "s"} that match. Want to see them?</p>
-        </div>`);
+        let count = applyFilters(PROGRAMS, preview).length;
+        let relaxed = false;
+        if (count === 0 && pendingPatch.__whenMonths) {
+          relaxed = true;
+          delete pendingPatch.__whenMonths;
+          const widened = previewFilters();
+          count = applyFilters(PROGRAMS, widened).length;
+        }
+        const msg = relaxed
+          ? `<p>No exact match for your timing — here ${count === 1 ? "is" : "are"} <strong>${count}</strong> close ${count === 1 ? "fit" : "fits"} across the rest of 2026. Want to see ${count === 1 ? "it" : "them"}?</p>`
+          : `<p>Found <strong>${count}</strong> program${count === 1 ? "" : "s"} that match. Want to see ${count === 1 ? "it" : "them"}?</p>`;
+        parts.push(`<div class="chat-msg chat-msg--bot">${msg}</div>`);
       }
       body.innerHTML = parts.join("");
       body.scrollTop = body.scrollHeight;
@@ -2592,7 +2606,7 @@
           </div>
           <div class="eyebrow eyebrow--light"><span>${eyebrowProgram ? `Enterprise inquiry · ${escapeHtml(eyebrowProgram.name)}` : "Enterprise inquiry · Custom programs"}</span></div>
           <h1>Tell us what your team<br/><span class="accent-soft">needs to build.</span></h1>
-          <p class="lede lede--light">A few short questions about your company, the skills you want to develop, and how you'd like the program shaped. We'll come back within one business day with a tailored plan, group pricing, and the next available cohort.</p>
+          <p class="lede lede--light">Six short steps. We'll come back within one business day with a written proposal — programs, dates, and group pricing.</p>
         </div>
       </section>
 
@@ -2664,7 +2678,7 @@
               <div class="ent-section__head">
                 <span class="eyebrow-tag">[ 03 · Programs of interest ]</span>
                 <h2>Pick the programs you'd like for your team.</h2>
-                <p class="ent-section__sub">Select as many as apply — we'll confirm fit on the call. Not sure? Tick the last option and we'll recommend based on your goals.</p>
+                <p class="ent-section__sub">Tick as many as you want — or tick "Recommend" if you'd rather we suggest the fit.</p>
               </div>
               <div class="ent-prog-grid" role="group" aria-label="Programs of interest">
                 ${PROGRAMS.map(programCard).join("")}
@@ -2731,8 +2745,8 @@
             <fieldset class="ent-section reveal-up">
               <div class="ent-section__head">
                 <span class="eyebrow-tag">[ 05 · How should we shape it? ]</span>
-                <h2>Customization preferences.</h2>
-                <p class="ent-section__sub">Optional — we're flexible on all of these. Pick what matters; leave the rest open.</p>
+                <h2>Tell us your preferences.</h2>
+                <p class="ent-section__sub">All optional — pick what matters, leave the rest open.</p>
               </div>
 
               <div class="ent-field ent-field--full">
@@ -2789,7 +2803,7 @@
             </fieldset>
 
             <div class="ent-submit reveal-up">
-              <p class="ent-submit__note">Submitting this form sends your inquiry directly to the CODED enterprise team. We reply within one business day. We never share your details with third parties.</p>
+              <p class="ent-submit__note">Goes straight to the enterprise team. We reply within one business day, and never share your details.</p>
               <div class="ent-submit__row">
                 <span class="ent-form__status" id="entFormStatus" aria-live="polite"></span>
                 <button type="submit" class="btn btn-primary btn-lg" id="entFormSubmit">Send inquiry ${ICON.arrow}</button>
