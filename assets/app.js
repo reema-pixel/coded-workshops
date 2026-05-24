@@ -373,7 +373,9 @@
   }
 
   function applyFilters(programs, filters) {
+    const todayISO = new Date().toISOString().slice(0, 10);
     return programs.filter(p => {
+      if (p.start_date && p.start_date < todayISO) return false;
       if (filters.q && !matchesQuery(p, filters.q)) return false;
       if (filters.topic && filters.topic.length && !filters.topic.includes(p.topic)) return false;
       if (filters.format && filters.format.length && !filters.format.includes(p.format)) return false;
@@ -549,7 +551,7 @@
         <div class="container">
           <div id="resultsHeader" class="results-header results-header--simple">
             <span class="filter-results" id="resultsCount"></span>
-            <span class="filter-results" id="sortLabel">Sorted by start date · soonest first</span>
+            <span class="filter-results" id="sortLabel">Grouped by month · soonest first</span>
           </div>
           <div id="cardGrid"></div>
         </div>
@@ -1051,11 +1053,15 @@
     });
   }
 
-  // View mode: 'grid' or 'calendar'. Persists per-tab so a refresh keeps it.
+  // View mode: 'grid' / 'schedule' / 'calendar'. Persists per-tab.
+  // The grid and calendar toggles are hidden in CSS for now — we
+  // hard-code "schedule" so returning users with an old stored
+  // "grid" preference still see the active view. Plumbing stays
+  // intact so we can re-enable the toggle by reverting the CSS hide
+  // + restoring this getter.
   const VIEW_MODE_KEY = "coded.b2b.viewMode";
   function getViewMode() {
-    try { return sessionStorage.getItem(VIEW_MODE_KEY) || "grid"; }
-    catch { return "grid"; }
+    return "schedule";
   }
   function setViewMode(mode) {
     try { sessionStorage.setItem(VIEW_MODE_KEY, mode); } catch {}

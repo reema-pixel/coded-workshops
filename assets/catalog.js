@@ -161,7 +161,7 @@
   function decidePageCount(p) {
     const hasCurriculum = (p.modules && p.modules.length) || (p.structure && p.structure.length);
     const hasCohorts = (p.cohorts && p.cohorts.length) || (p.iterations && p.iterations.length);
-    const hasDetails = p.audience_detail || p.instructor || (p.faq && p.faq.length);
+    const hasDetails = p.audience_detail || (p.faq && p.faq.length);
     if (hasCurriculum && hasDetails) return 3;
     if (hasCurriculum || hasCohorts || hasDetails) return 2;
     return 1;
@@ -308,17 +308,6 @@
             <div class="cat-section">
               <h2 class="cat-section__title">Who this is for</h2>
               <p class="cat-text">${escapeHtml(p.audience_detail)}</p>
-            </div>
-          ` : ""}
-
-          ${p.instructor && p.instructor.name ? `
-            <div class="cat-section">
-              <span class="cat-eyebrow">Your instructor</span>
-              <div class="cat-instructor">
-                <p class="cat-instructor__role">${escapeHtml(p.instructor.role || "")}</p>
-                <p class="cat-instructor__name">${escapeHtml(p.instructor.name)}</p>
-                ${p.instructor.bio ? `<p class="cat-instructor__bio">${escapeHtml(p.instructor.bio)}</p>` : ""}
-              </div>
             </div>
           ` : ""}
 

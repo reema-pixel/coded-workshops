@@ -1115,6 +1115,10 @@ body.is-enterprise .helper-chat {
    while the user is scrolled into the programs grid. Sized up for
    thumb-reach + presence. */
 .view-toggle-floating {
+  /* Temporarily hidden — site is schedule-only for now. To re-enable,
+   * remove this display:none and restore the previous getViewMode()
+   * in assets/app.js so the toggle can switch grid/calendar. */
+  display: none !important;
   position: fixed;
   left: 50%;
   bottom: 24px;
