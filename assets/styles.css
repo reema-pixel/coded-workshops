@@ -2667,6 +2667,77 @@ body.modal-open { overflow: hidden; }
   100% { box-shadow: 0 0 0 0   rgba(245, 247, 250, 0); }
 }
 
+/* ------------ Hero D / H / M / S countdown ------------
+ * Sits between .detail-meta-row and .detail-hero__cta on the program
+ * detail page. Glass cells on the onyx hero — matches .countdown-chip
+ * tokens for a coherent platinum look. */
+.hero-countdown {
+  margin: 4px 0 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-width: 540px;
+}
+.hero-countdown__label {
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(221, 225, 234, 0.55);
+  font-weight: 600;
+}
+.hero-countdown__grid {
+  display: flex;
+  align-items: stretch;
+  gap: 10px;
+}
+.hero-countdown__cell {
+  flex: 1 1 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 14px 8px 12px;
+  border-radius: 14px;
+  background: linear-gradient(180deg, rgba(245, 247, 250, 0.10) 0%, rgba(245, 247, 250, 0.04) 100%);
+  border: 1px solid rgba(245, 247, 250, 0.22);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  min-width: 0;
+}
+.hero-countdown__num {
+  font-family: var(--font-display, inherit);
+  font-size: clamp(28px, 3.4vw, 40px);
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  color: #FFFFFF;
+  font-variant-numeric: tabular-nums;
+  text-shadow: 0 4px 24px rgba(0, 0, 0, 0.4);
+}
+.hero-countdown__unit {
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(221, 225, 234, 0.55);
+  font-weight: 600;
+}
+.hero-countdown__sep {
+  align-self: center;
+  font-size: clamp(22px, 2.6vw, 30px);
+  font-weight: 600;
+  color: rgba(221, 225, 234, 0.30);
+  line-height: 1;
+  padding-bottom: 14px;
+}
+.hero-countdown--done .hero-countdown__num { color: rgba(255, 255, 255, 0.55); }
+@media (max-width: 560px) {
+  .hero-countdown { max-width: none; }
+  .hero-countdown__grid { gap: 6px; }
+  .hero-countdown__cell { padding: 12px 4px 10px; border-radius: 12px; }
+  .hero-countdown__sep { display: none; }
+}
+
 .detail-hero h1 {
   font-size: clamp(36px, 5vw, 56px);
   line-height: 1.05;
@@ -3329,6 +3400,39 @@ body.modal-open { overflow: hidden; }
   gap: 32px;
 }
 
+/* Full-shell variant: spans from immediately after the hero through the FAQ,
+   keeping the AT A GLANCE aside sticky alongside every content section. */
+.detail-grid--full {
+  padding: var(--s-3) 0 var(--s-3);
+  align-items: start;
+}
+.detail-grid__main > section + section { margin-top: 56px; }
+/* The first content sections in the shell (marquee, then non-marquee) bring
+   their own internal padding; only zero the top padding for plain detail-sections. */
+.detail-grid__main > .detail-section:not(.detail-section--marquee-inline):first-child { padding-top: 0; }
+
+/* Inline Overview marquee: contained card inside the left column, not a full-bleed band */
+.detail-section--marquee-inline {
+  background: var(--bg-section-soft);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 40px 32px;
+}
+.detail-section--marquee-inline h2 {
+  font-size: clamp(24px, 2.6vw, 30px);
+  margin: 0 auto 28px;
+}
+.detail-section--marquee-inline .overview-tiles--three { max-width: 100%; }
+
+/* Inline Curriculum band: dark contained panel with rounded corners, not full-bleed */
+.curriculum-band--inline {
+  border-radius: var(--radius-lg);
+  padding: 48px 36px;
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.05);
+}
+.curriculum-band--inline h2 { font-size: clamp(26px, 3vw, 36px); }
+.curriculum-band--inline .curriculum-band__head { margin-bottom: 36px; }
+
 /* Closing CTA on detail, unified to #192C4D so it rhymes with the curriculum band */
 .detail-close { padding: var(--s-3) 0 var(--s-4); }
 .detail-close__inner {
@@ -3444,6 +3548,10 @@ body.modal-open { overflow: hidden; }
   .grid { grid-template-columns: repeat(2, 1fr); }
   .phases { grid-template-columns: repeat(2, 1fr); }
   .detail-grid { grid-template-columns: 1fr; }
+  .detail-grid--full { padding: var(--s-2) 0; }
+  .detail-grid--full .detail-grid__main > section + section { margin-top: 40px; }
+  .curriculum-band--inline { padding: 36px 24px; }
+  .detail-section--marquee-inline { padding: 32px 24px; }
   .aside-stuck { position: static; }
   .detail-meta-row { grid-template-columns: repeat(3, 1fr); gap: 18px; }
   .intro-band__grid { grid-template-columns: 1fr; gap: 20px; }
@@ -4230,8 +4338,177 @@ input:focus-visible, select:focus-visible, textarea:focus-visible {
 }
 
 /* ============================================================
-   Top courses marquee — sits directly under the dark hero.
-   Cards adopt their topic accent via inline --c-from / --c-to vars.
+   Featured rotator — single card under the search bar that auto-
+   cycles through the top picks. One card visible at a time;
+   others stacked absolutely with opacity 0. Topic accent via
+   inline --c-from / --c-to CSS vars.
+   ============================================================ */
+.featured-rotator {
+  background: var(--bg-soft);
+  padding: 18px 0 28px;
+}
+.featured-rotator__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 14px;
+  flex-wrap: wrap;
+}
+.featured-rotator__eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+.featured-rotator__pulse {
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #22C55E;
+  box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.4);
+  animation: feat-pulse 2s ease-in-out infinite;
+}
+@keyframes feat-pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.4); }
+  50%      { box-shadow: 0 0 0 8px rgba(34, 197, 94, 0); }
+}
+.featured-rotator__dots {
+  display: inline-flex;
+  gap: 6px;
+}
+.featured-rotator__dot {
+  width: 22px;
+  height: 4px;
+  border-radius: 3px;
+  border: 0;
+  background: rgba(20, 36, 63, 0.18);
+  padding: 0;
+  cursor: pointer;
+  transition: background var(--t-fast) var(--ease), width var(--t-fast) var(--ease);
+}
+.featured-rotator__dot:hover  { background: rgba(20, 36, 63, 0.32); }
+.featured-rotator__dot:focus-visible {
+  outline: 2px solid var(--accent-ring);
+  outline-offset: 2px;
+}
+.featured-rotator__dot[aria-selected="true"] {
+  background: var(--brand-royal);
+  width: 36px;
+}
+
+.featured-rotator__viewport {
+  position: relative;
+  min-height: 132px;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  isolation: isolate;
+}
+.featured-rotator__card {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 22px;
+  padding: 22px 26px;
+  background:
+    radial-gradient(120% 100% at 0% 0%, rgba(255, 255, 255, 0.10) 0%, transparent 60%),
+    linear-gradient(135deg, var(--c-from) 0%, var(--c-to) 100%);
+  color: #FFFFFF;
+  text-decoration: none;
+  opacity: 0;
+  transform: translateY(8px);
+  pointer-events: none;
+  transition:
+    opacity 520ms var(--ease),
+    transform 520ms var(--ease);
+}
+.featured-rotator__card[data-active="true"] {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+.featured-rotator__card:hover { filter: brightness(1.06); }
+.featured-rotator__card:focus-visible {
+  outline: 2px solid #FFFFFF;
+  outline-offset: -4px;
+}
+
+.featured-rotator__rank {
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  color: rgba(255, 255, 255, 0.5);
+  font-variant-numeric: tabular-nums;
+}
+.featured-rotator__copy {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+}
+.featured-rotator__topic {
+  font-size: 10.5px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.66);
+}
+.featured-rotator__name {
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  color: #FFFFFF;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.featured-rotator__meta {
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.7);
+}
+.featured-rotator__arrow {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  transition: transform var(--t-fast) var(--ease), background var(--t-fast) var(--ease);
+}
+.featured-rotator__card:hover .featured-rotator__arrow {
+  transform: translateX(3px);
+  background: rgba(255, 255, 255, 0.22);
+}
+
+@media (max-width: 640px) {
+  .featured-rotator__viewport { min-height: 148px; }
+  .featured-rotator__card {
+    grid-template-columns: auto 1fr;
+    gap: 14px;
+    padding: 18px 18px;
+  }
+  .featured-rotator__name { font-size: 16px; white-space: normal; }
+  .featured-rotator__arrow { display: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .featured-rotator__card { transition: none; }
+  .featured-rotator__pulse { animation: none; }
+}
+
+/* ============================================================
+   Top courses marquee — dead code, kept for easy revert.
+   Live UI uses .featured-rotator above.
    ============================================================ */
 .top-courses {
   position: relative;

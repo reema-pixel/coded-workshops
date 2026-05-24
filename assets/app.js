@@ -449,19 +449,6 @@
            assets/brand/clients/ (see README there). To re-enable, restore the
            <section class="trusted-strip"> block. -->
 
-      <!-- Top courses marquee: gradient-themed chips of the highest-demand programs. -->
-      <section class="top-courses" aria-label="Top performing courses">
-        <div class="container">
-          <div class="top-courses__head">
-            <span class="top-courses__eyebrow"><span class="top-courses__pulse" aria-hidden="true"></span>Most enrolled · 2026</span>
-            <a class="top-courses__cta" href="#filtersSection">View catalog
-              <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-            </a>
-          </div>
-          <div class="top-courses__marquee" id="topCoursesMarquee" data-paused="false"></div>
-        </div>
-      </section>
-
       <section class="intro-band">
         <div class="container intro-band__inner">
           <div class="intro-band__head">
@@ -547,6 +534,19 @@
         </div>
       </section>
 
+      <!-- Featured rotator: cycles through the top picks, one at a time. -->
+      <section class="featured-rotator" id="featuredRotator" aria-label="Featured program">
+        <div class="container">
+          <div class="featured-rotator__head">
+            <span class="featured-rotator__eyebrow">
+              <span class="featured-rotator__pulse" aria-hidden="true"></span>Featured · top picks
+            </span>
+            <div class="featured-rotator__dots" id="featuredRotatorDots" role="tablist" aria-label="Featured program selector"></div>
+          </div>
+          <div class="featured-rotator__viewport" id="featuredRotatorViewport" aria-live="polite"></div>
+        </div>
+      </section>
+
       <section class="grid-section" id="gridSection">
         <div class="container">
           <div id="resultsHeader" class="results-header results-header--simple">
@@ -571,70 +571,6 @@
           </button>
         </div>
       </div>
-
-      <section class="offerings" aria-label="Enterprise offerings">
-        <div class="container">
-          <div class="offerings__head">
-            <span class="eyebrow"><span>Our enterprise offerings</span></span>
-            <h2>Four ways teams partner with us.</h2>
-            <p>Pick what fits — most clients combine two. Scoping calls are free.</p>
-          </div>
-          <div class="offerings__grid">
-            <article class="offering-card offering-card--a reveal-up">
-              <span class="offering-card__icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7h18v12H3z"/><path d="M3 11h18"/><path d="M8 7V4h8v3"/></svg>
-              </span>
-              <h3>Enterprise Workshops</h3>
-              <p>Short, hands-on sessions tailored to your teams and tech stack — from one-day intensives to week-long deep-dives.</p>
-              <ul class="offering-card__list">
-                <li>1–5 day formats</li>
-                <li>On-site, on-campus, or hybrid</li>
-                <li>Cohorts of 8–25</li>
-              </ul>
-              <a class="offering-card__link" href="#/enterprise">Brief us on your team <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-            </article>
-            <article class="offering-card offering-card--b reveal-up delay-1">
-              <span class="offering-card__icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-4.6-7-10a5 5 0 019-3 5 5 0 019 3c0 5.4-7 10-7 10z"/><path d="M12 11v0"/></svg>
-              </span>
-              <h3>CSR &amp; Sponsorships</h3>
-              <p>Support youth and women in tech through flagship programs like Kuwait Codes and Academy X — measurable community impact.</p>
-              <ul class="offering-card__list">
-                <li>Branded cohort sponsorships</li>
-                <li>Scholarship funding tracks</li>
-                <li>Quarterly impact reporting</li>
-              </ul>
-              <a class="offering-card__link" href="#/enterprise">Explore CSR options <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-            </article>
-            <article class="offering-card offering-card--c reveal-up delay-2">
-              <span class="offering-card__icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 9l10-5 10 5-10 5z"/><path d="M6 11v5c0 1.7 2.7 3 6 3s6-1.3 6-3v-5"/><path d="M22 9v6"/></svg>
-              </span>
-              <h3>Tech Academies</h3>
-              <p>Multi-month training programs for new hires or graduate intakes — built to deliver job-ready engineers in 12–16 weeks.</p>
-              <ul class="offering-card__list">
-                <li>Software, data, AI, cyber tracks</li>
-                <li>Project-based, capstone-driven</li>
-                <li>Industry mentors &amp; assessment</li>
-              </ul>
-              <a class="offering-card__link" href="#/enterprise">Plan an academy <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-            </article>
-            <article class="offering-card offering-card--d reveal-up delay-3">
-              <span class="offering-card__icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.2"/><circle cx="17" cy="9" r="2.4"/><path d="M3 20c0-3 2.7-5 6-5s6 2 6 5"/><path d="M15 19c.4-2.6 2.5-4 4.5-4s2.5 1 2.5 1"/></svg>
-              </span>
-              <h3>Employee Family Programs</h3>
-              <p>Offer CODED Juniors or youth camps as employee benefits — a perk that lasts longer than a gift card.</p>
-              <ul class="offering-card__list">
-                <li>Ages 9–17, school holidays</li>
-                <li>Optional family discount tiers</li>
-                <li>Wellbeing &amp; retention boost</li>
-              </ul>
-              <a class="offering-card__link" href="#/enterprise">Add it to your benefits <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-            </article>
-          </div>
-        </div>
-      </section>
 
       <section class="faq-section" aria-label="Frequently asked questions">
         <div class="container faq-section__inner">
@@ -692,7 +628,7 @@
     setupHeroPrompt();
     setupHeroCycle();
     renderTrustedLogos();
-    renderTopCourses();
+    renderFeaturedRotator();
     setupViewToggle();
     setupHelperChat();
     refreshResults();
@@ -1227,44 +1163,110 @@
     "Business Intelligence":      { from: "#1E3A8A", to: "#0B0B0F" },
   };
 
-  function renderTopCourses() {
-    const track = document.getElementById("topCoursesMarquee");
-    if (!track) return;
+  // Featured rotator: one card visible, auto-cycles through the top picks.
+  // Sits under the search bar to draw attention to high-demand programs
+  // without pushing the catalog grid down with a tall marquee.
+  // - 3s per slide
+  // - Pauses on hover / focus / when the section is offscreen
+  // - Honours prefers-reduced-motion (no auto-cycle)
+  // - Dots are clickable; clicking jumps to that slide and resets the timer
+  const FEATURED_ROTATE_MS = 3000;
+
+  function renderFeaturedRotator() {
+    const viewport = document.getElementById("featuredRotatorViewport");
+    const dotsBox  = document.getElementById("featuredRotatorDots");
+    if (!viewport || !dotsBox) return;
+
     const programs = window.CODED_PROGRAMS || [];
     const picked = TOP_COURSE_SLUGS
       .map(slug => programs.find(p => p.slug === slug && p.status === "Published"))
-      .filter(Boolean);
-    if (!picked.length) { track.style.display = "none"; return; }
+      .filter(Boolean)
+      .slice(0, 5);
+    if (!picked.length) {
+      const root = document.getElementById("featuredRotator");
+      if (root) root.style.display = "none";
+      return;
+    }
 
-    const card = (p, i, set) => {
+    viewport.innerHTML = picked.map((p, i) => {
       const grad = TOPIC_GRADIENTS[p.topic] || { from: "#1F2937", to: "#0B0B0F" };
       const rank = String(i + 1).padStart(2, "0");
       const priceStr = p.price_per_seat_kwd
         ? `From KWD ${Number(p.price_per_seat_kwd).toLocaleString("en-GB")} / seat`
         : "On request";
+      const active = i === 0;
       return `
-        <a class="top-course-card" href="#/programs/${escapeHtml(p.slug)}"
+        <a class="featured-rotator__card" href="#/programs/${escapeHtml(p.slug)}"
+           data-idx="${i}"
            style="--c-from:${grad.from};--c-to:${grad.to};"
-           ${set === 2 ? 'aria-hidden="true" tabindex="-1"' : ""}>
-          <span class="top-course-card__rank">${rank}</span>
-          <span class="top-course-card__topic">${escapeHtml(p.topic)}</span>
-          <span class="top-course-card__name">${escapeHtml(p.name)}</span>
-          <span class="top-course-card__meta">${escapeHtml(p.duration_label || "")} · ${escapeHtml(priceStr)}</span>
-          <span class="top-course-card__arrow" aria-hidden="true">
-            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+           ${active ? 'data-active="true"' : 'aria-hidden="true" tabindex="-1"'}>
+          <span class="featured-rotator__rank">${rank}</span>
+          <span class="featured-rotator__copy">
+            <span class="featured-rotator__topic">${escapeHtml(p.topic)}</span>
+            <span class="featured-rotator__name">${escapeHtml(p.name)}</span>
+            <span class="featured-rotator__meta">${escapeHtml(p.duration_label || "")} · ${escapeHtml(priceStr)}</span>
+          </span>
+          <span class="featured-rotator__arrow" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
           </span>
         </a>`;
-    };
+    }).join("");
 
-    // Duplicate the set so the marquee animation can wrap seamlessly.
-    track.innerHTML = `
-      <div class="top-courses__set">${picked.map((p, i) => card(p, i, 1)).join("")}</div>
-      <div class="top-courses__set" aria-hidden="true">${picked.map((p, i) => card(p, i, 2)).join("")}</div>
-    `;
+    dotsBox.innerHTML = picked.map((_, i) => `
+      <button type="button" class="featured-rotator__dot"
+              data-idx="${i}" role="tab"
+              aria-selected="${i === 0 ? "true" : "false"}"
+              aria-label="Featured ${i + 1} of ${picked.length}"></button>
+    `).join("");
 
-    // Pause animation on hover so users can read; resume on leave.
-    track.addEventListener("mouseenter", () => track.dataset.paused = "true");
-    track.addEventListener("mouseleave", () => track.dataset.paused = "false");
+    const cards = Array.from(viewport.querySelectorAll(".featured-rotator__card"));
+    const dots  = Array.from(dotsBox.querySelectorAll(".featured-rotator__dot"));
+    let idx = 0;
+    let timer = null;
+    let paused = false;
+
+    function goTo(next) {
+      if (next === idx || next < 0 || next >= cards.length) return;
+      cards[idx].removeAttribute("data-active");
+      cards[idx].setAttribute("aria-hidden", "true");
+      cards[idx].setAttribute("tabindex", "-1");
+      dots[idx].setAttribute("aria-selected", "false");
+      idx = next;
+      cards[idx].setAttribute("data-active", "true");
+      cards[idx].removeAttribute("aria-hidden");
+      cards[idx].removeAttribute("tabindex");
+      dots[idx].setAttribute("aria-selected", "true");
+    }
+    function tick() { if (!paused) goTo((idx + 1) % cards.length); }
+    function start() { stop(); timer = setInterval(tick, FEATURED_ROTATE_MS); }
+    function stop()  { if (timer) { clearInterval(timer); timer = null; } }
+
+    // Pause when the user is hovering / focused so they have time to click.
+    viewport.addEventListener("mouseenter", () => { paused = true; });
+    viewport.addEventListener("mouseleave", () => { paused = false; });
+    viewport.addEventListener("focusin",  () => { paused = true; });
+    viewport.addEventListener("focusout", () => { paused = false; });
+
+    // Click a dot to jump to that slide; reset the timer so the user gets
+    // the full 3s on their picked card.
+    dots.forEach(d => d.addEventListener("click", () => {
+      goTo(+d.dataset.idx);
+      if (timer) start();
+    }));
+
+    // Stop cycling when the rotator scrolls offscreen, restart when back.
+    // Saves a tick on mobile and avoids triggering accessibility focus
+    // changes for users who've scrolled past it.
+    const reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (reduced) return;
+    if ("IntersectionObserver" in window) {
+      const obs = new IntersectionObserver((entries) => {
+        entries.forEach(e => e.isIntersecting ? start() : stop());
+      }, { threshold: 0.15 });
+      obs.observe(viewport);
+    } else {
+      start();
+    }
   }
 
   function setupHeroPrompt() {
@@ -1522,6 +1524,293 @@
   // Expose for the detail-page sticky CTA
   window.openInquiryModal  = openInquiryModal;
   window.closeInquiryModal = closeInquiryModal;
+
+  // ---------------- Gated PDF brochure modal ----------------
+  // Visitors hit "Download brochure (PDF)" → we collect their work details
+  // and trigger an Airtable automation that emails them the PDF. No public
+  // (Gmail/Hotmail/Yahoo) addresses; no direct download from the platform.
+  //
+  // GCC codes are listed first so the most common picks are at the top of
+  // the dropdown. Default selection is Kuwait (+965).
+  const PDF_COUNTRY_CODES = [
+    { code: "+965", name: "Kuwait", group: "GCC" },
+    { code: "+966", name: "Saudi Arabia", group: "GCC" },
+    { code: "+971", name: "United Arab Emirates", group: "GCC" },
+    { code: "+974", name: "Qatar", group: "GCC" },
+    { code: "+973", name: "Bahrain", group: "GCC" },
+    { code: "+968", name: "Oman", group: "GCC" },
+    { code: "+93",  name: "Afghanistan" },
+    { code: "+213", name: "Algeria" },
+    { code: "+54",  name: "Argentina" },
+    { code: "+61",  name: "Australia" },
+    { code: "+43",  name: "Austria" },
+    { code: "+880", name: "Bangladesh" },
+    { code: "+32",  name: "Belgium" },
+    { code: "+55",  name: "Brazil" },
+    { code: "+1",   name: "Canada / United States" },
+    { code: "+86",  name: "China" },
+    { code: "+45",  name: "Denmark" },
+    { code: "+20",  name: "Egypt" },
+    { code: "+251", name: "Ethiopia" },
+    { code: "+358", name: "Finland" },
+    { code: "+33",  name: "France" },
+    { code: "+49",  name: "Germany" },
+    { code: "+30",  name: "Greece" },
+    { code: "+852", name: "Hong Kong" },
+    { code: "+91",  name: "India" },
+    { code: "+62",  name: "Indonesia" },
+    { code: "+98",  name: "Iran" },
+    { code: "+964", name: "Iraq" },
+    { code: "+353", name: "Ireland" },
+    { code: "+972", name: "Israel" },
+    { code: "+39",  name: "Italy" },
+    { code: "+81",  name: "Japan" },
+    { code: "+962", name: "Jordan" },
+    { code: "+254", name: "Kenya" },
+    { code: "+961", name: "Lebanon" },
+    { code: "+218", name: "Libya" },
+    { code: "+60",  name: "Malaysia" },
+    { code: "+52",  name: "Mexico" },
+    { code: "+212", name: "Morocco" },
+    { code: "+977", name: "Nepal" },
+    { code: "+31",  name: "Netherlands" },
+    { code: "+64",  name: "New Zealand" },
+    { code: "+234", name: "Nigeria" },
+    { code: "+47",  name: "Norway" },
+    { code: "+92",  name: "Pakistan" },
+    { code: "+970", name: "Palestine" },
+    { code: "+63",  name: "Philippines" },
+    { code: "+48",  name: "Poland" },
+    { code: "+351", name: "Portugal" },
+    { code: "+40",  name: "Romania" },
+    { code: "+7",   name: "Russia / Kazakhstan" },
+    { code: "+65",  name: "Singapore" },
+    { code: "+27",  name: "South Africa" },
+    { code: "+82",  name: "South Korea" },
+    { code: "+34",  name: "Spain" },
+    { code: "+94",  name: "Sri Lanka" },
+    { code: "+249", name: "Sudan" },
+    { code: "+46",  name: "Sweden" },
+    { code: "+41",  name: "Switzerland" },
+    { code: "+963", name: "Syria" },
+    { code: "+886", name: "Taiwan" },
+    { code: "+66",  name: "Thailand" },
+    { code: "+216", name: "Tunisia" },
+    { code: "+90",  name: "Turkey" },
+    { code: "+380", name: "Ukraine" },
+    { code: "+44",  name: "United Kingdom" },
+    { code: "+84",  name: "Vietnam" },
+    { code: "+967", name: "Yemen" },
+  ];
+
+  function populatePdfPhoneCountry() {
+    const sel = document.getElementById("pdfRequestPhoneCountry");
+    if (!sel || sel.options.length > 0) return;
+    let gcc = "", rest = "";
+    PDF_COUNTRY_CODES.forEach(c => {
+      const label = `${c.name} (${c.code})`;
+      const opt = `<option value="${c.code}" data-country="${c.name}">${label}</option>`;
+      if (c.group === "GCC") gcc += opt; else rest += opt;
+    });
+    sel.innerHTML =
+      `<optgroup label="GCC">${gcc}</optgroup>` +
+      `<optgroup label="Other">${rest}</optgroup>`;
+    sel.value = "+965";
+  }
+
+  const PDF_PUBLIC_EMAIL_DOMAINS = new Set([
+    "gmail.com", "googlemail.com",
+    "hotmail.com", "hotmail.co.uk", "hotmail.fr", "live.com", "outlook.com", "outlook.sa", "msn.com",
+    "yahoo.com", "yahoo.co.uk", "yahoo.fr", "ymail.com", "rocketmail.com",
+    "icloud.com", "me.com", "mac.com",
+    "aol.com",
+    "proton.me", "protonmail.com", "pm.me",
+    "gmx.com", "gmx.net", "gmx.de",
+    "mail.com", "mail.ru",
+    "zoho.com",
+    "yandex.com", "yandex.ru",
+    "qq.com", "163.com", "126.com", "sina.com",
+    "fastmail.com", "tutanota.com", "tuta.io",
+    "hey.com",
+    "duck.com", "duckduckgo.com",
+    "inbox.com",
+  ]);
+
+  function openPdfRequestModal({ programSlug, programName } = {}) {
+    const modal = document.getElementById("pdfRequestModal");
+    if (!modal) return;
+    const form    = document.getElementById("pdfRequestForm");
+    const status  = document.getElementById("pdfRequestStatus");
+    const submit  = document.getElementById("pdfRequestSubmit");
+    const eyebrow = document.getElementById("pdfRequestModalEyebrow");
+    if (!form) return;
+
+    populatePdfPhoneCountry();
+    form.reset();
+    // form.reset() snaps the select back to its first option — re-apply
+    // the Kuwait default after the reset.
+    const countrySel = form.querySelector("select[name='phoneCountry']");
+    if (countrySel) countrySel.value = "+965";
+    form.dataset.programSlug = programSlug || "";
+    form.dataset.programName = programName || "";
+    eyebrow.textContent = programName ? `Brochure · ${programName}` : "Brochure request";
+    status.textContent = "Use your company email — we'll send the PDF there.";
+    status.removeAttribute("data-tone");
+    submit.disabled = false;
+    submit.textContent = "Email me the PDF";
+
+    modal.hidden = false;
+    modal.setAttribute("aria-hidden", "false");
+    document.body.classList.add("modal-open");
+    setTimeout(() => modal.classList.add("inquiry-modal--in"), 10);
+    setTimeout(() => {
+      const first = form.querySelector("input[name='name']");
+      if (first) first.focus();
+    }, 100);
+  }
+
+  function closePdfRequestModal() {
+    const modal = document.getElementById("pdfRequestModal");
+    if (!modal) return;
+    modal.classList.remove("inquiry-modal--in");
+    setTimeout(() => {
+      modal.hidden = true;
+      modal.setAttribute("aria-hidden", "true");
+      if (!document.querySelector(".inquiry-modal:not([hidden])")) {
+        document.body.classList.remove("modal-open");
+      }
+    }, 220);
+  }
+
+  function setupPdfRequestModal() {
+    const modal = document.getElementById("pdfRequestModal");
+    const form  = document.getElementById("pdfRequestForm");
+    if (!modal || !form || setupPdfRequestModal._wired) return;
+    setupPdfRequestModal._wired = true;
+
+    modal.addEventListener("click", (e) => {
+      if (e.target.matches("[data-modal-close]")) closePdfRequestModal();
+    });
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && !modal.hidden) closePdfRequestModal();
+    });
+
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const status = document.getElementById("pdfRequestStatus");
+      const submit = document.getElementById("pdfRequestSubmit");
+      const data   = new FormData(form);
+      const name         = (data.get("name")         || "").toString().trim();
+      const department   = (data.get("department")   || "").toString().trim();
+      const company      = (data.get("company")      || "").toString().trim();
+      const email        = (data.get("email")        || "").toString().trim().toLowerCase();
+      const phoneCountry = (data.get("phoneCountry") || "+965").toString().trim();
+      const phone        = (data.get("phone")        || "").toString().trim();
+      const notes        = (data.get("notes")        || "").toString().trim();
+
+      if (!name) {
+        status.textContent = "Full name is required.";
+        status.setAttribute("data-tone", "error");
+        return;
+      }
+      if (!department) {
+        status.textContent = "Department is required.";
+        status.setAttribute("data-tone", "error");
+        return;
+      }
+      if (!company) {
+        status.textContent = "Company name is required.";
+        status.setAttribute("data-tone", "error");
+        return;
+      }
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)) {
+        status.textContent = "Enter a valid email address.";
+        status.setAttribute("data-tone", "error");
+        return;
+      }
+      const at = email.lastIndexOf("@");
+      const domain = at === -1 ? "" : email.slice(at + 1);
+      if (PDF_PUBLIC_EMAIL_DOMAINS.has(domain)) {
+        status.textContent = "Please use your company email — Gmail / Hotmail / Yahoo and other public addresses are not accepted.";
+        status.setAttribute("data-tone", "error");
+        return;
+      }
+
+      const programSlug = form.dataset.programSlug || "";
+      const programName = form.dataset.programName || "";
+      const pdfUrl = programSlug
+        ? new URL(`assets/pdfs/${programSlug}.pdf`, location.href).toString()
+        : "";
+
+      submit.disabled = true;
+      status.removeAttribute("data-tone");
+      status.textContent = "Sending…";
+      try {
+        const r = await fetch("/api/pdf-request", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            contact: {
+              name,
+              email,
+              department,
+              phone,
+              phoneCountry,
+            },
+            company: { name: company },
+            programSlug,
+            programName,
+            pdfUrl,
+            pageUrl: location.href,
+            notes,
+          }),
+        });
+        const json = await r.json().catch(() => ({}));
+        if (!r.ok) {
+          if (json.code === "email_public") {
+            status.textContent = json.error || "Please use your company email.";
+          } else if (json.code === "email_invalid") {
+            status.textContent = "Enter a valid email address.";
+          } else if (json.code === "company_required") {
+            status.textContent = "Company name is required.";
+          } else if (json.code === "department_required") {
+            status.textContent = "Department is required.";
+          } else if (json.code === "name_required") {
+            status.textContent = "Full name is required.";
+          } else {
+            status.textContent = json.error || `Couldn't send the request (HTTP ${r.status}).`;
+          }
+          status.setAttribute("data-tone", "error");
+          submit.disabled = false;
+          return;
+        }
+        status.textContent = "Thanks — check your inbox in a minute for the PDF.";
+        status.setAttribute("data-tone", "ok");
+        submit.textContent = "Sent";
+        setTimeout(closePdfRequestModal, 2200);
+      } catch (err) {
+        status.textContent = "Couldn't reach the server. Email enterprise@joincoded.com and we'll send it over.";
+        status.setAttribute("data-tone", "error");
+        submit.disabled = false;
+      }
+    });
+  }
+
+  // Global delegate — any [data-pdf-request] button opens the gated modal.
+  // Works whether the button is rendered by the detail view, catalog view,
+  // or any future surface that adds the attribute.
+  document.addEventListener("click", (e) => {
+    const trigger = e.target.closest("[data-pdf-request]");
+    if (!trigger) return;
+    e.preventDefault();
+    openPdfRequestModal({
+      programSlug: trigger.dataset.programSlug || "",
+      programName: trigger.dataset.programName || "",
+    });
+  });
+
+  window.openPdfRequestModal  = openPdfRequestModal;
+  window.closePdfRequestModal = closePdfRequestModal;
 
   // ---------------- Mobile filters drawer ----------------
   function setupFiltersDrawer() {
@@ -2286,6 +2575,46 @@
          </span>`
       : "";
 
+    // Live D : H : M : S countdown to the next upcoming cohort. Picks the same
+    // future-cohort date as the chip above, then layers the start-of-day time
+    // parsed from session_pattern (e.g. "8am–2pm" → 08:00) for a precise tick.
+    const countdownTarget = (() => {
+      const today = new Date(); today.setHours(0, 0, 0, 0);
+      const candidates = [];
+      if (p.start_date) candidates.push(p.start_date);
+      (p.cohorts || []).forEach(c => { if (c.start_date) candidates.push(c.start_date); });
+      const futureISO = candidates
+        .map(iso => ({ iso, date: new Date(iso + "T00:00:00") }))
+        .filter(x => x.date >= today)
+        .sort((a, b) => a.date - b.date)[0];
+      if (!futureISO) return null;
+      const target = new Date(futureISO.iso + "T00:00:00");
+      const tm = (p.session_pattern || "").match(/(\d{1,2})(?::(\d{2}))?\s*(am|pm)/i);
+      if (tm) {
+        let h = parseInt(tm[1], 10);
+        const min = tm[2] ? parseInt(tm[2], 10) : 0;
+        const mer = tm[3].toLowerCase();
+        if (mer === "pm" && h < 12) h += 12;
+        if (mer === "am" && h === 12) h = 0;
+        target.setHours(h, min, 0, 0);
+      }
+      return target;
+    })();
+    const countdownBlock = countdownTarget
+      ? `<div class="hero-countdown" id="heroCountdown" data-target="${countdownTarget.toISOString()}" aria-live="off">
+           <div class="hero-countdown__label">Starts in</div>
+           <div class="hero-countdown__grid">
+             <div class="hero-countdown__cell"><span class="hero-countdown__num" data-cd="d">--</span><span class="hero-countdown__unit">Days</span></div>
+             <span class="hero-countdown__sep" aria-hidden="true">:</span>
+             <div class="hero-countdown__cell"><span class="hero-countdown__num" data-cd="h">--</span><span class="hero-countdown__unit">Hours</span></div>
+             <span class="hero-countdown__sep" aria-hidden="true">:</span>
+             <div class="hero-countdown__cell"><span class="hero-countdown__num" data-cd="m">--</span><span class="hero-countdown__unit">Minutes</span></div>
+             <span class="hero-countdown__sep" aria-hidden="true">:</span>
+             <div class="hero-countdown__cell"><span class="hero-countdown__num" data-cd="s">--</span><span class="hero-countdown__unit">Seconds</span></div>
+           </div>
+         </div>`
+      : "";
+
     $("#app").innerHTML = `
       <section class="detail-hero detail-hero--onyx" data-parallax-root>
         <div class="detail-hero__bg" aria-hidden="true">
@@ -2338,6 +2667,8 @@
             </div>
           </div>
 
+          ${countdownBlock}
+
           <div class="detail-hero__cta">
             <a class="btn btn-primary btn-lg btn--platinum" href="${escapeHtml(mailto)}">Request Seats &amp; Pricing ${ICON.arrow}</a>
             <a class="btn btn-secondary btn-lg btn--ghost-light" href="${escapeHtml(p.location_url || "#")}" target="_blank" rel="noopener">Location (CODED Campus) ${ICON.extlink}</a>
@@ -2345,57 +2676,53 @@
         </div>
       </section>
 
-      <!-- Centered Overview marquee, coded.kw style.
-           Three scannable tiles, no long prose paragraph above them. -->
-      <section class="detail-section detail-section--marquee is-soft reveal-up">
-        <div class="container">
-          <span class="eyebrow-tag">[ Overview ]</span>
-          <h2>What You'll Walk Out With</h2>
-          <ul class="overview-tiles overview-tiles--three">
-            <li class="stagger-child"><h6>You'll build</h6><p>${escapeHtml(p.outcomes[0] || "")}</p></li>
-            <li class="stagger-child"><h6>How we teach</h6><p>70 / 30 hands-on. Every session ships a working artefact.</p></li>
-            <li class="stagger-child"><h6>Walk out with</h6><p>${escapeHtml(p.outcomes[p.outcomes.length - 1] || "")}</p></li>
-          </ul>
-        </div>
-      </section>
-
-      <!-- Curriculum band moved up: most important content, visible without deep scroll -->
-      <section class="curriculum-band reveal-up">
-        <div class="container">
-          <div class="curriculum-band__head">
-            <span class="eyebrow-tag is-light">[ Curriculum ]</span>
-            <h2>${escapeHtml(p.name.replace(/\s+(Workshop|Bootcamp)$/i, "").trim())} Curriculum</h2>
-            <p class="curriculum-band__lede">${escapeHtml(p.session_pattern)}. ${escapeHtml(p.duration_label)} total.</p>
-          </div>
-          <ol class="timeline timeline--dark">
-            ${p.structure.map((ph, i) => {
-              const parts = ph.phase_name.split(",");
-              const head = (parts[0] || "").trim();
-              const tail = parts.slice(1).join(",").trim();
-              const step = tail ? head : `${p.format === "Bootcamp" ? "Module" : "Day"} ${i + 1}`;
-              const title = tail || head;
-              return `
-                <li class="timeline__row">
-                  <div class="timeline__rail" aria-hidden="true">
-                    <span class="timeline__node"></span>
-                    <span class="timeline__step">${escapeHtml(step)}</span>
-                  </div>
-                  <div class="timeline__body">
-                    <h3 class="timeline__title">${escapeHtml(title)}</h3>
-                    <div class="timeline__meta">${escapeHtml(String(ph.hours))} hrs · ${escapeHtml(String(ph.sessions))} session${ph.sessions === 1 ? "" : "s"}</div>
-                    <p class="timeline__focus">${escapeHtml(ph.focus)}</p>
-                  </div>
-                </li>`;
-            }).join("")}
-          </ol>
-        </div>
-      </section>
-
-      <!-- Detail grid, left rail (compact subsections), right rail (sticky aside) -->
+      <!-- Detail shell: left = full content stack (overview, curriculum, audience, ...),
+           right = sticky AT A GLANCE aside that stays visible from hero through FAQ -->
       <div class="container">
-        <div class="detail-grid" style="padding: var(--s-3) 0 0;">
-          <div>
-            <section class="detail-section reveal-up" style="padding-top:0;">
+        <div class="detail-grid detail-grid--full">
+          <div class="detail-grid__main">
+            <!-- Overview marquee, now inline in the left column -->
+            <section class="detail-section detail-section--marquee detail-section--marquee-inline reveal-up">
+              <span class="eyebrow-tag">[ Overview ]</span>
+              <h2>What You'll Walk Out With</h2>
+              <ul class="overview-tiles overview-tiles--three">
+                <li class="stagger-child"><h6>You'll build</h6><p>${escapeHtml(p.outcomes[0] || "")}</p></li>
+                <li class="stagger-child"><h6>How we teach</h6><p>70 / 30 hands-on. Every session ships a working artefact.</p></li>
+                <li class="stagger-child"><h6>Walk out with</h6><p>${escapeHtml(p.outcomes[p.outcomes.length - 1] || "")}</p></li>
+              </ul>
+            </section>
+
+            <!-- Curriculum band, now an inline dark panel inside the left column -->
+            <section class="curriculum-band curriculum-band--inline reveal-up">
+              <div class="curriculum-band__head">
+                <span class="eyebrow-tag is-light">[ Curriculum ]</span>
+                <h2>${escapeHtml(p.name.replace(/\s+(Workshop|Bootcamp)$/i, "").trim())} Curriculum</h2>
+                <p class="curriculum-band__lede">${escapeHtml(p.session_pattern)}. ${escapeHtml(p.duration_label)} total.</p>
+              </div>
+              <ol class="timeline timeline--dark">
+                ${p.structure.map((ph, i) => {
+                  const parts = ph.phase_name.split(",");
+                  const head = (parts[0] || "").trim();
+                  const tail = parts.slice(1).join(",").trim();
+                  const step = tail ? head : `${p.format === "Bootcamp" ? "Module" : "Day"} ${i + 1}`;
+                  const title = tail || head;
+                  return `
+                    <li class="timeline__row">
+                      <div class="timeline__rail" aria-hidden="true">
+                        <span class="timeline__node"></span>
+                        <span class="timeline__step">${escapeHtml(step)}</span>
+                      </div>
+                      <div class="timeline__body">
+                        <h3 class="timeline__title">${escapeHtml(title)}</h3>
+                        <div class="timeline__meta">${escapeHtml(String(ph.hours))} hrs · ${escapeHtml(String(ph.sessions))} session${ph.sessions === 1 ? "" : "s"}</div>
+                        <p class="timeline__focus">${escapeHtml(ph.focus)}</p>
+                      </div>
+                    </li>`;
+                }).join("")}
+              </ol>
+            </section>
+
+            <section class="detail-section reveal-up">
               <span class="eyebrow-tag">[ Audience ]</span>
               <h2>Who This Is For</h2>
               <div class="prose">
@@ -2472,7 +2799,7 @@
               <div class="key-row"><span>Location</span><span>${locationHtml}</span></div>
               <div class="key-row"><span>Next cohort</span><span>${escapeHtml(fmtDate(p.start_date))}</span></div>
               <a class="btn btn-primary btn-block" style="margin-top:18px;" href="${escapeHtml(mailto)}">Request Seats &amp; Pricing ${ICON.arrow}</a>
-              <a class="btn btn-ghost btn-block" style="margin-top:8px;" href="assets/pdfs/${escapeHtml(p.slug)}.pdf" download="${escapeHtml(p.slug)}.pdf">Download brochure (PDF) ${ICON.download}</a>
+              <button type="button" class="btn btn-ghost btn-block" style="margin-top:8px;" data-pdf-request data-program-slug="${escapeHtml(p.slug)}" data-program-name="${escapeHtml(p.name)}">Download brochure (PDF) ${ICON.download}</button>
             </div>
           </aside>
         </div>
@@ -2488,6 +2815,45 @@
         </div>
       </section>
     `;
+
+    // Live D / H / M / S countdown. Re-renders every second; the previous
+    // timer (if any) is cleared first because route changes wipe #app.
+    if (window._codedCountdownTimer) {
+      clearInterval(window._codedCountdownTimer);
+      window._codedCountdownTimer = null;
+    }
+    const cdRoot = document.getElementById("heroCountdown");
+    if (cdRoot && cdRoot.dataset.target) {
+      const target = new Date(cdRoot.dataset.target);
+      const dEl = cdRoot.querySelector('[data-cd="d"]');
+      const hEl = cdRoot.querySelector('[data-cd="h"]');
+      const mEl = cdRoot.querySelector('[data-cd="m"]');
+      const sEl = cdRoot.querySelector('[data-cd="s"]');
+      const pad = (n) => String(Math.max(0, n)).padStart(2, "0");
+      const tick = () => {
+        const diff = target.getTime() - Date.now();
+        if (diff <= 0) {
+          if (dEl) dEl.textContent = "00";
+          if (hEl) hEl.textContent = "00";
+          if (mEl) mEl.textContent = "00";
+          if (sEl) sEl.textContent = "00";
+          cdRoot.classList.add("hero-countdown--done");
+          clearInterval(window._codedCountdownTimer);
+          window._codedCountdownTimer = null;
+          return;
+        }
+        const days  = Math.floor(diff / 86400000);
+        const hours = Math.floor((diff % 86400000) / 3600000);
+        const mins  = Math.floor((diff % 3600000) / 60000);
+        const secs  = Math.floor((diff % 60000) / 1000);
+        if (dEl) dEl.textContent = String(days);
+        if (hEl) hEl.textContent = pad(hours);
+        if (mEl) mEl.textContent = pad(mins);
+        if (sEl) sEl.textContent = pad(secs);
+      };
+      tick();
+      window._codedCountdownTimer = setInterval(tick, 1000);
+    }
 
     // Sticky mobile CTA — opens the inquiry modal pre-filled with this program
     const stickyMobile = $("#stickyCtaMobile");
@@ -3128,6 +3494,7 @@
   document.addEventListener("DOMContentLoaded", () => {
     setupHeaderScroll();
     setupInquiryModal();
+    setupPdfRequestModal();
     route();
     window.addEventListener("hashchange", route);
   });
