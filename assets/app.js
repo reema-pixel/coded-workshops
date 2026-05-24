@@ -62,13 +62,30 @@
   const fmtPrice = (kwd) => kwd ? `KWD ${kwd.toLocaleString("en-GB")} / seat` : "";
 
   // Extract just the clock time from a session_pattern string.
-  // "Morning shift, 8am–3pm, five consecutive days" -> "8:00 AM – 3:00 PM"
-  // "Sundays, Tuesdays · 5:00–8:45 PM · 3 sessions/week" -> "5:00 – 8:45 PM"
+  // Drops redundant ":00" minutes, and uses non-breaking spaces inside the
+  // value so it never wraps mid-time (we used to see PM drop to the next
+  // line in narrow columns).
+  //   "Morning shift, 8am–3pm, ..."        -> "8 AM – 3 PM"
+  //   "Sundays · 5:00–8:45 PM · ..."        -> "5 – 8:45 PM"
+  //   "5:30am–8:00pm"                       -> "5:30 AM – 8 PM"
   function fmtTimingShort(pattern) {
-    const m1 = pattern.match(/\b(\d{1,2})(am|pm)[–\-](\d{1,2})(am|pm)\b/i);
-    if (m1) return `${m1[1]}:00 ${m1[2].toUpperCase()} – ${m1[3]}:00 ${m1[4].toUpperCase()}`;
-    const m2 = pattern.match(/(\d{1,2}:\d{2})[–\-](\d{1,2}:\d{2})\s*(AM|PM)/i);
-    if (m2) return `${m2[1]} – ${m2[2]} ${m2[3].toUpperCase()}`;
+    if (!pattern) return "";
+    const NBSP = " ";
+    const trimZero = (h, m) => (!m || m === "00") ? h : `${h}:${m}`;
+    // AM/PM on both sides: "8am–2pm" / "8:30am–4pm"
+    const m1 = pattern.match(/\b(\d{1,2})(?::(\d{2}))?\s*(am|pm)\s*[–\-]\s*(\d{1,2})(?::(\d{2}))?\s*(am|pm)\b/i);
+    if (m1) {
+      const left  = `${trimZero(m1[1], m1[2])}${NBSP}${m1[3].toUpperCase()}`;
+      const right = `${trimZero(m1[4], m1[5])}${NBSP}${m1[6].toUpperCase()}`;
+      return `${left}${NBSP}–${NBSP}${right}`;
+    }
+    // Single AM/PM suffix: "5:00–8:45 PM"
+    const m2 = pattern.match(/(\d{1,2})(?::(\d{2}))?\s*[–\-]\s*(\d{1,2})(?::(\d{2}))?\s*(AM|PM)/i);
+    if (m2) {
+      const left  = trimZero(m2[1], m2[2]);
+      const right = trimZero(m2[3], m2[4]);
+      return `${left}${NBSP}–${NBSP}${right}${NBSP}${m2[5].toUpperCase()}`;
+    }
     return pattern;
   }
 

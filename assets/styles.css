@@ -2751,6 +2751,10 @@ body.modal-open { overflow: hidden; }
   font-size: 15px;
   color: var(--text-primary);
   font-weight: 500;
+  /* Keep "8 AM – 2 PM" on a single line in the meta strip. Combined with
+   * non-breaking spaces inside fmtTimingShort, this prevents PM from
+   * dropping to the next line in narrow columns. */
+  white-space: nowrap;
 }
 .detail-meta__sub {
   margin-top: 4px;

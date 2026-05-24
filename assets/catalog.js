@@ -38,10 +38,23 @@
   // "5:00 – 8:45 PM", "8:00 AM – 3:00 PM", etc.
   function fmtTimingShort(pattern) {
     if (!pattern) return "";
-    const m1 = pattern.match(/\b(\d{1,2})(am|pm)[–\-](\d{1,2})(am|pm)\b/i);
-    if (m1) return `${m1[1]}:00 ${m1[2].toUpperCase()} – ${m1[3]}:00 ${m1[4].toUpperCase()}`;
-    const m2 = pattern.match(/(\d{1,2}:\d{2})[–\-](\d{1,2}:\d{2})\s*(AM|PM)/i);
-    if (m2) return `${m2[1]} – ${m2[2]} ${m2[3].toUpperCase()}`;
+    // Non-breaking spaces inside the time so PM / AM never wraps to a new
+    // line in narrow grid cells. Drop redundant ":00" so the value stays
+    // visually compact (e.g. "8 AM – 2 PM" instead of "8:00 AM – 2:00 PM").
+    const NBSP = " ";
+    const trimZero = (h, m) => (!m || m === "00") ? h : `${h}:${m}`;
+    const m1 = pattern.match(/\b(\d{1,2})(?::(\d{2}))?\s*(am|pm)\s*[–\-]\s*(\d{1,2})(?::(\d{2}))?\s*(am|pm)\b/i);
+    if (m1) {
+      const left  = `${trimZero(m1[1], m1[2])}${NBSP}${m1[3].toUpperCase()}`;
+      const right = `${trimZero(m1[4], m1[5])}${NBSP}${m1[6].toUpperCase()}`;
+      return `${left}${NBSP}–${NBSP}${right}`;
+    }
+    const m2 = pattern.match(/(\d{1,2})(?::(\d{2}))?\s*[–\-]\s*(\d{1,2})(?::(\d{2}))?\s*(AM|PM)/i);
+    if (m2) {
+      const left  = trimZero(m2[1], m2[2]);
+      const right = trimZero(m2[3], m2[4]);
+      return `${left}${NBSP}–${NBSP}${right}${NBSP}${m2[5].toUpperCase()}`;
+    }
     return pattern;
   }
 

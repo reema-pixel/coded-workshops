@@ -305,6 +305,10 @@ body.has-catalog {
   font-weight: 700;
   color: var(--cat-ink);
   line-height: 1.25;
+  /* Keep "8 AM – 2 PM" on a single line. Combined with the non-breaking
+   * spaces inside the value, this prevents PM dropping to the next line
+   * in narrow columns. */
+  white-space: nowrap;
 }
 .cat-stats__value-sub {
   display: block;
