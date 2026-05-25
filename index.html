@@ -134,6 +134,62 @@
     </div>
   </div>
 
+  <!-- PDF request modal — opened when a visitor clicks "Download brochure (PDF)". -->
+  <div class="inquiry-modal" id="pdfRequestModal" hidden aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="pdfRequestModalTitle">
+    <div class="inquiry-modal__backdrop" data-modal-close></div>
+    <div class="inquiry-modal__panel" role="document">
+      <header class="inquiry-modal__head">
+        <div>
+          <span class="inquiry-modal__eyebrow" id="pdfRequestModalEyebrow">Brochure request</span>
+          <h2 id="pdfRequestModalTitle">Get the brochure by email</h2>
+          <p class="inquiry-modal__sub">Tell us where to send it. We'll email the PDF to your work address in a moment.</p>
+        </div>
+        <button type="button" class="inquiry-modal__close" aria-label="Close" data-modal-close>
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+        </button>
+      </header>
+      <form class="inquiry-form" id="pdfRequestForm" autocomplete="on" novalidate>
+        <div class="inquiry-form__grid">
+          <label class="inquiry-form__field">
+            <input type="text" name="name" required autocomplete="name" placeholder=" " />
+            <span>Full name</span>
+          </label>
+          <label class="inquiry-form__field">
+            <input type="text" name="department" required autocomplete="organization-title" placeholder=" " />
+            <span>Department</span>
+          </label>
+          <label class="inquiry-form__field inquiry-form__field--full">
+            <input type="text" name="company" required autocomplete="organization" placeholder=" " />
+            <span>Company name</span>
+          </label>
+          <label class="inquiry-form__field inquiry-form__field--full">
+            <input type="email" name="email" required autocomplete="email" inputmode="email" placeholder=" " />
+            <span>Work email <em>· no Gmail / Hotmail / Yahoo</em></span>
+          </label>
+          <label class="inquiry-form__field inquiry-form__field--select">
+            <select name="phoneCountry" id="pdfRequestPhoneCountry" autocomplete="tel-country-code"></select>
+            <span>Country</span>
+          </label>
+          <label class="inquiry-form__field">
+            <input type="tel" name="phone" inputmode="tel" autocomplete="tel-national" placeholder=" " />
+            <span>Phone <em>· optional</em></span>
+          </label>
+          <label class="inquiry-form__field inquiry-form__field--full">
+            <textarea name="notes" rows="3" placeholder=" "></textarea>
+            <span>Notes <em>· optional</em></span>
+          </label>
+        </div>
+        <div class="inquiry-form__foot">
+          <span class="inquiry-form__status" id="pdfRequestStatus" aria-live="polite">Use your company email — we'll send the PDF there.</span>
+          <div class="inquiry-form__actions">
+            <button type="button" class="btn btn-secondary" data-modal-close>Cancel</button>
+            <button type="submit" class="btn btn-primary" id="pdfRequestSubmit">Email me the PDF</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+
   <script src="assets/programs.js"></script>
   <script src="assets/catalog.js"></script>
   <script src="assets/app.js"></script>

@@ -371,7 +371,7 @@
 
         <div class="catalog-actions">
           <a class="btn btn-secondary" href="#/programs/${escapeHtml(p.slug)}">← Program page</a>
-          <a class="btn btn-primary" href="assets/pdfs/${escapeHtml(p.slug)}.pdf" download>Download PDF</a>
+          <button type="button" class="btn btn-primary" data-pdf-request data-program-slug="${escapeHtml(p.slug)}" data-program-name="${escapeHtml(p.name)}">Download PDF</button>
         </div>
       </div>
     `;
